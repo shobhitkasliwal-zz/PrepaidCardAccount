@@ -24,7 +24,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    // For Testing Git
+    // For Testing Git test
 }
 
 @end
