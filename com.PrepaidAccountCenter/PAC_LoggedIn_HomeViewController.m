@@ -84,9 +84,26 @@ cell.CellTitle.text = [tabledata objectAtIndex: [indexPath row]];
 //    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
 //    
 //    cell.textLabel.text = [tabledata objectAtIndex: [indexPath row]];
-   cell.contentView.backgroundColor = [UIColor blueColor];
-    cell.CellTitle.backgroundColor = [UIColor blueColor];
-//    
+   cell.contentView.backgroundColor = [UIColor colorWithRed:99/255.f green:184/255.f blue:255/255.f alpha:1];
+    cell.CellTitle.backgroundColor = [UIColor clearColor];
+    
+    switch (indexPath.row) {
+        case 0:
+            cell.CellIcon.image = [UIImage imageNamed:@"MyCardAccount.png"];
+            break;
+        case 1:
+            cell.CellIcon.image = [UIImage imageNamed:@"UpdateProfileLogo.png"];
+            break;
+        case 2:
+            cell.CellIcon.image = [UIImage imageNamed:@"PinManagement.png"];
+            break;
+        case 3:
+            cell.CellIcon.image = [UIImage imageNamed:@"TransactionsLogo.png"];
+            break;
+        default:
+            break;
+    }
+//
 //     [_tblOptions setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 //    
     return cell;

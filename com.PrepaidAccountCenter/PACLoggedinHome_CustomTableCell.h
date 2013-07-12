@@ -11,5 +11,6 @@
 @interface PACLoggedinHome_CustomTableCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *CellTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *CellIcon;
 
 @end

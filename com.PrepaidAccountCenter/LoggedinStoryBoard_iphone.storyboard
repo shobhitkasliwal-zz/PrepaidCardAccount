@@ -40,27 +40,34 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pss-2l-TxE">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="G9I-YF-bSe"/>
+                                                                <constraint firstAttribute="width" constant="206" id="Q9d-gU-8wS"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="RightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="zVl-5y-SVQ">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="26" id="UWY-Ui-guO"/>
-                                                                <constraint firstAttribute="height" constant="22" id="jhC-yE-w1c"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="MyCardAccount.png" translatesAutoresizingMaskIntoConstraints="NO" id="elJ-1E-hGa"/>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.0" green="0.12549020350000001" blue="0.30980393290000002" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="Pss-2l-TxE" firstAttribute="leading" secondItem="TbF-8N-Ofv" secondAttribute="leading" constant="77" id="BJq-n1-F7w"/>
-                                                    <constraint firstItem="zVl-5y-SVQ" firstAttribute="centerY" secondItem="TbF-8N-Ofv" secondAttribute="centerY" type="default" id="hf7-ye-VAT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="zVl-5y-SVQ" secondAttribute="trailing" constant="9" id="nug-gG-dz1"/>
-                                                    <constraint firstItem="zVl-5y-SVQ" firstAttribute="top" secondItem="Pss-2l-TxE" secondAttribute="top" type="default" id="tRG-Xe-d6g"/>
+                                                    <constraint firstItem="elJ-1E-hGa" firstAttribute="centerY" secondItem="zVl-5y-SVQ" secondAttribute="centerY" type="default" id="Hq7-N5-st6"/>
+                                                    <constraint firstItem="elJ-1E-hGa" firstAttribute="leading" secondItem="TbF-8N-Ofv" secondAttribute="leading" constant="20" type="default" id="LSZ-eg-5RO"/>
+                                                    <constraint firstItem="zVl-5y-SVQ" firstAttribute="top" secondItem="Pss-2l-TxE" secondAttribute="top" type="default" id="SLQ-Qw-KCm"/>
+                                                    <constraint firstItem="zVl-5y-SVQ" firstAttribute="leading" secondItem="Pss-2l-TxE" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="j2b-MJ-iNa"/>
+                                                    <constraint firstItem="elJ-1E-hGa" firstAttribute="centerY" secondItem="TbF-8N-Ofv" secondAttribute="centerY" type="default" id="ncF-sR-kAb"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="CellIcon" destination="elJ-1E-hGa" id="tYD-3I-566"/>
                                                     <outlet property="CellTitle" destination="Pss-2l-TxE" id="gME-LY-VIn"/>
                                                 </connections>
                                             </tableViewCell>
@@ -109,7 +116,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="RightArrow.png" width="16" height="16"/>
+        <image name="MyCardAccount.png" width="32" height="32"/>
+        <image name="RightArrow.png" width="22" height="22"/>
     </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
@@ -118,6 +126,7 @@
         <class className="PACLoggedinHome_CustomTableCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PACLoggedinHome_CustomTableCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="CellIcon" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="CellTitle" candidateClass="UILabel"/>
             </relationships>
         </class>

@@ -25,6 +25,10 @@
 		773552971767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773552961767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m */; };
 		77397979176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */; };
 		7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7739797A176BD9CE00FAD6B7 /* RightArrow.png */; };
+		77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */; };
+		77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1F179094E500E6D9BA /* MyCardAccount.png */; };
+		77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B211790950B00E6D9BA /* TransactionsLogo.png */; };
+		77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B23179096EE00E6D9BA /* PinManagement.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,10 @@
 		77397977176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACLoggedinHome_CustomTableCell.h; sourceTree = "<group>"; };
 		77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACLoggedinHome_CustomTableCell.m; sourceTree = "<group>"; };
 		7739797A176BD9CE00FAD6B7 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
+		77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpdateProfileLogo.png; sourceTree = "<group>"; };
+		77BD5B1F179094E500E6D9BA /* MyCardAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyCardAccount.png; sourceTree = "<group>"; };
+		77BD5B211790950B00E6D9BA /* TransactionsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsLogo.png; sourceTree = "<group>"; };
+		77BD5B23179096EE00E6D9BA /* PinManagement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinManagement.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +171,10 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				77BD5B23179096EE00E6D9BA /* PinManagement.png */,
+				77BD5B211790950B00E6D9BA /* TransactionsLogo.png */,
+				77BD5B1F179094E500E6D9BA /* MyCardAccount.png */,
+				77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */,
 				7739797A176BD9CE00FAD6B7 /* RightArrow.png */,
 			);
 			name = Images;
@@ -235,6 +247,10 @@
 				77004BAD176239F300745E2B /* MainStoryboard_iPad.storyboard in Resources */,
 				773552941767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard in Resources */,
 				7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */,
+				77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */,
+				77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */,
+				77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */,
+				77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
