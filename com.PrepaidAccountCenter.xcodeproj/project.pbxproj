@@ -20,11 +20,15 @@
 		77004BAD176239F300745E2B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77004BAB176239F300745E2B /* MainStoryboard_iPad.storyboard */; };
 		77004BB0176239F300745E2B /* PACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77004BAF176239F300745E2B /* PACViewController.m */; };
 		77004BBC17628AD700745E2B /* PAC_LoginViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77004BBB17628AD700745E2B /* PAC_LoginViewViewController.m */; };
+		770E6A2B1792511800D56950 /* PAC_ScrollCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */; };
+		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
 		773552941767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */; };
 		773552971767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773552961767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m */; };
 		77397979176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */; };
 		7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7739797A176BD9CE00FAD6B7 /* RightArrow.png */; };
+		778109E81791DDDB003DF414 /* CardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 778109E71791DDDB003DF414 /* CardInfo.m */; };
+		778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */; };
 		77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */; };
 		77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1F179094E500E6D9BA /* MyCardAccount.png */; };
 		77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B211790950B00E6D9BA /* TransactionsLogo.png */; };
@@ -51,6 +55,9 @@
 		77004BAF176239F300745E2B /* PACViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PACViewController.m; sourceTree = "<group>"; };
 		77004BBA17628AD700745E2B /* PAC_LoginViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAC_LoginViewViewController.h; sourceTree = "<group>"; };
 		77004BBB17628AD700745E2B /* PAC_LoginViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAC_LoginViewViewController.m; sourceTree = "<group>"; };
+		770E6A291792511800D56950 /* PAC_ScrollCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAC_ScrollCardView.h; sourceTree = "<group>"; };
+		770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAC_ScrollCardView.m; sourceTree = "<group>"; };
+		770E6A2C17927E2600D56950 /* CardScrollBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardScrollBG.png; sourceTree = "<group>"; };
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoggedinStoryBoard_iphone.storyboard; sourceTree = "<group>"; };
 		773552951767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAC_LoggedIn_HomeViewController.h; sourceTree = "<group>"; };
@@ -58,6 +65,9 @@
 		77397977176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACLoggedinHome_CustomTableCell.h; sourceTree = "<group>"; };
 		77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACLoggedinHome_CustomTableCell.m; sourceTree = "<group>"; };
 		7739797A176BD9CE00FAD6B7 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
+		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
+		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
+		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
 		77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpdateProfileLogo.png; sourceTree = "<group>"; };
 		77BD5B1F179094E500E6D9BA /* MyCardAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyCardAccount.png; sourceTree = "<group>"; };
 		77BD5B211790950B00E6D9BA /* TransactionsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsLogo.png; sourceTree = "<group>"; };
@@ -159,18 +169,30 @@
 		773552921767D94000ED50A4 /* LoggedinViews */ = {
 			isa = PBXGroup;
 			children = (
+				778109E91791F19A003DF414 /* SubViews */,
 				773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */,
 				773552951767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.h */,
 				773552961767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m */,
-				77397977176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.h */,
-				77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */,
 			);
 			name = LoggedinViews;
+			sourceTree = "<group>";
+		};
+		778109E91791F19A003DF414 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				77397977176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.h */,
+				77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */,
+				778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */,
+				770E6A291792511800D56950 /* PAC_ScrollCardView.h */,
+				770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */,
+			);
+			name = SubViews;
 			sourceTree = "<group>";
 		};
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				770E6A2C17927E2600D56950 /* CardScrollBG.png */,
 				77BD5B23179096EE00E6D9BA /* PinManagement.png */,
 				77BD5B211790950B00E6D9BA /* TransactionsLogo.png */,
 				77BD5B1F179094E500E6D9BA /* MyCardAccount.png */,
@@ -183,6 +205,8 @@
 		77C3354A17650B06009867E4 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				778109E61791DDDB003DF414 /* CardInfo.h */,
+				778109E71791DDDB003DF414 /* CardInfo.m */,
 			);
 			name = HelperClasses;
 			sourceTree = "<group>";
@@ -251,6 +275,8 @@
 				77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */,
 				77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */,
 				77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */,
+				778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */,
+				770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +293,8 @@
 				77004BBC17628AD700745E2B /* PAC_LoginViewViewController.m in Sources */,
 				773552971767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m in Sources */,
 				77397979176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m in Sources */,
+				778109E81791DDDB003DF414 /* CardInfo.m in Sources */,
+				770E6A2B1792511800D56950 /* PAC_ScrollCardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +340,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Levin (T8GF8MD248)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Levin (T8GF8MD248)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -327,6 +356,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -344,7 +375,9 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Levin (T8GF8MD248)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Daniel Levin (T8GF8MD248)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Levin (T8GF8MD248)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -352,6 +385,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
