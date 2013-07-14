@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TransactionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface Transactions: UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tblOptions;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblCardNumber;

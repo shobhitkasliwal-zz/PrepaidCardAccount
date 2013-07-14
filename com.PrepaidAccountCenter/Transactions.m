@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Liventus. All rights reserved.
 //
 
-#import "TransactionsViewController.h"
+#import "Transactions.h"
 #import "TransactionsTbl_CustomCell.h"
 #import "SingletonGeneric.h"
 #import "CardInfo.h"
 
-@interface TransactionsViewController ()
+@interface Transactions ()
 @property (nonatomic, strong) NSArray *tabledata;
 @end
 
-@implementation TransactionsViewController
+@implementation Transactions
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Liventus. All rights reserved.
 //
 
-#import "PAC_LoggedIn_HomeViewController.h"
+#import "Home.h"
 #import "CardInfo.h"
 #import "SingletonGeneric.h"
 #import "PAC_ScrollCardView.h"
@@ -15,7 +15,7 @@
 #import "Terms.h"
 #import "Faq.h"
 
-@interface PAC_LoggedIn_HomeViewController ()
+@interface Home ()
 @property (nonatomic, strong) NSArray *pageCardInformation;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
@@ -24,7 +24,7 @@
 - (void)purgePage:(NSInteger)page;
 @end
 
-@implementation PAC_LoggedIn_HomeViewController
+@implementation Home
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

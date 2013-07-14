@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PAC_LoginViewViewController : UIViewController
+@interface LoginViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *vw_MainView;
 @property (weak, nonatomic) IBOutlet UILabel *lblCardNumberUsername;
 @property (weak, nonatomic) IBOutlet UILabel *lblPasswordSecurityCode;

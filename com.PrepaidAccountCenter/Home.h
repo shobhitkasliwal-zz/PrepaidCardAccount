@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PAC_LoggedIn_HomeViewController : UITableViewController < UIScrollViewDelegate>
+@interface Home : UITableViewController < UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *uiScrollCard;
 @property (weak, nonatomic) IBOutlet UIPageControl *uiPageControlScrollCard;
 @property (weak, nonatomic) IBOutlet UITableView *uiPageMainView;

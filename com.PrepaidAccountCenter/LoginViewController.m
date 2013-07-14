@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Liventus. All rights reserved.
 //
 
-#import "PAC_LoginViewViewController.h"
+#import "LoginViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface PAC_LoginViewViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation PAC_LoginViewViewController
+@implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -122,7 +122,7 @@ CGRect frame = _vw_MainView.frame;
     userviewsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:userviewsVC animated:YES completion:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+  //  [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 
