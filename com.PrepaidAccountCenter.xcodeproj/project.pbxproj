@@ -128,7 +128,6 @@
 		77004B84176239F300745E2B = {
 			isa = PBXGroup;
 			children = (
-				770ECF031763B601006E743D /* QuartzCore.framework */,
 				77004B96176239F300745E2B /* com.PrepaidAccountCenter */,
 				77004B8F176239F300745E2B /* Frameworks */,
 				77004B8E176239F300745E2B /* Products */,
@@ -146,6 +145,7 @@
 		77004B8F176239F300745E2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				770ECF031763B601006E743D /* QuartzCore.framework */,
 				77004B90176239F300745E2B /* UIKit.framework */,
 				77004B92176239F300745E2B /* Foundation.framework */,
 				77004B94176239F300745E2B /* CoreGraphics.framework */,
