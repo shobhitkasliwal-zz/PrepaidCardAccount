@@ -35,6 +35,8 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard:)];
     gestureRecognizer.cancelsTouchesInView = NO; //so that action such as clear text field button can be pressed
     [self.view addGestureRecognizer:gestureRecognizer];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,7 +118,7 @@ CGRect frame = _vw_MainView.frame;
  - (void) PresentLoggedinHomeView 
 {
     UIStoryboard *LoggedinStoryBoard_iphone =[UIStoryboard storyboardWithName:@"LoggedinStoryBoard_iphone" bundle:nil];
-    UIViewController *userviewsVC =[LoggedinStoryBoard_iphone instantiateViewControllerWithIdentifier:@"LoggedIn_HomeViewController"];
+    UINavigationController *userviewsVC =[LoggedinStoryBoard_iphone instantiateViewControllerWithIdentifier:@"LoggedIn_HomeViewController"];
     userviewsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:userviewsVC animated:YES completion:nil];

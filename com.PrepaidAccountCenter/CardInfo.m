@@ -11,18 +11,22 @@
 @implementation  CardInfo
 
 
+
+
 - (id)init
 {
 self = [super init];
     return self;
 }
-- (id)initWithCardNumber:(NSString *)cardNum andExpiration:(NSString *)expiration andBalance:(NSString *)balance
+
+- (id)initWithCardNumber:(NSString *)cardNum andExpiration:(NSString *)expiration andBalance:(NSString *)balance andStatus: (NSString*) status
 {
     
     self = [super init];
     _cardNumber = cardNum;
     _cardBalance = balance;
     _cardExpiration = expiration;
+    _cardStatus = status;
     return self;
 }
 

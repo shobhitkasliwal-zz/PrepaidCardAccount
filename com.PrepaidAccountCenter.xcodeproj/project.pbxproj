@@ -25,8 +25,13 @@
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
 		773552941767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */; };
 		773552971767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773552961767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m */; };
-		77397979176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */; };
+		77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */; };
 		7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7739797A176BD9CE00FAD6B7 /* RightArrow.png */; };
+		776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC051792FA2A0068E528 /* SingletonGeneric.m */; };
+		776FDC091793018B0068E528 /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC081793018B0068E528 /* TransactionsViewController.m */; };
+		776FDC0C179329750068E528 /* MyCardAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0B179329740068E528 /* MyCardAccount.m */; };
+		776FDC0F17932A0B0068E528 /* UpdateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0E17932A0B0068E528 /* UpdateProfile.m */; };
+		776FDC1217932A1F0068E528 /* PinManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC1117932A1F0068E528 /* PinManagement.m */; };
 		778109E81791DDDB003DF414 /* CardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 778109E71791DDDB003DF414 /* CardInfo.m */; };
 		778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */; };
 		77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */; };
@@ -62,9 +67,19 @@
 		773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoggedinStoryBoard_iphone.storyboard; sourceTree = "<group>"; };
 		773552951767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAC_LoggedIn_HomeViewController.h; sourceTree = "<group>"; };
 		773552961767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAC_LoggedIn_HomeViewController.m; sourceTree = "<group>"; };
-		77397977176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACLoggedinHome_CustomTableCell.h; sourceTree = "<group>"; };
-		77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACLoggedinHome_CustomTableCell.m; sourceTree = "<group>"; };
+		77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsTbl_CustomCell.h; sourceTree = "<group>"; };
+		77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsTbl_CustomCell.m; sourceTree = "<group>"; };
 		7739797A176BD9CE00FAD6B7 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
+		776FDC041792FA2A0068E528 /* SingletonGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonGeneric.h; sourceTree = "<group>"; };
+		776FDC051792FA2A0068E528 /* SingletonGeneric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonGeneric.m; sourceTree = "<group>"; };
+		776FDC071793018B0068E528 /* TransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsViewController.h; sourceTree = "<group>"; };
+		776FDC081793018B0068E528 /* TransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsViewController.m; sourceTree = "<group>"; };
+		776FDC0A179329740068E528 /* MyCardAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCardAccount.h; sourceTree = "<group>"; };
+		776FDC0B179329740068E528 /* MyCardAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCardAccount.m; sourceTree = "<group>"; };
+		776FDC0D17932A0B0068E528 /* UpdateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateProfile.h; sourceTree = "<group>"; };
+		776FDC0E17932A0B0068E528 /* UpdateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateProfile.m; sourceTree = "<group>"; };
+		776FDC1017932A1E0068E528 /* PinManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinManagement.h; sourceTree = "<group>"; };
+		776FDC1117932A1F0068E528 /* PinManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinManagement.m; sourceTree = "<group>"; };
 		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
 		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
 		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
@@ -173,6 +188,14 @@
 				773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */,
 				773552951767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.h */,
 				773552961767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m */,
+				776FDC071793018B0068E528 /* TransactionsViewController.h */,
+				776FDC081793018B0068E528 /* TransactionsViewController.m */,
+				776FDC0A179329740068E528 /* MyCardAccount.h */,
+				776FDC0B179329740068E528 /* MyCardAccount.m */,
+				776FDC0D17932A0B0068E528 /* UpdateProfile.h */,
+				776FDC0E17932A0B0068E528 /* UpdateProfile.m */,
+				776FDC1017932A1E0068E528 /* PinManagement.h */,
+				776FDC1117932A1F0068E528 /* PinManagement.m */,
 			);
 			name = LoggedinViews;
 			sourceTree = "<group>";
@@ -180,8 +203,8 @@
 		778109E91791F19A003DF414 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				77397977176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.h */,
-				77397978176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m */,
+				77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */,
+				77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */,
 				778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */,
 				770E6A291792511800D56950 /* PAC_ScrollCardView.h */,
 				770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */,
@@ -207,6 +230,8 @@
 			children = (
 				778109E61791DDDB003DF414 /* CardInfo.h */,
 				778109E71791DDDB003DF414 /* CardInfo.m */,
+				776FDC041792FA2A0068E528 /* SingletonGeneric.h */,
+				776FDC051792FA2A0068E528 /* SingletonGeneric.m */,
 			);
 			name = HelperClasses;
 			sourceTree = "<group>";
@@ -292,9 +317,14 @@
 				77004BB0176239F300745E2B /* PACViewController.m in Sources */,
 				77004BBC17628AD700745E2B /* PAC_LoginViewViewController.m in Sources */,
 				773552971767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.m in Sources */,
-				77397979176BD7D800FAD6B7 /* PACLoggedinHome_CustomTableCell.m in Sources */,
+				77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */,
 				778109E81791DDDB003DF414 /* CardInfo.m in Sources */,
 				770E6A2B1792511800D56950 /* PAC_ScrollCardView.m in Sources */,
+				776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */,
+				776FDC091793018B0068E528 /* TransactionsViewController.m in Sources */,
+				776FDC0C179329750068E528 /* MyCardAccount.m in Sources */,
+				776FDC0F17932A0B0068E528 /* UpdateProfile.m in Sources */,
+				776FDC1217932A1F0068E528 /* PinManagement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

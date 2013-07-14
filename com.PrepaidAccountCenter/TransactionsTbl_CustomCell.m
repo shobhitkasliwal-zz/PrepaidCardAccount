@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Liventus. All rights reserved.
 //
 
-#import "PACLoggedinHome_CustomTableCell.h"
+#import "TransactionsTbl_CustomCell.h"
 
-@implementation PACLoggedinHome_CustomTableCell
+@implementation TransactionsTbl_CustomCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

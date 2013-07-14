@@ -7,8 +7,8 @@
 //
 
 #import "PAC_LoggedIn_HomeViewController.h"
-#import "PACLoggedinHome_CustomTableCell.h"
 #import "CardInfo.h"
+#import "SingletonGeneric.h"
 #import "PAC_ScrollCardView.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -23,7 +23,6 @@
 
 @implementation PAC_LoggedIn_HomeViewController
 
-NSArray *tabledata;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,22 +36,32 @@ NSArray *tabledata;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _uiScrollCard.frame = CGRectMake(0, 5, _uiPageMainView.frame.size.width, 75);
-	// Do any additional setup after loading the view.
-    tabledata = [[NSArray alloc] initWithObjects:@"My Card Accounts",@"Update Profile", @"PIN Management",@"Transactions", nil];
-   
-    // Set up the image you want to scroll & zoom and add it to the scroll view
-    self.pageCardInformation = [NSArray arrayWithObjects:
-                                [[CardInfo alloc] initWithCardNumber:@"12345678912345" andExpiration:@"03/2016" andBalance:@"220.00"],
-                                [[CardInfo alloc] initWithCardNumber:@"4132456309876543" andExpiration:@"05/2015" andBalance:@"70.00"],
-                                [[CardInfo alloc] initWithCardNumber:@"4563765498743256" andExpiration:@"04/2014" andBalance:@"120.00"],
-                                [[CardInfo alloc] initWithCardNumber:@"4563765498743256" andExpiration:@"04/2014" andBalance:@"120.00"],
-                                
-                                nil];
+    _uiScrollCard.frame = CGRectMake(0, 5, _uiPageMainView.frame.size.width -20, 75);
+	
+    self.navigationItem.title=@"Prepaid Account Center";
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Back"
+                                   style:UIBarButtonItemStylePlain
+                                   target:nil
+                                   action:nil];
+    self.navigationItem.backBarButtonItem=backButton;
+//    
     
+    // Do any additional setup after loading the view.
+   
+   
+    [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
+    self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
+    // setting the selected Card to 0 by Default
+    [[SingletonGeneric UserCardInfo]SetSelectedCardInfo:0];
     
     
     NSInteger pageCount = self.pageCardInformation.count;
+    
+    if(pageCount ==1)
+    {
+        [self.uiPageControlScrollCard setHidden:YES];
+    }
     
     // Set up the page control
     self.uiPageControlScrollCard.currentPage = 0;
@@ -85,97 +94,6 @@ NSArray *tabledata;
     // Dispose of any resources that can be recreated.
 }
 
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return 1;
-    
-}
-
-
-
-// Customize the number of rows in the table view.
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return (sizeof tabledata);
-    
-}
-
-
-// Customize the appearance of table view cells.
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    
-    
-    PACLoggedinHome_CustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        
-        cell = [[PACLoggedinHome_CustomTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        
-    }
-    
-cell.CellTitle.text = [tabledata objectAtIndex: [indexPath row]];
-    
-    // Set up the cell...
-    
-//    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
-//    
-//    cell.textLabel.text = [tabledata objectAtIndex: [indexPath row]];
-   cell.contentView.backgroundColor = [UIColor colorWithRed:99/255.f green:184/255.f blue:255/255.f alpha:1];
-    cell.CellTitle.backgroundColor = [UIColor clearColor];
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.CellIcon.image = [UIImage imageNamed:@"MyCardAccount.png"];
-            break;
-        case 1:
-            cell.CellIcon.image = [UIImage imageNamed:@"UpdateProfileLogo.png"];
-            break;
-        case 2:
-            cell.CellIcon.image = [UIImage imageNamed:@"PinManagement.png"];
-            break;
-        case 3:
-            cell.CellIcon.image = [UIImage imageNamed:@"TransactionsLogo.png"];
-            break;
-        default:
-            break;
-    }
-//
-//     [_tblOptions setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-//    
-    return cell;
-    
-}
-
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // open a alert with an OK and cancel button
-    
-    NSString *alertString = [NSString stringWithFormat:@"Clicked on row #%d", [indexPath row]];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertString message:@"" delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
-    
-    [alert show];
-    
-    
-    
-}
-
--  (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 75;
-
-}
 
 
 
@@ -216,7 +134,7 @@ cell.CellTitle.text = [tabledata objectAtIndex: [indexPath row]];
         frame.origin.y = 0.0f;
         //frame = CGRectInset(frame, 10.0f, 0.0f);
         
-        PAC_ScrollCardView *newPageView = [[PAC_ScrollCardView alloc] initWithFrame:CGRectMake(0, 0, self.uiScrollCard.frame.size.width, self.uiScrollCard.frame.size.height)];
+        PAC_ScrollCardView *newPageView = [[PAC_ScrollCardView alloc] initWithFrame:CGRectMake(0, 0, self.uiScrollCard.frame.size.width , self.uiScrollCard.frame.size.height)];
         CardInfo *cinfo = [self.pageCardInformation objectAtIndex:page];
         [newPageView PopulateScrollCardView:cinfo];
         newPageView.layer.cornerRadius = 12;
@@ -268,7 +186,7 @@ cell.CellTitle.text = [tabledata objectAtIndex: [indexPath row]];
     frame.origin.x = frame.size.width * (self.uiPageControlScrollCard.currentPage);
     frame.origin.y = 0;
     [self.uiScrollCard scrollRectToVisible:frame animated:YES];
-    
+    [[SingletonGeneric UserCardInfo] SetSelectedCardInfo:page];
     
 }
 

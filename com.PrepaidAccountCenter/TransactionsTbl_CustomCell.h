@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PACLoggedinHome_CustomTableCell : UITableViewCell
+@interface TransactionsTbl_CustomCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *CellTitle;
-@property (weak, nonatomic) IBOutlet UIImageView *CellIcon;
 
 @end

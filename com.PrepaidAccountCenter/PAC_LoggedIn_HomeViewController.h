@@ -8,15 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PAC_LoggedIn_HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tblOptions;
-
+@interface PAC_LoggedIn_HomeViewController : UITableViewController < UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *uiScrollCard;
-
-
 @property (weak, nonatomic) IBOutlet UIPageControl *uiPageControlScrollCard;
-
-@property (strong, nonatomic) IBOutlet UIView *uiPageMainView;
-
-
+@property (weak, nonatomic) IBOutlet UITableView *uiPageMainView;
 @end
