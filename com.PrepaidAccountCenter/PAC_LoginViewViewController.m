@@ -122,7 +122,7 @@ CGRect frame = _vw_MainView.frame;
     userviewsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:userviewsVC animated:YES completion:nil];
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 

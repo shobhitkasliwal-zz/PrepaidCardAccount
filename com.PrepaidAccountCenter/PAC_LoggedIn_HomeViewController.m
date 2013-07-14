@@ -11,6 +11,9 @@
 #import "SingletonGeneric.h"
 #import "PAC_ScrollCardView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ContactUs.h"
+#import "Terms.h"
+#import "Faq.h"
 
 @interface PAC_LoggedIn_HomeViewController ()
 @property (nonatomic, strong) NSArray *pageCardInformation;
@@ -36,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _uiScrollCard.frame = CGRectMake(0, 5, _uiPageMainView.frame.size.width -20, 75);
 	
     self.navigationItem.title=@"Prepaid Account Center";
@@ -45,6 +49,7 @@
                                    target:nil
                                    action:nil];
     self.navigationItem.backBarButtonItem=backButton;
+  
 //    
     
     // Do any additional setup after loading the view.
@@ -72,6 +77,11 @@
     for (NSInteger i = 0; i < pageCount; ++i) {
         [self.pageViews addObject:[NSNull null]];
     }
+    
+    
+    [self.uiContactUSView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowContactUS:)]];
+    [self.uiTermsView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowTerms:)]];
+    [self.uiFaqView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowFaq:)]];
     
 }
 
@@ -191,6 +201,17 @@
 }
 
 
+-(void)ShowContactUS:(UITapGestureRecognizer *)sender {
+    [self presentViewController:[[ContactUs alloc] init] animated:YES completion:nil];
+}
+
+-(void)ShowTerms:(UITapGestureRecognizer *)sender {
+    [self presentViewController:[[Terms alloc] init] animated:YES completion:nil];
+}
+
+-(void)ShowFaq:(UITapGestureRecognizer *)sender{
+    [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
+}
 
 
 @end

@@ -32,6 +32,15 @@
 		776FDC0C179329750068E528 /* MyCardAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0B179329740068E528 /* MyCardAccount.m */; };
 		776FDC0F17932A0B0068E528 /* UpdateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0E17932A0B0068E528 /* UpdateProfile.m */; };
 		776FDC1217932A1F0068E528 /* PinManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC1117932A1F0068E528 /* PinManagement.m */; };
+		776FDC16179331670068E528 /* Contact us.png in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC13179331670068E528 /* Contact us.png */; };
+		776FDC17179331670068E528 /* Faq.png in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC14179331670068E528 /* Faq.png */; };
+		776FDC18179331670068E528 /* Terms.png in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC15179331670068E528 /* Terms.png */; };
+		776FDC1D17933FB30068E528 /* ContactUs.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC1B17933FB30068E528 /* ContactUs.m */; };
+		776FDC1E17933FB30068E528 /* ContactUs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC1C17933FB30068E528 /* ContactUs.xib */; };
+		776FDC22179342140068E528 /* Terms.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC20179342140068E528 /* Terms.m */; };
+		776FDC23179342140068E528 /* Terms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC21179342140068E528 /* Terms.xib */; };
+		776FDC27179342240068E528 /* Faq.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC25179342240068E528 /* Faq.m */; };
+		776FDC28179342240068E528 /* Faq.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC26179342240068E528 /* Faq.xib */; };
 		778109E81791DDDB003DF414 /* CardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 778109E71791DDDB003DF414 /* CardInfo.m */; };
 		778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */; };
 		77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */; };
@@ -80,6 +89,18 @@
 		776FDC0E17932A0B0068E528 /* UpdateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateProfile.m; sourceTree = "<group>"; };
 		776FDC1017932A1E0068E528 /* PinManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinManagement.h; sourceTree = "<group>"; };
 		776FDC1117932A1F0068E528 /* PinManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinManagement.m; sourceTree = "<group>"; };
+		776FDC13179331670068E528 /* Contact us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contact us.png"; sourceTree = "<group>"; };
+		776FDC14179331670068E528 /* Faq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Faq.png; sourceTree = "<group>"; };
+		776FDC15179331670068E528 /* Terms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Terms.png; sourceTree = "<group>"; };
+		776FDC1A17933FB30068E528 /* ContactUs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUs.h; sourceTree = "<group>"; };
+		776FDC1B17933FB30068E528 /* ContactUs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUs.m; sourceTree = "<group>"; };
+		776FDC1C17933FB30068E528 /* ContactUs.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactUs.xib; sourceTree = "<group>"; };
+		776FDC1F179342140068E528 /* Terms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terms.h; sourceTree = "<group>"; };
+		776FDC20179342140068E528 /* Terms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Terms.m; sourceTree = "<group>"; };
+		776FDC21179342140068E528 /* Terms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Terms.xib; sourceTree = "<group>"; };
+		776FDC24179342240068E528 /* Faq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Faq.h; sourceTree = "<group>"; };
+		776FDC25179342240068E528 /* Faq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Faq.m; sourceTree = "<group>"; };
+		776FDC26179342240068E528 /* Faq.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Faq.xib; sourceTree = "<group>"; };
 		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
 		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
 		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
@@ -184,6 +205,7 @@
 		773552921767D94000ED50A4 /* LoggedinViews */ = {
 			isa = PBXGroup;
 			children = (
+				776FDC1917933EBC0068E528 /* GenericViews */,
 				778109E91791F19A003DF414 /* SubViews */,
 				773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */,
 				773552951767DE0500ED50A4 /* PAC_LoggedIn_HomeViewController.h */,
@@ -198,6 +220,22 @@
 				776FDC1117932A1F0068E528 /* PinManagement.m */,
 			);
 			name = LoggedinViews;
+			sourceTree = "<group>";
+		};
+		776FDC1917933EBC0068E528 /* GenericViews */ = {
+			isa = PBXGroup;
+			children = (
+				776FDC1A17933FB30068E528 /* ContactUs.h */,
+				776FDC1B17933FB30068E528 /* ContactUs.m */,
+				776FDC1C17933FB30068E528 /* ContactUs.xib */,
+				776FDC1F179342140068E528 /* Terms.h */,
+				776FDC20179342140068E528 /* Terms.m */,
+				776FDC21179342140068E528 /* Terms.xib */,
+				776FDC24179342240068E528 /* Faq.h */,
+				776FDC25179342240068E528 /* Faq.m */,
+				776FDC26179342240068E528 /* Faq.xib */,
+			);
+			name = GenericViews;
 			sourceTree = "<group>";
 		};
 		778109E91791F19A003DF414 /* SubViews */ = {
@@ -215,6 +253,9 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				776FDC13179331670068E528 /* Contact us.png */,
+				776FDC14179331670068E528 /* Faq.png */,
+				776FDC15179331670068E528 /* Terms.png */,
 				770E6A2C17927E2600D56950 /* CardScrollBG.png */,
 				77BD5B23179096EE00E6D9BA /* PinManagement.png */,
 				77BD5B211790950B00E6D9BA /* TransactionsLogo.png */,
@@ -302,6 +343,12 @@
 				77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */,
 				778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */,
 				770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */,
+				776FDC16179331670068E528 /* Contact us.png in Resources */,
+				776FDC17179331670068E528 /* Faq.png in Resources */,
+				776FDC18179331670068E528 /* Terms.png in Resources */,
+				776FDC1E17933FB30068E528 /* ContactUs.xib in Resources */,
+				776FDC23179342140068E528 /* Terms.xib in Resources */,
+				776FDC28179342240068E528 /* Faq.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +372,9 @@
 				776FDC0C179329750068E528 /* MyCardAccount.m in Sources */,
 				776FDC0F17932A0B0068E528 /* UpdateProfile.m in Sources */,
 				776FDC1217932A1F0068E528 /* PinManagement.m in Sources */,
+				776FDC1D17933FB30068E528 /* ContactUs.m in Sources */,
+				776FDC22179342140068E528 /* Terms.m in Sources */,
+				776FDC27179342240068E528 /* Faq.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
