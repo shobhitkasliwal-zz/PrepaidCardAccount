@@ -46,10 +46,6 @@
 }
 
 - (IBAction)SwitchCardUsernameLogin_ValueChanged:(UISwitch*)sender {
-
-
-    NSLog(@"%@", NSStringFromCGRect(_vwLoginwithCard.frame));
-
    
     [UIView transitionWithView:_vwLoginwithCard duration:0.5
                        options:UIViewAnimationOptionTransitionFlipFromTop
@@ -85,22 +81,50 @@
 
 - (IBAction)btnLogin_Click:(id)sender {
     
-CGRect frame = _vw_MainView.frame;
-    UIView *subView = [[UIView alloc] initWithFrame:frame];
-    subView.backgroundColor =_vw_MainView.backgroundColor;
     UILabel *lblText = [[UILabel alloc] init];
-    lblText.frame = CGRectMake(30,50,260,250);
     lblText.textAlignment = NSTextAlignmentCenter;
-    lblText.text =[NSString stringWithFormat:@"You are being securely logging in. Thanks for your patience."];
-    lblText.numberOfLines = 0;
-    lblText.backgroundColor =_vw_MainView.backgroundColor;
+    lblText.numberOfLines = 0 ;
+    lblText.text =[NSString stringWithFormat:@"You are being securely logging in. \nThanks for your patience."];
+    lblText.backgroundColor = [UIColor clearColor];
     lblText.textColor = [UIColor whiteColor];
+    [lblText sizeToFit];
+    [_vw_MainView setHidden:YES];
     
-     [subView addSubview: lblText];
+   
+
+    
     [UIView transitionWithView:self.view duration:0.5
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^{
-                        [self.view addSubview:subView];
+                        
+
+                        [lblText addConstraint:[NSLayoutConstraint constraintWithItem:lblText
+                                                                              attribute:NSLayoutAttributeWidth
+                                                                              relatedBy:0
+                                                                                toItem:nil
+                                                                              attribute:NSLayoutAttributeNotAnAttribute
+                                                                             multiplier:1.0f
+                                                                              constant:300.0f]];
+                        lblText.translatesAutoresizingMaskIntoConstraints = NO;
+                        
+                        
+                        [self.view addSubview:lblText];
+                        
+                        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:lblText
+                                                                              attribute:NSLayoutAttributeCenterX
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self.view
+                                                                              attribute:NSLayoutAttributeCenterX
+                                                                             multiplier:1.0f
+                                                                               constant:0.0f]];
+                        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:lblText
+                                                                              attribute:NSLayoutAttributeCenterY
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self.view
+                                                                              attribute:NSLayoutAttributeCenterY
+                                                                             multiplier:1.0f
+                                                                               constant:0.0f]];
+                        
                         
                     }
                     completion:^(BOOL finished) {
