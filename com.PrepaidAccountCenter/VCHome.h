@@ -1,18 +1,21 @@
 //
-//  PAC_LoggedIn_HomeViewController.h
+//  VCHome.h
 //  com.PrepaidAccountCenter
 //
-//  Created by Shobhit Kasliwal on 6/11/13.
+//  Created by Shobhit Kasliwal on 7/28/13.
 //  Copyright (c) 2013 Liventus. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface Home : UITableViewController < UIScrollViewDelegate>
+@interface VCHome : UIViewController < UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *uiScrollCard;
 @property (weak, nonatomic) IBOutlet UIPageControl *uiPageControlScrollCard;
 @property (weak, nonatomic) IBOutlet UITableView *uiPageMainView;
-@property (weak, nonatomic) IBOutlet UIView *uiContactUSView;
-@property (weak, nonatomic) IBOutlet UIView *uiFaqView;
-@property (weak, nonatomic) IBOutlet UIView *uiTermsView;
+
+
+-(IBAction)contactUSButtonClicked:(id)sender;
+-(IBAction)faqButtonClicked:(id)sender;
+-(IBAction)termsButtonClicked:(id)sender;
+
 @end

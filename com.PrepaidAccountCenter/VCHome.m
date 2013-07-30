@@ -1,12 +1,12 @@
 //
-//  PAC_LoggedIn_HomeViewController.m
+//  VCHome.m
 //  com.PrepaidAccountCenter
 //
-//  Created by Shobhit Kasliwal on 6/11/13.
+//  Created by Shobhit Kasliwal on 7/28/13.
 //  Copyright (c) 2013 Liventus. All rights reserved.
 //
 
-#import "Home.h"
+#import "VCHome.h"
 #import "CardInfo.h"
 #import "SingletonGeneric.h"
 #import "PAC_ScrollCardView.h"
@@ -15,17 +15,16 @@
 #import "Terms.h"
 #import "Faq.h"
 
-@interface Home ()
+@interface VCHome ()
+@property (nonatomic, strong)NSArray *dsTableViewRows;
 @property (nonatomic, strong) NSArray *pageCardInformation;
 @property (nonatomic, strong) NSMutableArray *pageViews;
-
 - (void)loadVisiblePages;
 - (void)loadPage:(NSInteger)page;
 - (void)purgePage:(NSInteger)page;
 @end
 
-@implementation Home
-
+@implementation VCHome
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,9 +38,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _dsTableViewRows = [NSArray arrayWithObjects:
+                        [NSArray arrayWithObjects:@"My Card Account", @"MyCardAccount.png", nil],
+                        [NSArray arrayWithObjects:@"Update Profile", @"UpdateProfileLogo.png", nil],
+                        [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
+                        [NSArray arrayWithObjects:@"Transactions", @"TransactionsLogo.png", nil],
+                        nil];
     
-    _uiScrollCard.frame = CGRectMake(0, 5, _uiPageMainView.frame.size.width -20, 75);
-	
     self.navigationItem.title=@"Prepaid Account Center";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Back"
@@ -49,17 +52,12 @@
                                    target:nil
                                    action:nil];
     self.navigationItem.backBarButtonItem=backButton;
-  
-//    
     
-    // Do any additional setup after loading the view.
-   
-   
+    
     [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
     self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
     // setting the selected Card to 0 by Default
     [[SingletonGeneric UserCardInfo]SetSelectedCardInfo:0];
-    
     
     NSInteger pageCount = self.pageCardInformation.count;
     
@@ -78,25 +76,24 @@
         [self.pageViews addObject:[NSNull null]];
     }
     
+    _uiScrollCard.frame = CGRectMake(0, 5, self.view.frame.size.width, 75);
     
-    [self.uiContactUSView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowContactUS:)]];
-    [self.uiTermsView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowTerms:)]];
-    [self.uiFaqView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowFaq:)]];
-    
+    // Set up the content size of the scroll view
+    CGSize pagesScrollViewSize = _uiScrollCard.frame.size;
+    _uiScrollCard.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageCardInformation.count, pagesScrollViewSize.height);
 }
+
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // Set up the content size of the scroll view
-    CGSize pagesScrollViewSize = self.uiScrollCard.frame.size;
-    self.uiScrollCard.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageCardInformation.count, pagesScrollViewSize.height);
+    [_uiPageMainView deselectRowAtIndexPath:[_uiPageMainView indexPathForSelectedRow] animated:YES];
+   
     
     // Load the initial set of pages that are on screen
-   [self loadVisiblePages];
+    [self loadVisiblePages];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -104,6 +101,51 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_dsTableViewRows count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"ptHomeTableViewCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    cell.textLabel.text = [[_dsTableViewRows objectAtIndex:indexPath.row] objectAtIndex:0];
+    cell.imageView.image = [UIImage imageNamed:[[_dsTableViewRows objectAtIndex:indexPath.row] objectAtIndex:1]];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    switch ([indexPath row])
+    {
+        case 0:
+            [self performSegueWithIdentifier:@"segMyCardAccount" sender:nil];
+            break;
+            
+        case 1:
+            [self performSegueWithIdentifier:@"segUpdateProfile" sender:nil];
+            break;
+            
+        case 2:
+            [self performSegueWithIdentifier:@"segPinManagement" sender:nil];
+            break;
+            
+        case 3:
+            [self performSegueWithIdentifier:@"segTransactions" sender:nil];
+            break;
+    }
+    
+    
+    
+}
 
 
 
@@ -135,24 +177,22 @@
         // If it's outside the range of what we have to display, then do nothing
         return;
     }
-    
+    //_uiScrollCard.translatesAutoresizingMaskIntoConstraints = NO;
+  //  NSLog(@"%@", NSStringFromCGRect(_uiScrollCard.frame));
     // Load an individual page, first checking if you've already loaded it
     UIView *pageView = [self.pageViews objectAtIndex:page];
     if ((NSNull*)pageView == [NSNull null]) {
         CGRect frame = self.uiScrollCard.bounds;
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
-        //frame = CGRectInset(frame, 10.0f, 0.0f);
         
-        PAC_ScrollCardView *newPageView = [[PAC_ScrollCardView alloc] initWithFrame:CGRectMake(0, 0, self.uiScrollCard.frame.size.width , self.uiScrollCard.frame.size.height)];
+        PAC_ScrollCardView *newPageView = [[PAC_ScrollCardView alloc] init];
         CardInfo *cinfo = [self.pageCardInformation objectAtIndex:page];
         [newPageView PopulateScrollCardView:cinfo];
-        newPageView.layer.cornerRadius = 12;
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
-       
         [self.uiScrollCard addSubview:newPageView];
-        [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
+   
     }
 }
 - (void)purgePage:(NSInteger)page {
@@ -201,17 +241,19 @@
 }
 
 
--(void)ShowContactUS:(UITapGestureRecognizer *)sender {
+-(IBAction)contactUSButtonClicked:(id)sender {
     [self presentViewController:[[ContactUs alloc] init] animated:YES completion:nil];
 }
 
--(void)ShowTerms:(UITapGestureRecognizer *)sender {
+-(void)termsButtonClicked:(id)sender {
     [self presentViewController:[[Terms alloc] init] animated:YES completion:nil];
 }
 
--(void)ShowFaq:(UITapGestureRecognizer *)sender{
+-(void)faqButtonClicked:(id)sender {
     [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
 }
+
+
 
 
 @end

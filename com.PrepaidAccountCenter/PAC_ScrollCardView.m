@@ -24,7 +24,7 @@
         [self addSubview: _myView];
         
     }
-    _uiScrollCardView.layer.masksToBounds =YES;
+   // _uiScrollCardView.layer.masksToBounds =YES;
     _uiScrollCardView.layer.cornerRadius =12;
     
     return self;

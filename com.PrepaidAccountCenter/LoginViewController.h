@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LoginViewController : UIViewController
+#import "RTNetworkRequest.h"
+@interface LoginViewController : UIViewController <RTNetworkRequestDelegate>
 @property (strong, nonatomic) IBOutlet UIView *vw_MainView;
 @property (weak, nonatomic) IBOutlet UILabel *lblCardNumberUsername;
 @property (weak, nonatomic) IBOutlet UILabel *lblPasswordSecurityCode;

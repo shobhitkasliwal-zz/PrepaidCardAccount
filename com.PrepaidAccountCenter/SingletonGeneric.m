@@ -33,7 +33,7 @@
     return self;
 }
 
--(void)RetriveUserCardInfo:(NSString*)userName
+-(void)RetriveUserCardInfo:(NSString*)userName 
 {
 /// We will do API call to Retrive this Information 
     _UserCardInformation= [NSArray arrayWithObjects:
@@ -44,6 +44,11 @@
      
      nil];
 
+}
+
+-(void) setAllCardInfo: (NSMutableArray*) arrCardInfo
+{
+    _UserCardInformation = arrCardInfo;
 }
 
 -(void)SetSelectedCardInfo:(int) index

@@ -22,8 +22,6 @@
 		770E6A2B1792511800D56950 /* PAC_ScrollCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */; };
 		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
-		773552941767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */; };
-		773552971767DE0500ED50A4 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 773552961767DE0500ED50A4 /* Home.m */; };
 		77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */; };
 		7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7739797A176BD9CE00FAD6B7 /* RightArrow.png */; };
 		776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC051792FA2A0068E528 /* SingletonGeneric.m */; };
@@ -42,6 +40,9 @@
 		776FDC28179342240068E528 /* Faq.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC26179342240068E528 /* Faq.xib */; };
 		778109E81791DDDB003DF414 /* CardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 778109E71791DDDB003DF414 /* CardInfo.m */; };
 		778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */; };
+		77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A2A33D17A54FAC001986D0 /* Home.storyboard */; };
+		77A2A34117A55074001986D0 /* VCHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A2A34017A55074001986D0 /* VCHome.m */; };
+		77ABC21317A79383009A7146 /* RTNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ABC21217A79383009A7146 /* RTNetworkRequest.m */; };
 		77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */; };
 		77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1F179094E500E6D9BA /* MyCardAccount.png */; };
 		77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B211790950B00E6D9BA /* TransactionsLogo.png */; };
@@ -70,9 +71,6 @@
 		770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAC_ScrollCardView.m; sourceTree = "<group>"; };
 		770E6A2C17927E2600D56950 /* CardScrollBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardScrollBG.png; sourceTree = "<group>"; };
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoggedinStoryBoard_iphone.storyboard; sourceTree = "<group>"; };
-		773552951767DE0500ED50A4 /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
-		773552961767DE0500ED50A4 /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
 		77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsTbl_CustomCell.h; sourceTree = "<group>"; };
 		77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsTbl_CustomCell.m; sourceTree = "<group>"; };
 		7739797A176BD9CE00FAD6B7 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
@@ -101,6 +99,11 @@
 		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
 		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
 		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
+		77A2A33D17A54FAC001986D0 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		77A2A33F17A55074001986D0 /* VCHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHome.h; sourceTree = "<group>"; };
+		77A2A34017A55074001986D0 /* VCHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHome.m; sourceTree = "<group>"; };
+		77ABC21117A79383009A7146 /* RTNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTNetworkRequest.h; sourceTree = "<group>"; };
+		77ABC21217A79383009A7146 /* RTNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTNetworkRequest.m; sourceTree = "<group>"; };
 		77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpdateProfileLogo.png; sourceTree = "<group>"; };
 		77BD5B1F179094E500E6D9BA /* MyCardAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyCardAccount.png; sourceTree = "<group>"; };
 		77BD5B211790950B00E6D9BA /* TransactionsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsLogo.png; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		77004BB61762535F00745E2B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				77ABC21417A795AA009A7146 /* CustomControls */,
 				773552921767D94000ED50A4 /* Authenticated_Views */,
 				77004BB71762536F00745E2B /* Login */,
 			);
@@ -203,7 +207,7 @@
 				776FDC29179346B40068E528 /* MainViews */,
 				776FDC1917933EBC0068E528 /* GenericViews */,
 				778109E91791F19A003DF414 /* SubViews */,
-				773552931767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard */,
+				77A2A33D17A54FAC001986D0 /* Home.storyboard */,
 			);
 			name = Authenticated_Views;
 			sourceTree = "<group>";
@@ -227,8 +231,6 @@
 		776FDC29179346B40068E528 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
-				773552951767DE0500ED50A4 /* Home.h */,
-				773552961767DE0500ED50A4 /* Home.m */,
 				776FDC071793018B0068E528 /* Transactions.h */,
 				776FDC081793018B0068E528 /* Transactions.m */,
 				776FDC0A179329740068E528 /* MyCardAccount.h */,
@@ -237,6 +239,8 @@
 				776FDC0E17932A0B0068E528 /* UpdateProfile.m */,
 				776FDC1017932A1E0068E528 /* PinManagement.h */,
 				776FDC1117932A1F0068E528 /* PinManagement.m */,
+				77A2A33F17A55074001986D0 /* VCHome.h */,
+				77A2A34017A55074001986D0 /* VCHome.m */,
 			);
 			name = MainViews;
 			sourceTree = "<group>";
@@ -251,6 +255,13 @@
 				770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */,
 			);
 			name = SubViews;
+			sourceTree = "<group>";
+		};
+		77ABC21417A795AA009A7146 /* CustomControls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustomControls;
 			sourceTree = "<group>";
 		};
 		77C335491764F101009867E4 /* Images */ = {
@@ -272,6 +283,8 @@
 		77C3354A17650B06009867E4 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				77ABC21117A79383009A7146 /* RTNetworkRequest.h */,
+				77ABC21217A79383009A7146 /* RTNetworkRequest.m */,
 				778109E61791DDDB003DF414 /* CardInfo.h */,
 				778109E71791DDDB003DF414 /* CardInfo.m */,
 				776FDC041792FA2A0068E528 /* SingletonGeneric.h */,
@@ -338,7 +351,6 @@
 				77004BA7176239F300745E2B /* Default-568h@2x.png in Resources */,
 				77004BAA176239F300745E2B /* MainStoryboard_iPhone.storyboard in Resources */,
 				77004BAD176239F300745E2B /* MainStoryboard_ipad.storyboard in Resources */,
-				773552941767D96D00ED50A4 /* LoggedinStoryBoard_iphone.storyboard in Resources */,
 				7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */,
 				77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */,
 				77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */,
@@ -352,6 +364,7 @@
 				776FDC1E17933FB30068E528 /* ContactUs.xib in Resources */,
 				776FDC23179342140068E528 /* Terms.xib in Resources */,
 				776FDC28179342240068E528 /* Faq.xib in Resources */,
+				77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +378,6 @@
 				77004B9D176239F300745E2B /* main.m in Sources */,
 				77004BA1176239F300745E2B /* PACAppDelegate.m in Sources */,
 				77004BBC17628AD700745E2B /* LoginViewController.m in Sources */,
-				773552971767DE0500ED50A4 /* Home.m in Sources */,
 				77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */,
 				778109E81791DDDB003DF414 /* CardInfo.m in Sources */,
 				770E6A2B1792511800D56950 /* PAC_ScrollCardView.m in Sources */,
@@ -377,6 +389,8 @@
 				776FDC1D17933FB30068E528 /* ContactUs.m in Sources */,
 				776FDC22179342140068E528 /* Terms.m in Sources */,
 				776FDC27179342240068E528 /* Faq.m in Sources */,
+				77A2A34117A55074001986D0 /* VCHome.m in Sources */,
+				77ABC21317A79383009A7146 /* RTNetworkRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
