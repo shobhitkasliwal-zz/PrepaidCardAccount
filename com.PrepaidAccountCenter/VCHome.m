@@ -22,9 +22,11 @@
 - (void)loadVisiblePages;
 - (void)loadPage:(NSInteger)page;
 - (void)purgePage:(NSInteger)page;
-@end
 
+@end
+int CurrentScrollViewPage;
 @implementation VCHome
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -192,6 +194,7 @@
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
         [self.uiScrollCard addSubview:newPageView];
+        
    
     }
 }
@@ -237,7 +240,15 @@
     frame.origin.y = 0;
     [self.uiScrollCard scrollRectToVisible:frame animated:YES];
     [[SingletonGeneric UserCardInfo] SetSelectedCardInfo:page];
+    if (page != CurrentScrollViewPage){
+    [UITableView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        _uiPageMainView.alpha = 0.5;
+    } completion:^(BOOL finished) {
+        _uiPageMainView.alpha = 1;
+    }];
+    }
     
+    CurrentScrollViewPage = page;
 }
 
 
@@ -252,8 +263,6 @@
 -(void)faqButtonClicked:(id)sender {
     [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
 }
-
-
 
 
 @end
