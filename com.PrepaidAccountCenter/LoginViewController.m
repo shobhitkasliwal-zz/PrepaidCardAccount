@@ -15,6 +15,7 @@
 
 @interface LoginViewController ()
 @property (strong, atomic) UILabel *lblText;
+@property (strong,atomic) UIActivityIndicatorView* activity ;
 @end
 
 @implementation LoginViewController
@@ -94,8 +95,16 @@
     [_lblText sizeToFit];
     [_vw_MainView setHidden:YES];
     
+    _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     
-    
+    _activity.hidesWhenStopped = YES;
+    [_activity setFrame:self.view.frame];
+    // set a background color
+    [_activity.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
+    CGPoint center = self.view.center;
+    self.view.center = center;
+    [self.view addSubview:_activity];
+    [_activity startAnimating];
     
     [UIView transitionWithView:self.view duration:0.5
                        options:UIViewAnimationOptionTransitionCrossDissolve
@@ -187,6 +196,7 @@
         [alert show];
         [_vw_MainView setHidden:NO];
         [_lblText removeFromSuperview];
+        [_activity stopAnimating];
     }
     
     

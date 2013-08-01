@@ -25,7 +25,7 @@
         
     }
    // _uiScrollCardView.layer.masksToBounds =YES;
-    _uiScrollCardView.layer.cornerRadius =12;
+   // _uiScrollCardView.layer.cornerRadius =12;
     
     return self;
 }

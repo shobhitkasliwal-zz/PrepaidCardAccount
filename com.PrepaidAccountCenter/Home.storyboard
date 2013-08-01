@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z1t-Sc-deA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z1t-Sc-deA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -15,7 +15,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-5X-auq">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="211" id="CnR-9x-nVd"/>
+                                    <constraint firstAttribute="height" constant="211" type="user" id="CnR-9x-nVd"/>
                                 </constraints>
                                 <color key="separatorColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
@@ -149,6 +149,7 @@
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="trailing" secondItem="xlq-08-GjJ" secondAttribute="trailing" type="default" id="e4b-XQ-Kgn"/>
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="default" id="kSK-Up-ql1"/>
                             <constraint firstItem="A6b-SB-8hH" firstAttribute="top" secondItem="xlq-08-GjJ" secondAttribute="top" type="user" id="qxl-Dq-ogI"/>
+                            <constraint firstAttribute="bottom" secondItem="R0W-5X-auq" secondAttribute="bottom" constant="95" type="user" id="t8w-yb-T5D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="G8n-xb-ITd"/>

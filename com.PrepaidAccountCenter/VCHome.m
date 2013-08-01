@@ -19,6 +19,7 @@
 @property (nonatomic, strong)NSArray *dsTableViewRows;
 @property (nonatomic, strong) NSArray *pageCardInformation;
 @property (nonatomic, strong) NSMutableArray *pageViews;
+@property (nonatomic,strong) UIActivityIndicatorView *tableActivityIndicator;
 - (void)loadVisiblePages;
 - (void)loadPage:(NSInteger)page;
 - (void)purgePage:(NSInteger)page;
@@ -46,7 +47,18 @@ int CurrentScrollViewPage;
                         [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
                         [NSArray arrayWithObjects:@"Transactions", @"TransactionsLogo.png", nil],
                         nil];
+   
+    _tableActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     
+    //self.activityIndicatorView = activity;
+    // make the area larger
+    _tableActivityIndicator.hidesWhenStopped = YES;
+    [_tableActivityIndicator setFrame:self.view.frame];
+     // set a background color
+     [_tableActivityIndicator.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
+     CGPoint center = self.view.center;
+     _tableActivityIndicator.center = center;
+    [self.view addSubview:_tableActivityIndicator];
     self.navigationItem.title=@"Prepaid Account Center";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Back"
@@ -149,7 +161,19 @@ int CurrentScrollViewPage;
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    int tableHeight = _uiPageMainView.bounds.size.height;
+    int itemCount = [_dsTableViewRows count];
+    return ((tableHeight/itemCount) -10);
+}
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:
+(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    
+    cell.textLabel.minimumScaleFactor = 0.6;
+}
 
 - (void)loadVisiblePages {
     // First, determine which page is currently visible
@@ -241,17 +265,24 @@ int CurrentScrollViewPage;
     [self.uiScrollCard scrollRectToVisible:frame animated:YES];
     [[SingletonGeneric UserCardInfo] SetSelectedCardInfo:page];
     if (page != CurrentScrollViewPage){
-    [UITableView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _uiPageMainView.alpha = 0.5;
-    } completion:^(BOOL finished) {
-        _uiPageMainView.alpha = 1;
-    }];
+//    [UITableView animateWithDuration:500 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//        [_tableActivityIndicator startAnimating];
+//    } completion:^(BOOL finished) {
+//        [_tableActivityIndicator stopAnimating];    }];
+        [_tableActivityIndicator startAnimating];
+       // [self.view performSelector:@selector(stopTableViewAnimation) withObject:nil afterDelay:5.0];
+        [NSTimer scheduledTimerWithTimeInterval:1.0 target: self
+                                                          selector: @selector(stopTableViewAnimation) userInfo: nil repeats: NO];
+
     }
     
     CurrentScrollViewPage = page;
 }
 
-
+-(void) stopTableViewAnimation
+{
+    [_tableActivityIndicator stopAnimating];
+}
 -(IBAction)contactUSButtonClicked:(id)sender {
     [self presentViewController:[[ContactUs alloc] init] animated:YES completion:nil];
 }
