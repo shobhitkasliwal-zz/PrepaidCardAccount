@@ -22,11 +22,8 @@
 		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
 		7730CC9417AD4D6400C35DD5 /* Logout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7730CC9317AD4D6400C35DD5 /* Logout.m */; };
-		7730CC9A17AD5E9700C35DD5 /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7730CC9917AD5E9700C35DD5 /* GradientButton.m */; };
 		77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */; };
 		7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7739797A176BD9CE00FAD6B7 /* RightArrow.png */; };
-		7740541817AF6FAE000CC7BF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7740541717AF6FAE000CC7BF /* UIColor+Hex.m */; };
-		775B25E317AF7661002FAABE /* OBGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B25E217AF7661002FAABE /* OBGradientView.m */; };
 		776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC051792FA2A0068E528 /* SingletonGeneric.m */; };
 		776FDC091793018B0068E528 /* Transactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC081793018B0068E528 /* Transactions.m */; };
 		776FDC0C179329750068E528 /* MyCardAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0B179329740068E528 /* MyCardAccount.m */; };
@@ -50,6 +47,9 @@
 		77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1F179094E500E6D9BA /* MyCardAccount.png */; };
 		77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B211790950B00E6D9BA /* TransactionsLogo.png */; };
 		77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B23179096EE00E6D9BA /* PinManagement.png */; };
+		77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CC817B00B8400A1E07E /* OBGradientView.m */; };
+		77F90CCD17B00BC800A1E07E /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCC17B00BC800A1E07E /* GradientButton.m */; };
+		77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,15 +75,9 @@
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7730CC9217AD4D6400C35DD5 /* Logout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logout.h; sourceTree = "<group>"; };
 		7730CC9317AD4D6400C35DD5 /* Logout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logout.m; sourceTree = "<group>"; };
-		7730CC9817AD5E9700C35DD5 /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientButton.h; path = "/Users/shobhitkasliwal/Downloads/iPhone Gradient Buttons/Classes/GradientButton.h"; sourceTree = "<absolute>"; };
-		7730CC9917AD5E9700C35DD5 /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientButton.m; path = "/Users/shobhitkasliwal/Downloads/iPhone Gradient Buttons/Classes/GradientButton.m"; sourceTree = "<absolute>"; };
 		77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsTbl_CustomCell.h; sourceTree = "<group>"; };
 		77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsTbl_CustomCell.m; sourceTree = "<group>"; };
 		7739797A176BD9CE00FAD6B7 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
-		7740541617AF6FAE000CC7BF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Hex.h"; path = "../../../../Users/shobhitkasliwal/Downloads/blog-code-master 2/GradientComponents/GradientComponents/Utils/UIColor+Hex.h"; sourceTree = "<group>"; };
-		7740541717AF6FAE000CC7BF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Hex.m"; path = "../../../../Users/shobhitkasliwal/Downloads/blog-code-master 2/GradientComponents/GradientComponents/Utils/UIColor+Hex.m"; sourceTree = "<group>"; };
-		775B25E117AF7661002FAABE /* OBGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBGradientView.h; path = "/Users/shobhitkasliwal/Downloads/OBGradientView-master/OBGradientView/OBGradientView.h"; sourceTree = "<absolute>"; };
-		775B25E217AF7661002FAABE /* OBGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBGradientView.m; path = "/Users/shobhitkasliwal/Downloads/OBGradientView-master/OBGradientView/OBGradientView.m"; sourceTree = "<absolute>"; };
 		776FDC041792FA2A0068E528 /* SingletonGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonGeneric.h; sourceTree = "<group>"; };
 		776FDC051792FA2A0068E528 /* SingletonGeneric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonGeneric.m; sourceTree = "<group>"; };
 		776FDC071793018B0068E528 /* Transactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transactions.h; sourceTree = "<group>"; };
@@ -118,6 +112,12 @@
 		77BD5B1F179094E500E6D9BA /* MyCardAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyCardAccount.png; sourceTree = "<group>"; };
 		77BD5B211790950B00E6D9BA /* TransactionsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsLogo.png; sourceTree = "<group>"; };
 		77BD5B23179096EE00E6D9BA /* PinManagement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinManagement.png; sourceTree = "<group>"; };
+		77F90CC817B00B8400A1E07E /* OBGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBGradientView.m; sourceTree = "<group>"; };
+		77F90CCA17B00B9500A1E07E /* OBGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBGradientView.h; sourceTree = "<group>"; };
+		77F90CCB17B00BB800A1E07E /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientButton.h; sourceTree = "<group>"; };
+		77F90CCC17B00BC800A1E07E /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientButton.m; sourceTree = "<group>"; };
+		77F90CCE17B00BD900A1E07E /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,10 +224,12 @@
 		775B25E417AF7674002FAABE /* ControlClasses */ = {
 			isa = PBXGroup;
 			children = (
-				775B25E117AF7661002FAABE /* OBGradientView.h */,
-				775B25E217AF7661002FAABE /* OBGradientView.m */,
-				7730CC9817AD5E9700C35DD5 /* GradientButton.h */,
-				7730CC9917AD5E9700C35DD5 /* GradientButton.m */,
+				77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */,
+				77F90CCE17B00BD900A1E07E /* UIColor+Hex.h */,
+				77F90CCB17B00BB800A1E07E /* GradientButton.h */,
+				77F90CCC17B00BC800A1E07E /* GradientButton.m */,
+				77F90CCA17B00B9500A1E07E /* OBGradientView.h */,
+				77F90CC817B00B8400A1E07E /* OBGradientView.m */,
 			);
 			name = ControlClasses;
 			sourceTree = "<group>";
@@ -306,8 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				775B25E417AF7674002FAABE /* ControlClasses */,
-				7740541617AF6FAE000CC7BF /* UIColor+Hex.h */,
-				7740541717AF6FAE000CC7BF /* UIColor+Hex.m */,
 				77ABC21117A79383009A7146 /* RTNetworkRequest.h */,
 				77ABC21217A79383009A7146 /* RTNetworkRequest.m */,
 				778109E61791DDDB003DF414 /* CardInfo.h */,
@@ -416,9 +416,9 @@
 				77A2A34117A55074001986D0 /* VCHome.m in Sources */,
 				77ABC21317A79383009A7146 /* RTNetworkRequest.m in Sources */,
 				7730CC9417AD4D6400C35DD5 /* Logout.m in Sources */,
-				7730CC9A17AD5E9700C35DD5 /* GradientButton.m in Sources */,
-				7740541817AF6FAE000CC7BF /* UIColor+Hex.m in Sources */,
-				775B25E317AF7661002FAABE /* OBGradientView.m in Sources */,
+				77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */,
+				77F90CCD17B00BC800A1E07E /* GradientButton.m in Sources */,
+				77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
