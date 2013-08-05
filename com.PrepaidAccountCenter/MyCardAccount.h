@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OBGradientView.h"
 
 @interface MyCardAccount : UIViewController
+- (IBAction)LogoutClick:(id)sender;
 
+@property (weak, nonatomic) IBOutlet OBGradientView *uiViewHeader;
 @end

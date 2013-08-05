@@ -36,4 +36,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)LogoutClick:(id)sender {
+    [self performSegueWithIdentifier:@"UpdateProfileLogout" sender:nil];
+}
 @end

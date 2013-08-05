@@ -7,7 +7,7 @@
 //
 
 #import "MyCardAccount.h"
-
+#import "UIColor+Hex.h"
 @interface MyCardAccount ()
 
 @end
@@ -27,6 +27,11 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"My Card Account";
+  //  [appHelper applyShinyBackgroundWithColor:[UIColor redColor] forView:self.view];
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"3F3F3F"], [UIColor colorWithHexString:@"9F9F9F"], nil];
+     _uiViewHeader.colors= colors;
+    
+   // [_uiViewHeader app
 	// Do any additional setup after loading the view.
 }
 
@@ -36,4 +41,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)LogoutClick:(id)sender {
+    [self performSegueWithIdentifier:@"MyCardAccountLogout" sender:nil];
+}
 @end

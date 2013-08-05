@@ -10,6 +10,8 @@
 #import "TransactionsTbl_CustomCell.h"
 #import "SingletonGeneric.h"
 #import "CardInfo.h"
+#import "UIColor+Hex.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface Transactions ()
 @property (nonatomic, strong) NSArray *tabledata;
@@ -29,19 +31,41 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
 	// Do any additional setup after loading the view.
      _tabledata = [[NSArray alloc] initWithObjects:@"Transaction 1",@"Transaction 2", @"Transaction 3",@"Transaction 4", @"Transaction 5",@"Transaction 6",@"Transaction 7",@"Transaction 8",@"Transaction 9",@"Transaction 10", nil];
     
    CardInfo *cInfo =  [[SingletonGeneric UserCardInfo] SelectedCard];
-    [_lblCardNumber setText:cInfo.cardNumber];
-    [_lblCardExpiration setText:cInfo.cardExpiration];
-    [_lblCardBalance setText:cInfo.cardBalance];
-    [_lblCardStatus setText:cInfo.cardStatus];
-    self.navigationItem.title=@"Transactions";
-    
+    NSMutableString *cardNumber = [NSMutableString stringWithString:[cInfo.cardNumber substringFromIndex:[cInfo.cardNumber length] - 6] ];
+    [cardNumber insertString:@"-" atIndex:2];
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cardNumber ];
+    [_lblCardNumber setText:cardNumbertxt];
   
-   
+    self.navigationItem.title=@"Transactions";
+        NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
+    _uiHeader.colors = colors;
+
     
+    _uiHeader.layer.cornerRadius = 8; // if you like rounded corners
+    _uiHeader.layer.shadowOffset = CGSizeMake(-15, 20);
+    _uiHeader.layer.shadowRadius = 5;
+    _uiHeader.layer.shadowOpacity = 0.5;
+
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+//    CAGradientLayer *bgLayer = [appHelper greyGradient];
+//    bgLayer.frame = _uiHeader.bounds;
+//    [_uiHeader.layer insertSublayer:bgLayer atIndex:0];
+
+ //   [appHelper applyShinyBackgroundWithColor:[UIColor redColor] forView:_uiHeader];
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,4 +151,8 @@
     
 }
 
+- (IBAction)LogoutClick:(id)sender {
+    [self performSegueWithIdentifier:@"TransactionsLogout" sender:nil];
+    
+}
 @end

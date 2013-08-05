@@ -42,6 +42,39 @@
     [self.view addGestureRecognizer:gestureRecognizer];
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+
+    
+}
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    //Assign new frame to your view
+  //  [self.view setFrame:CGRectMake(0,-20,320,460)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
+    
+    [_vw_MainView addConstraint:[NSLayoutConstraint constraintWithItem:_vw_MainView
+                      attribute:NSLayoutAttributeBottom
+                      relatedBy:0
+                         toItem:self.view
+                      attribute:NSLayoutAttributeBottom
+                     multiplier:0
+                                                              constant:300.0f]];
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+   // [self.view setFrame:CGRectMake(0,0,320,460)];
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
+-(BOOL) shouldAutorotate
+{
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -141,11 +174,19 @@
                         
                     }
                     completion:^(BOOL finished) {
+                         [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
+                        bool isTest = true;
+                        
+                        if (!isTest){
                         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
                         if (_SwitchCardUsernameLogin.isOn)
                             [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Username"] httpMethod:RTHTTPMethodGET];
                         else
                             [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
+                        }
+                        else{
+                         [self performSelector:@selector(PresentLoggedinHomeView) withObject:nil afterDelay:0];
+                        }
                     }];
     
     

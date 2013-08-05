@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PinManagement : UIViewController
+- (IBAction)LogoutClick:(id)sender;
 
 @end

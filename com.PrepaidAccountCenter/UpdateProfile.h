@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UpdateProfile : UIViewController
+- (IBAction)LogoutClick:(id)sender;
 
 @end

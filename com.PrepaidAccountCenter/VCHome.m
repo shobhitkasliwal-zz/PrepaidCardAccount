@@ -14,6 +14,7 @@
 #import "ContactUs.h"
 #import "Terms.h"
 #import "Faq.h"
+#import "Logout.h"
 
 @interface VCHome ()
 @property (nonatomic, strong)NSArray *dsTableViewRows;
@@ -68,7 +69,7 @@ int CurrentScrollViewPage;
     self.navigationItem.backBarButtonItem=backButton;
     
     
-    [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
+   
     self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
     // setting the selected Card to 0 by Default
     [[SingletonGeneric UserCardInfo]SetSelectedCardInfo:0];
@@ -265,17 +266,10 @@ int CurrentScrollViewPage;
     [self.uiScrollCard scrollRectToVisible:frame animated:YES];
     [[SingletonGeneric UserCardInfo] SetSelectedCardInfo:page];
     if (page != CurrentScrollViewPage){
-//    [UITableView animateWithDuration:500 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//        [_tableActivityIndicator startAnimating];
-//    } completion:^(BOOL finished) {
-//        [_tableActivityIndicator stopAnimating];    }];
         [_tableActivityIndicator startAnimating];
-       // [self.view performSelector:@selector(stopTableViewAnimation) withObject:nil afterDelay:5.0];
         [NSTimer scheduledTimerWithTimeInterval:1.0 target: self
                                                           selector: @selector(stopTableViewAnimation) userInfo: nil repeats: NO];
-
     }
-    
     CurrentScrollViewPage = page;
 }
 
@@ -283,6 +277,11 @@ int CurrentScrollViewPage;
 {
     [_tableActivityIndicator stopAnimating];
 }
+- (IBAction)LogoutClick:(id)sender {
+    [self performSegueWithIdentifier:@"HomeLogout" sender:nil];
+    
+}
+
 -(IBAction)contactUSButtonClicked:(id)sender {
     [self presentViewController:[[ContactUs alloc] init] animated:YES completion:nil];
 }
@@ -295,5 +294,15 @@ int CurrentScrollViewPage;
     [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
 }
 
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
+-(BOOL) shouldAutorotate
+{
+    return YES;
+}
 
 @end

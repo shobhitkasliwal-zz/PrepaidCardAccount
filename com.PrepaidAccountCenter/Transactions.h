@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OBGradientView.h"
 
 @interface Transactions: UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tblOptions;
@@ -15,7 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblCardExpiration;
 @property (weak, nonatomic) IBOutlet UILabel *lblCardStatus;
 @property (weak, nonatomic) IBOutlet UILabel *lblCardBalance;
+@property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;
 
+- (IBAction)LogoutClick:(id)sender;
 
 
 @end

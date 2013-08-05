@@ -17,13 +17,16 @@
 		77004BA5176239F300745E2B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77004BA4176239F300745E2B /* Default@2x.png */; };
 		77004BA7176239F300745E2B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77004BA6176239F300745E2B /* Default-568h@2x.png */; };
 		77004BAA176239F300745E2B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77004BA8176239F300745E2B /* MainStoryboard_iPhone.storyboard */; };
-		77004BAD176239F300745E2B /* MainStoryboard_ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77004BAB176239F300745E2B /* MainStoryboard_ipad.storyboard */; };
 		77004BBC17628AD700745E2B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77004BBB17628AD700745E2B /* LoginViewController.m */; };
 		770E6A2B1792511800D56950 /* PAC_ScrollCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */; };
 		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
+		7730CC9417AD4D6400C35DD5 /* Logout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7730CC9317AD4D6400C35DD5 /* Logout.m */; };
+		7730CC9A17AD5E9700C35DD5 /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7730CC9917AD5E9700C35DD5 /* GradientButton.m */; };
 		77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */; };
 		7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7739797A176BD9CE00FAD6B7 /* RightArrow.png */; };
+		7740541817AF6FAE000CC7BF /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7740541717AF6FAE000CC7BF /* UIColor+Hex.m */; };
+		775B25E317AF7661002FAABE /* OBGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B25E217AF7661002FAABE /* OBGradientView.m */; };
 		776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC051792FA2A0068E528 /* SingletonGeneric.m */; };
 		776FDC091793018B0068E528 /* Transactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC081793018B0068E528 /* Transactions.m */; };
 		776FDC0C179329750068E528 /* MyCardAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0B179329740068E528 /* MyCardAccount.m */; };
@@ -64,16 +67,23 @@
 		77004BA4176239F300745E2B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		77004BA6176239F300745E2B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		77004BA9176239F300745E2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		77004BAC176239F300745E2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_ipad.storyboard; sourceTree = "<group>"; };
 		77004BBA17628AD700745E2B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		77004BBB17628AD700745E2B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		770E6A291792511800D56950 /* PAC_ScrollCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAC_ScrollCardView.h; sourceTree = "<group>"; };
 		770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAC_ScrollCardView.m; sourceTree = "<group>"; };
 		770E6A2C17927E2600D56950 /* CardScrollBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardScrollBG.png; sourceTree = "<group>"; };
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7730CC9217AD4D6400C35DD5 /* Logout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logout.h; sourceTree = "<group>"; };
+		7730CC9317AD4D6400C35DD5 /* Logout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logout.m; sourceTree = "<group>"; };
+		7730CC9817AD5E9700C35DD5 /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientButton.h; path = "/Users/shobhitkasliwal/Downloads/iPhone Gradient Buttons/Classes/GradientButton.h"; sourceTree = "<absolute>"; };
+		7730CC9917AD5E9700C35DD5 /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientButton.m; path = "/Users/shobhitkasliwal/Downloads/iPhone Gradient Buttons/Classes/GradientButton.m"; sourceTree = "<absolute>"; };
 		77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsTbl_CustomCell.h; sourceTree = "<group>"; };
 		77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsTbl_CustomCell.m; sourceTree = "<group>"; };
 		7739797A176BD9CE00FAD6B7 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
+		7740541617AF6FAE000CC7BF /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Hex.h"; path = "../../../../Users/shobhitkasliwal/Downloads/blog-code-master 2/GradientComponents/GradientComponents/Utils/UIColor+Hex.h"; sourceTree = "<group>"; };
+		7740541717AF6FAE000CC7BF /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Hex.m"; path = "../../../../Users/shobhitkasliwal/Downloads/blog-code-master 2/GradientComponents/GradientComponents/Utils/UIColor+Hex.m"; sourceTree = "<group>"; };
+		775B25E117AF7661002FAABE /* OBGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBGradientView.h; path = "/Users/shobhitkasliwal/Downloads/OBGradientView-master/OBGradientView/OBGradientView.h"; sourceTree = "<absolute>"; };
+		775B25E217AF7661002FAABE /* OBGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBGradientView.m; path = "/Users/shobhitkasliwal/Downloads/OBGradientView-master/OBGradientView/OBGradientView.m"; sourceTree = "<absolute>"; };
 		776FDC041792FA2A0068E528 /* SingletonGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonGeneric.h; sourceTree = "<group>"; };
 		776FDC051792FA2A0068E528 /* SingletonGeneric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonGeneric.m; sourceTree = "<group>"; };
 		776FDC071793018B0068E528 /* Transactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transactions.h; sourceTree = "<group>"; };
@@ -194,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				77004BA8176239F300745E2B /* MainStoryboard_iPhone.storyboard */,
-				77004BAB176239F300745E2B /* MainStoryboard_ipad.storyboard */,
 				77004BBA17628AD700745E2B /* LoginViewController.h */,
 				77004BBB17628AD700745E2B /* LoginViewController.m */,
 			);
@@ -212,6 +221,17 @@
 			name = Authenticated_Views;
 			sourceTree = "<group>";
 		};
+		775B25E417AF7674002FAABE /* ControlClasses */ = {
+			isa = PBXGroup;
+			children = (
+				775B25E117AF7661002FAABE /* OBGradientView.h */,
+				775B25E217AF7661002FAABE /* OBGradientView.m */,
+				7730CC9817AD5E9700C35DD5 /* GradientButton.h */,
+				7730CC9917AD5E9700C35DD5 /* GradientButton.m */,
+			);
+			name = ControlClasses;
+			sourceTree = "<group>";
+		};
 		776FDC1917933EBC0068E528 /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +244,8 @@
 				776FDC24179342240068E528 /* Faq.h */,
 				776FDC25179342240068E528 /* Faq.m */,
 				776FDC26179342240068E528 /* Faq.xib */,
+				7730CC9217AD4D6400C35DD5 /* Logout.h */,
+				7730CC9317AD4D6400C35DD5 /* Logout.m */,
 			);
 			name = GenericViews;
 			sourceTree = "<group>";
@@ -283,6 +305,9 @@
 		77C3354A17650B06009867E4 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				775B25E417AF7674002FAABE /* ControlClasses */,
+				7740541617AF6FAE000CC7BF /* UIColor+Hex.h */,
+				7740541717AF6FAE000CC7BF /* UIColor+Hex.m */,
 				77ABC21117A79383009A7146 /* RTNetworkRequest.h */,
 				77ABC21217A79383009A7146 /* RTNetworkRequest.m */,
 				778109E61791DDDB003DF414 /* CardInfo.h */,
@@ -350,7 +375,6 @@
 				77004BA5176239F300745E2B /* Default@2x.png in Resources */,
 				77004BA7176239F300745E2B /* Default-568h@2x.png in Resources */,
 				77004BAA176239F300745E2B /* MainStoryboard_iPhone.storyboard in Resources */,
-				77004BAD176239F300745E2B /* MainStoryboard_ipad.storyboard in Resources */,
 				7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */,
 				77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */,
 				77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */,
@@ -391,6 +415,10 @@
 				776FDC27179342240068E528 /* Faq.m in Sources */,
 				77A2A34117A55074001986D0 /* VCHome.m in Sources */,
 				77ABC21317A79383009A7146 /* RTNetworkRequest.m in Sources */,
+				7730CC9417AD4D6400C35DD5 /* Logout.m in Sources */,
+				7730CC9A17AD5E9700C35DD5 /* GradientButton.m in Sources */,
+				7740541817AF6FAE000CC7BF /* UIColor+Hex.m in Sources */,
+				775B25E317AF7661002FAABE /* OBGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,14 +439,6 @@
 				77004BA9176239F300745E2B /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		77004BAB176239F300745E2B /* MainStoryboard_ipad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				77004BAC176239F300745E2B /* en */,
-			);
-			name = MainStoryboard_ipad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *uiPageControlScrollCard;
 @property (weak, nonatomic) IBOutlet UITableView *uiPageMainView;
 
+- (IBAction)LogoutClick:(id)sender;
 
 -(IBAction)contactUSButtonClicked:(id)sender;
 -(IBAction)faqButtonClicked:(id)sender;
