@@ -38,7 +38,7 @@ CardInfo *cInfo;
     [super viewDidLoad];
     [_tblOptions setHidden:YES];
     _tableActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    
+     _CardTransactions = [[NSMutableArray alloc] init];
     //[self activi = activity;
     
     // make the area larger
@@ -84,7 +84,7 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
     if (responseArray != nil) {
         NSLog(@"array: %@", responseArray);
-        _CardTransactions = [[NSMutableArray alloc] init];
+       
         for (NSDictionary* dict in responseArray){
             NSLog(@"array: %@", dict);
             [ _CardTransactions  addObject:dict];
@@ -95,7 +95,7 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
 
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"An Error occured while retriving data. Please contact customer support." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There are no Transactions avilable for this card account. Please change the duration below to get the older transactions." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
     }
@@ -143,7 +143,7 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return (sizeof _CardTransactions);
+    return ( _CardTransactions.count);
     
 }
 
@@ -166,7 +166,8 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
         
         
     }
-    
+    if(_CardTransactions.count > indexPath.row)
+    {
     NSDictionary* dict = [_CardTransactions objectAtIndex:[indexPath row]];
     if (dict != nil){
     [cell.lblAuthDateValue setText: [dict objectForKey:@"AUTHDATE"]];
@@ -175,6 +176,7 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
      [cell.lblResponseReason setText:[dict objectForKey:@"TXNTYPE"] ];
     [cell.lblAmount setText:[NSString stringWithFormat:@"%@%@",@"USD ",[dict objectForKey:@"POSTAMOUNT"]]];
   //  cell.contentView.backgroundColor = [UIColor colorWithRed:99/255.f green:184/255.f blue:255/255.f alpha:1];
+    }
     }
     return cell;
     
