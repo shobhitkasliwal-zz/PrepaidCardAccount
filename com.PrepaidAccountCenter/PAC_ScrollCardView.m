@@ -25,9 +25,6 @@
         [self addSubview: _myView];
         
     }
-   // _uiScrollCardView.layer.masksToBounds =YES;
-   // _uiScrollCardView.layer.cornerRadius =12;
-    
     return self;
 }
 
@@ -51,10 +48,16 @@
 
 - (void) PopulateScrollCardView: (CardInfo*)card
 {
-    [_lblCardNumber setText: card.cardNumber];
-    [_lblCardBalance setText: card.cardBalance];
-    [_lblCardExpiration setText: card.cardExpiration];
-    self.layer.cornerRadius = 12;
+    
+   
+    NSMutableString *cardNumber = [NSMutableString stringWithString:[card.cardNumber substringFromIndex:[card.cardNumber length] - 6] ];
+    [cardNumber insertString:@"-" atIndex:2];
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"xxxx-xxxx-xx", cardNumber ];
+     [_lblCardNumber setText: cardNumbertxt];
+    [_lblBal setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
+    
+    [_lblExpiration setText:[NSString stringWithFormat:@"%@%@",@"Expiration: ", card.cardExpiration]];
+    //self.layer.cornerRadius = 12;
 }
 
 @end

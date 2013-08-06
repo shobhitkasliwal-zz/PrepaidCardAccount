@@ -10,11 +10,9 @@
 #import "CardInfo.h"
 @interface PAC_ScrollCardView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *lblCardNumber;
-@property (weak, nonatomic) IBOutlet UILabel *lblCardBalance;
-
-@property (weak, nonatomic) IBOutlet UILabel *lblCardExpiration;
-@property (strong, nonatomic) IBOutlet UIView *uiScrollCardView;
-
-
 - (void) PopulateScrollCardView: (CardInfo*)card;
+@property (weak, nonatomic) IBOutlet UILabel *lblExpiration;
+@property (weak, nonatomic) IBOutlet UILabel *lblCardStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lblBal;
+
 @end

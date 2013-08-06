@@ -175,8 +175,8 @@
                         
                     }
                     completion:^(BOOL finished) {
-                         [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
-                        bool isTest = true;
+                        
+                        bool isTest = false;
                         
                         if (!isTest){
                         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
@@ -191,6 +191,7 @@
                             [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
                         }
                         else{
+                             [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
                          [self performSelector:@selector(PresentLoggedinHomeView) withObject:nil afterDelay:0];
                         }
                     }];
@@ -221,6 +222,7 @@
                 [cinfo addObject: [
                                    [CardInfo alloc] initWithCardNumber:[dict objectForKey:@"CardNumber"] andExpiration:[dict objectForKey:@"CardExpiration"] andBalance:[dict objectForKey:@"CardBalance"] andStatus:[dict objectForKey:@"CardStatus"] andProxy:[dict objectForKey:@"CardProxy"]  andWCSClientID:[dict objectForKey:@"WCSClientId"] 
                                    ]];
+                [ [SingletonGeneric UserCardInfo]setAllCardInfo:cinfo];
             }
         }
         

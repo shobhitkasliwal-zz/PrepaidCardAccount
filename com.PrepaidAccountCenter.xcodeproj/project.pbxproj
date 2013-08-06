@@ -22,8 +22,9 @@
 		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
 		7730CC9417AD4D6400C35DD5 /* Logout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7730CC9317AD4D6400C35DD5 /* Logout.m */; };
+		7736E2E617B0A35500CA1E3C /* LeftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7736E2E517B0A35500CA1E3C /* LeftArrow.png */; };
+		7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7736E2E717B0A37C00CA1E3C /* RightArrow.png */; };
 		77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */; };
-		7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7739797A176BD9CE00FAD6B7 /* RightArrow.png */; };
 		776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC051792FA2A0068E528 /* SingletonGeneric.m */; };
 		776FDC091793018B0068E528 /* Transactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC081793018B0068E528 /* Transactions.m */; };
 		776FDC0C179329750068E528 /* MyCardAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0B179329740068E528 /* MyCardAccount.m */; };
@@ -77,9 +78,10 @@
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7730CC9217AD4D6400C35DD5 /* Logout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logout.h; sourceTree = "<group>"; };
 		7730CC9317AD4D6400C35DD5 /* Logout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logout.m; sourceTree = "<group>"; };
+		7736E2E517B0A35500CA1E3C /* LeftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LeftArrow.png; sourceTree = "<group>"; };
+		7736E2E717B0A37C00CA1E3C /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
 		77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsTbl_CustomCell.h; sourceTree = "<group>"; };
 		77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsTbl_CustomCell.m; sourceTree = "<group>"; };
-		7739797A176BD9CE00FAD6B7 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
 		776FDC041792FA2A0068E528 /* SingletonGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonGeneric.h; sourceTree = "<group>"; };
 		776FDC051792FA2A0068E528 /* SingletonGeneric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonGeneric.m; sourceTree = "<group>"; };
 		776FDC071793018B0068E528 /* Transactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transactions.h; sourceTree = "<group>"; };
@@ -301,6 +303,8 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7736E2E717B0A37C00CA1E3C /* RightArrow.png */,
+				7736E2E517B0A35500CA1E3C /* LeftArrow.png */,
 				776FDC13179331670068E528 /* Contact us.png */,
 				776FDC14179331670068E528 /* Faq.png */,
 				776FDC15179331670068E528 /* Terms.png */,
@@ -309,7 +313,6 @@
 				77BD5B211790950B00E6D9BA /* TransactionsLogo.png */,
 				77BD5B1F179094E500E6D9BA /* MyCardAccount.png */,
 				77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */,
-				7739797A176BD9CE00FAD6B7 /* RightArrow.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -387,7 +390,6 @@
 				77004BA5176239F300745E2B /* Default@2x.png in Resources */,
 				77004BA7176239F300745E2B /* Default-568h@2x.png in Resources */,
 				77004BAA176239F300745E2B /* MainStoryboard_iPhone.storyboard in Resources */,
-				7739797B176BD9CE00FAD6B7 /* RightArrow.png in Resources */,
 				77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */,
 				77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */,
 				77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */,
@@ -401,6 +403,8 @@
 				776FDC23179342140068E528 /* Terms.xib in Resources */,
 				776FDC28179342240068E528 /* Faq.xib in Resources */,
 				77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */,
+				7736E2E617B0A35500CA1E3C /* LeftArrow.png in Resources */,
+				7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

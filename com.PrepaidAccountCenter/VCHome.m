@@ -49,7 +49,7 @@ int CurrentScrollViewPage;
                         [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
                         [NSArray arrayWithObjects:@"Transactions", @"TransactionsLogo.png", nil],
                         nil];
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"3F3F3F"], [UIColor colorWithHexString:@"9F9F9F"], nil];
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"045FB4"], [UIColor colorWithHexString:@"FFFFFF"], nil];
     _uiScrollViewParent.colors = colors;
     _uiScrollViewParent.layer.cornerRadius = 8; // if you like rounded corners
     _uiScrollViewParent.layer.shadowOffset = CGSizeMake(-15, 20);
@@ -61,7 +61,7 @@ int CurrentScrollViewPage;
     //self.activityIndicatorView = activity;
     // make the area larger
     _tableActivityIndicator.hidesWhenStopped = YES;
-    [_tableActivityIndicator setFrame:self.view.frame];
+    [_tableActivityIndicator setFrame:self.view.bounds];
      // set a background color
      [_tableActivityIndicator.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
      CGPoint center = self.view.center;
@@ -76,7 +76,7 @@ int CurrentScrollViewPage;
     self.navigationItem.backBarButtonItem=backButton;
     
     
-   
+    //_uiScrollCard.translatesAutoresizingMaskIntoConstraints = NO;
     self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
     // setting the selected Card to 0 by Default
     [[SingletonGeneric UserCardInfo]SetSelectedCardInfo:0];
@@ -199,7 +199,7 @@ int CurrentScrollViewPage;
     for (NSInteger i=0; i<firstPage; i++) {
         [self purgePage:i];
     }
-    for (NSInteger i=firstPage; i<=lastPage; i++) {
+    for (NSInteger i=firstPage; i<lastPage; i++) {
         [self loadPage:i];
     }
     for (NSInteger i=lastPage+1; i<self.pageCardInformation.count; i++) {
@@ -226,13 +226,7 @@ int CurrentScrollViewPage;
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
         [self.uiScrollCard addSubview:newPageView];
-        [_uiScrollCard addConstraint:[NSLayoutConstraint constraintWithItem:newPageView
-                                                               attribute:NSLayoutAttributeRight
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:_uiScrollCard
-                                                               attribute:NSLayoutAttributeRight
-                                                              multiplier:1.0
-                                                                constant:10]];
+        
         //newPageView.translatesAutoresizingMaskIntoConstraints = NO;
         
     }

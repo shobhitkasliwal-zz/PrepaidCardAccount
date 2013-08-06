@@ -12,11 +12,16 @@
 #import "CardInfo.h"
 #import "UIColor+Hex.h"
 #import <QuartzCore/QuartzCore.h>
+#import "RTNetworkRequest.h"
 
+
+#define GetTransactionURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/GetTransactions?Proxy=%@&NoofDays=%@&WCSClientID=%@"
 @interface Transactions ()
-@property (nonatomic, strong) NSArray *tabledata;
-@end
 
+@property (nonatomic, strong) NSMutableArray *CardTransactions;
+@property (nonatomic,strong) UIActivityIndicatorView *tableActivityIndicator;
+@end
+CardInfo *cInfo;
 @implementation Transactions
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,13 +36,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [_tblOptions setHidden:YES];
+    _tableActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     
+    //[self activi = activity;
     
-    
+    // make the area larger
+    _tableActivityIndicator.hidesWhenStopped = YES;
+    CGRect screenrect = [[UIScreen mainScreen] bounds];
+   [_tableActivityIndicator setFrame:screenrect];
+    // set a background color
+    [_tableActivityIndicator.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
+    CGPoint center = self.view.center;
+    _tableActivityIndicator.center = center;
+    [self.view addSubview:_tableActivityIndicator];
+    [_tableActivityIndicator startAnimating];
+    [self GetTransactions:365];
 	// Do any additional setup after loading the view.
-     _tabledata = [[NSArray alloc] initWithObjects:@"Transaction 1",@"Transaction 2", @"Transaction 3",@"Transaction 4", @"Transaction 5",@"Transaction 6",@"Transaction 7",@"Transaction 8",@"Transaction 9",@"Transaction 10", nil];
-    
-   CardInfo *cInfo =  [[SingletonGeneric UserCardInfo] SelectedCard];
+       
+cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     NSMutableString *cardNumber = [NSMutableString stringWithString:[cInfo.cardNumber substringFromIndex:[cInfo.cardNumber length] - 6] ];
     [cardNumber insertString:@"-" atIndex:2];
     NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cardNumber ];
@@ -46,14 +63,52 @@
     self.navigationItem.title=@"Transactions";
         NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
     _uiHeader.colors = colors;
-
-    
     _uiHeader.layer.cornerRadius = 8; // if you like rounded corners
     _uiHeader.layer.shadowOffset = CGSizeMake(-15, 20);
     _uiHeader.layer.shadowRadius = 5;
     _uiHeader.layer.shadowOpacity = 0.5;
-
+    
+    
+    
 }
+
+
+-(void) GetTransactions :(int) NumberofDays
+{
+    RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+    [networkRequest makeWebCall:[NSString stringWithFormat:GetTransactionURL,cInfo.cardProxy,[NSString stringWithFormat:@"%d",NumberofDays], cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
+}
+
+-(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
+{
+    NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+    if (responseArray != nil) {
+        NSLog(@"array: %@", responseArray);
+        _CardTransactions = [[NSMutableArray alloc] init];
+        for (NSDictionary* dict in responseArray){
+            NSLog(@"array: %@", dict);
+            [ _CardTransactions  addObject:dict];
+        }
+[_tblOptions reloadData];
+        [_tblOptions setHidden:NO];
+    }
+
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"An Error occured while retriving data. Please contact customer support." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        
+    }
+    [_tableActivityIndicator stopAnimating];
+    
+    
+}
+
+- (void)networkNotReachable{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"Network Error !!!. Please contact customer support." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
 
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,7 +143,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;//(sizeof _tabledata);
+    return (sizeof _CardTransactions);
     
 }
 
@@ -112,19 +167,15 @@
         
     }
     
-    cell.CellTitle.text = [_tabledata objectAtIndex: [indexPath row]];
-    
-    // Set up the cell...
-    
-    //    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
-    //
-    //    cell.textLabel.text = [tabledata objectAtIndex: [indexPath row]];
-    cell.contentView.backgroundColor = [UIColor colorWithRed:99/255.f green:184/255.f blue:255/255.f alpha:1];
-    cell.CellTitle.backgroundColor = [UIColor clearColor];
-    
-    //
-    //     [_tblOptions setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    //
+    NSDictionary* dict = [_CardTransactions objectAtIndex:[indexPath row]];
+    if (dict != nil){
+    [cell.lblAuthDateValue setText: [dict objectForKey:@"AUTHDATE"]];
+    [cell.lblPostDateValue setText:[dict objectForKey:@"POSTDATE"] ];
+     [cell.lblMerchantName setText:[dict objectForKey:@"MERCHANTNAME"] ];
+     [cell.lblResponseReason setText:[dict objectForKey:@"TXNTYPE"] ];
+    [cell.lblAmount setText:[NSString stringWithFormat:@"%@%@",@"USD ",[dict objectForKey:@"POSTAMOUNT"]]];
+  //  cell.contentView.backgroundColor = [UIColor colorWithRed:99/255.f green:184/255.f blue:255/255.f alpha:1];
+    }
     return cell;
     
 }
@@ -135,21 +186,17 @@
     
     // open a alert with an OK and cancel button
     
-    NSString *alertString = [NSString stringWithFormat:@"Clicked on row #%d", [indexPath row]];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertString message:@"" delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
-    
-    [alert show];
+//    NSString *alertString = [NSString stringWithFormat:@"Clicked on row #%d", [indexPath row]];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertString message:@"" delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
+//    
+//    [alert show];
     
     
     
 }
 
--  (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 75;
-    
-}
+
 
 - (IBAction)LogoutClick:(id)sender {
     [self performSegueWithIdentifier:@"TransactionsLogout" sender:nil];

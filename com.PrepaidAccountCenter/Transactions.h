@@ -8,17 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "OBGradientView.h"
+#import "RTNetworkRequest.h"
 
-@interface Transactions: UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface Transactions: UIViewController <UITableViewDelegate, UITableViewDataSource,  RTNetworkRequestDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tblOptions;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblCardNumber;
-@property (weak, nonatomic) IBOutlet UILabel *lblCardExpiration;
-@property (weak, nonatomic) IBOutlet UILabel *lblCardStatus;
-@property (weak, nonatomic) IBOutlet UILabel *lblCardBalance;
+
 @property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;
 
 - (IBAction)LogoutClick:(id)sender;
-
+-(void) GetTransactions :(int) NumberofDays;
 
 @end

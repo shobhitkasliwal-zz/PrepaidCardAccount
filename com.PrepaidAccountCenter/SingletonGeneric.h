@@ -16,4 +16,6 @@
 +(SingletonGeneric*) UserCardInfo;
 -(void)RetriveUserCardInfo:(NSString*)userName;
 -(void)SetSelectedCardInfo:(int) index;
+
+-(void) setAllCardInfo: (NSMutableArray*) arrCardInfo;
 @end
