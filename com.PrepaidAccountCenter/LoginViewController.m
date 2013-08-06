@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RTNetworkRequest.h"
 #import "SingletonGeneric.h"
+#import "AppHelper.h"
 
 #define LoginURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/AuthenticateUser?UserName=%@&Password=%@&AuthenticationType=%@"
 
@@ -180,8 +181,13 @@
                         if (!isTest){
                         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
                         if (_SwitchCardUsernameLogin.isOn)
-                            [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Username"] httpMethod:RTHTTPMethodGET];
-                        else
+                        {
+                            NSString *Username = _txtUsernameCard.text;
+                          //  NSData* data = [Username dataUsingEncoding:NSUTF8StringEncoding];
+                          //NSData *datasend =   [AppHelper  TripleDES:data encryptOrDecrypt:kCCEncrypt key:@"AAECAwQFBgcICQoLDA0ODw=="];
+                            [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL,Username , _txtPasswordSecPin.text,@"Username"] httpMethod:RTHTTPMethodGET];
+                        
+                        }else
                             [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
                         }
                         else{
@@ -213,7 +219,7 @@
             }
             else{
                 [cinfo addObject: [
-                                   [CardInfo alloc] initWithCardNumber:[dict objectForKey:@"CardNumber"] andExpiration:[dict objectForKey:@"CardExpiration"] andBalance:[dict objectForKey:@"CardBalance"] andStatus:[dict objectForKey:@"CardStatus"]
+                                   [CardInfo alloc] initWithCardNumber:[dict objectForKey:@"CardNumber"] andExpiration:[dict objectForKey:@"CardExpiration"] andBalance:[dict objectForKey:@"CardBalance"] andStatus:[dict objectForKey:@"CardStatus"] andProxy:[dict objectForKey:@"CardProxy"]  andWCSClientID:[dict objectForKey:@"WCSClientId"] 
                                    ]];
             }
         }

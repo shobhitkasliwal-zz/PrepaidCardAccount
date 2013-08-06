@@ -8,7 +8,7 @@
 
 #import "Logout.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "PACAppDelegate.h"
 
 @interface Logout ()
 
@@ -50,6 +50,8 @@
 }
 
 - (IBAction)Logout:(id)sender {
+    PACAppDelegate* appdelegate = (PACAppDelegate*)[[UIApplication sharedApplication]delegate];
+    [appdelegate LogoutUser];
 }
 - (IBAction)Cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

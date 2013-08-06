@@ -50,6 +50,8 @@
 		77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CC817B00B8400A1E07E /* OBGradientView.m */; };
 		77F90CCD17B00BC800A1E07E /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCC17B00BC800A1E07E /* GradientButton.m */; };
 		77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */; };
+		77F90CD317B06B5300A1E07E /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CD217B06B5300A1E07E /* AppHelper.m */; };
+		77F90CD617B06CE900A1E07E /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CD517B06CE900A1E07E /* GTMBase64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +120,11 @@
 		77F90CCC17B00BC800A1E07E /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientButton.m; sourceTree = "<group>"; };
 		77F90CCE17B00BD900A1E07E /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		77F90CD117B06B5300A1E07E /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		77F90CD217B06B5300A1E07E /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		77F90CD417B06CE900A1E07E /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		77F90CD517B06CE900A1E07E /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		77F90CD717B06D8B00A1E07E /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +237,9 @@
 				77F90CCC17B00BC800A1E07E /* GradientButton.m */,
 				77F90CCA17B00B9500A1E07E /* OBGradientView.h */,
 				77F90CC817B00B8400A1E07E /* OBGradientView.m */,
+				77F90CD417B06CE900A1E07E /* GTMBase64.h */,
+				77F90CD517B06CE900A1E07E /* GTMBase64.m */,
+				77F90CD717B06D8B00A1E07E /* GTMDefines.h */,
 			);
 			name = ControlClasses;
 			sourceTree = "<group>";
@@ -314,6 +324,8 @@
 				778109E71791DDDB003DF414 /* CardInfo.m */,
 				776FDC041792FA2A0068E528 /* SingletonGeneric.h */,
 				776FDC051792FA2A0068E528 /* SingletonGeneric.m */,
+				77F90CD117B06B5300A1E07E /* AppHelper.h */,
+				77F90CD217B06B5300A1E07E /* AppHelper.m */,
 			);
 			name = HelperClasses;
 			sourceTree = "<group>";
@@ -419,6 +431,8 @@
 				77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */,
 				77F90CCD17B00BC800A1E07E /* GradientButton.m in Sources */,
 				77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */,
+				77F90CD317B06B5300A1E07E /* AppHelper.m in Sources */,
+				77F90CD617B06CE900A1E07E /* GTMBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

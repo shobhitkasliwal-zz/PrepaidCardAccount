@@ -15,6 +15,7 @@
 #import "Terms.h"
 #import "Faq.h"
 #import "Logout.h"
+#import "UIColor+Hex.h"
 
 @interface VCHome ()
 @property (nonatomic, strong)NSArray *dsTableViewRows;
@@ -48,7 +49,13 @@ int CurrentScrollViewPage;
                         [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
                         [NSArray arrayWithObjects:@"Transactions", @"TransactionsLogo.png", nil],
                         nil];
-   
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"3F3F3F"], [UIColor colorWithHexString:@"9F9F9F"], nil];
+    _uiScrollViewParent.colors = colors;
+    _uiScrollViewParent.layer.cornerRadius = 8; // if you like rounded corners
+    _uiScrollViewParent.layer.shadowOffset = CGSizeMake(-15, 20);
+    _uiScrollViewParent.layer.shadowRadius = 5;
+    _uiScrollViewParent.layer.shadowOpacity = 0.5;
+
     _tableActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     
     //self.activityIndicatorView = activity;
@@ -219,8 +226,15 @@ int CurrentScrollViewPage;
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
         [self.uiScrollCard addSubview:newPageView];
+        [_uiScrollCard addConstraint:[NSLayoutConstraint constraintWithItem:newPageView
+                                                               attribute:NSLayoutAttributeRight
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:_uiScrollCard
+                                                               attribute:NSLayoutAttributeRight
+                                                              multiplier:1.0
+                                                                constant:10]];
+        //newPageView.translatesAutoresizingMaskIntoConstraints = NO;
         
-   
     }
 }
 - (void)purgePage:(NSInteger)page {

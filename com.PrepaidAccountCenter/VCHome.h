@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OBGradientView.h"
 @interface VCHome : UIViewController < UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *uiScrollCard;
 @property (weak, nonatomic) IBOutlet UIPageControl *uiPageControlScrollCard;
@@ -18,5 +18,6 @@
 -(IBAction)contactUSButtonClicked:(id)sender;
 -(IBAction)faqButtonClicked:(id)sender;
 -(IBAction)termsButtonClicked:(id)sender;
+@property (weak, nonatomic) IBOutlet OBGradientView *uiScrollViewParent;
 
 @end

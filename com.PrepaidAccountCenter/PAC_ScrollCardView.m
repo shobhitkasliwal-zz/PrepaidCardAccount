@@ -21,6 +21,7 @@
                                                              owner:self
                                                            options:nil];
         UIView *_myView = [nibContents objectAtIndex:0];
+        
         [self addSubview: _myView];
         
     }

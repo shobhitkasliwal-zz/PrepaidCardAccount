@@ -7,6 +7,7 @@
 //
 
 #import "PACAppDelegate.h"
+#import "LoginViewController.h"
 
 @implementation PACAppDelegate
 
@@ -41,6 +42,20 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void) LogoutUser
+{
+    LoginViewController* login = [[LoginViewController alloc]init];
+    [self.window makeKeyAndVisible];
+    self.window.rootViewController = nil;
+	self.window.rootViewController = login;
+    UIStoryboard *LoginStoryBoard_iphone =[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    UIViewController *userviewsVC =[LoginStoryBoard_iphone instantiateViewControllerWithIdentifier:@"LoginSBView"];
+    userviewsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self.window.rootViewController presentViewController:userviewsVC animated:YES completion:nil];
+	
 }
 
 @end

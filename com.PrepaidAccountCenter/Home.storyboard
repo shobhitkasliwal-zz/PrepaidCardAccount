@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z1t-Sc-deA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z1t-Sc-deA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -43,28 +43,40 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6b-SB-8hH">
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmN-Ux-W1D">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Bi-tn-oPr" customClass="OBGradientView">
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmN-Ux-W1D">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" type="user" id="2iu-Bn-nrd"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JpH-qd-eV5" id="9iY-0L-8hr"/>
+                                                </connections>
+                                            </scrollView>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="neu-j0-N5n">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" type="user" id="d69-64-ZLp"/>
+                                                </constraints>
+                                            </pageControl>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="85" type="user" id="2iu-Bn-nrd"/>
+                                            <constraint firstItem="PmN-Ux-W1D" firstAttribute="trailing" secondItem="9Bi-tn-oPr" secondAttribute="trailing" type="default" id="KTz-co-BuR"/>
+                                            <constraint firstItem="PmN-Ux-W1D" firstAttribute="leading" secondItem="9Bi-tn-oPr" secondAttribute="leading" type="user" id="jcW-8N-sPf"/>
+                                            <constraint firstItem="PmN-Ux-W1D" firstAttribute="top" secondItem="9Bi-tn-oPr" secondAttribute="top" type="default" id="tbL-bd-4Kv"/>
+                                            <constraint firstItem="neu-j0-N5n" firstAttribute="centerX" secondItem="PmN-Ux-W1D" secondAttribute="centerX" type="default" id="u3B-Q7-OaW"/>
+                                            <constraint firstItem="neu-j0-N5n" firstAttribute="top" secondItem="9Bi-tn-oPr" secondAttribute="top" constant="79" id="wvr-tK-sNT"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="delegate" destination="JpH-qd-eV5" id="9iY-0L-8hr"/>
-                                        </connections>
-                                    </scrollView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="neu-j0-N5n">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" type="user" id="d69-64-ZLp"/>
-                                        </constraints>
-                                    </pageControl>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.23529413339999999" blue="0.51372551919999998" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstItem="neu-j0-N5n" firstAttribute="centerX" secondItem="PmN-Ux-W1D" secondAttribute="centerX" type="default" id="7qV-gw-euE"/>
-                                    <constraint firstItem="PmN-Ux-W1D" firstAttribute="leading" secondItem="A6b-SB-8hH" secondAttribute="leading" type="default" id="TCY-SL-tEn"/>
-                                    <constraint firstItem="PmN-Ux-W1D" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="top" constant="5" type="user" id="Vh5-o4-i7m"/>
-                                    <constraint firstItem="neu-j0-N5n" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="top" constant="91" id="k4u-dt-FBO"/>
-                                    <constraint firstItem="PmN-Ux-W1D" firstAttribute="trailing" secondItem="A6b-SB-8hH" secondAttribute="trailing" type="default" id="sFx-8g-2Bt"/>
+                                    <constraint firstItem="9Bi-tn-oPr" firstAttribute="leading" secondItem="A6b-SB-8hH" secondAttribute="leading" constant="10" type="user" id="A5c-V6-7Ty"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Bi-tn-oPr" secondAttribute="bottom" constant="12" id="S2Z-5P-bD0"/>
+                                    <constraint firstItem="9Bi-tn-oPr" firstAttribute="centerX" secondItem="A6b-SB-8hH" secondAttribute="centerX" type="user" id="c1t-MW-yWg"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Bi-tn-oPr" secondAttribute="trailing" constant="10" type="user" id="gsw-79-lmj"/>
                                     <constraint firstAttribute="height" constant="100" type="user" id="uKJ-Dd-7eK"/>
+                                    <constraint firstItem="9Bi-tn-oPr" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="top" constant="9" id="zrD-Jy-U2z"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNg-Tb-nuW">
@@ -163,6 +175,7 @@
                         <outlet property="uiPageControlScrollCard" destination="neu-j0-N5n" id="y8S-Tq-Uxy"/>
                         <outlet property="uiPageMainView" destination="R0W-5X-auq" id="T2e-Z4-6Cq"/>
                         <outlet property="uiScrollCard" destination="PmN-Ux-W1D" id="tkT-AO-EQo"/>
+                        <outlet property="uiScrollViewParent" destination="9Bi-tn-oPr" id="86P-xL-L9Y"/>
                         <segue destination="8Kz-Lv-PDS" kind="push" identifier="segPinManagement" id="sc4-tY-mpY"/>
                         <segue destination="JkM-Qo-Sva" kind="push" identifier="segUpdateProfile" id="Uah-Xe-qFy"/>
                         <segue destination="skd-fJ-GE1" kind="push" identifier="segMyCardAccount" id="2XN-Bt-JPM"/>
@@ -699,7 +712,7 @@
                 <relationship kind="outlet" name="lblCardNumber" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblCardStatus" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tblOptions" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="uiHeader" candidateClass="UIView"/>
+                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
             </relationships>
         </class>
         <class className="TransactionsTbl_CustomCell" superclassName="UITableViewCell">
@@ -724,6 +737,7 @@
                 <relationship kind="outlet" name="uiPageControlScrollCard" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="uiPageMainView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="uiScrollCard" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="uiScrollViewParent" candidateClass="OBGradientView"/>
             </relationships>
         </class>
     </classes>
@@ -733,6 +747,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AXO-Uu-ICd"/>
+        <segue reference="dXs-Ri-vPh"/>
     </inferredMetricsTieBreakers>
 </document>

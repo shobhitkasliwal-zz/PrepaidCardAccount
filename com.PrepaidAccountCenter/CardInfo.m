@@ -19,7 +19,7 @@ self = [super init];
     return self;
 }
 
-- (id)initWithCardNumber:(NSString *)cardNum andExpiration:(NSString *)expiration andBalance:(NSString *)balance andStatus: (NSString*) status
+- (id)initWithCardNumber:(NSString *)cardNum andExpiration:(NSString *)expiration andBalance:(NSString *)balance andStatus: (NSString*) status andProxy:(NSString*)proxy andWCSClientID:(NSString*) WCSClientID
 {
     
     self = [super init];
@@ -27,6 +27,8 @@ self = [super init];
     _cardBalance = balance;
     _cardExpiration = expiration;
     _cardStatus = status;
+    _cardProxy = proxy;
+    _WcsClientID = WCSClientID;
     return self;
 }
 
