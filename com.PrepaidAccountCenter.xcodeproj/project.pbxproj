@@ -25,6 +25,8 @@
 		7736E2E617B0A35500CA1E3C /* LeftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7736E2E517B0A35500CA1E3C /* LeftArrow.png */; };
 		7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7736E2E717B0A37C00CA1E3C /* RightArrow.png */; };
 		77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */; };
+		7751379717B2BF91007F2679 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7751379617B2BF91007F2679 /* iCarousel.m */; };
+		7751379917B2C617007F2679 /* MyCardAccountSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7751379817B2C617007F2679 /* MyCardAccountSubView.xib */; };
 		776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC051792FA2A0068E528 /* SingletonGeneric.m */; };
 		776FDC091793018B0068E528 /* Transactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC081793018B0068E528 /* Transactions.m */; };
 		776FDC0C179329750068E528 /* MyCardAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0B179329740068E528 /* MyCardAccount.m */; };
@@ -82,6 +84,9 @@
 		7736E2E717B0A37C00CA1E3C /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
 		77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsTbl_CustomCell.h; sourceTree = "<group>"; };
 		77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsTbl_CustomCell.m; sourceTree = "<group>"; };
+		7751379517B2BF91007F2679 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		7751379617B2BF91007F2679 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		7751379817B2C617007F2679 /* MyCardAccountSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCardAccountSubView.xib; sourceTree = "<group>"; };
 		776FDC041792FA2A0068E528 /* SingletonGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonGeneric.h; sourceTree = "<group>"; };
 		776FDC051792FA2A0068E528 /* SingletonGeneric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonGeneric.m; sourceTree = "<group>"; };
 		776FDC071793018B0068E528 /* Transactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transactions.h; sourceTree = "<group>"; };
@@ -233,6 +238,8 @@
 		775B25E417AF7674002FAABE /* ControlClasses */ = {
 			isa = PBXGroup;
 			children = (
+				7751379517B2BF91007F2679 /* iCarousel.h */,
+				7751379617B2BF91007F2679 /* iCarousel.m */,
 				77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */,
 				77F90CCE17B00BD900A1E07E /* UIColor+Hex.h */,
 				77F90CCB17B00BB800A1E07E /* GradientButton.h */,
@@ -289,6 +296,7 @@
 				778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */,
 				770E6A291792511800D56950 /* PAC_ScrollCardView.h */,
 				770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */,
+				7751379817B2C617007F2679 /* MyCardAccountSubView.xib */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -405,6 +413,7 @@
 				77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */,
 				7736E2E617B0A35500CA1E3C /* LeftArrow.png in Resources */,
 				7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */,
+				7751379917B2C617007F2679 /* MyCardAccountSubView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +446,7 @@
 				77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */,
 				77F90CD317B06B5300A1E07E /* AppHelper.m in Sources */,
 				77F90CD617B06CE900A1E07E /* GTMBase64.m in Sources */,
+				7751379717B2BF91007F2679 /* iCarousel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

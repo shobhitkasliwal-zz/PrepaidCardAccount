@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "OBGradientView.h"
+#import "iCarousel.h"
 
-@interface MyCardAccount : UIViewController
+@interface MyCardAccount : UIViewController <iCarouselDataSource, iCarouselDelegate>
 - (IBAction)LogoutClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet OBGradientView *uiViewHeader;
+@property (nonatomic, strong) IBOutlet iCarousel *carousel;
 @end

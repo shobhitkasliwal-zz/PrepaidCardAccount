@@ -691,13 +691,27 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vq9-JS-kvl" customClass="OBGradientView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVn-vQ-0Jw" customClass="iCarousel">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="245" type="user" id="auz-DO-Bol"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="skd-fJ-GE1" id="Gpc-dj-VKa"/>
+                                    <outlet property="delegate" destination="skd-fJ-GE1" id="sSI-8m-JLJ"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vq9-JS-kvl" firstAttribute="top" secondItem="UE1-4h-aOb" secondAttribute="top" type="user" id="Ui4-Pl-uV0"/>
+                            <constraint firstAttribute="bottom" secondItem="DVn-vQ-0Jw" secondAttribute="bottom" constant="86" type="user" id="Wih-cd-gyD"/>
+                            <constraint firstAttribute="trailing" secondItem="DVn-vQ-0Jw" secondAttribute="trailing" type="user" id="eSF-V6-4ed"/>
                             <constraint firstItem="Vq9-JS-kvl" firstAttribute="trailing" secondItem="UE1-4h-aOb" secondAttribute="trailing" type="default" id="fLS-0x-bdd"/>
                             <constraint firstItem="Vq9-JS-kvl" firstAttribute="leading" secondItem="UE1-4h-aOb" secondAttribute="leading" type="default" id="mY4-ct-pad"/>
-                            <constraint firstAttribute="bottom" secondItem="Vq9-JS-kvl" secondAttribute="bottom" constant="376" id="tqW-Ou-xp7"/>
+                            <constraint firstItem="DVn-vQ-0Jw" firstAttribute="leading" secondItem="UE1-4h-aOb" secondAttribute="leading" type="user" id="p7X-pC-mku"/>
+                            <constraint firstItem="DVn-vQ-0Jw" firstAttribute="top" secondItem="UE1-4h-aOb" secondAttribute="top" constant="85" type="user" id="pRf-ax-a2l"/>
+                            <constraint firstAttribute="bottom" secondItem="Vq9-JS-kvl" secondAttribute="bottom" constant="343" id="ui1-p5-dSJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o4s-oF-m2i">
@@ -708,6 +722,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="carousel" destination="DVn-vQ-0Jw" id="WhG-dw-ysT"/>
                         <outlet property="uiViewHeader" destination="Vq9-JS-kvl" id="NSk-TD-wdg"/>
                         <segue destination="NlD-RI-4Lq" kind="modal" identifier="MyCardAccountLogout" modalTransitionStyle="flipHorizontal" id="xFM-Bl-zVE"/>
                     </connections>
@@ -760,6 +775,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MyCardAccount.h"/>
             <relationships>
                 <relationship kind="action" name="LogoutClick:"/>
+                <relationship kind="outlet" name="carousel" candidateClass="iCarousel"/>
                 <relationship kind="outlet" name="uiViewHeader" candidateClass="OBGradientView"/>
             </relationships>
         </class>
@@ -813,6 +829,13 @@
                 <relationship kind="outlet" name="uiScrollViewParent" candidateClass="OBGradientView"/>
             </relationships>
         </class>
+        <class className="iCarousel" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iCarousel.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -820,6 +843,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6ik-PN-JF9"/>
+        <segue reference="xFM-Bl-zVE"/>
     </inferredMetricsTieBreakers>
 </document>

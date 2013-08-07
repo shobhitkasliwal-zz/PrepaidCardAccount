@@ -67,16 +67,16 @@
    // [self.view setFrame:CGRectMake(0,0,320,460)];
 }
 
--(NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-
--(BOOL) shouldAutorotate
-{
-    return YES;
-}
+//-(NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationMaskPortrait;
+//}
+//
+//
+//-(BOOL) shouldAutorotate
+//{
+//    return YES;
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -123,7 +123,7 @@
     _lblText = [[UILabel alloc] init];
     _lblText.textAlignment = NSTextAlignmentCenter;
     _lblText.numberOfLines = 0 ;
-    _lblText.text =[NSString stringWithFormat:@"You are being securely logging in. \nThanks for your patience."];
+    _lblText.text =[NSString stringWithFormat:@"You are being securely logging in. \nThank you for your patience.\n\n\n"];
     _lblText.backgroundColor = [UIColor clearColor];
     _lblText.textColor = [UIColor whiteColor];
     [_lblText sizeToFit];
@@ -176,7 +176,7 @@
                     }
                     completion:^(BOOL finished) {
                         
-                        bool isTest = false;
+                        bool isTest = true;
                         
                         if (!isTest){
                         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
