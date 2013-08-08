@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="JpH-qd-eV5" customClass="VCHome" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xlq-08-GjJ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-5X-auq">
@@ -43,38 +43,28 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6b-SB-8hH">
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Bi-tn-oPr" customClass="OBGradientView">
-                                        <subviews>
-                                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmN-Ux-W1D">
-                                                <connections>
-                                                    <outlet property="delegate" destination="JpH-qd-eV5" id="9iY-0L-8hr"/>
-                                                </connections>
-                                            </scrollView>
-                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="neu-j0-N5n">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="10" type="user" id="d69-64-ZLp"/>
-                                                </constraints>
-                                            </pageControl>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="neu-j0-N5n">
                                         <constraints>
-                                            <constraint firstItem="PmN-Ux-W1D" firstAttribute="trailing" secondItem="9Bi-tn-oPr" secondAttribute="trailing" type="default" id="KTz-co-BuR"/>
-                                            <constraint firstItem="PmN-Ux-W1D" firstAttribute="top" secondItem="9Bi-tn-oPr" secondAttribute="top" constant="5" id="R5P-8l-Rig"/>
-                                            <constraint firstItem="PmN-Ux-W1D" firstAttribute="leading" secondItem="9Bi-tn-oPr" secondAttribute="leading" type="user" id="jcW-8N-sPf"/>
-                                            <constraint firstItem="PmN-Ux-W1D" firstAttribute="bottom" secondItem="9Bi-tn-oPr" secondAttribute="bottom" type="default" id="leq-iS-Xe3"/>
-                                            <constraint firstItem="neu-j0-N5n" firstAttribute="top" secondItem="9Bi-tn-oPr" secondAttribute="top" constant="80" id="rhO-sl-Ivl"/>
-                                            <constraint firstItem="neu-j0-N5n" firstAttribute="centerX" secondItem="PmN-Ux-W1D" secondAttribute="centerX" type="default" id="u3B-Q7-OaW"/>
+                                            <constraint firstAttribute="height" constant="10" type="user" id="d69-64-ZLp"/>
                                         </constraints>
+                                    </pageControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gC-lc-y2w" customClass="iCarousel">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="JpH-qd-eV5" id="pSV-pk-S0p"/>
+                                            <outlet property="delegate" destination="JpH-qd-eV5" id="hQi-uE-XKo"/>
+                                        </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.23529413339999999" blue="0.51372551919999998" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="9Bi-tn-oPr" secondAttribute="bottom" constant="11" id="6nG-GE-Lhx"/>
-                                    <constraint firstItem="9Bi-tn-oPr" firstAttribute="leading" secondItem="A6b-SB-8hH" secondAttribute="leading" constant="10" type="user" id="A5c-V6-7Ty"/>
-                                    <constraint firstItem="9Bi-tn-oPr" firstAttribute="centerX" secondItem="A6b-SB-8hH" secondAttribute="centerX" type="user" id="c1t-MW-yWg"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Bi-tn-oPr" secondAttribute="trailing" constant="10" type="user" id="gsw-79-lmj"/>
+                                    <constraint firstAttribute="trailing" secondItem="7gC-lc-y2w" secondAttribute="trailing" constant="20" type="user" id="4Qd-tb-byP"/>
+                                    <constraint firstItem="neu-j0-N5n" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="top" constant="89" type="user" id="6zf-su-Bq2"/>
+                                    <constraint firstItem="neu-j0-N5n" firstAttribute="top" secondItem="7gC-lc-y2w" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="AiK-Kn-fuW"/>
+                                    <constraint firstItem="7gC-lc-y2w" firstAttribute="leading" secondItem="A6b-SB-8hH" secondAttribute="leading" constant="20" type="user" id="Gbf-nn-ua5"/>
+                                    <constraint firstItem="7gC-lc-y2w" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="top" constant="9" id="d95-p6-JE1"/>
                                     <constraint firstAttribute="height" constant="100" type="user" id="uKJ-Dd-7eK"/>
-                                    <constraint firstItem="9Bi-tn-oPr" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="top" constant="9" id="zrD-Jy-U2z"/>
+                                    <constraint firstItem="7gC-lc-y2w" firstAttribute="centerX" secondItem="neu-j0-N5n" secondAttribute="centerX" type="default" id="yov-o5-Haw"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNg-Tb-nuW">
@@ -159,7 +149,6 @@
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="trailing" secondItem="xlq-08-GjJ" secondAttribute="trailing" type="default" id="e4b-XQ-Kgn"/>
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="default" id="kSK-Up-ql1"/>
                             <constraint firstItem="A6b-SB-8hH" firstAttribute="top" secondItem="xlq-08-GjJ" secondAttribute="top" type="user" id="qxl-Dq-ogI"/>
-                            <constraint firstAttribute="bottom" secondItem="R0W-5X-auq" secondAttribute="bottom" constant="95" type="user" id="t8w-yb-T5D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="G8n-xb-ITd">
@@ -170,10 +159,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="CardScrollView" destination="7gC-lc-y2w" id="dBl-B3-1ao"/>
                         <outlet property="uiPageControlScrollCard" destination="neu-j0-N5n" id="y8S-Tq-Uxy"/>
                         <outlet property="uiPageMainView" destination="R0W-5X-auq" id="T2e-Z4-6Cq"/>
-                        <outlet property="uiScrollCard" destination="PmN-Ux-W1D" id="tkT-AO-EQo"/>
-                        <outlet property="uiScrollViewParent" destination="9Bi-tn-oPr" id="86P-xL-L9Y"/>
+                        <outlet property="vw_ScrollWrapper" destination="A6b-SB-8hH" id="Yyb-MJ-SJ6"/>
                         <segue destination="8Kz-Lv-PDS" kind="push" identifier="segPinManagement" id="sc4-tY-mpY"/>
                         <segue destination="JkM-Qo-Sva" kind="push" identifier="segUpdateProfile" id="Uah-Xe-qFy"/>
                         <segue destination="skd-fJ-GE1" kind="push" identifier="segMyCardAccount" id="2XN-Bt-JPM"/>
@@ -190,7 +179,7 @@
             <objects>
                 <viewController id="JkM-Qo-Sva" customClass="UpdateProfile" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tz0-lJ-Bvf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="First Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMn-TC-Bme">
@@ -371,7 +360,7 @@
             <objects>
                 <viewController id="NlD-RI-4Lq" customClass="Logout" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V5f-an-efr">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="thank you for visiting the " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1Y-FZ-4Jg">
@@ -486,7 +475,7 @@
             <objects>
                 <viewController id="8Kz-Lv-PDS" customClass="PinManagement" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AXM-wZ-Jcn">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -510,7 +499,7 @@
             <objects>
                 <viewController id="DCp-5A-cnZ" customClass="Transactions" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TyV-ot-n6f">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlW-gz-ndJ">
@@ -653,7 +642,6 @@
                             <constraint firstItem="ELi-O2-NGF" firstAttribute="leading" secondItem="TyV-ot-n6f" secondAttribute="leading" type="user" id="0rc-R1-c03"/>
                             <constraint firstItem="ELi-O2-NGF" firstAttribute="top" secondItem="I97-jr-nRK" secondAttribute="bottom" constant="10" type="user" id="B6f-He-7DS"/>
                             <constraint firstItem="TlW-gz-ndJ" firstAttribute="top" secondItem="ELi-O2-NGF" secondAttribute="bottom" constant="10" type="user" id="Hp1-pj-s7l"/>
-                            <constraint firstItem="TlW-gz-ndJ" firstAttribute="bottom" secondItem="TyV-ot-n6f" secondAttribute="bottom" type="user" id="JCZ-WB-CSl"/>
                             <constraint firstItem="ELi-O2-NGF" firstAttribute="trailing" secondItem="TyV-ot-n6f" secondAttribute="trailing" type="user" id="JUd-Aw-Oti"/>
                             <constraint firstItem="ELi-O2-NGF" firstAttribute="centerX" secondItem="I97-jr-nRK" secondAttribute="centerX" type="user" id="XLJ-L4-6lH"/>
                             <constraint firstAttribute="trailing" secondItem="I97-jr-nRK" secondAttribute="trailing" constant="10" type="user" id="Zoa-nh-Vsh"/>
@@ -685,7 +673,7 @@
             <objects>
                 <viewController id="skd-fJ-GE1" customClass="MyCardAccount" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UE1-4h-aOb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vq9-JS-kvl" customClass="OBGradientView">
@@ -705,7 +693,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vq9-JS-kvl" firstAttribute="top" secondItem="UE1-4h-aOb" secondAttribute="top" type="user" id="Ui4-Pl-uV0"/>
-                            <constraint firstAttribute="bottom" secondItem="DVn-vQ-0Jw" secondAttribute="bottom" constant="86" type="user" id="Wih-cd-gyD"/>
                             <constraint firstAttribute="trailing" secondItem="DVn-vQ-0Jw" secondAttribute="trailing" type="user" id="eSF-V6-4ed"/>
                             <constraint firstItem="Vq9-JS-kvl" firstAttribute="trailing" secondItem="UE1-4h-aOb" secondAttribute="trailing" type="default" id="fLS-0x-bdd"/>
                             <constraint firstItem="Vq9-JS-kvl" firstAttribute="leading" secondItem="UE1-4h-aOb" secondAttribute="leading" type="default" id="mY4-ct-pad"/>
@@ -823,10 +810,15 @@
                 <relationship kind="action" name="contactUSButtonClicked:"/>
                 <relationship kind="action" name="faqButtonClicked:"/>
                 <relationship kind="action" name="termsButtonClicked:"/>
+                <relationship kind="outlet" name="CardScrollView" candidateClass="iCarousel"/>
+                <relationship kind="outlet" name="lbl_SC_Balance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_SC_CardNumber" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_SC_Expiration" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_SC_Status" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uiPageControlScrollCard" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="uiPageMainView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="uiScrollCard" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="uiScrollViewParent" candidateClass="OBGradientView"/>
+                <relationship kind="outlet" name="vw_SC_View" candidateClass="OBGradientView"/>
+                <relationship kind="outlet" name="vw_ScrollWrapper" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="iCarousel" superclassName="UIView">
@@ -840,9 +832,9 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xFM-Bl-zVE"/>
+        <segue reference="dXs-Ri-vPh"/>
     </inferredMetricsTieBreakers>
 </document>

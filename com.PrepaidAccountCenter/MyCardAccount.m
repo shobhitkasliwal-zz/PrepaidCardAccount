@@ -86,7 +86,7 @@
         view.contentMode = UIViewContentModeCenter;
         label = [[UILabel alloc] initWithFrame:view.bounds];
         label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = UITextAlignmentCenter;
+      //  label.textAlignment = UITextAlignmentCenter;
         label.font = [label.font fontWithSize:50];
         label.tag = 1;
         [view addSubview:label];

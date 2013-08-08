@@ -18,7 +18,6 @@
 		77004BA7176239F300745E2B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77004BA6176239F300745E2B /* Default-568h@2x.png */; };
 		77004BAA176239F300745E2B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77004BA8176239F300745E2B /* MainStoryboard_iPhone.storyboard */; };
 		77004BBC17628AD700745E2B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77004BBB17628AD700745E2B /* LoginViewController.m */; };
-		770E6A2B1792511800D56950 /* PAC_ScrollCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */; };
 		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
 		7730CC9417AD4D6400C35DD5 /* Logout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7730CC9317AD4D6400C35DD5 /* Logout.m */; };
@@ -74,8 +73,6 @@
 		77004BA9176239F300745E2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		77004BBA17628AD700745E2B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		77004BBB17628AD700745E2B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		770E6A291792511800D56950 /* PAC_ScrollCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAC_ScrollCardView.h; sourceTree = "<group>"; };
-		770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAC_ScrollCardView.m; sourceTree = "<group>"; };
 		770E6A2C17927E2600D56950 /* CardScrollBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardScrollBG.png; sourceTree = "<group>"; };
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7730CC9217AD4D6400C35DD5 /* Logout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logout.h; sourceTree = "<group>"; };
@@ -294,8 +291,6 @@
 				77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */,
 				77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */,
 				778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */,
-				770E6A291792511800D56950 /* PAC_ScrollCardView.h */,
-				770E6A2A1792511800D56950 /* PAC_ScrollCardView.m */,
 				7751379817B2C617007F2679 /* MyCardAccountSubView.xib */,
 			);
 			name = SubViews;
@@ -429,7 +424,6 @@
 				77004BBC17628AD700745E2B /* LoginViewController.m in Sources */,
 				77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */,
 				778109E81791DDDB003DF414 /* CardInfo.m in Sources */,
-				770E6A2B1792511800D56950 /* PAC_ScrollCardView.m in Sources */,
 				776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */,
 				776FDC091793018B0068E528 /* Transactions.m in Sources */,
 				776FDC0C179329750068E528 /* MyCardAccount.m in Sources */,

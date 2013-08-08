@@ -10,7 +10,7 @@
 #import "CardInfo.h"
 
 @interface SingletonGeneric : NSObject
-@property (nonatomic, strong) NSArray *UserCardInformation;
+@property (nonatomic, strong) NSMutableArray *UserCardInformation;
 @property (nonatomic,strong)CardInfo *SelectedCard;
 
 +(SingletonGeneric*) UserCardInfo;

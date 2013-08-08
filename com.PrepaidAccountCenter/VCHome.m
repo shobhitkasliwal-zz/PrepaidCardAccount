@@ -9,27 +9,36 @@
 #import "VCHome.h"
 #import "CardInfo.h"
 #import "SingletonGeneric.h"
-#import "PAC_ScrollCardView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ContactUs.h"
 #import "Terms.h"
 #import "Faq.h"
 #import "Logout.h"
 #import "UIColor+Hex.h"
+#import "OBGradientView.h"
 
 @interface VCHome ()
 @property (nonatomic, strong)NSArray *dsTableViewRows;
-@property (nonatomic, strong) NSArray *pageCardInformation;
-@property (nonatomic, strong) NSMutableArray *pageViews;
+@property (nonatomic, strong) NSMutableArray *pageCardInformation;
+
 @property (nonatomic,strong) UIActivityIndicatorView *tableActivityIndicator;
-- (void)loadVisiblePages;
-- (void)loadPage:(NSInteger)page;
-- (void)purgePage:(NSInteger)page;
+
 
 @end
 int CurrentScrollViewPage;
 @implementation VCHome
 
+- (void)awakeFromNib
+{
+    //set up data
+    //your carousel should always be driven by an array of
+    //data of some kind - don't store data in your item views
+    //or the recycling mechanism will destroy your data once
+    //your item views move off-screen
+    
+      self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,18 +52,14 @@ int CurrentScrollViewPage;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _CardScrollView.type = iCarouselTypeCylinder;
     _dsTableViewRows = [NSArray arrayWithObjects:
                         [NSArray arrayWithObjects:@"My Card Account", @"MyCardAccount.png", nil],
                         [NSArray arrayWithObjects:@"Update Profile", @"UpdateProfileLogo.png", nil],
                         [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
                         [NSArray arrayWithObjects:@"Transactions", @"TransactionsLogo.png", nil],
                         nil];
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"045FB4"], [UIColor colorWithHexString:@"FFFFFF"], nil];
-    _uiScrollViewParent.colors = colors;
-    _uiScrollViewParent.layer.cornerRadius = 8; // if you like rounded corners
-    _uiScrollViewParent.layer.shadowOffset = CGSizeMake(-15, 20);
-    _uiScrollViewParent.layer.shadowRadius = 5;
-    _uiScrollViewParent.layer.shadowOpacity = 0.5;
+    
 
     _tableActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     
@@ -74,13 +79,6 @@ int CurrentScrollViewPage;
                                    target:nil
                                    action:nil];
     self.navigationItem.backBarButtonItem=backButton;
-    
-    
-    //_uiScrollCard.translatesAutoresizingMaskIntoConstraints = NO;
-    self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
-    // setting the selected Card to 0 by Default
-    [[SingletonGeneric UserCardInfo]SetSelectedCardInfo:0];
-    
     NSInteger pageCount = self.pageCardInformation.count;
     
     if(pageCount ==1)
@@ -91,18 +89,8 @@ int CurrentScrollViewPage;
     // Set up the page control
     self.uiPageControlScrollCard.currentPage = 0;
     self.uiPageControlScrollCard.numberOfPages = pageCount;
-    
-    // Set up the array to hold the views for each page
-    self.pageViews = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < pageCount; ++i) {
-        [self.pageViews addObject:[NSNull null]];
-    }
-    
-    _uiScrollCard.frame = CGRectMake(0, 5, self.view.frame.size.width, 75);
-    
-    // Set up the content size of the scroll view
-    CGSize pagesScrollViewSize = _uiScrollCard.frame.size;
-    _uiScrollCard.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageCardInformation.count, pagesScrollViewSize.height);
+   
+   
 }
 
 
@@ -112,9 +100,8 @@ int CurrentScrollViewPage;
     
     [_uiPageMainView deselectRowAtIndexPath:[_uiPageMainView indexPathForSelectedRow] animated:YES];
    
-    
-    // Load the initial set of pages that are on screen
-    [self loadVisiblePages];
+    //_vw_SC_View.frame = _vw_ScrollWrapper.frame;
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -183,102 +170,74 @@ int CurrentScrollViewPage;
     cell.textLabel.minimumScaleFactor = 0.6;
 }
 
-- (void)loadVisiblePages {
-    // First, determine which page is currently visible
-    CGFloat pageWidth = self.uiScrollCard.frame.size.width;
-    NSInteger page = (NSInteger)floor((self.uiScrollCard.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
-    
-    // Update the page control
-    self.uiPageControlScrollCard.currentPage = page;
-    
-    // Work out which pages you want to load
-    NSInteger firstPage = page - 1;
-    NSInteger lastPage = page + 1;
-    
-    // Purge anything before the first page
-    for (NSInteger i=0; i<firstPage; i++) {
-        [self purgePage:i];
-    }
-    for (NSInteger i=firstPage; i<lastPage; i++) {
-        [self loadPage:i];
-    }
-    for (NSInteger i=lastPage+1; i<self.pageCardInformation.count; i++) {
-        [self purgePage:i];
-    }
-}
-- (void)loadPage:(NSInteger)page {
-    if (page < 0 || page >= self.pageCardInformation.count) {
-        // If it's outside the range of what we have to display, then do nothing
-        return;
-    }
-    //_uiScrollCard.translatesAutoresizingMaskIntoConstraints = NO;
-  //  NSLog(@"%@", NSStringFromCGRect(_uiScrollCard.frame));
-    // Load an individual page, first checking if you've already loaded it
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull*)pageView == [NSNull null]) {
-        CGRect frame = self.uiScrollCard.bounds;
-        frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0.0f;
-        
-        PAC_ScrollCardView *newPageView = [[PAC_ScrollCardView alloc] init];
-        CardInfo *cinfo = [self.pageCardInformation objectAtIndex:page];
-        [newPageView PopulateScrollCardView:cinfo];
-        newPageView.contentMode = UIViewContentModeScaleAspectFit;
-        newPageView.frame = frame;
-        [self.uiScrollCard addSubview:newPageView];
-        
-        //newPageView.translatesAutoresizingMaskIntoConstraints = NO;
-        
-    }
-}
-- (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= self.pageCardInformation.count) {
-        // If it's outside the range of what you have to display, then do nothing
-        return;
-    }
-    
-    // Remove a page from the scroll view and reset the container array
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull*)pageView != [NSNull null]) {
-        [pageView removeFromSuperview];
-        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
-    }
-}
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // Load the pages that are now on screen
-    [self loadVisiblePages];
-}
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [self ResetScrollView];
-}
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (!decelerate) {
-        
-        [self ResetScrollView];
-        
-    }
-}
 
-- (void) ResetScrollView
+
+
+- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
+    //return the total number of items in the carousel
+    return [_pageCardInformation count];
+}
+- (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
+{
+//NSString* str = [NSString stringWithFormat:@"Item Index:%d",[carousel currentItemIndex]];
+ //   UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    //[alert show];
     
-    CGFloat pageWidth = self.uiScrollCard.bounds.size.width;
-    int page = floor((self.uiScrollCard.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    self.uiPageControlScrollCard.currentPage = page;
-    CGRect frame = self.uiScrollCard.frame;
-    frame.origin.x = frame.size.width * (self.uiPageControlScrollCard.currentPage);
-    frame.origin.y = 0;
-    [self.uiScrollCard scrollRectToVisible:frame animated:YES];
-    [[SingletonGeneric UserCardInfo] SetSelectedCardInfo:page];
-    if (page != CurrentScrollViewPage){
-        [_tableActivityIndicator startAnimating];
-        [NSTimer scheduledTimerWithTimeInterval:1.0 target: self
-                                                          selector: @selector(stopTableViewAnimation) userInfo: nil repeats: NO];
+}
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
+{
+    //UILabel *label = nil;
+    
+    //create new view if no view is available for recycling
+    if (view == nil)
+    {
+        //  view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)];
+        //((UIImageView *)view).image = [UIImage imageNamed:@"page.png"];
+        view =[[[NSBundle mainBundle] loadNibNamed:@"PAC_ScrollCardView" owner:self options:nil] lastObject];
+        view.contentMode = UIViewContentModeCenter;
+       
+    
     }
-    CurrentScrollViewPage = page;
+    //set item label
+    //remember to always set any properties of your carousel item
+    //views outside of the `if (view == nil) {...}` check otherwise
+    //you'll get weird issues with carousel item content appearing
+    //in the wrong place in the carousel
+    //label.text = [_items[index] stringValue];
+    CardInfo* ci = _pageCardInformation[index];
+    [self PopulateScrollCardView:ci];
+    
+    //_vw_SC_View.frame = carousel.frame;
+  //  carousel.frame = _vw_ScrollWrapper.frame;
+    return view;
+}
+
+- (void) PopulateScrollCardView: (CardInfo*)card
+{
+    //_vw_SC_View.translatesAutoresizingMaskIntoConstraints = NO;
+    //[_vw_SC_View setFrame:CGRectMake(0, 0, _vw_ScrollWrapper.bounds.size.width, _vw_SC_View.bounds.size.height)];
+ 
+   
+    
+    NSMutableString *cardNumber = [NSMutableString stringWithString:[card.cardNumber substringFromIndex:[card.cardNumber length] - 6] ];
+    [cardNumber insertString:@"-" atIndex:2];
+       NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"xxxx-xxxx-xx", cardNumber ];
+     [_lbl_SC_CardNumber setText: cardNumbertxt];
+    [_lbl_SC_Balance setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
+    
+    [_lbl_SC_Expiration setText:[NSString stringWithFormat:@"%@%@",@"Expiration: ", card.cardExpiration]];
+    _vw_SC_View.layer.cornerRadius = 12;
+    _vw_SC_View.layer.shadowOffset = CGSizeMake(-15, 20);
+    _vw_SC_View.layer.shadowRadius = 5;
+    _vw_SC_View.layer.shadowOpacity = 0.5;
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"3F3F3F"], [UIColor colorWithHexString:@"9F9F9F"], nil];
+    _vw_SC_View.colors= colors;
+    
+   
 }
 
 -(void) stopTableViewAnimation
@@ -289,6 +248,7 @@ int CurrentScrollViewPage;
     [self performSegueWithIdentifier:@"HomeLogout" sender:nil];
     
 }
+
 
 -(IBAction)contactUSButtonClicked:(id)sender {
     [self presentViewController:[[ContactUs alloc] init] animated:YES completion:nil];
@@ -302,15 +262,5 @@ int CurrentScrollViewPage;
     [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
 }
 
--(NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-
--(BOOL) shouldAutorotate
-{
-    return YES;
-}
 
 @end
