@@ -16,13 +16,11 @@
 #import "Logout.h"
 #import "UIColor+Hex.h"
 #import "OBGradientView.h"
+#import "SVProgressHUD.h"
 
 @interface VCHome ()
 @property (nonatomic, strong)NSArray *dsTableViewRows;
 @property (nonatomic, strong) NSMutableArray *pageCardInformation;
-
-@property (nonatomic,strong) UIActivityIndicatorView *tableActivityIndicator;
-
 
 @end
 int CurrentScrollViewPage;
@@ -52,26 +50,15 @@ int CurrentScrollViewPage;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _CardScrollView.type = iCarouselTypeCylinder;
+    _CardScrollView.type = iCarouselTypeInvertedCylinder;
+    _CardScrollView.scrollSpeed = 0.2;
+    CurrentScrollViewPage = -1;
     _dsTableViewRows = [NSArray arrayWithObjects:
                         [NSArray arrayWithObjects:@"My Card Account", @"MyCardAccount.png", nil],
                         [NSArray arrayWithObjects:@"Update Profile", @"UpdateProfileLogo.png", nil],
                         [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
                         [NSArray arrayWithObjects:@"Transactions", @"TransactionsLogo.png", nil],
                         nil];
-    
-
-    _tableActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    
-    //self.activityIndicatorView = activity;
-    // make the area larger
-    _tableActivityIndicator.hidesWhenStopped = YES;
-    [_tableActivityIndicator setFrame:self.view.bounds];
-     // set a background color
-     [_tableActivityIndicator.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-     CGPoint center = self.view.center;
-     _tableActivityIndicator.center = center;
-    [self.view addSubview:_tableActivityIndicator];
     self.navigationItem.title=@"Prepaid Account Center";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Back"
@@ -181,13 +168,42 @@ int CurrentScrollViewPage;
     //return the total number of items in the carousel
     return [_pageCardInformation count];
 }
+
+static float progressTableAnimate = 0.0f;
+
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
 {
-//NSString* str = [NSString stringWithFormat:@"Item Index:%d",[carousel currentItemIndex]];
- //   UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    //NSString* str = [NSString stringWithFormat:@"Item Index:%d",[carousel currentItemIndex]];
+    //   UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     //[alert show];
-    
+    //   [_tableActivityIndicator startAnimating];
+    if (CurrentScrollViewPage != -1)
+    {
+        if (CurrentScrollViewPage != carousel.currentItemIndex)
+        {
+            //[SVProgressHUD showProgress:0 status:@"Updating Data" maskType:SVProgressHUDMaskTypeGradient];
+            [SVProgressHUD show];
+            [self performSelector:@selector(dismissTableAnimateProgress) withObject:nil afterDelay:0.3];
+        }
+    }
+    CurrentScrollViewPage = carousel.currentItemIndex;
+    _uiPageControlScrollCard.currentPage = carousel.currentItemIndex;
 }
+
+- (void)increaseTableAnimateProgress {
+    progressTableAnimate+=1.0f;
+    [SVProgressHUD showProgress:progressTableAnimate status:@"Updating Data"];
+    
+    if(progressTableAnimate < 1.0f){
+        [self performSelector:@selector(increaseTableAnimateProgress) withObject:nil afterDelay:0.1];}
+    else{
+        [self performSelector:@selector(dismissTableAnimateProgress) withObject:nil afterDelay:0.1f];
+    }
+}
+- (void)dismissTableAnimateProgress {
+	[SVProgressHUD dismiss];
+}
+
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
     //UILabel *label = nil;
@@ -240,10 +256,6 @@ int CurrentScrollViewPage;
    
 }
 
--(void) stopTableViewAnimation
-{
-    [_tableActivityIndicator stopAnimating];
-}
 - (IBAction)LogoutClick:(id)sender {
     [self performSegueWithIdentifier:@"HomeLogout" sender:nil];
     

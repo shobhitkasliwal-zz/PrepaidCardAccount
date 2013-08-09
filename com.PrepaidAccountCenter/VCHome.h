@@ -26,5 +26,6 @@
 @property (strong, nonatomic) IBOutlet OBGradientView *vw_SC_View;
 @property (weak, nonatomic) IBOutlet UIView *vw_ScrollWrapper;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *uiPageActivity;
 
 @end

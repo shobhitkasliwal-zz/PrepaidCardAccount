@@ -815,6 +815,7 @@
                 <relationship kind="outlet" name="lbl_SC_CardNumber" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lbl_SC_Expiration" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lbl_SC_Status" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uiPageActivity" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="uiPageControlScrollCard" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="uiPageMainView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="vw_SC_View" candidateClass="OBGradientView"/>

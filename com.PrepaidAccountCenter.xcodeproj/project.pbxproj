@@ -45,6 +45,11 @@
 		77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A2A33D17A54FAC001986D0 /* Home.storyboard */; };
 		77A2A34117A55074001986D0 /* VCHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A2A34017A55074001986D0 /* VCHome.m */; };
 		77ABC21317A79383009A7146 /* RTNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ABC21217A79383009A7146 /* RTNetworkRequest.m */; };
+		77B946D417B54FC800A7EA88 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 77B946D017B54FC800A7EA88 /* error.png */; };
+		77B946D517B54FC800A7EA88 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77B946D117B54FC800A7EA88 /* error@2x.png */; };
+		77B946D617B54FC800A7EA88 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = 77B946D217B54FC800A7EA88 /* success.png */; };
+		77B946D717B54FC800A7EA88 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77B946D317B54FC800A7EA88 /* success@2x.png */; };
+		77B946DA17B54FDB00A7EA88 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B946D917B54FDB00A7EA88 /* SVProgressHUD.m */; };
 		77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */; };
 		77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1F179094E500E6D9BA /* MyCardAccount.png */; };
 		77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B211790950B00E6D9BA /* TransactionsLogo.png */; };
@@ -114,6 +119,12 @@
 		77A2A34017A55074001986D0 /* VCHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHome.m; sourceTree = "<group>"; };
 		77ABC21117A79383009A7146 /* RTNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTNetworkRequest.h; sourceTree = "<group>"; };
 		77ABC21217A79383009A7146 /* RTNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTNetworkRequest.m; sourceTree = "<group>"; };
+		77B946D017B54FC800A7EA88 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		77B946D117B54FC800A7EA88 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
+		77B946D217B54FC800A7EA88 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
+		77B946D317B54FC800A7EA88 /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
+		77B946D817B54FDB00A7EA88 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		77B946D917B54FDB00A7EA88 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		77BD5B1D179094AC00E6D9BA /* UpdateProfileLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpdateProfileLogo.png; sourceTree = "<group>"; };
 		77BD5B1F179094E500E6D9BA /* MyCardAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyCardAccount.png; sourceTree = "<group>"; };
 		77BD5B211790950B00E6D9BA /* TransactionsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsLogo.png; sourceTree = "<group>"; };
@@ -235,6 +246,8 @@
 		775B25E417AF7674002FAABE /* ControlClasses */ = {
 			isa = PBXGroup;
 			children = (
+				77B946D817B54FDB00A7EA88 /* SVProgressHUD.h */,
+				77B946D917B54FDB00A7EA88 /* SVProgressHUD.m */,
 				7751379517B2BF91007F2679 /* iCarousel.h */,
 				7751379617B2BF91007F2679 /* iCarousel.m */,
 				77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */,
@@ -306,6 +319,10 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				77B946D017B54FC800A7EA88 /* error.png */,
+				77B946D117B54FC800A7EA88 /* error@2x.png */,
+				77B946D217B54FC800A7EA88 /* success.png */,
+				77B946D317B54FC800A7EA88 /* success@2x.png */,
 				7736E2E717B0A37C00CA1E3C /* RightArrow.png */,
 				7736E2E517B0A35500CA1E3C /* LeftArrow.png */,
 				776FDC13179331670068E528 /* Contact us.png */,
@@ -409,6 +426,10 @@
 				7736E2E617B0A35500CA1E3C /* LeftArrow.png in Resources */,
 				7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */,
 				7751379917B2C617007F2679 /* MyCardAccountSubView.xib in Resources */,
+				77B946D417B54FC800A7EA88 /* error.png in Resources */,
+				77B946D517B54FC800A7EA88 /* error@2x.png in Resources */,
+				77B946D617B54FC800A7EA88 /* success.png in Resources */,
+				77B946D717B54FC800A7EA88 /* success@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +462,7 @@
 				77F90CD317B06B5300A1E07E /* AppHelper.m in Sources */,
 				77F90CD617B06CE900A1E07E /* GTMBase64.m in Sources */,
 				7751379717B2BF91007F2679 /* iCarousel.m in Sources */,
+				77B946DA17B54FDB00A7EA88 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

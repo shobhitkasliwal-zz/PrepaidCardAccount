@@ -11,12 +11,11 @@
 #import "RTNetworkRequest.h"
 #import "SingletonGeneric.h"
 #import "AppHelper.h"
+#import "SVProgressHUD.h"
 
 #define LoginURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/AuthenticateUser?UserName=%@&Password=%@&AuthenticationType=%@"
 
 @interface LoginViewController ()
-@property (strong, atomic) UILabel *lblText;
-@property (strong,atomic) UIActivityIndicatorView* activity ;
 @end
 
 @implementation LoginViewController
@@ -119,59 +118,13 @@
 
 
 - (IBAction)btnLogin_Click:(id)sender {
-    
-    _lblText = [[UILabel alloc] init];
-    _lblText.textAlignment = NSTextAlignmentCenter;
-    _lblText.numberOfLines = 0 ;
-    _lblText.text =[NSString stringWithFormat:@"You are being securely logging in. \nThank you for your patience.\n\n\n"];
-    _lblText.backgroundColor = [UIColor clearColor];
-    _lblText.textColor = [UIColor whiteColor];
-    [_lblText sizeToFit];
     [_vw_MainView setHidden:YES];
-    
-    _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    
-    _activity.hidesWhenStopped = YES;
-    [_activity setFrame:self.view.frame];
-    // set a background color
-    [_activity.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-    CGPoint center = self.view.center;
-    self.view.center = center;
-    [self.view addSubview:_activity];
-    [_activity startAnimating];
-    
+    [SVProgressHUD showWithStatus:@"You are being securely logging in. \nThank you for your patience." maskType:SVProgressHUDMaskTypeGradient];
     [UIView transitionWithView:self.view duration:0.5
-                       options:UIViewAnimationOptionTransitionCrossDissolve
+                       options:UIViewAnimationOptionLayoutSubviews
                     animations:^{
                         
-                        
-                        [_lblText addConstraint:[NSLayoutConstraint constraintWithItem:_lblText
-                                                                             attribute:NSLayoutAttributeWidth
-                                                                             relatedBy:0
-                                                                                toItem:nil
-                                                                             attribute:NSLayoutAttributeNotAnAttribute
-                                                                            multiplier:1.0f
-                                                                              constant:300.0f]];
-                        _lblText.translatesAutoresizingMaskIntoConstraints = NO;
-                        
-                        
-                        [self.view addSubview:_lblText];
-                        
-                        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_lblText
-                                                                              attribute:NSLayoutAttributeCenterX
-                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                 toItem:self.view
-                                                                              attribute:NSLayoutAttributeCenterX
-                                                                             multiplier:1.0f
-                                                                               constant:0.0f]];
-                        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_lblText
-                                                                              attribute:NSLayoutAttributeCenterY
-                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                 toItem:self.view
-                                                                              attribute:NSLayoutAttributeCenterY
-                                                                             multiplier:1.0f
-                                                                               constant:0.0f]];
-                        
+                       
                         
                     }
                     completion:^(BOOL finished) {
@@ -244,8 +197,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: ErrorMessage delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         [_vw_MainView setHidden:NO];
-        [_lblText removeFromSuperview];
-        [_activity stopAnimating];
+        [SVProgressHUD dismiss];
     }
     
     
@@ -261,7 +213,7 @@
     userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:userviewsVC animated:YES completion:nil];
     //  [self dismissViewControllerAnimated:YES completion:nil];
-    
+      [SVProgressHUD dismiss];
 }
 
 @end
