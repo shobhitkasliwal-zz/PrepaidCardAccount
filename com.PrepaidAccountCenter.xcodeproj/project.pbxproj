@@ -54,6 +54,7 @@
 		77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1F179094E500E6D9BA /* MyCardAccount.png */; };
 		77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B211790950B00E6D9BA /* TransactionsLogo.png */; };
 		77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B23179096EE00E6D9BA /* PinManagement.png */; };
+		77E891D217BABD9B00A672A4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77E891D117BABD9B00A672A4 /* icon.png */; };
 		77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CC817B00B8400A1E07E /* OBGradientView.m */; };
 		77F90CCD17B00BC800A1E07E /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCC17B00BC800A1E07E /* GradientButton.m */; };
 		77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */; };
@@ -129,6 +130,7 @@
 		77BD5B1F179094E500E6D9BA /* MyCardAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyCardAccount.png; sourceTree = "<group>"; };
 		77BD5B211790950B00E6D9BA /* TransactionsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsLogo.png; sourceTree = "<group>"; };
 		77BD5B23179096EE00E6D9BA /* PinManagement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinManagement.png; sourceTree = "<group>"; };
+		77E891D117BABD9B00A672A4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		77F90CC817B00B8400A1E07E /* OBGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBGradientView.m; sourceTree = "<group>"; };
 		77F90CCA17B00B9500A1E07E /* OBGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBGradientView.h; sourceTree = "<group>"; };
 		77F90CCB17B00BB800A1E07E /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientButton.h; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		77004B84176239F300745E2B = {
 			isa = PBXGroup;
 			children = (
+				77E891D117BABD9B00A672A4 /* icon.png */,
 				77004B96176239F300745E2B /* com.PrepaidAccountCenter */,
 				77004B8F176239F300745E2B /* Frameworks */,
 				77004B8E176239F300745E2B /* Products */,
@@ -430,6 +433,7 @@
 				77B946D517B54FC800A7EA88 /* error@2x.png in Resources */,
 				77B946D617B54FC800A7EA88 /* success.png in Resources */,
 				77B946D717B54FC800A7EA88 /* success@2x.png in Resources */,
+				77E891D217BABD9B00A672A4 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
