@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [_vw_MainView setHidden:NO];
     _vwLoginwithCard.layer.cornerRadius = 12.0;
     _vwLoginSwitch.layer.cornerRadius = 12.0;
     _txtUsernameCard.keyboardType = UIKeyboardTypeNumberPad;
@@ -51,14 +52,14 @@
 {
     //Assign new frame to your view
   //  [self.view setFrame:CGRectMake(0,-20,320,460)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
-    
-    [_vw_MainView addConstraint:[NSLayoutConstraint constraintWithItem:_vw_MainView
-                      attribute:NSLayoutAttributeBottom
-                      relatedBy:0
-                         toItem:self.view
-                      attribute:NSLayoutAttributeBottom
-                     multiplier:0
-                                                              constant:300.0f]];
+//    
+//    [_vw_MainView addConstraint:[NSLayoutConstraint constraintWithItem:_vw_MainView
+//                      attribute:NSLayoutAttributeBottom
+//                      relatedBy:0
+//                         toItem:self.view
+//                      attribute:NSLayoutAttributeBottom
+//                     multiplier:0
+//                                                              constant:300.0f]];
 }
 
 -(void)keyboardDidHide:(NSNotification *)notification
@@ -163,10 +164,9 @@
     NSString* ErrorMessage = @"";
     
     if (responseArray != nil) {
-        NSLog(@"array: %@", responseArray);
+        
         NSMutableArray* cinfo = [[NSMutableArray alloc] init];
         for (NSDictionary* dict in responseArray){
-            NSLog(@"array: %@", dict);
             if([dict count] == 1)
             {
                 ErrorMessage = [dict objectForKey:@"Message"];
@@ -215,5 +215,7 @@
     //  [self dismissViewControllerAnimated:YES completion:nil];
       [SVProgressHUD dismiss];
 }
+-(void)serviceCallCompletedWithError:(NSError *)error
+{}
 
 @end

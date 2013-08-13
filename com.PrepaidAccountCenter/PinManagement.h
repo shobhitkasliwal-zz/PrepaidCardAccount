@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OBGradientView.h"
 
 @interface PinManagement : UIViewController
 - (IBAction)LogoutClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *lblHeaderCard;
+@property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;
 
 @end

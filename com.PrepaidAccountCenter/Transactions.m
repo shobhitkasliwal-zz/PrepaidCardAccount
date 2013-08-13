@@ -13,13 +13,12 @@
 #import "UIColor+Hex.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RTNetworkRequest.h"
+#import "SVProgressHUD.h"
 
 
 #define GetTransactionURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/GetTransactions?Proxy=%@&NoofDays=%@&WCSClientID=%@"
 @interface Transactions ()
-
 @property (nonatomic, strong) NSMutableArray *CardTransactions;
-@property (nonatomic,strong) UIActivityIndicatorView *tableActivityIndicator;
 @end
 CardInfo *cInfo;
 @implementation Transactions
@@ -37,21 +36,8 @@ CardInfo *cInfo;
 {
     [super viewDidLoad];
     [_tblOptions setHidden:YES];
-    _tableActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-     _CardTransactions = [[NSMutableArray alloc] init];
-    //[self activi = activity;
+    _CardTransactions = [[NSMutableArray alloc] init];
     
-    // make the area larger
-    _tableActivityIndicator.hidesWhenStopped = YES;
-    CGRect screenrect = [[UIScreen mainScreen] bounds];
-   [_tableActivityIndicator setFrame:screenrect];
-    // set a background color
-    [_tableActivityIndicator.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-    CGPoint center = self.view.center;
-    _tableActivityIndicator.center = center;
-    [self.view addSubview:_tableActivityIndicator];
-    [_tableActivityIndicator startAnimating];
-    [self GetTransactions:365];
 	// Do any additional setup after loading the view.
        
 cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
@@ -67,20 +53,36 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     _uiHeader.layer.shadowOffset = CGSizeMake(-15, 20);
     _uiHeader.layer.shadowRadius = 5;
     _uiHeader.layer.shadowOpacity = 0.5;
-    
-    
-    
+    [_tblOptions setHidden:YES];
+    [_lblMessage setHidden:YES];
+
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(GetTransactions:) userInfo:[NSNumber numberWithInt:365] repeats:NO];
+//    [self GetTransactions:365];
+}
 
 -(void) GetTransactions :(int) NumberofDays
 {
+//    [SVProgressHUD showWithStatus:@"Retriving Transactions.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     [networkRequest makeWebCall:[NSString stringWithFormat:GetTransactionURL,cInfo.cardProxy,[NSString stringWithFormat:@"%d",NumberofDays], cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
 }
-
+-(void) serviceCallCompletedWithError:(NSError*) error
+{
+    
+    [SVProgressHUD dismiss];
+    _lblMessage.text = @"An error occured while retriving transactions.\n Please contact customer support for more details.";
+    [_lblMessage setHidden:NO];
+    [_tblOptions setHidden:YES];
+  
+}
 -(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
 {
+    [SVProgressHUD dismiss];
     NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
     if (responseArray != nil) {
         NSLog(@"array: %@", responseArray);
@@ -89,38 +91,32 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
             NSLog(@"array: %@", dict);
             [ _CardTransactions  addObject:dict];
         }
-[_tblOptions reloadData];
+        [_tblOptions reloadData];
         [_tblOptions setHidden:NO];
+        [_lblMessage setHidden:YES];
     }
 
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There are no Transactions avilable for this card account. Please change the duration below to get the older transactions." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        
+        _lblMessage.text =  @"There are no Transactions avilable for this card account. Please change the duration below to get the older transactions." ;
+        [_tblOptions setHidden:YES];
+        [_lblMessage setHidden:NO];
     }
-    [_tableActivityIndicator stopAnimating];
+    
     
     
 }
 
 - (void)networkNotReachable{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"Network Error !!!. Please contact customer support." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    _lblMessage.text = @"Network Error !!!. Please contact customer support." ;
+    [_tblOptions setHidden:YES];
+    [_lblMessage setHidden:NO];
 }
 
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-//    CAGradientLayer *bgLayer = [appHelper greyGradient];
-//    bgLayer.frame = _uiHeader.bounds;
-//    [_uiHeader.layer insertSublayer:bgLayer atIndex:0];
-
- //   [appHelper applyShinyBackgroundWithColor:[UIColor redColor] forView:_uiHeader];
-
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -151,20 +147,10 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
 // Customize the appearance of table view cells.
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
     static NSString *CellIdentifier = @"Cell";
-    
-    
-    
     TransactionsTbl_CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
     if (cell == nil) {
-        
         cell = [[TransactionsTbl_CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        
     }
     if(_CardTransactions.count > indexPath.row)
     {
@@ -181,24 +167,6 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     return cell;
     
 }
-
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // open a alert with an OK and cancel button
-    
-//    NSString *alertString = [NSString stringWithFormat:@"Clicked on row #%d", [indexPath row]];
-//    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertString message:@"" delegate:self cancelButtonTitle:@"Done" otherButtonTitles:nil];
-//    
-//    [alert show];
-    
-    
-    
-}
-
-
 
 - (IBAction)LogoutClick:(id)sender {
     [self performSegueWithIdentifier:@"TransactionsLogout" sender:nil];

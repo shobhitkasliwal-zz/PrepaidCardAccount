@@ -173,10 +173,6 @@ static float progressTableAnimate = 0.0f;
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
 {
-    //NSString* str = [NSString stringWithFormat:@"Item Index:%d",[carousel currentItemIndex]];
-    //   UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    //[alert show];
-    //   [_tableActivityIndicator startAnimating];
     if (CurrentScrollViewPage != -1)
     {
         if (CurrentScrollViewPage != carousel.currentItemIndex)
@@ -188,6 +184,7 @@ static float progressTableAnimate = 0.0f;
     }
     CurrentScrollViewPage = carousel.currentItemIndex;
     _uiPageControlScrollCard.currentPage = carousel.currentItemIndex;
+    [[SingletonGeneric UserCardInfo] SetSelectedCardInfo:carousel.currentItemIndex];
 }
 
 - (void)increaseTableAnimateProgress {
@@ -254,6 +251,11 @@ static float progressTableAnimate = 0.0f;
     _vw_SC_View.colors= colors;
     
    
+}
+
+- (IBAction)PageChange:(id)sender {
+    [ _CardScrollView scrollToItemAtIndex:_uiPageControlScrollCard.currentPage animated:YES];
+    
 }
 
 - (IBAction)LogoutClick:(id)sender {

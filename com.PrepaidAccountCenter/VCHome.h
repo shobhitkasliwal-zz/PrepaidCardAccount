@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *uiPageControlScrollCard;
 @property (weak, nonatomic) IBOutlet UITableView *uiPageMainView;
 @property (weak, nonatomic) IBOutlet iCarousel *CardScrollView;
+- (IBAction)PageChange:(id)sender;
 
 - (IBAction)LogoutClick:(id)sender;
 -(IBAction)contactUSButtonClicked:(id)sender;

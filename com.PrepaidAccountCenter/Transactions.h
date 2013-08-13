@@ -19,5 +19,6 @@
 
 - (IBAction)LogoutClick:(id)sender;
 -(void) GetTransactions :(int) NumberofDays;
+@property (weak, nonatomic) IBOutlet UILabel *lblMessage;
 
 @end

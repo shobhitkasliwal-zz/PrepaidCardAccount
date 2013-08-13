@@ -33,6 +33,7 @@ typedef enum
 
 @protocol RTNetworkRequestDelegate <NSObject>
 
+-(void)serviceCallCompletedWithError: (NSError *) error;
 @required
 
 - (void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString*)currentCallType;

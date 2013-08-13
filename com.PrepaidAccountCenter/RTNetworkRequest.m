@@ -99,6 +99,7 @@
     self.connection = nil;
     self.responseData = nil;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self.delegate serviceCallCompletedWithError:error];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
