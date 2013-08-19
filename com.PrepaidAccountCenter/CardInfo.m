@@ -32,7 +32,22 @@ self = [super init];
     return self;
 }
 
+- (id) initWithDictionary: (NSDictionary *) dict
+{
 
+    
+    _cardNumber =  [dict objectForKey:@"CardNumber"];
+    _cardExpiration  = [dict objectForKey:@"CardExpiration"];
+    _cardBalance = [dict objectForKey:@"CardBalance"];
+    _cardStatus =  [dict objectForKey:@"CardStatus"];
+    _cardProxy =[dict objectForKey:@"CardProxy"];
+    _WcsClientID = [dict objectForKey:@"WCSClientId"];
+    _SiteConfigID = [dict objectForKey:@"SiteConfigID"];
+    _ChangePinAllowed = [[dict objectForKey:@"ChangePinAllowed"] boolValue];
+    _ViewPinOnly = [[dict objectForKey:@"ViewPinOnly"] boolValue];
+    _ViewChangePinMessage = [[dict objectForKey:@"ViewPinChangeMessage"] boolValue];
+    return self;
+}
 
 
 

@@ -26,6 +26,7 @@
 		77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */; };
 		7751379717B2BF91007F2679 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7751379617B2BF91007F2679 /* iCarousel.m */; };
 		7751379917B2C617007F2679 /* MyCardAccountSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7751379817B2C617007F2679 /* MyCardAccountSubView.xib */; };
+		776FC81217C1ABD0007AD728 /* RedPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 776FC81117C1ABD0007AD728 /* RedPlus.png */; };
 		776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC051792FA2A0068E528 /* SingletonGeneric.m */; };
 		776FDC091793018B0068E528 /* Transactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC081793018B0068E528 /* Transactions.m */; };
 		776FDC0C179329750068E528 /* MyCardAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0B179329740068E528 /* MyCardAccount.m */; };
@@ -90,6 +91,7 @@
 		7751379517B2BF91007F2679 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		7751379617B2BF91007F2679 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		7751379817B2C617007F2679 /* MyCardAccountSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCardAccountSubView.xib; sourceTree = "<group>"; };
+		776FC81117C1ABD0007AD728 /* RedPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedPlus.png; sourceTree = "<group>"; };
 		776FDC041792FA2A0068E528 /* SingletonGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonGeneric.h; sourceTree = "<group>"; };
 		776FDC051792FA2A0068E528 /* SingletonGeneric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonGeneric.m; sourceTree = "<group>"; };
 		776FDC071793018B0068E528 /* Transactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transactions.h; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				776FC81117C1ABD0007AD728 /* RedPlus.png */,
 				77B946D017B54FC800A7EA88 /* error.png */,
 				77B946D117B54FC800A7EA88 /* error@2x.png */,
 				77B946D217B54FC800A7EA88 /* success.png */,
@@ -434,6 +437,7 @@
 				77B946D617B54FC800A7EA88 /* success.png in Resources */,
 				77B946D717B54FC800A7EA88 /* success@2x.png in Resources */,
 				77E891D217BABD9B00A672A4 /* icon.png in Resources */,
+				776FC81217C1ABD0007AD728 /* RedPlus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

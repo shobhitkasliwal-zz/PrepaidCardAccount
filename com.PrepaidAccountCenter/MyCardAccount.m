@@ -41,12 +41,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _carousel.type = iCarouselTypeInvertedWheel;
+    _carousel.type = iCarouselTypeTimeMachine;
+     _carousel.scrollSpeed = 0.2;
     self.navigationItem.title = @"My Card Account";
   //  [appHelper applyShinyBackgroundWithColor:[UIColor redColor] forView:self.view];
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"3F3F3F"], [UIColor colorWithHexString:@"9F9F9F"], nil];
-     _uiViewHeader.colors= colors;
-
+   
+    [_btnAddNewCard useBlackStyle];
    // [_uiViewHeader app
 	// Do any additional setup after loading the view.
 }
@@ -68,9 +68,9 @@
 }
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
 {
-    NSString* str = [NSString stringWithFormat:@"Item Index:%d",[carousel currentItemIndex]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+//    NSString* str = [NSString stringWithFormat:@"Item Index:%d",[carousel currentItemIndex]];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alert show];
 
 }
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view

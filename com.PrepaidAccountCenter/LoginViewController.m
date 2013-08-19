@@ -50,21 +50,30 @@
 }
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-    //Assign new frame to your view
-  //  [self.view setFrame:CGRectMake(0,-20,320,460)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
-//    
-//    [_vw_MainView addConstraint:[NSLayoutConstraint constraintWithItem:_vw_MainView
-//                      attribute:NSLayoutAttributeBottom
-//                      relatedBy:0
-//                         toItem:self.view
-//                      attribute:NSLayoutAttributeBottom
-//                     multiplier:0
-//                                                              constant:300.0f]];
+
+    NSLog(@"%@", NSStringFromCGRect(_vw_MainView.superview.bounds));
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDelay:0.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    _vw_MainView.center = CGPointMake(_vw_MainView.center.x,
+                                      _vw_MainView.center.y  - 50);
+    [UIView commitAnimations];
+    
 }
 
 -(void)keyboardDidHide:(NSNotification *)notification
 {
-   // [self.view setFrame:CGRectMake(0,0,320,460)];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDelay:0.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    _vw_MainView.center = CGPointMake(_vw_MainView.center.x,
+                                      _vw_MainView.center.y  + 50);
+    [UIView commitAnimations];
 }
 
 //-(NSUInteger)supportedInterfaceOrientations
@@ -106,6 +115,11 @@
                     }
                     completion:^(BOOL finished) {
                         _vwLoginwithCard.alpha = 1;
+                        [_txtUsernameCard setText:@""];
+                        [_txtPasswordSecPin setText:@""];
+                        [_txtUsernameCard resignFirstResponder];
+                        [_txtPasswordSecPin resignFirstResponder];
+                       // [_txtUsernameCard becomeFirstResponder];
                     }];
     
 }
@@ -130,7 +144,7 @@
                     }
                     completion:^(BOOL finished) {
                         
-                        bool isTest = true;
+                        bool isTest = false;
                         
                         if (!isTest){
                         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
@@ -172,9 +186,7 @@
                 ErrorMessage = [dict objectForKey:@"Message"];
             }
             else{
-                [cinfo addObject: [
-                                   [CardInfo alloc] initWithCardNumber:[dict objectForKey:@"CardNumber"] andExpiration:[dict objectForKey:@"CardExpiration"] andBalance:[dict objectForKey:@"CardBalance"] andStatus:[dict objectForKey:@"CardStatus"] andProxy:[dict objectForKey:@"CardProxy"]  andWCSClientID:[dict objectForKey:@"WCSClientId"] 
-                                   ]];
+                [cinfo addObject: [[CardInfo alloc] initWithDictionary:dict]];
                 [ [SingletonGeneric UserCardInfo]setAllCardInfo:cinfo];
             }
         }

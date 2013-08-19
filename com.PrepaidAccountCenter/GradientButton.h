@@ -48,5 +48,6 @@
 - (void)useBlackActionSheetStyle;
 - (void)useSimpleOrangeStyle;
 - (void)useGreenConfirmStyle;
+- (void)useBluetyle;
 
 @end

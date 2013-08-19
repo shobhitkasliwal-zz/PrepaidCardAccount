@@ -59,6 +59,7 @@ int CurrentScrollViewPage;
                         [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
                         [NSArray arrayWithObjects:@"Transactions", @"TransactionsLogo.png", nil],
                         nil];
+    
     self.navigationItem.title=@"Prepaid Account Center";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Back"
@@ -88,7 +89,7 @@ int CurrentScrollViewPage;
     [_uiPageMainView deselectRowAtIndexPath:[_uiPageMainView indexPathForSelectedRow] animated:YES];
    
     //_vw_SC_View.frame = _vw_ScrollWrapper.frame;
-   
+    
 }
 
 - (void)didReceiveMemoryWarning

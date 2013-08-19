@@ -71,6 +71,18 @@
 	}
 	return self;
 }
+
+- (void)setEnabled:(BOOL)enabled {
+    
+    [super setEnabled: enabled];
+    
+    if (enabled) {
+        self.alpha = 1.0f;
+    } else {
+        self.alpha = 0.4f;
+        
+    }
+}
 #pragma mark -
 #pragma mark Appearances
 - (void)useAlertStyle
@@ -231,6 +243,8 @@
                                        nil];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
+
+
 - (void)useWhiteActionSheetStyle
 {
     NSMutableArray *colors = [NSMutableArray arrayWithCapacity:3];
@@ -387,6 +401,53 @@
     color = [UIColor colorWithRed:0.153 green:0.5 blue:0.152 alpha:1.0];
     [colors2 addObject:(id)[color CGColor]];
     color = [UIColor colorWithRed:0.004 green:0.388 blue:0.0 alpha:1.0];
+    [colors addObject:(id)[color CGColor]];
+	
+    self.highlightGradientColors = colors;
+    self.highlightGradientLocations = [NSMutableArray arrayWithObjects:
+                                       [NSNumber numberWithFloat:0.0f],
+                                       [NSNumber numberWithFloat:1.0f],
+                                       [NSNumber numberWithFloat:0.715f],
+                                       [NSNumber numberWithFloat:0.513f],
+                                       [NSNumber numberWithFloat:0.445f],
+                                       nil];
+    self.cornerRadius = 9.f;
+    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+}
+
+- (void)useBluetyle
+{
+    NSMutableArray *colors = [NSMutableArray arrayWithCapacity:5];
+    UIColor *color = [UIColor colorWithRed:0.15 green:0.152 blue:0.667 alpha:1.0];
+    [colors addObject:(id)[color CGColor]];
+    color = [UIColor colorWithRed:0.566 green:0.566 blue:0.841 alpha:1.0];
+    [colors addObject:(id)[color CGColor]];
+    color = [UIColor colorWithRed:0.341 green:0.345 blue:0.75 alpha:1.0];
+    [colors addObject:(id)[color CGColor]];
+    color = [UIColor colorWithRed:0.0 green:0.0 blue:0.592 alpha:1.0];
+    [colors addObject:(id)[color CGColor]];
+    color = [UIColor colorWithRed:0.0 green:0.0 blue:0.592 alpha:1.0];
+    [colors addObject:(id)[color CGColor]];
+    self.normalGradientColors = colors;
+    self.normalGradientLocations = [NSMutableArray arrayWithObjects:
+                                    [NSNumber numberWithFloat:0.0f],
+                                    [NSNumber numberWithFloat:1.0f],
+                                    [NSNumber numberWithFloat:0.582f],
+                                    [NSNumber numberWithFloat:0.418f],
+                                    [NSNumber numberWithFloat:0.346],
+                                    nil];
+    
+    NSMutableArray *colors2 = [NSMutableArray arrayWithCapacity:5];
+    color = [UIColor colorWithRed:0.009 green:0.005 blue:0.467 alpha:1.0];
+    [colors2 addObject:(id)[color CGColor]];
+    color = [UIColor colorWithRed:0.562 green:0.562 blue:0.754 alpha:1.0];
+    [colors2 addObject:(id)[color CGColor]];
+    color = [UIColor colorWithRed:0.212 green:0.212 blue:0.543 alpha:1.0];
+    [colors2 addObject:(id)[color CGColor]];
+    color = [UIColor colorWithRed:0.153 green:0.152 blue:0.5 alpha:1.0];
+    [colors2 addObject:(id)[color CGColor]];
+    color = [UIColor colorWithRed:0.004 green:0.0 blue:0.388 alpha:1.0];
     [colors addObject:(id)[color CGColor]];
 	
     self.highlightGradientColors = colors;

@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableArray *CardTransactions;
 @end
 CardInfo *cInfo;
+int CurrentTransactionDuration;
 @implementation Transactions
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,18 +56,24 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     _uiHeader.layer.shadowOpacity = 0.5;
     [_tblOptions setHidden:YES];
     [_lblMessage setHidden:YES];
+    [_btnLast30Days useBlackStyle];
+    [_btnLast90Days useBlackStyle];
+    [_btnLast365Days useBlackStyle];
+    [_btnLast30Days setEnabled:NO];
 
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(GetTransactions:) userInfo:[NSNumber numberWithInt:365] repeats:NO];
-//    [self GetTransactions:365];
+  //  [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(GetTransactions:) userInfo:[NSNumber numberWithInt:365] repeats:NO];
+   CurrentTransactionDuration = 30;
+    [self GetTransactions:30];
+    
 }
 
 -(void) GetTransactions :(int) NumberofDays
 {
-//    [SVProgressHUD showWithStatus:@"Retriving Transactions.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:@"Retriving Transactions.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
 
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     [networkRequest makeWebCall:[NSString stringWithFormat:GetTransactionURL,cInfo.cardProxy,[NSString stringWithFormat:@"%d",NumberofDays], cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
@@ -98,7 +105,7 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
 
     else
     {
-        _lblMessage.text =  @"There are no Transactions avilable for this card account. Please change the duration below to get the older transactions." ;
+        _lblMessage.text =  @"There are no Transactions avilable for this card account. Please change the duration below to get the past transactions." ;
         [_tblOptions setHidden:YES];
         [_lblMessage setHidden:NO];
     }
@@ -171,5 +178,41 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
 - (IBAction)LogoutClick:(id)sender {
     [self performSegueWithIdentifier:@"TransactionsLogout" sender:nil];
     
+}
+- (IBAction)btnChangeDuration:(id)sender {
+    [_btnLast30Days setEnabled:YES];
+    [_btnLast90Days setEnabled:YES];
+    [_btnLast365Days setEnabled:YES];
+    UIButton* button = (UIButton *)sender;
+    if(button == _btnLast30Days)
+    {
+        if(CurrentTransactionDuration != 30)
+        {
+            CurrentTransactionDuration =30;
+            [self GetTransactions:30];
+            [_btnLast30Days setEnabled:NO];
+        }
+    }
+    else if (button == _btnLast90Days){
+        if(CurrentTransactionDuration != 90){
+            CurrentTransactionDuration = 90;
+            [self GetTransactions:90];
+            [_btnLast90Days setEnabled:NO];
+        }
+    }
+    else if (button == _btnLast365Days)
+    {
+        
+        if (CurrentTransactionDuration != 365){
+            CurrentTransactionDuration = 365;
+            [self GetTransactions:365];
+            [_btnLast365Days setEnabled:NO];
+        }
+    }
+    else
+    {
+        CurrentTransactionDuration = 720;
+        [self GetTransactions:720];
+    }
 }
 @end
