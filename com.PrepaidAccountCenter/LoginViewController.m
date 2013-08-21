@@ -144,7 +144,7 @@
                     }
                     completion:^(BOOL finished) {
                         
-                        bool isTest = false;
+                        bool isTest = true;
                         
                         if (!isTest){
                         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];

@@ -40,7 +40,6 @@
 		776FDC22179342140068E528 /* Terms.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC20179342140068E528 /* Terms.m */; };
 		776FDC23179342140068E528 /* Terms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC21179342140068E528 /* Terms.xib */; };
 		776FDC27179342240068E528 /* Faq.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC25179342240068E528 /* Faq.m */; };
-		776FDC28179342240068E528 /* Faq.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC26179342240068E528 /* Faq.xib */; };
 		778109E81791DDDB003DF414 /* CardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 778109E71791DDDB003DF414 /* CardInfo.m */; };
 		778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */; };
 		77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A2A33D17A54FAC001986D0 /* Home.storyboard */; };
@@ -113,7 +112,6 @@
 		776FDC21179342140068E528 /* Terms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Terms.xib; sourceTree = "<group>"; };
 		776FDC24179342240068E528 /* Faq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Faq.h; sourceTree = "<group>"; };
 		776FDC25179342240068E528 /* Faq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Faq.m; sourceTree = "<group>"; };
-		776FDC26179342240068E528 /* Faq.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Faq.xib; sourceTree = "<group>"; };
 		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
 		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
 		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				776FDC21179342140068E528 /* Terms.xib */,
 				776FDC24179342240068E528 /* Faq.h */,
 				776FDC25179342240068E528 /* Faq.m */,
-				776FDC26179342240068E528 /* Faq.xib */,
 				7730CC9217AD4D6400C35DD5 /* Logout.h */,
 				7730CC9317AD4D6400C35DD5 /* Logout.m */,
 			);
@@ -427,7 +424,6 @@
 				776FDC18179331670068E528 /* Terms.png in Resources */,
 				776FDC1E17933FB30068E528 /* ContactUs.xib in Resources */,
 				776FDC23179342140068E528 /* Terms.xib in Resources */,
-				776FDC28179342240068E528 /* Faq.xib in Resources */,
 				77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */,
 				7736E2E617B0A35500CA1E3C /* LeftArrow.png in Resources */,
 				7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */,

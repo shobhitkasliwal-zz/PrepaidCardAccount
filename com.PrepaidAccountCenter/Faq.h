@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OBGradientView.h"
+#import "GradientButton.h"
+#import "RTNetworkRequest.h"
 
-@interface Faq : UIViewController
+@interface Faq : UIViewController <UITableViewDelegate, UITableViewDataSource,  RTNetworkRequestDelegate>
 - (IBAction)Done_Click:(id)sender;
-
+@property (weak, nonatomic) IBOutlet UILabel *lblHeaderCard;
+@property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;
 @end

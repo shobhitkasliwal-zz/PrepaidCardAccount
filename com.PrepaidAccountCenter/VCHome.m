@@ -274,7 +274,9 @@ static float progressTableAnimate = 0.0f;
 }
 
 -(void)faqButtonClicked:(id)sender {
-    [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
+  //  [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"segFAQ" sender:nil];
+    
 }
 
 
