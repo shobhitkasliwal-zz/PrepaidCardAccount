@@ -12,7 +12,9 @@
 #import "RTNetworkRequest.h"
 
 @interface Faq : UIViewController <UITableViewDelegate, UITableViewDataSource,  RTNetworkRequestDelegate>
-- (IBAction)Done_Click:(id)sender;
+- (IBAction)Home_click:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableView *tblFaq;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblHeaderCard;
 @property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;
 @end

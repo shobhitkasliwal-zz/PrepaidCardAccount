@@ -9,6 +9,7 @@
 #import "Faq.h"
 #import "UIColor+Hex.h"
 #import "SingletonGeneric.h"
+#import "FaqAnswer.h"
 #define GetPINURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/GetCardPinInformation?Proxy=%@&WCSClientID=%@&SiteConfigID=%@"
 @interface Faq ()
 @property (nonatomic, strong)NSArray *dsFAQ;
@@ -57,9 +58,6 @@ CardInfo *cInfo;
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)Done_Click:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 
@@ -96,4 +94,22 @@ CardInfo *cInfo;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+     [self performSegueWithIdentifier:@"FaqAnswer" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"FaqAnswer"])
+    {
+        FaqAnswer *View = [segue destinationViewController];
+        NSIndexPath *index = [_tblFaq indexPathForSelectedRow];
+        View.Question = [[_dsFAQ objectAtIndex:index.row] objectAtIndex:0];
+    View.Answer = [[_dsFAQ objectAtIndex:index.row] objectAtIndex:1];
+    }
+}
+- (IBAction)Home_click:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

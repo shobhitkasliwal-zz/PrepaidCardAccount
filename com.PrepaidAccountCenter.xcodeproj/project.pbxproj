@@ -54,6 +54,9 @@
 		77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1F179094E500E6D9BA /* MyCardAccount.png */; };
 		77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B211790950B00E6D9BA /* TransactionsLogo.png */; };
 		77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B23179096EE00E6D9BA /* PinManagement.png */; };
+		77DFE42D17C6852E00479D0D /* FaqAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DFE42C17C6852E00479D0D /* FaqAnswer.m */; };
+		77DFE42F17C6979100479D0D /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DFE42E17C6979100479D0D /* Home.png */; };
+		77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */; };
 		77E891D217BABD9B00A672A4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77E891D117BABD9B00A672A4 /* icon.png */; };
 		77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CC817B00B8400A1E07E /* OBGradientView.m */; };
 		77F90CCD17B00BC800A1E07E /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCC17B00BC800A1E07E /* GradientButton.m */; };
@@ -130,6 +133,11 @@
 		77BD5B1F179094E500E6D9BA /* MyCardAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyCardAccount.png; sourceTree = "<group>"; };
 		77BD5B211790950B00E6D9BA /* TransactionsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsLogo.png; sourceTree = "<group>"; };
 		77BD5B23179096EE00E6D9BA /* PinManagement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinManagement.png; sourceTree = "<group>"; };
+		77DFE42B17C6852E00479D0D /* FaqAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqAnswer.h; sourceTree = "<group>"; };
+		77DFE42C17C6852E00479D0D /* FaqAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqAnswer.m; sourceTree = "<group>"; };
+		77DFE42E17C6979100479D0D /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
+		77DFE43017C6C9FE00479D0D /* MyCardAccountsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCardAccountsCell.h; sourceTree = "<group>"; };
+		77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCardAccountsCell.m; sourceTree = "<group>"; };
 		77E891D117BABD9B00A672A4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		77F90CC817B00B8400A1E07E /* OBGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBGradientView.m; sourceTree = "<group>"; };
 		77F90CCA17B00B9500A1E07E /* OBGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBGradientView.h; sourceTree = "<group>"; };
@@ -279,6 +287,8 @@
 				776FDC25179342240068E528 /* Faq.m */,
 				7730CC9217AD4D6400C35DD5 /* Logout.h */,
 				7730CC9317AD4D6400C35DD5 /* Logout.m */,
+				77DFE42B17C6852E00479D0D /* FaqAnswer.h */,
+				77DFE42C17C6852E00479D0D /* FaqAnswer.m */,
 			);
 			name = GenericViews;
 			sourceTree = "<group>";
@@ -307,6 +317,8 @@
 				77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */,
 				778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */,
 				7751379817B2C617007F2679 /* MyCardAccountSubView.xib */,
+				77DFE43017C6C9FE00479D0D /* MyCardAccountsCell.h */,
+				77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -321,6 +333,7 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				77DFE42E17C6979100479D0D /* Home.png */,
 				776FC81117C1ABD0007AD728 /* RedPlus.png */,
 				77B946D017B54FC800A7EA88 /* error.png */,
 				77B946D117B54FC800A7EA88 /* error@2x.png */,
@@ -434,6 +447,7 @@
 				77B946D717B54FC800A7EA88 /* success@2x.png in Resources */,
 				77E891D217BABD9B00A672A4 /* icon.png in Resources */,
 				776FC81217C1ABD0007AD728 /* RedPlus.png in Resources */,
+				77DFE42F17C6979100479D0D /* Home.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +481,8 @@
 				77F90CD617B06CE900A1E07E /* GTMBase64.m in Sources */,
 				7751379717B2BF91007F2679 /* iCarousel.m in Sources */,
 				77B946DA17B54FDB00A7EA88 /* SVProgressHUD.m in Sources */,
+				77DFE42D17C6852E00479D0D /* FaqAnswer.m in Sources */,
+				77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

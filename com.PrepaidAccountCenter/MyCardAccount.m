@@ -8,8 +8,10 @@
 
 #import "MyCardAccount.h"
 #import "UIColor+Hex.h"
+#import "SingletonGeneric.h"
+#import "MyCardAccountsCell.h"
 @interface MyCardAccount ()
-@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray *dsUserCards;
 @end
 
 @implementation MyCardAccount
@@ -24,31 +26,18 @@
     return self;
 }
 
-- (void)awakeFromNib
-{
-    //set up data
-    //your carousel should always be driven by an array of
-    //data of some kind - don't store data in your item views
-    //or the recycling mechanism will destroy your data once
-    //your item views move off-screen
-    self.items = [NSMutableArray array];
-    for (int i = 0; i < 100; i++)
-    {
-        [_items addObject:@(i)];
-    }
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _carousel.type = iCarouselTypeTimeMachine;
-     _carousel.scrollSpeed = 0.2;
-    self.navigationItem.title = @"My Card Account";
+      self.navigationItem.title = @"My Card Account";
   //  [appHelper applyShinyBackgroundWithColor:[UIColor redColor] forView:self.view];
    
     [_btnAddNewCard useBlackStyle];
+    _dsUserCards =[[SingletonGeneric UserCardInfo] UserCardInformation];
    // [_uiViewHeader app
 	// Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,51 +50,62 @@
     [self performSegueWithIdentifier:@"MyCardAccountLogout" sender:nil];
 }
 
-- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
-{
-    //return the total number of items in the carousel
-    return [_items count];
-}
-- (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
-{
-//    NSString* str = [NSString stringWithFormat:@"Item Index:%d",[carousel currentItemIndex]];
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [alert show];
 
+- (IBAction)btnByExpiry_click:(id)sender {
 }
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
-{
-    UILabel *label = nil;
+
+- (IBAction)btnByBalance_click:(id)sender {
+}
+
+- (IBAction)btnByStatus_click:(id)sender {
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    //create new view if no view is available for recycling
-    if (view == nil)
-    {
-      //  view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)];
-        //((UIImageView *)view).image = [UIImage imageNamed:@"page.png"];
-        view = [[[NSBundle mainBundle] loadNibNamed:@"MyCardAccountSubView" owner:self options:nil] lastObject];
-        view.contentMode = UIViewContentModeCenter;
-        label = [[UILabel alloc] initWithFrame:view.bounds];
-        label.backgroundColor = [UIColor clearColor];
-      //  label.textAlignment = UITextAlignmentCenter;
-        label.font = [label.font fontWithSize:50];
-        label.tag = 1;
-        [view addSubview:label];
-        
-        [view addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view.superview attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
+    return 1;
+    
+}
+
+
+
+// Customize the number of rows in the table view.
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return ( _dsUserCards.count);
+    
+}
+
+
+// Customize the appearance of table view cells.
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"MCACell";
+    MyCardAccountsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[MyCardAccountsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    else
+    if(_dsUserCards.count > indexPath.row)
     {
-        //get a reference to the label in the recycled view
-        label = (UILabel *)[view viewWithTag:1];
+        CardInfo *cinfo =  [_dsUserCards objectAtIndex:[indexPath row]];
+        if (cinfo != nil){
+            [cell.lblMCA_CardNumber setText: cinfo.cardNumber];
+            
+            //  cell.contentView.backgroundColor = [UIColor colorWithRed:99/255.f green:184/255.f blue:255/255.f alpha:1];
+        }
     }
+    return cell;
     
-    //set item label
-    //remember to always set any properties of your carousel item
-    //views outside of the `if (view == nil) {...}` check otherwise
-    //you'll get weird issues with carousel item content appearing
-    //in the wrong place in the carousel
-    label.text = [_items[index] stringValue];
-    
-    return view;
+}
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"Remove Card";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+        //[dataSourceArray removeObjectAtIndex:indexPath.row];
+    }    
 }
 @end
