@@ -20,6 +20,11 @@
 		77004BBC17628AD700745E2B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77004BBB17628AD700745E2B /* LoginViewController.m */; };
 		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
+		77258DA817CA554100EA20CB /* CreateLoginCredentials.png in Resources */ = {isa = PBXBuildFile; fileRef = 77258DA617CA554100EA20CB /* CreateLoginCredentials.png */; };
+		77258DA917CA554100EA20CB /* CreateLoginCredentials@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77258DA717CA554100EA20CB /* CreateLoginCredentials@2x.png */; };
+		77258DAC17CA576E00EA20CB /* Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 77258DAA17CA576E00EA20CB /* Logout.png */; };
+		77258DAD17CA576E00EA20CB /* Logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77258DAB17CA576E00EA20CB /* Logout@2x.png */; };
+		77258DB017CA7C7600EA20CB /* ManageUserCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 77258DAF17CA7C7600EA20CB /* ManageUserCredentials.m */; };
 		7730CC9417AD4D6400C35DD5 /* Logout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7730CC9317AD4D6400C35DD5 /* Logout.m */; };
 		7736E2E617B0A35500CA1E3C /* LeftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7736E2E517B0A35500CA1E3C /* LeftArrow.png */; };
 		7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7736E2E717B0A37C00CA1E3C /* RightArrow.png */; };
@@ -84,6 +89,12 @@
 		77004BBB17628AD700745E2B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		770E6A2C17927E2600D56950 /* CardScrollBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardScrollBG.png; sourceTree = "<group>"; };
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		77258DA617CA554100EA20CB /* CreateLoginCredentials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateLoginCredentials.png; sourceTree = "<group>"; };
+		77258DA717CA554100EA20CB /* CreateLoginCredentials@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateLoginCredentials@2x.png"; sourceTree = "<group>"; };
+		77258DAA17CA576E00EA20CB /* Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logout.png; sourceTree = "<group>"; };
+		77258DAB17CA576E00EA20CB /* Logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logout@2x.png"; sourceTree = "<group>"; };
+		77258DAE17CA7C7600EA20CB /* ManageUserCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageUserCredentials.h; sourceTree = "<group>"; };
+		77258DAF17CA7C7600EA20CB /* ManageUserCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageUserCredentials.m; sourceTree = "<group>"; };
 		7730CC9217AD4D6400C35DD5 /* Logout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logout.h; sourceTree = "<group>"; };
 		7730CC9317AD4D6400C35DD5 /* Logout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logout.m; sourceTree = "<group>"; };
 		7736E2E517B0A35500CA1E3C /* LeftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LeftArrow.png; sourceTree = "<group>"; };
@@ -306,6 +317,8 @@
 				776FDC1117932A1F0068E528 /* PinManagement.m */,
 				77A2A33F17A55074001986D0 /* VCHome.h */,
 				77A2A34017A55074001986D0 /* VCHome.m */,
+				77258DAE17CA7C7600EA20CB /* ManageUserCredentials.h */,
+				77258DAF17CA7C7600EA20CB /* ManageUserCredentials.m */,
 			);
 			name = MainViews;
 			sourceTree = "<group>";
@@ -333,6 +346,10 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				77258DAA17CA576E00EA20CB /* Logout.png */,
+				77258DAB17CA576E00EA20CB /* Logout@2x.png */,
+				77258DA617CA554100EA20CB /* CreateLoginCredentials.png */,
+				77258DA717CA554100EA20CB /* CreateLoginCredentials@2x.png */,
 				77DFE42E17C6979100479D0D /* Home.png */,
 				776FC81117C1ABD0007AD728 /* RedPlus.png */,
 				77B946D017B54FC800A7EA88 /* error.png */,
@@ -448,6 +465,10 @@
 				77E891D217BABD9B00A672A4 /* icon.png in Resources */,
 				776FC81217C1ABD0007AD728 /* RedPlus.png in Resources */,
 				77DFE42F17C6979100479D0D /* Home.png in Resources */,
+				77258DA817CA554100EA20CB /* CreateLoginCredentials.png in Resources */,
+				77258DA917CA554100EA20CB /* CreateLoginCredentials@2x.png in Resources */,
+				77258DAC17CA576E00EA20CB /* Logout.png in Resources */,
+				77258DAD17CA576E00EA20CB /* Logout@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +504,7 @@
 				77B946DA17B54FDB00A7EA88 /* SVProgressHUD.m in Sources */,
 				77DFE42D17C6852E00479D0D /* FaqAnswer.m in Sources */,
 				77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */,
+				77258DB017CA7C7600EA20CB /* ManageUserCredentials.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

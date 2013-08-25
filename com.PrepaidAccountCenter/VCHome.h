@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *uiPageMainView;
 @property (weak, nonatomic) IBOutlet iCarousel *CardScrollView;
 - (IBAction)PageChange:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnLogout;
+- (IBAction)Credentials_click:(id)sender;
 
 - (IBAction)LogoutClick:(id)sender;
 -(IBAction)contactUSButtonClicked:(id)sender;

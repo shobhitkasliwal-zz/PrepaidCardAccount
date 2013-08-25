@@ -79,6 +79,23 @@ int CurrentScrollViewPage;
     self.uiPageControlScrollCard.numberOfPages = pageCount;
    
    
+    
+//    UIImage *LogoutImage = [UIImage imageNamed:@"logout.png"];
+//    
+//    UIButton *LogoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [LogoutButton setBackgroundImage:LogoutImage forState:UIControlStateNormal];
+//    [LogoutButton setTitle:@"Logout" forState:UIControlStateNormal];
+//    LogoutButton.frame = (CGRect) {
+//        .size.width = 50,
+//        .size.height = 25,
+//    };
+//    //[LogoutButton setTitleEdgeInsets:<#(UIEdgeInsets)#>
+//     [LogoutButton setTitleEdgeInsets:UIEdgeInsetsMake(30.0f, 10.0f, 0.0f, 0.0f)];
+//    [LogoutButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
+//
+//    UIBarButtonItem *barButton= [[UIBarButtonItem alloc] initWithCustomView:LogoutButton];
+//    // self.toolbarItems= [NSArray arrayWithObject:barButton];
+//    self.navigationItem.rightBarButtonItem = barButton;
 }
 
 
@@ -257,6 +274,9 @@ static float progressTableAnimate = 0.0f;
 - (IBAction)PageChange:(id)sender {
     [ _CardScrollView scrollToItemAtIndex:_uiPageControlScrollCard.currentPage animated:YES];
     
+}
+
+- (IBAction)Credentials_click:(id)sender {
 }
 
 - (IBAction)LogoutClick:(id)sender {
