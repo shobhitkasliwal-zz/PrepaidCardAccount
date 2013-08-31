@@ -45,6 +45,7 @@
 		776FDC22179342140068E528 /* Terms.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC20179342140068E528 /* Terms.m */; };
 		776FDC23179342140068E528 /* Terms.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC21179342140068E528 /* Terms.xib */; };
 		776FDC27179342240068E528 /* Faq.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC25179342240068E528 /* Faq.m */; };
+		777A21FA17D2A91A0026D80F /* AddNewCardToAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A21F917D2A91A0026D80F /* AddNewCardToAccount.m */; };
 		778109E81791DDDB003DF414 /* CardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 778109E71791DDDB003DF414 /* CardInfo.m */; };
 		778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */; };
 		77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A2A33D17A54FAC001986D0 /* Home.storyboard */; };
@@ -126,6 +127,8 @@
 		776FDC21179342140068E528 /* Terms.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Terms.xib; sourceTree = "<group>"; };
 		776FDC24179342240068E528 /* Faq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Faq.h; sourceTree = "<group>"; };
 		776FDC25179342240068E528 /* Faq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Faq.m; sourceTree = "<group>"; };
+		777A21F817D2A91A0026D80F /* AddNewCardToAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewCardToAccount.h; sourceTree = "<group>"; };
+		777A21F917D2A91A0026D80F /* AddNewCardToAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewCardToAccount.m; sourceTree = "<group>"; };
 		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
 		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
 		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 				77A2A34017A55074001986D0 /* VCHome.m */,
 				77258DAE17CA7C7600EA20CB /* ManageUserCredentials.h */,
 				77258DAF17CA7C7600EA20CB /* ManageUserCredentials.m */,
+				777A21F817D2A91A0026D80F /* AddNewCardToAccount.h */,
+				777A21F917D2A91A0026D80F /* AddNewCardToAccount.m */,
 			);
 			name = MainViews;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 				77DFE42D17C6852E00479D0D /* FaqAnswer.m in Sources */,
 				77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */,
 				77258DB017CA7C7600EA20CB /* ManageUserCredentials.m in Sources */,
+				777A21FA17D2A91A0026D80F /* AddNewCardToAccount.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

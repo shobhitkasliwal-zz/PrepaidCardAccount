@@ -12,6 +12,7 @@
 #import "SingletonGeneric.h"
 #import "AppHelper.h"
 #import "SVProgressHUD.h"
+#import "UIColor+Hex.h"
 
 #define LoginURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/AuthenticateUser?UserName=%@&Password=%@&AuthenticationType=%@"
 
@@ -46,6 +47,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 
+    
+    //_vw_MainView.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
+    _vw_MainView.layer.cornerRadius = 8; // if you like rounded corners
+    _vw_MainView.layer.shadowOffset = CGSizeMake(-15, 20);
+    _vw_MainView.layer.shadowRadius = 5;
+    _vw_MainView.layer.shadowOpacity = 0.5;
+    [_btnLogin useBlackStyle];
     
 }
 - (void)keyboardDidShow:(NSNotification *)notification

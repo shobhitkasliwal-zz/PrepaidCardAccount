@@ -12,5 +12,5 @@
 @interface AppHelper : NSObject
 + (NSData*)TripleDES:(NSData*)plainData encryptOrDecrypt:(CCOperation)encryptOrDecrypt key:(NSString*)key ;
 + (UIImage *)create3DImageWithText:(NSString *)_text Font:(UIFont*)_font ForegroundColor:(UIColor*)_foregroundColor ShadowColor:(UIColor*)_shadowColor outlineColor:(UIColor*)_outlineColor depth:(int)_depth useShine:(BOOL)_shine;
-
++ (NSString *) DeviceType;
 @end

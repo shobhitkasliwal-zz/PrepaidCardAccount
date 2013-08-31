@@ -204,6 +204,15 @@
     return finalImage;
 }
 
-
++(NSString *) DeviceType
+{
+    NSString* deviceType = [UIDevice currentDevice].model;
+    if ([[deviceType lowercaseString] rangeOfString:@"iphone"].location != NSNotFound) {
+       return @"iphone";
+    } else {
+        return @"ipad";
+    }
+    
+}
 
 @end

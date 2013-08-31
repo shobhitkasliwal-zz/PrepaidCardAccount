@@ -22,4 +22,5 @@
 - (IBAction)btnByExpiry_click:(id)sender;
 - (IBAction)btnByBalance_click:(id)sender;
 - (IBAction)btnByStatus_click:(id)sender;
+@property (weak, nonatomic) IBOutlet GradientButton *btnAddNewCard_Click;
 @end

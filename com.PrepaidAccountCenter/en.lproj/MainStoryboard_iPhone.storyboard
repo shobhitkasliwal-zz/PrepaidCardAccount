@@ -20,7 +20,7 @@
                                     <navigationItem title="Prepaid Account Center" id="1nz-58-muI"/>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" restorationIdentifier="" translatesAutoresizingMaskIntoConstraints="NO" id="AAA-oB-pyk">
+                            <view contentMode="scaleToFill" restorationIdentifier="" translatesAutoresizingMaskIntoConstraints="NO" id="AAA-oB-pyk" customClass="OBGradientView">
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afz-R6-yn9">
                                         <subviews>
@@ -83,7 +83,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vb5-7g-gCc">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIl-04-NbQ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIl-04-NbQ" customClass="GradientButton">
                                                 <color key="backgroundColor" red="0.050980396568775177" green="0.050980396568775177" blue="0.050980396568775177" alpha="1" colorSpace="deviceRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="291" type="user" id="JOX-7N-MeQ"/>
@@ -153,6 +153,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="SwitchCardUsernameLogin" destination="EC0-GD-cAo" id="Cur-YX-axy"/>
+                        <outlet property="btnLogin" destination="tIl-04-NbQ" id="Kak-uv-W6B"/>
                         <outlet property="lblCardNumberUsername" destination="AQh-p0-I7Q" id="P4A-Cr-ahT"/>
                         <outlet property="lblPasswordSecurityCode" destination="n7W-k7-LD5" id="m1l-gb-pyc"/>
                         <outlet property="txtPasswordSecPin" destination="yTx-he-hOn" id="JFP-LC-Rwk"/>
