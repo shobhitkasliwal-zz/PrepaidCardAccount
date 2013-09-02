@@ -139,15 +139,34 @@
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if(textField == _txtPasswordSecPin)
+    {
+        [self LoginUser];
+    }
+    else{
+        
+        [_txtUsernameCard resignFirstResponder];
+        [_txtPasswordSecPin resignFirstResponder];
+    }
+    return true;
+}
 
 - (IBAction)btnLogin_Click:(id)sender {
+    
+    [self LoginUser];
+}
+
+- (void)LoginUser
+{
+    
     [_vw_MainView setHidden:YES];
     [SVProgressHUD showWithStatus:@"You are being securely logging in. \nThank you for your patience." maskType:SVProgressHUDMaskTypeGradient];
     [UIView transitionWithView:self.view duration:0.5
                        options:UIViewAnimationOptionLayoutSubviews
                     animations:^{
                         
-                       
+                        
                         
                     }
                     completion:^(BOOL finished) {
@@ -155,27 +174,25 @@
                         bool isTest = true;
                         
                         if (!isTest){
-                        RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-                        if (_SwitchCardUsernameLogin.isOn)
-                        {
-                            NSString *Username = _txtUsernameCard.text;
-                          //  NSData* data = [Username dataUsingEncoding:NSUTF8StringEncoding];
-                          //NSData *datasend =   [AppHelper  TripleDES:data encryptOrDecrypt:kCCEncrypt key:@"AAECAwQFBgcICQoLDA0ODw=="];
-                            [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL,Username , _txtPasswordSecPin.text,@"Username"] httpMethod:RTHTTPMethodGET];
-                        
-                        }else
-                            [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
+                            RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+                            if (_SwitchCardUsernameLogin.isOn)
+                            {
+                                NSString *Username = _txtUsernameCard.text;
+                                //  NSData* data = [Username dataUsingEncoding:NSUTF8StringEncoding];
+                                //NSData *datasend =   [AppHelper  TripleDES:data encryptOrDecrypt:kCCEncrypt key:@"AAECAwQFBgcICQoLDA0ODw=="];
+                                [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL,Username , _txtPasswordSecPin.text,@"Username"] httpMethod:RTHTTPMethodGET];
+                                
+                            }else
+                                [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
                         }
                         else{
-                             [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
-                         [self performSelector:@selector(PresentLoggedinHomeView) withObject:nil afterDelay:0];
+                            [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
+                            [self performSelector:@selector(PresentLoggedinHomeView) withObject:nil afterDelay:0];
                         }
                     }];
     
-    
-    
-}
 
+}
 
 
 #pragma mark - Service Caller Delegate

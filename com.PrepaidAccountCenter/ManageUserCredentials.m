@@ -109,7 +109,13 @@
     [_txtOldPAssword resignFirstResponder];
 }
 
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [_txtUsername resignFirstResponder];
+    [_txtPassword resignFirstResponder];
+    [_txtConfirmPAssword resignFirstResponder];
+    [_txtOldPAssword resignFirstResponder];
+    return true;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -118,5 +124,14 @@
 
 - (IBAction)Home_Click:(id)sender {
       [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)btnCreate_Click:(id)sender {
+}
+
+- (IBAction)btnReset_Click:(id)sender {
+    [_txtUsername setText:@""];
+    [_txtPassword setText:@""];
+    [_txtConfirmPAssword setText:@""];
+    [_txtOldPAssword setText:@""];
 }
 @end

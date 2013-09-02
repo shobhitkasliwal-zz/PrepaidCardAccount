@@ -328,6 +328,118 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vow-sJ-2xZ">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EID-4p-MeH" customClass="OBGradientView">
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Card Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-ur-xKz">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="NR9-A9-TW0"/>
+                                                    <constraint firstAttribute="width" constant="145" id="vFG-AC-Iwi"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Security Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFg-Gj-Ao1">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="8Z6-3d-chs"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FTz-uF-9IZ">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="0FP-oO-1FP" id="1ST-qG-Pbd"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="koT-lD-fc9">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="0FP-oO-1FP" id="Dsi-A3-gYm"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTL-yc-Jfj" customClass="GradientButton">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="43" type="user" id="eJ2-Lz-zd2"/>
+                                                    <constraint firstAttribute="width" constant="86" id="oa0-Rj-js0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Add Card">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnAddCard_Click:" destination="0FP-oO-1FP" eventType="touchUpInside" id="6nP-KE-u4j"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aM-sP-VP3" customClass="GradientButton">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="43" type="user" id="0Da-5H-j65"/>
+                                                    <constraint firstAttribute="width" constant="86" id="RRW-9A-18n"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Clear">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnClear_Click:" destination="0FP-oO-1FP" eventType="touchUpInside" id="Ayl-ut-Hsg"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="FTL-yc-Jfj" secondAttribute="bottom" constant="10" id="3LB-Bo-Dbd"/>
+                                            <constraint firstItem="OFg-Gj-Ao1" firstAttribute="leading" secondItem="FTz-uF-9IZ" secondAttribute="leading" type="user" id="Bwv-h6-DRm"/>
+                                            <constraint firstItem="6zP-ur-xKz" firstAttribute="leading" secondItem="EID-4p-MeH" secondAttribute="leading" constant="25" type="user" id="JfX-Rc-uSF"/>
+                                            <constraint firstItem="koT-lD-fc9" firstAttribute="leading" secondItem="EID-4p-MeH" secondAttribute="leading" constant="25" type="user" id="LEO-Up-31T"/>
+                                            <constraint firstAttribute="trailing" secondItem="FTz-uF-9IZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Mh2-CX-pIh"/>
+                                            <constraint firstItem="6zP-ur-xKz" firstAttribute="top" secondItem="EID-4p-MeH" secondAttribute="top" constant="18" id="PGJ-k8-XBW"/>
+                                            <constraint firstItem="FTz-uF-9IZ" firstAttribute="leading" secondItem="6zP-ur-xKz" secondAttribute="leading" type="user" id="PfM-nv-jty"/>
+                                            <constraint firstItem="FTz-uF-9IZ" firstAttribute="top" secondItem="EID-4p-MeH" secondAttribute="top" constant="42" id="RTv-hW-EU1"/>
+                                            <constraint firstItem="6aM-sP-VP3" firstAttribute="baseline" secondItem="FTL-yc-Jfj" secondAttribute="baseline" type="default" id="Rhg-fZ-t8x"/>
+                                            <constraint firstItem="koT-lD-fc9" firstAttribute="leading" secondItem="OFg-Gj-Ao1" secondAttribute="leading" type="user" id="buL-lZ-c4h"/>
+                                            <constraint firstAttribute="trailing" secondItem="6aM-sP-VP3" secondAttribute="trailing" constant="25" id="dVz-nY-Pat"/>
+                                            <constraint firstItem="OFg-Gj-Ao1" firstAttribute="top" secondItem="EID-4p-MeH" secondAttribute="top" constant="83" id="f5I-xd-c1L"/>
+                                            <constraint firstItem="OFg-Gj-Ao1" firstAttribute="trailing" secondItem="6zP-ur-xKz" secondAttribute="trailing" type="default" id="l2w-b3-rQn"/>
+                                            <constraint firstItem="FTL-yc-Jfj" firstAttribute="leading" secondItem="EID-4p-MeH" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="nQ2-Y6-cXB"/>
+                                            <constraint firstAttribute="trailing" secondItem="koT-lD-fc9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nmJ-DE-ExW"/>
+                                            <constraint firstItem="koT-lD-fc9" firstAttribute="top" secondItem="EID-4p-MeH" secondAttribute="top" constant="107" id="uS1-Hh-m8Y"/>
+                                            <constraint firstAttribute="height" constant="220" id="xfv-Re-FgW"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2UX-vO-J2j">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="gBg-Wn-gOH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="textColor" red="0.88286083936691284" green="0.04233394547591364" blue="0.063929741246671765" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstItem="EID-4p-MeH" firstAttribute="leading" secondItem="Vow-sJ-2xZ" secondAttribute="leading" constant="20" type="user" id="0OB-d3-Khb"/>
+                                    <constraint firstAttribute="bottom" secondItem="EID-4p-MeH" secondAttribute="bottom" constant="268" id="EIt-gu-5s4"/>
+                                    <constraint firstItem="2UX-vO-J2j" firstAttribute="leading" secondItem="Vow-sJ-2xZ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Nr7-qs-Tqv"/>
+                                    <constraint firstItem="EID-4p-MeH" firstAttribute="top" secondItem="Vow-sJ-2xZ" secondAttribute="top" constant="36" id="UAv-kw-KTV"/>
+                                    <constraint firstItem="2UX-vO-J2j" firstAttribute="centerX" secondItem="Vow-sJ-2xZ" secondAttribute="centerX" type="default" id="bak-h4-cin"/>
+                                    <constraint firstItem="2UX-vO-J2j" firstAttribute="top" secondItem="Vow-sJ-2xZ" secondAttribute="top" constant="6" id="k4U-Gj-gtk"/>
+                                    <constraint firstAttribute="trailing" secondItem="EID-4p-MeH" secondAttribute="trailing" constant="20" type="user" id="mUV-4B-4Ra"/>
+                                    <constraint firstAttribute="trailing" secondItem="2UX-vO-J2j" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="y8r-5a-IaB"/>
+                                </constraints>
+                            </scrollView>
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="8rE-ad-dov">
                                 <items>
                                     <navigationItem title="Add New Card To Account" id="hA5-ds-vtj">
@@ -344,9 +456,21 @@
                         <constraints>
                             <constraint firstItem="8rE-ad-dov" firstAttribute="trailing" secondItem="G72-Qx-g8x" secondAttribute="trailing" type="default" id="CiJ-Gd-dk7"/>
                             <constraint firstItem="8rE-ad-dov" firstAttribute="leading" secondItem="G72-Qx-g8x" secondAttribute="leading" type="default" id="FDh-hP-HCs"/>
+                            <constraint firstItem="Vow-sJ-2xZ" firstAttribute="trailing" secondItem="G72-Qx-g8x" secondAttribute="trailing" type="default" id="Nda-DJ-cli"/>
                             <constraint firstItem="8rE-ad-dov" firstAttribute="top" secondItem="G72-Qx-g8x" secondAttribute="top" type="default" id="S4m-dc-JZ0"/>
+                            <constraint firstItem="Vow-sJ-2xZ" firstAttribute="leading" secondItem="G72-Qx-g8x" secondAttribute="leading" type="default" id="dGI-2W-MPL"/>
+                            <constraint firstItem="Vow-sJ-2xZ" firstAttribute="bottom" secondItem="G72-Qx-g8x" secondAttribute="bottom" constant="20" type="user" id="rfP-VB-a2T"/>
+                            <constraint firstItem="Vow-sJ-2xZ" firstAttribute="top" secondItem="8rE-ad-dov" secondAttribute="bottom" type="default" id="wj5-Sc-Pro"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnAddCard" destination="FTL-yc-Jfj" id="32z-K7-yrG"/>
+                        <outlet property="btnClear" destination="6aM-sP-VP3" id="m6R-Tb-Hne"/>
+                        <outlet property="lblMessageTop" destination="2UX-vO-J2j" id="8Ss-Ux-z4q"/>
+                        <outlet property="txtCardNumber" destination="FTz-uF-9IZ" id="lJh-0E-FMS"/>
+                        <outlet property="txtSecurityPin" destination="koT-lD-fc9" id="7OA-e9-c9P"/>
+                        <outlet property="vwMain" destination="EID-4p-MeH" id="QPX-v6-sL2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4v5-O0-eLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1422,28 +1546,40 @@
                                                     <constraint firstAttribute="height" constant="31" type="user" id="CNZ-EP-x5g"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bdJ-ho-T8K" id="I3E-MY-x3x"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTA-oS-MHb">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" type="user" id="iEx-Zw-elQ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bdJ-ho-T8K" id="e1I-DJ-dNP"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ob-MN-hqa">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="QbD-am-Atu"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bdJ-ho-T8K" id="w5t-Jj-I0r"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JTI-hq-IZz">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" type="user" id="xBt-Ja-lil"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bdJ-ho-T8K" id="v21-RT-bOe"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78G-rB-CKx" customClass="GradientButton">
                                                 <constraints>
@@ -1458,6 +1594,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnCreate_Click:" destination="bdJ-ho-T8K" eventType="touchUpInside" id="5T1-Wm-j6I"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiD-Pn-rel" customClass="GradientButton">
                                                 <constraints>
@@ -1472,6 +1611,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnReset_Click:" destination="bdJ-ho-T8K" eventType="touchUpInside" id="17E-BS-Otx"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1553,176 +1695,6 @@
         <image name="RedPlus.png" width="22" height="22"/>
         <image name="Terms.png" width="24" height="26"/>
     </resources>
-    <classes>
-        <class className="AddNewCardToAccount" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewCardToAccount.h"/>
-            <relationships>
-                <relationship kind="action" name="btnHome_Click:"/>
-            </relationships>
-        </class>
-        <class className="Faq" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Faq.h"/>
-            <relationships>
-                <relationship kind="action" name="Home_click:"/>
-                <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tblFaq" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
-            </relationships>
-        </class>
-        <class className="FaqAnswer" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FaqAnswer.h"/>
-            <relationships>
-                <relationship kind="action" name="Home_click:"/>
-                <relationship kind="outlet" name="FaqAnswerWebView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="GradientButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientButton.h"/>
-        </class>
-        <class className="Logout" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Logout.h"/>
-            <relationships>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="Logout:"/>
-                <relationship kind="outlet" name="ActionViewBottomConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="btnYes" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="uiActionButtons" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="ManageUserCredentials" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageUserCredentials.h"/>
-            <relationships>
-                <relationship kind="action" name="Home_Click:"/>
-                <relationship kind="action" name="hideKeyBoard:"/>
-                <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="btnCreate" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="constlblPassword" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="lblOldPassword" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="txtConfirmPAssword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtOldPAssword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="vwHeightConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="vwMain" candidateClass="OBGradientView"/>
-            </relationships>
-        </class>
-        <class className="MyCardAccount" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyCardAccount.h"/>
-            <relationships>
-                <relationship kind="action" name="LogoutClick:"/>
-                <relationship kind="action" name="btnByBalance_click:"/>
-                <relationship kind="action" name="btnByExpiry_click:"/>
-                <relationship kind="action" name="btnByStatus_click:"/>
-                <relationship kind="outlet" name="btnAddNewCard" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="btnAddNewCard_Click" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="btnByBalance" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnByExpiry" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnByStatus" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tblCards" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="uiViewHeader" candidateClass="OBGradientView"/>
-            </relationships>
-        </class>
-        <class className="MyCardAccountsCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyCardAccountsCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lblMCA_CardNumber" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="OBGradientView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OBGradientView.h"/>
-        </class>
-        <class className="PinManagement" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PinManagement.h"/>
-            <relationships>
-                <relationship kind="action" name="LogoutClick:"/>
-                <relationship kind="action" name="hideKeyBoard:"/>
-                <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="btnChangePin" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="constraint_CancelLeadingSpace" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="constraint_uiPinViewHeight" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblViewPinMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="txtNewPin" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtPin" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
-                <relationship kind="outlet" name="uiPinView" candidateClass="OBGradientView"/>
-            </relationships>
-        </class>
-        <class className="Transactions" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Transactions.h"/>
-            <relationships>
-                <relationship kind="action" name="LogoutClick:"/>
-                <relationship kind="action" name="btnChangeDuration:"/>
-                <relationship kind="outlet" name="btnLast30Days" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="btnLast365Days" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="btnLast90Days" candidateClass="GradientButton"/>
-                <relationship kind="outlet" name="lblCardNumber" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tblOptions" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
-            </relationships>
-        </class>
-        <class className="TransactionsTbl_CustomCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransactionsTbl_CustomCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lblAmount" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblAuthDateValue" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblMerchantName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblPostDateValue" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblResponseReason" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UpdateProfile" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateProfile.h"/>
-            <relationships>
-                <relationship kind="action" name="LogoutClick:"/>
-                <relationship kind="action" name="hideKeyBoard:"/>
-                <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="txtAddress1" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtAddress2" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtCity" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtCountry" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtFirstName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtLastName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtPhone" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtState" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtZip" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
-            </relationships>
-        </class>
-        <class className="VCHome" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VCHome.h"/>
-            <relationships>
-                <relationship kind="action" name="Credentials_click:"/>
-                <relationship kind="action" name="LogoutClick:"/>
-                <relationship kind="action" name="PageChange:"/>
-                <relationship kind="action" name="contactUSButtonClicked:"/>
-                <relationship kind="action" name="faqButtonClicked:"/>
-                <relationship kind="action" name="termsButtonClicked:"/>
-                <relationship kind="outlet" name="CardScrollView" candidateClass="iCarousel"/>
-                <relationship kind="outlet" name="btnLogout" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="lbl_SC_Balance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lbl_SC_CardNumber" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lbl_SC_Expiration" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lbl_SC_Status" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="uiPageControlScrollCard" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="uiPageMainView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="vw_SC_View" candidateClass="OBGradientView"/>
-                <relationship kind="outlet" name="vw_ScrollWrapper" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="iCarousel" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iCarousel.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataSource"/>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -215,4 +215,9 @@
     
 }
 
+
+ + (BOOL) isEmptyString:(NSString *) Data{
+    return ([[Data stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]length] == 0);
+}
+
 @end

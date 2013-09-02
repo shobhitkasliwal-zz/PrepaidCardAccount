@@ -40,9 +40,10 @@
                                                     <constraint firstAttribute="width" constant="173" id="ZlT-S9-BDg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
                                                     <action selector="hideKeyBoard:" destination="2" eventType="editingDidEndOnExit" id="SAQ-0B-8KH"/>
+                                                    <outlet property="delegate" destination="2" id="i3t-C3-e0K"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" text="Security Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7W-k7-LD5">
@@ -56,9 +57,10 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yTx-he-hOn">
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                                 <connections>
                                                     <action selector="hideKeyBoard:" destination="2" eventType="editingDidEndOnExit" id="EHy-kB-5EX"/>
+                                                    <outlet property="delegate" destination="2" id="QQO-tt-rIO"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
