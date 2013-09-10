@@ -44,11 +44,14 @@ CardInfo *cInfo;
     _uiHeader.layer.shadowOpacity = 0.5;
     
     _dsFAQ = [NSArray arrayWithObjects:
-                        [NSArray arrayWithObjects:@"Question1", @"Answer1", nil],
-                        [NSArray arrayWithObjects:@"Question2", @"Answer2", nil],
-                        [NSArray arrayWithObjects:@"Question3", @"Answer3", nil],
-                        [NSArray arrayWithObjects:@"Question4", @"Answer4", nil],
-                        nil];
+              [NSArray arrayWithObjects:@"Where can I use my Card?", @"Your card is pre-loaded with value. If the front of your card indicates 'DOMESTIC USE ONLY' it may be used in the U.S. and District of Columbia wherever Visa debit cards are accepted. The card may not be used at any merchant, including internet and mail or telephone order merchants, outside of the U.S. or the District of Columbia. If the front of your card does not indicate 'DOMESTIC USE ONLY' it may be used wherever Visa Debit cards are accepted worldwide.", nil],
+              [NSArray arrayWithObjects:@"At what type of merchants can I use my Card?", @"Physical cards may be used at physical merchant locations, online, over the phone and for mailed payments. Virtual card accounts may not be used at physical merchant locations, but may be used online, over the phone and for mailed payments.", nil],
+              [NSArray arrayWithObjects:@"Does my Card expire?", @"Pay close attention to the expiration date printed on the front of the card. The card is valid through the last day of the month shown on the front of the card. You will not have access to the funds after expiration.", nil],
+              [NSArray arrayWithObjects:@"Can my Card ever have a negative balance? ", @"Any authorization request that is greater than your cardís available balance will be declined. However, there can be times when a merchant completes a transaction without prior authorization. If an overdraft occurs, the cardholder will be required to make a payment to Cardholder Services to cover the negative amount.", nil],
+              [NSArray arrayWithObjects:@"Do I need to activate my Card? ", @"Go to prepaidcardstatus.com to register your card in case it is lost or stolen. Your card is active and ready for use unless you are informed otherwise.", nil],
+              nil];
+    
+    
     
 }
 
@@ -90,6 +93,7 @@ CardInfo *cInfo;
     }
     
     cell.textLabel.text = [[_dsFAQ objectAtIndex:indexPath.row] objectAtIndex:0];
+    cell.textLabel.font = [UIFont systemFontOfSize:10.0];
     //cell.imageView.image = [UIImage imageNamed:[[_dsTableViewRows objectAtIndex:indexPath.row] objectAtIndex:1]];
     return cell;
 }

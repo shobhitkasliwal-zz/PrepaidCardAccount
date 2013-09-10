@@ -50,7 +50,7 @@ CardInfo *cInfo;
     _uiHeader.layer.shadowRadius = 5;
     _uiHeader.layer.shadowOpacity = 0.5;
 
-    [SVProgressHUD showWithStatus:@"Retriving Pin.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:@"Retriving Profile.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
     
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     [networkRequest makeWebCall:[NSString stringWithFormat:GetProfileURL,cInfo.cardProxy, cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];

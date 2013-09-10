@@ -20,8 +20,6 @@
 		77004BBC17628AD700745E2B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77004BBB17628AD700745E2B /* LoginViewController.m */; };
 		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
-		77258DA817CA554100EA20CB /* CreateLoginCredentials.png in Resources */ = {isa = PBXBuildFile; fileRef = 77258DA617CA554100EA20CB /* CreateLoginCredentials.png */; };
-		77258DA917CA554100EA20CB /* CreateLoginCredentials@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77258DA717CA554100EA20CB /* CreateLoginCredentials@2x.png */; };
 		77258DAC17CA576E00EA20CB /* Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 77258DAA17CA576E00EA20CB /* Logout.png */; };
 		77258DAD17CA576E00EA20CB /* Logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77258DAB17CA576E00EA20CB /* Logout@2x.png */; };
 		77258DB017CA7C7600EA20CB /* ManageUserCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 77258DAF17CA7C7600EA20CB /* ManageUserCredentials.m */; };
@@ -37,9 +35,6 @@
 		776FDC0C179329750068E528 /* MyCardAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0B179329740068E528 /* MyCardAccount.m */; };
 		776FDC0F17932A0B0068E528 /* UpdateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC0E17932A0B0068E528 /* UpdateProfile.m */; };
 		776FDC1217932A1F0068E528 /* PinManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC1117932A1F0068E528 /* PinManagement.m */; };
-		776FDC16179331670068E528 /* Contact us.png in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC13179331670068E528 /* Contact us.png */; };
-		776FDC17179331670068E528 /* Faq.png in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC14179331670068E528 /* Faq.png */; };
-		776FDC18179331670068E528 /* Terms.png in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC15179331670068E528 /* Terms.png */; };
 		776FDC1D17933FB30068E528 /* ContactUs.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC1B17933FB30068E528 /* ContactUs.m */; };
 		776FDC1E17933FB30068E528 /* ContactUs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776FDC1C17933FB30068E528 /* ContactUs.xib */; };
 		776FDC22179342140068E528 /* Terms.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC20179342140068E528 /* Terms.m */; };
@@ -48,6 +43,10 @@
 		777A21FA17D2A91A0026D80F /* AddNewCardToAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A21F917D2A91A0026D80F /* AddNewCardToAccount.m */; };
 		778109E81791DDDB003DF414 /* CardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 778109E71791DDDB003DF414 /* CardInfo.m */; };
 		778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */; };
+		779DA1B917D8CDA100D34F6D /* Contact us.png in Resources */ = {isa = PBXBuildFile; fileRef = 779DA1B517D8CDA100D34F6D /* Contact us.png */; };
+		779DA1BA17D8CDA100D34F6D /* CreateLoginCredentials.png in Resources */ = {isa = PBXBuildFile; fileRef = 779DA1B617D8CDA100D34F6D /* CreateLoginCredentials.png */; };
+		779DA1BB17D8CDA100D34F6D /* Faq.png in Resources */ = {isa = PBXBuildFile; fileRef = 779DA1B717D8CDA100D34F6D /* Faq.png */; };
+		779DA1BC17D8CDA100D34F6D /* Terms.png in Resources */ = {isa = PBXBuildFile; fileRef = 779DA1B817D8CDA100D34F6D /* Terms.png */; };
 		77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A2A33D17A54FAC001986D0 /* Home.storyboard */; };
 		77A2A34117A55074001986D0 /* VCHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A2A34017A55074001986D0 /* VCHome.m */; };
 		77ABC21317A79383009A7146 /* RTNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ABC21217A79383009A7146 /* RTNetworkRequest.m */; };
@@ -90,8 +89,6 @@
 		77004BBB17628AD700745E2B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		770E6A2C17927E2600D56950 /* CardScrollBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardScrollBG.png; sourceTree = "<group>"; };
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		77258DA617CA554100EA20CB /* CreateLoginCredentials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateLoginCredentials.png; sourceTree = "<group>"; };
-		77258DA717CA554100EA20CB /* CreateLoginCredentials@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateLoginCredentials@2x.png"; sourceTree = "<group>"; };
 		77258DAA17CA576E00EA20CB /* Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logout.png; sourceTree = "<group>"; };
 		77258DAB17CA576E00EA20CB /* Logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logout@2x.png"; sourceTree = "<group>"; };
 		77258DAE17CA7C7600EA20CB /* ManageUserCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageUserCredentials.h; sourceTree = "<group>"; };
@@ -116,9 +113,6 @@
 		776FDC0E17932A0B0068E528 /* UpdateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateProfile.m; sourceTree = "<group>"; };
 		776FDC1017932A1E0068E528 /* PinManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinManagement.h; sourceTree = "<group>"; };
 		776FDC1117932A1F0068E528 /* PinManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinManagement.m; sourceTree = "<group>"; };
-		776FDC13179331670068E528 /* Contact us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contact us.png"; sourceTree = "<group>"; };
-		776FDC14179331670068E528 /* Faq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Faq.png; sourceTree = "<group>"; };
-		776FDC15179331670068E528 /* Terms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Terms.png; sourceTree = "<group>"; };
 		776FDC1A17933FB30068E528 /* ContactUs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUs.h; sourceTree = "<group>"; };
 		776FDC1B17933FB30068E528 /* ContactUs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUs.m; sourceTree = "<group>"; };
 		776FDC1C17933FB30068E528 /* ContactUs.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactUs.xib; sourceTree = "<group>"; };
@@ -132,6 +126,10 @@
 		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
 		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
 		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
+		779DA1B517D8CDA100D34F6D /* Contact us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contact us.png"; sourceTree = "<group>"; };
+		779DA1B617D8CDA100D34F6D /* CreateLoginCredentials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateLoginCredentials.png; sourceTree = "<group>"; };
+		779DA1B717D8CDA100D34F6D /* Faq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Faq.png; sourceTree = "<group>"; };
+		779DA1B817D8CDA100D34F6D /* Terms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Terms.png; sourceTree = "<group>"; };
 		77A2A33D17A54FAC001986D0 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		77A2A33F17A55074001986D0 /* VCHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHome.h; sourceTree = "<group>"; };
 		77A2A34017A55074001986D0 /* VCHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHome.m; sourceTree = "<group>"; };
@@ -351,10 +349,12 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				779DA1B517D8CDA100D34F6D /* Contact us.png */,
+				779DA1B617D8CDA100D34F6D /* CreateLoginCredentials.png */,
+				779DA1B717D8CDA100D34F6D /* Faq.png */,
+				779DA1B817D8CDA100D34F6D /* Terms.png */,
 				77258DAA17CA576E00EA20CB /* Logout.png */,
 				77258DAB17CA576E00EA20CB /* Logout@2x.png */,
-				77258DA617CA554100EA20CB /* CreateLoginCredentials.png */,
-				77258DA717CA554100EA20CB /* CreateLoginCredentials@2x.png */,
 				77DFE42E17C6979100479D0D /* Home.png */,
 				776FC81117C1ABD0007AD728 /* RedPlus.png */,
 				77B946D017B54FC800A7EA88 /* error.png */,
@@ -363,9 +363,6 @@
 				77B946D317B54FC800A7EA88 /* success@2x.png */,
 				7736E2E717B0A37C00CA1E3C /* RightArrow.png */,
 				7736E2E517B0A35500CA1E3C /* LeftArrow.png */,
-				776FDC13179331670068E528 /* Contact us.png */,
-				776FDC14179331670068E528 /* Faq.png */,
-				776FDC15179331670068E528 /* Terms.png */,
 				770E6A2C17927E2600D56950 /* CardScrollBG.png */,
 				77BD5B23179096EE00E6D9BA /* PinManagement.png */,
 				77BD5B211790950B00E6D9BA /* TransactionsLogo.png */,
@@ -454,9 +451,6 @@
 				77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */,
 				778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */,
 				770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */,
-				776FDC16179331670068E528 /* Contact us.png in Resources */,
-				776FDC17179331670068E528 /* Faq.png in Resources */,
-				776FDC18179331670068E528 /* Terms.png in Resources */,
 				776FDC1E17933FB30068E528 /* ContactUs.xib in Resources */,
 				776FDC23179342140068E528 /* Terms.xib in Resources */,
 				77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */,
@@ -470,10 +464,12 @@
 				77E891D217BABD9B00A672A4 /* icon.png in Resources */,
 				776FC81217C1ABD0007AD728 /* RedPlus.png in Resources */,
 				77DFE42F17C6979100479D0D /* Home.png in Resources */,
-				77258DA817CA554100EA20CB /* CreateLoginCredentials.png in Resources */,
-				77258DA917CA554100EA20CB /* CreateLoginCredentials@2x.png in Resources */,
 				77258DAC17CA576E00EA20CB /* Logout.png in Resources */,
 				77258DAD17CA576E00EA20CB /* Logout@2x.png in Resources */,
+				779DA1B917D8CDA100D34F6D /* Contact us.png in Resources */,
+				779DA1BA17D8CDA100D34F6D /* CreateLoginCredentials.png in Resources */,
+				779DA1BB17D8CDA100D34F6D /* Faq.png in Resources */,
+				779DA1BC17D8CDA100D34F6D /* Terms.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

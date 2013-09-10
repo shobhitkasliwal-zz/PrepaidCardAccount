@@ -120,14 +120,15 @@ CardInfo *cInfo;
             }
             else{
                 [_txtPin setText:[dict objectForKey:@"PIN"]];
-                if(cInfo.ViewChangePinMessage == YES)
-                {
-                    [_lblViewPinMessage setText:[dict objectForKey:@"PinMessage"]];
-                    [_lblViewPinMessage setHidden:NO];
-                }
-                else{
-                    [_lblViewPinMessage setHidden:YES];
-                }
+                [_lblViewPinMessage setHidden:YES];
+//                if(cInfo.ViewChangePinMessage == YES)
+//                {
+//                    [_lblViewPinMessage setText:[dict objectForKey:@"PinMessage"]];
+//                    [_lblViewPinMessage setHidden:NO];
+//                }
+//                else{
+//                    [_lblViewPinMessage setHidden:YES];
+//                }
                 
             }
         }
@@ -148,18 +149,21 @@ CardInfo *cInfo;
 - (void)networkNotReachable{}
 -(void) ChangePinAvailable:(BOOL) value
 {
-    if (!value)
-    {
-        [_txtNewPin setHidden:TRUE];
-        [_btnChangePin setHidden:TRUE];
-        _constraint_uiPinViewHeight.constant = 140;
-        
-    }
-    else{
-        [_txtNewPin setHidden:FALSE];
-        [_btnChangePin setHidden:FALSE];
-        _constraint_uiPinViewHeight.constant = 200;
-    }
+//    if (!value)
+//    {
+//        [_txtNewPin setHidden:TRUE];
+//        [_btnChangePin setHidden:TRUE];
+//        _constraint_uiPinViewHeight.constant = 140;
+//        
+//    }
+//    else{
+//        [_txtNewPin setHidden:FALSE];
+//        [_btnChangePin setHidden:FALSE];
+//        _constraint_uiPinViewHeight.constant = 200;
+//    }
+    [_txtNewPin setHidden:FALSE];
+    [_btnChangePin setHidden:FALSE];
+    _constraint_uiPinViewHeight.constant = 200;
 }
 
 
