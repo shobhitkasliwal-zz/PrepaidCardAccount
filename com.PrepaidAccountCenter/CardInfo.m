@@ -34,8 +34,6 @@ self = [super init];
 
 - (id) initWithDictionary: (NSDictionary *) dict
 {
-
-    
     _cardNumber =  [dict objectForKey:@"CardNumber"];
     _cardExpiration  = [dict objectForKey:@"CardExpiration"];
     _cardBalance = [dict objectForKey:@"CardBalance"];
@@ -46,6 +44,9 @@ self = [super init];
     _ChangePinAllowed = [[dict objectForKey:@"ChangePinAllowed"] boolValue];
     _ViewPinOnly = [[dict objectForKey:@"ViewPinOnly"] boolValue];
     _ViewChangePinMessage = [[dict objectForKey:@"ViewPinChangeMessage"] boolValue];
+    _Sec_Auth_Label=[dict objectForKey:@"Sec_Auth_Label"];
+    _isUserRegistered = [[dict objectForKey:@"isUserRegistered"] boolValue];
+    _UserSecondaryAuthRequired=[[dict objectForKey:@"UserSecondaryAuthRequired"] boolValue];
     return self;
 }
 

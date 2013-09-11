@@ -1702,7 +1702,6 @@
                 <relationship kind="action" name="btnAddCard_Click:"/>
                 <relationship kind="action" name="btnClear_Click:"/>
                 <relationship kind="action" name="btnHome_Click:"/>
-                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="btnAddCard" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="btnClear" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="lblMessageTop" candidateClass="UILabel"/>
@@ -1791,7 +1790,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PinManagement.h"/>
             <relationships>
                 <relationship kind="action" name="LogoutClick:"/>
-                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="btnChangePin" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="constraint_CancelLeadingSpace" candidateClass="NSLayoutConstraint"/>
@@ -1832,7 +1830,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateProfile.h"/>
             <relationships>
                 <relationship kind="action" name="LogoutClick:"/>
-                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="txtAddress1" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtAddress2" candidateClass="UITextField"/>

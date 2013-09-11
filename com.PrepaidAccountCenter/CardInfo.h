@@ -22,4 +22,8 @@
 @property (nonatomic, assign) BOOL ChangePinAllowed;
 @property (nonatomic, assign) BOOL ViewPinOnly;
 @property (nonatomic, assign) BOOL ViewChangePinMessage;
+@property (nonatomic, strong) NSString* Sec_Auth_Label;
+@property (nonatomic, assign) BOOL isUserRegistered;
+@property (nonatomic, assign) BOOL UserSecondaryAuthRequired;
+
 @end
