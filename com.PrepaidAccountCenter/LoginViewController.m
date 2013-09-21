@@ -13,8 +13,8 @@
 #import "AppHelper.h"
 #import "SVProgressHUD.h"
 #import "UIColor+Hex.h"
+#import "AppConstants.h"
 
-#define LoginURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/AuthenticateUser?UserName=%@&Password=%@&AuthenticationType=%@"
 
 @interface LoginViewController ()
 @end
@@ -171,19 +171,17 @@
                     }
                     completion:^(BOOL finished) {
                         
-                        bool isTest = true;
-                        
-                        if (!isTest){
+                        if (isTestEnvironment == NO){
                             RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
                             if (_SwitchCardUsernameLogin.isOn)
                             {
                                 NSString *Username = _txtUsernameCard.text;
                                 //  NSData* data = [Username dataUsingEncoding:NSUTF8StringEncoding];
                                 //NSData *datasend =   [AppHelper  TripleDES:data encryptOrDecrypt:kCCEncrypt key:@"AAECAwQFBgcICQoLDA0ODw=="];
-                                [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL,Username , _txtPasswordSecPin.text,@"Username"] httpMethod:RTHTTPMethodGET];
+                                [networkRequest makeWebCall:[NSString stringWithFormat:AUTHENTICATE_SERVICE_URL  ,Username , _txtPasswordSecPin.text,@"Username"] httpMethod:RTHTTPMethodGET];
                                 
                             }else
-                                [networkRequest makeWebCall:[NSString stringWithFormat:LoginURL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
+                                [networkRequest makeWebCall:[NSString stringWithFormat:AUTHENTICATE_SERVICE_URL, _txtUsernameCard.text, _txtPasswordSecPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
                         }
                         else{
                             [[SingletonGeneric UserCardInfo] RetriveUserCardInfo:@"Shobhit"];
@@ -228,6 +226,13 @@
     if (ErrorMessage.length == 0)
     {
         [self performSelector:@selector(PresentLoggedinHomeView) withObject:nil afterDelay:0];
+       
+        [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:_txtUsernameCard.text forKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME];
+        [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:_txtPasswordSecPin.text forKey:LOGGEDIN_CREDENTIAL_KEY_PASSWORD];
+        if (_SwitchCardUsernameLogin.isOn)
+            [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:LOGGEDIN_OPTION_USERNAME forKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
+        else
+            [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:LOGGEDIN_OPTION_CARD forKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
     }
     
     else{
@@ -240,7 +245,10 @@
     
 }
 
-- (void)networkNotReachable{}
+- (void)networkNotReachable{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"Please check your internet connection." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
 
 - (void) PresentLoggedinHomeView
 {

@@ -123,6 +123,7 @@
 		776FDC25179342240068E528 /* Faq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Faq.m; sourceTree = "<group>"; };
 		777A21F817D2A91A0026D80F /* AddNewCardToAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewCardToAccount.h; sourceTree = "<group>"; };
 		777A21F917D2A91A0026D80F /* AddNewCardToAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewCardToAccount.m; sourceTree = "<group>"; };
+		777C6BBA17EDDE59005D60F5 /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
 		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
 		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
@@ -384,6 +385,7 @@
 				776FDC051792FA2A0068E528 /* SingletonGeneric.m */,
 				77F90CD117B06B5300A1E07E /* AppHelper.h */,
 				77F90CD217B06B5300A1E07E /* AppHelper.m */,
+				777C6BBA17EDDE59005D60F5 /* AppConstants.h */,
 			);
 			name = HelperClasses;
 			sourceTree = "<group>";

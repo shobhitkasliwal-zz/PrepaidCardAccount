@@ -8,6 +8,8 @@
 
 #import "ManageUserCredentials.h"
 #import "AppHelper.h"
+#import "AppConstants.h"
+#import "SingletonGeneric.h"
 @interface ManageUserCredentials ()
 @property (weak, atomic) NSString* ControlType;
 
@@ -27,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
+    
 	// Do any additional setup after loading the view.
     [_btnCreate useBlackStyle];
     [_btnCancel useBlackStyle];
@@ -36,7 +38,7 @@
     _vwMain.layer.shadowOffset = CGSizeMake(-15, 20);
     _vwMain.layer.shadowRadius = 5;
     _vwMain.layer.shadowOpacity = 0.5;
-
+    
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard:)];
     gestureRecognizer.cancelsTouchesInView = NO; //so that action such as clear text field button can be pressed
     [self.view addGestureRecognizer:gestureRecognizer];
@@ -45,14 +47,22 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     
-    _ControlType = @"update";
+    
+    
+    //NSLOG (@"DEFInevalue%@", LOGGEDIN_OPTION_USERNAME);
+    
+    NSString* LoginByOption = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
+    if ([LoginByOption isEqualToString:LOGGEDIN_OPTION_CARD])
+    {
+        _ControlType = @"create";
+    }
     [self setUpPage];
     
 }
 
 -(void) setUpPage
 {
-
+    
     if ([_ControlType isEqualToString:@"create"])
     {
         [_lblOldPassword setHidden:YES];
@@ -66,8 +76,9 @@
         [_txtOldPAssword setHidden:NO];
         _constlblPassword.constant = 140;
         _vwHeightConstraint.constant = 330;
-         [_btnCreate setTitle:@"Update" forState:UIControlStateNormal];
+        [_btnCreate setTitle:@"Update" forState:UIControlStateNormal];
     }
+    [_lblErrorMessage setText:@""];
     
 }
 - (void)keyboardDidShow:(NSNotification *)notification
@@ -75,14 +86,14 @@
     
     if (![_ControlType isEqualToString:@"create"] && [[AppHelper DeviceType]  isEqualToString:@"iphone"] )
     {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelay:0.0];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    
-    _vwMain.center = CGPointMake(_vwMain.center.x,
-                                      _vwMain.center.y  - 50);
-    [UIView commitAnimations];
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelay:0.0];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        
+        _vwMain.center = CGPointMake(_vwMain.center.x,
+                                     _vwMain.center.y  - 50);
+        [UIView commitAnimations];
     }
 }
 
@@ -90,14 +101,14 @@
 {
     if (![_ControlType isEqualToString:@"create"] && [[AppHelper DeviceType]  isEqualToString:@"iphone"] )
     {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelay:0.0];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    
-    _vwMain.center = CGPointMake(_vwMain.center.x,
-                                      _vwMain.center.y  + 50);
-    [UIView commitAnimations];
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelay:0.0];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        
+        _vwMain.center = CGPointMake(_vwMain.center.x,
+                                     _vwMain.center.y  + 50);
+        [UIView commitAnimations];
     }
 }
 
@@ -123,10 +134,27 @@
 }
 
 - (IBAction)Home_Click:(id)sender {
-      [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)btnCreate_Click:(id)sender {
+    if ([_ControlType isEqualToString:@"create"] )
+    {
+        if (_txtUsername.text.length == 0 || _txtPassword.text.length ==0 || _txtConfirmPAssword.text.length == 0)
+        {
+            [_lblErrorMessage setText:@"* All Fields are required"];
+        }
+        else if (![_txtPassword.text isEqualToString:_txtConfirmPAssword.text ])
+        {
+            [_lblErrorMessage setText:@"* Password and confirm Password should match."];
+        }
+        else if(_txtPassword.text.length < 5 )
+        {[_lblErrorMessage setText:@"* Password should be minimum 5 characters"];}
+        else{}
+        
+    }
+    
 }
+
 
 - (IBAction)btnReset_Click:(id)sender {
     [_txtUsername setText:@""];

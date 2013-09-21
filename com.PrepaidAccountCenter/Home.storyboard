@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z1t-Sc-deA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z1t-Sc-deA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -241,7 +241,7 @@
                                 <color key="separatorColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FaqCell" id="SUI-8X-eqX">
-                                        <rect key="frame" x="0.0" y="46" width="300" height="45"/>
+                                        <rect key="frame" x="0.0" y="46" width="300" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="260" height="43"/>
@@ -1648,13 +1648,25 @@
                                             <constraint firstAttribute="bottom" secondItem="78G-rB-CKx" secondAttribute="bottom" constant="10" id="zEu-oP-JdB"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yf9-zX-bMO">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="TiA-IX-4jt"/>
+                                            <constraint firstAttribute="width" priority="1" constant="42" type="user" id="Y4p-u8-FfB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                        <color key="textColor" red="0.88286083940000004" green="0.042333945480000003" blue="0.063929741250000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="biE-6G-ska" firstAttribute="centerX" secondItem="gkS-PL-0PC" secondAttribute="centerX" type="default" id="6nO-Nw-fOq"/>
-                                    <constraint firstItem="biE-6G-ska" firstAttribute="leading" secondItem="gkS-PL-0PC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="HE7-yo-PuM"/>
-                                    <constraint firstAttribute="bottom" secondItem="biE-6G-ska" secondAttribute="bottom" constant="133" id="b07-K1-0Fh"/>
-                                    <constraint firstItem="biE-6G-ska" firstAttribute="top" secondItem="gkS-PL-0PC" secondAttribute="top" constant="20" symbolic="YES" type="default" id="gWA-Tj-UKI"/>
-                                    <constraint firstAttribute="trailing" secondItem="biE-6G-ska" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="jiQ-co-9LV"/>
+                                    <constraint firstItem="biE-6G-ska" firstAttribute="centerX" secondItem="gkS-PL-0PC" secondAttribute="centerX" type="user" id="6nO-Nw-fOq"/>
+                                    <constraint firstItem="Yf9-zX-bMO" firstAttribute="leading" secondItem="gkS-PL-0PC" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="BoW-lg-PxE"/>
+                                    <constraint firstItem="biE-6G-ska" firstAttribute="leading" secondItem="gkS-PL-0PC" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="HE7-yo-PuM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yf9-zX-bMO" secondAttribute="trailing" constant="25" type="user" id="VPl-N6-9Fa"/>
+                                    <constraint firstItem="biE-6G-ska" firstAttribute="top" secondItem="Yf9-zX-bMO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Zqe-Tu-6qr"/>
+                                    <constraint firstItem="Yf9-zX-bMO" firstAttribute="top" secondItem="gkS-PL-0PC" secondAttribute="top" constant="7" id="jfG-Pq-hJD"/>
+                                    <constraint firstAttribute="trailing" secondItem="biE-6G-ska" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="jiQ-co-9LV"/>
+                                    <constraint firstAttribute="bottom" secondItem="biE-6G-ska" secondAttribute="bottom" constant="117" id="qyg-Zh-chc"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -1673,6 +1685,7 @@
                         <outlet property="btnCancel" destination="KiD-Pn-rel" id="VkP-y3-Jwb"/>
                         <outlet property="btnCreate" destination="78G-rB-CKx" id="lU5-2w-zyB"/>
                         <outlet property="constlblPassword" destination="rLN-32-dPV" id="W0F-hP-V9h"/>
+                        <outlet property="lblErrorMessage" destination="Yf9-zX-bMO" id="DoH-KR-t98"/>
                         <outlet property="lblOldPassword" destination="6Sv-TM-iLB" id="QJI-3e-Qe9"/>
                         <outlet property="txtConfirmPAssword" destination="OF7-zd-RZV" id="Cmb-qI-x3G"/>
                         <outlet property="txtOldPAssword" destination="0ob-MN-hqa" id="u6i-aR-UDi"/>
@@ -1702,6 +1715,7 @@
                 <relationship kind="action" name="btnAddCard_Click:"/>
                 <relationship kind="action" name="btnClear_Click:"/>
                 <relationship kind="action" name="btnHome_Click:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="btnAddCard" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="btnClear" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="lblMessageTop" candidateClass="UILabel"/>
@@ -1746,9 +1760,11 @@
                 <relationship kind="action" name="Home_Click:"/>
                 <relationship kind="action" name="btnCreate_Click:"/>
                 <relationship kind="action" name="btnReset_Click:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="btnCreate" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="constlblPassword" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="lblErrorMessage" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblOldPassword" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="txtConfirmPAssword" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtOldPAssword" candidateClass="UITextField"/>
@@ -1790,6 +1806,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PinManagement.h"/>
             <relationships>
                 <relationship kind="action" name="LogoutClick:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="btnChangePin" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="constraint_CancelLeadingSpace" candidateClass="NSLayoutConstraint"/>

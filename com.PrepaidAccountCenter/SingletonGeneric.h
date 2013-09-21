@@ -12,10 +12,13 @@
 @interface SingletonGeneric : NSObject
 @property (nonatomic, strong) NSMutableArray *UserCardInformation;
 @property (nonatomic,strong)CardInfo *SelectedCard;
-
+@property (nonatomic,strong) NSMutableDictionary *UserCredenitalInfo;
 +(SingletonGeneric*) UserCardInfo;
 -(void)RetriveUserCardInfo:(NSString*)userName;
 -(void)SetSelectedCardInfo:(int) index;
 
 -(void) setAllCardInfo: (NSMutableArray*) arrCardInfo;
+
+
+
 @end

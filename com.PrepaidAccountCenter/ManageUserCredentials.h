@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblOldPassword;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constlblPassword;
 @property (weak, nonatomic) IBOutlet OBGradientView *vwMain;
+@property (weak, nonatomic) IBOutlet UILabel *lblErrorMessage;
 - (IBAction)btnCreate_Click:(id)sender;
 - (IBAction)btnReset_Click:(id)sender;
 @end

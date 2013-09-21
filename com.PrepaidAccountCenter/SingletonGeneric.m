@@ -17,6 +17,7 @@
     if(!userCardInfo)
     {
         userCardInfo = [[super allocWithZone:nil] init];
+    
         
     }
     return userCardInfo;
@@ -30,6 +31,7 @@
 - (id)init
 {
     self = [super init];
+    _UserCredenitalInfo = [[NSMutableDictionary alloc] init];
     return self;
 }
 
