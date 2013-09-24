@@ -10,8 +10,12 @@
 #import "OBGradientView.h"
 #import "GradientButton.h"
 #import "UIColor+Hex.h"
+#import "RTNetworkRequest.h"
+#import "AppHelper.h"
+#import "AppConstants.h"
+#import "SingletonGeneric.h"
 
-@interface ManageUserCredentials : UIViewController
+@interface ManageUserCredentials : UIViewController <RTNetworkRequestDelegate, UIAlertViewDelegate>
 - (IBAction)Home_Click:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *txtUsername;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;

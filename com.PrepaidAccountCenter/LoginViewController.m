@@ -246,7 +246,7 @@
 }
 
 - (void)networkNotReachable{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"Please check your internet connection." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: INTERNET_NOT_AVAILABLE_POPUP_TITLE message: INTERNET_NOT_AVAILABLE_POPUP_TEXT delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
 

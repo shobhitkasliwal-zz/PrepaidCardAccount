@@ -8,7 +8,7 @@
 
 @interface RTNetworkRequest()
 {
-    NSMutableString *currentCallType;
+   
 }
 
 @end
@@ -18,6 +18,7 @@
 @synthesize responseData;
 @synthesize connection;
 @synthesize delegate = _delegate;
+@synthesize currentCallType;
 
 #pragma mark -
 

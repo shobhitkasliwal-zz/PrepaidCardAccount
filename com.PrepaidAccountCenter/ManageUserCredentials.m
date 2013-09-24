@@ -7,9 +7,8 @@
 //
 
 #import "ManageUserCredentials.h"
-#import "AppHelper.h"
-#import "AppConstants.h"
-#import "SingletonGeneric.h"
+#define POPUP_TAG_USERCREDENTIAL_SUCCESS 1
+
 @interface ManageUserCredentials ()
 @property (weak, atomic) NSString* ControlType;
 
@@ -149,12 +148,82 @@
         }
         else if(_txtPassword.text.length < 5 )
         {[_lblErrorMessage setText:@"* Password should be minimum 5 characters"];}
-        else{}
+        else{
+            RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+            networkRequest.currentCallType = [NSMutableString stringWithString:@"CreateCredentialCall"];
+            [networkRequest makeWebCall:[NSString stringWithFormat:CREATE_CREDENTIAL_SERVICE_URL, _txtUsername.text, _txtPassword.text] httpMethod:RTHTTPMethodGET];
+            
+        }
         
     }
     
 }
 
+-(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
+{
+    if ([currentCallType isEqualToString:@"CreateCredentialCall"]) {
+        NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+        if (responseArray != nil) {
+            for (NSDictionary* dict in responseArray){
+                if([dict objectForKey:@"Message"])
+                {
+                    
+                    if ([[[dict objectForKey:@"Message"] uppercaseString] isEqualToString:@"SUCCESS"])
+                    {
+                        NSString* SuccessMessage = @"Credentials created successfully.\n Do you want to Add card(";
+                        SuccessMessage= [SuccessMessage stringByAppendingString:[[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME]];
+                        SuccessMessage =  [SuccessMessage stringByAppendingString:@") to this username ?"];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:SuccessMessage  delegate: self cancelButtonTitle:@"YES" otherButtonTitles:@"No", nil];
+                        alert.tag = POPUP_TAG_USERCREDENTIAL_SUCCESS;
+                        [alert show];
+                    }
+                    else{
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"Message"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                }
+                else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while creating the username.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }
+            
+            
+            
+        }
+        
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while creating the username.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
+    }
+    else if ([currentCallType isEqualToString:@"AddCardToUserService"])
+    {
+    
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"Tag:%@",[NSString stringWithFormat:@"%0.0f", (float)alertView.tag]);
+    if (alertView.tag == POPUP_TAG_USERCREDENTIAL_SUCCESS &&   buttonIndex == 0){
+        NSString* CurrentCardNumber = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME];
+        NSString* CurrentCardPin = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_PASSWORD];
+        RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+        networkRequest.currentCallType = [NSMutableString stringWithString:@"AddCardToUserService"];
+        [networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, CurrentCardNumber, CurrentCardPin] httpMethod:RTHTTPMethodGET];
+    }else if (buttonIndex == 1){
+        //reset clicked
+    }
+}
+
+- (void)networkNotReachable{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: INTERNET_NOT_AVAILABLE_POPUP_TITLE message: INTERNET_NOT_AVAILABLE_POPUP_TEXT delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
 
 - (IBAction)btnReset_Click:(id)sender {
     [_txtUsername setText:@""];
