@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z1t-Sc-deA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z1t-Sc-deA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -216,6 +216,41 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcQ-QN-Pyx">
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="lwT-cS-CBw">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="435" id="1DM-BV-coZ"/>
+                                            <constraint firstAttribute="width" priority="1" constant="160" type="user" id="Wjb-mr-bbj"/>
+                                            <constraint firstAttribute="height" priority="1" constant="274" type="user" id="eol-Q9-nBd"/>
+                                        </constraints>
+                                        <color key="separatorColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FaqCell" id="SUI-8X-eqX">
+                                                <rect key="frame" x="0.0" y="46" width="300" height="45"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="10" y="1" width="260" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="mys-cy-18F" id="8dz-hC-hqh"/>
+                                            <outlet property="delegate" destination="mys-cy-18F" id="TaP-Y2-jSN"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lwT-cS-CBw" firstAttribute="centerX" secondItem="CcQ-QN-Pyx" secondAttribute="centerX" type="default" id="0xG-EZ-uXm"/>
+                                    <constraint firstItem="lwT-cS-CBw" firstAttribute="trailing" secondItem="CcQ-QN-Pyx" secondAttribute="trailing" type="default" id="T4H-ZJ-bpt"/>
+                                    <constraint firstItem="lwT-cS-CBw" firstAttribute="bottom" secondItem="CcQ-QN-Pyx" secondAttribute="bottom" type="default" id="mSH-MB-om5"/>
+                                    <constraint firstItem="lwT-cS-CBw" firstAttribute="top" secondItem="CcQ-QN-Pyx" secondAttribute="top" constant="10" type="user" id="miH-Xl-7YH"/>
+                                    <constraint firstItem="lwT-cS-CBw" firstAttribute="leading" secondItem="CcQ-QN-Pyx" secondAttribute="leading" type="default" id="ufb-gh-5io"/>
+                                </constraints>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jie-cm-YBi" customClass="OBGradientView">
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bz-tj-aAi">
@@ -232,39 +267,16 @@
                                     <constraint firstAttribute="height" constant="46" type="user" id="tJl-O1-wZV"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="lwT-cS-CBw">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="1" constant="160" type="user" id="Wjb-mr-bbj"/>
-                                    <constraint firstAttribute="height" priority="1" constant="274" type="user" id="eol-Q9-nBd"/>
-                                </constraints>
-                                <color key="separatorColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FaqCell" id="SUI-8X-eqX">
-                                        <rect key="frame" x="0.0" y="46" width="300" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="260" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="mys-cy-18F" id="8dz-hC-hqh"/>
-                                    <outlet property="delegate" destination="mys-cy-18F" id="TaP-Y2-jSN"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="jie-cm-YBi" firstAttribute="leading" secondItem="TWD-ZT-OCZ" secondAttribute="leading" constant="10" type="user" id="212-VC-sfv"/>
-                            <constraint firstItem="lwT-cS-CBw" firstAttribute="trailing" secondItem="jie-cm-YBi" secondAttribute="trailing" type="default" id="6hC-av-Gfh"/>
+                            <constraint firstItem="CcQ-QN-Pyx" firstAttribute="top" secondItem="jie-cm-YBi" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5cq-qT-i5o"/>
                             <constraint firstItem="jie-cm-YBi" firstAttribute="top" secondItem="TWD-ZT-OCZ" secondAttribute="top" constant="5" type="user" id="6i9-SR-gUI"/>
-                            <constraint firstAttribute="trailing" secondItem="lwT-cS-CBw" secondAttribute="trailing" constant="10" type="user" id="Ade-nA-3zE"/>
-                            <constraint firstAttribute="bottom" secondItem="lwT-cS-CBw" secondAttribute="bottom" constant="10" type="user" id="Z5Y-1o-mCH"/>
-                            <constraint firstItem="lwT-cS-CBw" firstAttribute="leading" secondItem="TWD-ZT-OCZ" secondAttribute="leading" constant="10" type="user" id="bmn-W2-IQ8"/>
-                            <constraint firstItem="lwT-cS-CBw" firstAttribute="top" secondItem="jie-cm-YBi" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="ks4-YM-U8E"/>
+                            <constraint firstAttribute="bottom" secondItem="CcQ-QN-Pyx" secondAttribute="bottom" type="user" id="Hfs-Yi-4wD"/>
+                            <constraint firstItem="CcQ-QN-Pyx" firstAttribute="centerX" secondItem="TWD-ZT-OCZ" secondAttribute="centerX" type="default" id="L2T-vZ-H7V"/>
+                            <constraint firstItem="CcQ-QN-Pyx" firstAttribute="leading" secondItem="jie-cm-YBi" secondAttribute="leading" type="default" id="Psb-d6-hG7"/>
+                            <constraint firstItem="CcQ-QN-Pyx" firstAttribute="trailing" secondItem="jie-cm-YBi" secondAttribute="trailing" type="default" id="k6k-PY-Qek"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Faq" id="aEG-9E-pfL">
@@ -1708,6 +1720,187 @@
         <image name="RedPlus.png" width="22" height="22"/>
         <image name="Terms.png" width="50" height="36"/>
     </resources>
+    <classes>
+        <class className="AddNewCardToAccount" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewCardToAccount.h"/>
+            <relationships>
+                <relationship kind="action" name="btnAddCard_Click:"/>
+                <relationship kind="action" name="btnClear_Click:"/>
+                <relationship kind="action" name="btnHome_Click:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
+                <relationship kind="outlet" name="btnAddCard" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="btnClear" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="lblMessageTop" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="txtCardNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtSecurityPin" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="vwMain" candidateClass="OBGradientView"/>
+            </relationships>
+        </class>
+        <class className="Faq" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Faq.h"/>
+            <relationships>
+                <relationship kind="action" name="Home_click:"/>
+                <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tblFaq" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
+            </relationships>
+        </class>
+        <class className="FaqAnswer" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FaqAnswer.h"/>
+            <relationships>
+                <relationship kind="action" name="Home_click:"/>
+                <relationship kind="outlet" name="FaqAnswerWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="GradientButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientButton.h"/>
+        </class>
+        <class className="Logout" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Logout.h"/>
+            <relationships>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="Logout:"/>
+                <relationship kind="outlet" name="ActionViewBottomConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="btnYes" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="uiActionButtons" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ManageUserCredentials" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageUserCredentials.h"/>
+            <relationships>
+                <relationship kind="action" name="Home_Click:"/>
+                <relationship kind="action" name="btnCreate_Click:"/>
+                <relationship kind="action" name="btnReset_Click:"/>
+                <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="btnCreate" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="constlblPassword" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="lblErrorMessage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblOldPassword" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="txtConfirmPAssword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtOldPAssword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="vwHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="vwMain" candidateClass="OBGradientView"/>
+            </relationships>
+        </class>
+        <class className="MyCardAccount" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyCardAccount.h"/>
+            <relationships>
+                <relationship kind="action" name="LogoutClick:"/>
+                <relationship kind="action" name="btnByBalance_click:"/>
+                <relationship kind="action" name="btnByExpiry_click:"/>
+                <relationship kind="action" name="btnByStatus_click:"/>
+                <relationship kind="outlet" name="btnAddNewCard" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="btnAddNewCard_Click" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="btnByBalance" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnByExpiry" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnByStatus" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tblCards" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="uiViewHeader" candidateClass="OBGradientView"/>
+            </relationships>
+        </class>
+        <class className="MyCardAccountsCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyCardAccountsCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblMCA_CardNumber" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="OBGradientView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OBGradientView.h"/>
+        </class>
+        <class className="PinManagement" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PinManagement.h"/>
+            <relationships>
+                <relationship kind="action" name="LogoutClick:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
+                <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="btnChangePin" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="constraint_CancelLeadingSpace" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="constraint_uiPinViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblViewPinMessage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="txtNewPin" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtPin" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
+                <relationship kind="outlet" name="uiPinView" candidateClass="OBGradientView"/>
+            </relationships>
+        </class>
+        <class className="Transactions" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Transactions.h"/>
+            <relationships>
+                <relationship kind="action" name="LogoutClick:"/>
+                <relationship kind="action" name="btnChangeDuration:"/>
+                <relationship kind="outlet" name="btnLast30Days" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="btnLast365Days" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="btnLast90Days" candidateClass="GradientButton"/>
+                <relationship kind="outlet" name="lblCardNumber" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblMessage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tblOptions" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
+            </relationships>
+        </class>
+        <class className="TransactionsTbl_CustomCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransactionsTbl_CustomCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblAmount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblAuthDateValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblMerchantName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPostDateValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblResponseReason" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UpdateProfile" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateProfile.h"/>
+            <relationships>
+                <relationship kind="action" name="LogoutClick:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
+                <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="txtAddress1" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtAddress2" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtCity" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtCountry" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtFirstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtLastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtPhone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtState" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtZip" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="uiHeader" candidateClass="OBGradientView"/>
+            </relationships>
+        </class>
+        <class className="VCHome" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VCHome.h"/>
+            <relationships>
+                <relationship kind="action" name="Credentials_click:"/>
+                <relationship kind="action" name="LogoutClick:"/>
+                <relationship kind="action" name="PageChange:"/>
+                <relationship kind="action" name="contactUSButtonClicked:"/>
+                <relationship kind="action" name="faqButtonClicked:"/>
+                <relationship kind="action" name="termsButtonClicked:"/>
+                <relationship kind="outlet" name="CardScrollView" candidateClass="iCarousel"/>
+                <relationship kind="outlet" name="btnLogout" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="lbl_SC_Balance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_SC_CardNumber" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_SC_Expiration" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_SC_Status" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uiPageControlScrollCard" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="uiPageMainView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="vw_SC_View" candidateClass="OBGradientView"/>
+                <relationship kind="outlet" name="vw_ScrollWrapper" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="iCarousel" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iCarousel.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

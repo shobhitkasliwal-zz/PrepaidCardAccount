@@ -6,6 +6,8 @@
 #define AUTHENTICATE_SERVICE_URL SERVICE_BASE_URL @"AuthenticateUser?UserName=%@&Password=%@&AuthenticationType=%@"
 #define CREATE_CREDENTIAL_SERVICE_URL SERVICE_BASE_URL @"CreateLoginCredentials?UserName=%@&Password=%@"
 #define ADD_CARD_TO_USER_SERVICE_URL SERVICE_BASE_URL @"CreateLoginCredentials?UserName=%@&Password=%@"
+#define FAQ_SERVICE_URL SERVICE_BASE_URL @"GetFaq?SiteconfigID=%@"
+
 /*    SERVICE Constants   */
 
 /* Other Constants */
@@ -18,7 +20,7 @@
 #define LOGGEDIN_OPTION_USERNAME @"LoginByUsername"
 
 
-#define  isTestEnvironment YES
+#define  isTestEnvironment NO
 /* Other Constants */
 
 
