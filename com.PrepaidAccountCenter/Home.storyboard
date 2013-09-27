@@ -14,9 +14,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-5X-auq">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="211" type="user" id="CnR-9x-nVd"/>
-                                </constraints>
                                 <color key="separatorColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ptHomeTableViewCell" editingAccessoryType="detailDisclosureButton" textLabel="sHM-Fk-eoP" style="IBUITableViewCellStyleDefault" id="DGK-Sd-Wt0">
@@ -70,17 +67,16 @@
                                     <constraint firstItem="7gC-lc-y2w" firstAttribute="centerX" secondItem="neu-j0-N5n" secondAttribute="centerX" type="default" id="yov-o5-Haw"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNg-Tb-nuW" userLabel="View (botton)">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNg-Tb-nuW" userLabel="View (botton)" customClass="OBGradientView">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfO-d4-gqV">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" type="user" id="26P-Js-dzl"/>
+                                            <constraint firstAttribute="width" constant="46" type="user" id="EOS-QX-u0I"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <inset key="titleEdgeInsets" minX="-21" minY="35" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="14" minY="10" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" image="CreateLoginCredentials.png">
+                                        <inset key="titleEdgeInsets" minX="-21" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" image="Credentials.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -95,12 +91,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoU-Ks-bhW">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" type="user" id="e6J-BL-WM6"/>
+                                            <constraint firstAttribute="width" constant="48" type="user" id="tnQ-tE-GMC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
-                                        <inset key="titleEdgeInsets" minX="-21" minY="35" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="14" minY="10" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" image="Faq.png">
+                                        <inset key="titleEdgeInsets" minX="-21" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" image="FAQ.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -115,13 +110,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgd-BW-HLc">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" type="user" id="acz-Kq-Xlp"/>
-                                            <constraint firstAttribute="height" constant="54" id="jlU-4h-D7t"/>
+                                            <constraint firstAttribute="width" constant="48" type="user" id="acz-Kq-Xlp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
-                                        <inset key="titleEdgeInsets" minX="-20" minY="35" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="14" minY="10" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" image="Contact us.png">
+                                        <state key="normal" image="ContactUs.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -135,11 +127,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zw-nm-wnZ">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" type="user" id="Ast-Sr-hGP"/>
+                                            <constraint firstAttribute="width" constant="53" type="user" id="Fq3-gX-Jbx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <inset key="titleEdgeInsets" minX="-21" minY="35" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="14" minY="10" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="-21" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <size key="titleShadowOffset" width="10" height="10"/>
                                         <state key="normal" image="Terms.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,21 +144,19 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.23529413339999999" blue="0.51372551919999998" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
-                                    <constraint firstItem="zfO-d4-gqV" firstAttribute="bottom" secondItem="6zw-nm-wnZ" secondAttribute="bottom" type="default" id="2vK-b9-yqM"/>
-                                    <constraint firstAttribute="centerY" secondItem="zoU-Ks-bhW" secondAttribute="centerY" type="user" id="37Q-Gz-6v3"/>
-                                    <constraint firstAttribute="height" constant="60" type="user" id="Im7-Fu-Dej"/>
-                                    <constraint firstItem="zoU-Ks-bhW" firstAttribute="leading" secondItem="Jgd-BW-HLc" secondAttribute="trailing" constant="25" type="user" id="M0j-so-j0S"/>
-                                    <constraint firstItem="zoU-Ks-bhW" firstAttribute="top" secondItem="6zw-nm-wnZ" secondAttribute="top" type="default" id="ObX-r9-UxT"/>
-                                    <constraint firstItem="zoU-Ks-bhW" firstAttribute="baseline" secondItem="Jgd-BW-HLc" secondAttribute="baseline" type="user" id="Ogo-na-ch2"/>
-                                    <constraint firstItem="6zw-nm-wnZ" firstAttribute="leading" secondItem="zoU-Ks-bhW" secondAttribute="trailing" constant="25" type="user" id="V9j-K5-wOc"/>
-                                    <constraint firstItem="Jgd-BW-HLc" firstAttribute="top" secondItem="zoU-Ks-bhW" secondAttribute="top" type="default" id="aX0-tb-uEq"/>
-                                    <constraint firstItem="Jgd-BW-HLc" firstAttribute="leading" secondItem="JNg-Tb-nuW" secondAttribute="leading" constant="8" type="user" id="f6u-Ao-flV"/>
-                                    <constraint firstAttribute="centerY" secondItem="6zw-nm-wnZ" secondAttribute="centerY" type="user" id="jmZ-wM-MY0"/>
-                                    <constraint firstAttribute="trailing" secondItem="zfO-d4-gqV" secondAttribute="trailing" constant="5" type="user" id="mwR-UY-UyZ"/>
-                                    <constraint firstItem="zfO-d4-gqV" firstAttribute="top" secondItem="6zw-nm-wnZ" secondAttribute="top" type="default" id="qFe-hR-LLK"/>
-                                    <constraint firstItem="Jgd-BW-HLc" firstAttribute="bottom" secondItem="zoU-Ks-bhW" secondAttribute="bottom" type="default" id="rmZ-wR-G7h"/>
+                                    <constraint firstAttribute="trailing" secondItem="6zw-nm-wnZ" secondAttribute="trailing" priority="1" constant="101" type="user" id="0qa-lS-FQ1"/>
+                                    <constraint firstItem="zfO-d4-gqV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6zw-nm-wnZ" secondAttribute="trailing" constant="35" type="user" id="3Gy-FC-yrB"/>
+                                    <constraint firstAttribute="height" constant="48" type="user" id="3sr-jV-zR3"/>
+                                    <constraint firstAttribute="centerY" secondItem="zoU-Ks-bhW" secondAttribute="centerY" type="user" id="Iat-kB-XAl"/>
+                                    <constraint firstItem="6zw-nm-wnZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zoU-Ks-bhW" secondAttribute="trailing" priority="954" constant="35" type="user" id="OLn-3C-w7I"/>
+                                    <constraint firstAttribute="trailing" secondItem="zfO-d4-gqV" secondAttribute="trailing" priority="785" constant="10" type="user" id="RXV-so-gka"/>
+                                    <constraint firstAttribute="centerY" secondItem="zfO-d4-gqV" secondAttribute="centerY" type="user" id="Zo4-55-mO0"/>
+                                    <constraint firstItem="Jgd-BW-HLc" firstAttribute="leading" secondItem="JNg-Tb-nuW" secondAttribute="leading" constant="10" type="user" id="f6u-Ao-flV"/>
+                                    <constraint firstItem="zoU-Ks-bhW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jgd-BW-HLc" secondAttribute="trailing" constant="35" type="user" id="iaM-Hf-TDH"/>
+                                    <constraint firstAttribute="centerY" secondItem="Jgd-BW-HLc" secondAttribute="centerY" type="user" id="pEh-fG-Z4v"/>
+                                    <constraint firstAttribute="centerY" secondItem="6zw-nm-wnZ" secondAttribute="centerY" type="user" id="pjD-ml-ZlC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -175,13 +164,15 @@
                         <constraints>
                             <constraint firstItem="A6b-SB-8hH" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="default" id="3SW-iV-9rS"/>
                             <constraint firstItem="R0W-5X-auq" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="default" id="5cr-a6-qPi"/>
+                            <constraint firstItem="JNg-Tb-nuW" firstAttribute="top" secondItem="R0W-5X-auq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Cpj-u6-buv"/>
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="user" id="DIc-Te-4za"/>
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="trailing" secondItem="xlq-08-GjJ" secondAttribute="trailing" type="user" id="EdI-B2-KIB"/>
-                            <constraint firstItem="R0W-5X-auq" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="bottom" constant="10" type="user" id="KTg-fk-nS0"/>
+                            <constraint firstItem="R0W-5X-auq" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="bottom" type="user" id="KTg-fk-nS0"/>
                             <constraint firstItem="A6b-SB-8hH" firstAttribute="trailing" secondItem="xlq-08-GjJ" secondAttribute="trailing" type="default" id="PWD-Sa-Kab"/>
-                            <constraint firstItem="JNg-Tb-nuW" firstAttribute="bottom" secondItem="xlq-08-GjJ" secondAttribute="bottom" type="default" id="RQG-4f-Hj8"/>
                             <constraint firstItem="R0W-5X-auq" firstAttribute="trailing" secondItem="xlq-08-GjJ" secondAttribute="trailing" type="default" id="ZXW-nx-wDy"/>
+                            <constraint firstItem="JNg-Tb-nuW" firstAttribute="top" secondItem="xlq-08-GjJ" secondAttribute="top" priority="986" constant="457" type="user" id="b6E-BU-0Tu"/>
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="user" id="kSK-Up-ql1"/>
+                            <constraint firstAttribute="bottom" secondItem="JNg-Tb-nuW" secondAttribute="bottom" constant="-1" type="user" id="lgO-Ky-uDw"/>
                             <constraint firstItem="A6b-SB-8hH" firstAttribute="top" secondItem="xlq-08-GjJ" secondAttribute="top" type="user" id="qxl-Dq-ogI"/>
                         </constraints>
                     </view>
@@ -196,6 +187,7 @@
                         <outlet property="CardScrollView" destination="7gC-lc-y2w" id="dBl-B3-1ao"/>
                         <outlet property="uiPageControlScrollCard" destination="neu-j0-N5n" id="y8S-Tq-Uxy"/>
                         <outlet property="uiPageMainView" destination="R0W-5X-auq" id="T2e-Z4-6Cq"/>
+                        <outlet property="vwBottomInfoBar" destination="JNg-Tb-nuW" id="iK6-lq-oZE"/>
                         <outlet property="vw_ScrollWrapper" destination="A6b-SB-8hH" id="Yyb-MJ-SJ6"/>
                         <segue destination="8Kz-Lv-PDS" kind="push" identifier="segPinManagement" id="sc4-tY-mpY"/>
                         <segue destination="JkM-Qo-Sva" kind="push" identifier="segUpdateProfile" id="Uah-Xe-qFy"/>
@@ -280,9 +272,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Faq" id="aEG-9E-pfL">
-                        <barButtonItem key="rightBarButtonItem" image="Home.png" id="SQ5-Wn-YSJ">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="lNV-ey-mAb">
                             <connections>
-                                <action selector="Home_click:" destination="mys-cy-18F" id="YAz-U2-o2F"/>
+                                <action selector="Home_click:" destination="mys-cy-18F" id="8aP-ub-0ZT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -318,9 +310,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lOH-42-xhL">
-                        <barButtonItem key="rightBarButtonItem" image="Home.png" id="YWh-eT-rJm">
+                        <barButtonItem key="rightBarButtonItem" title="Home" id="pKy-8z-0sJ">
                             <connections>
-                                <action selector="Home_click:" destination="zXw-3b-cbb" id="42E-RI-B0a"/>
+                                <action selector="Home_click:" destination="zXw-3b-cbb" id="a6M-sc-lKJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1505,9 +1497,9 @@
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="tFH-lW-3AJ">
                                 <items>
                                     <navigationItem title="User Credentials" id="JH6-dO-c2k">
-                                        <barButtonItem key="rightBarButtonItem" image="Home.png" id="qpy-KQ-Tg9">
+                                        <barButtonItem key="leftBarButtonItem" title="Done" id="kFH-Fb-Y9N">
                                             <connections>
-                                                <action selector="Home_Click:" destination="bdJ-ho-T8K" id="cBl-Nz-Big"/>
+                                                <action selector="Home_Click:" destination="bdJ-ho-T8K" id="qNh-vJ-6SH"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1713,12 +1705,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Contact us.png" width="50" height="36"/>
-        <image name="CreateLoginCredentials.png" width="52" height="36"/>
-        <image name="Faq.png" width="50" height="36"/>
+        <image name="ContactUs.png" width="48" height="40"/>
+        <image name="Credentials.png" width="48" height="40"/>
+        <image name="FAQ.png" width="48" height="40"/>
         <image name="Home.png" width="22" height="22"/>
         <image name="RedPlus.png" width="22" height="22"/>
-        <image name="Terms.png" width="50" height="36"/>
+        <image name="Terms.png" width="48" height="40"/>
     </resources>
     <classes>
         <class className="AddNewCardToAccount" superclassName="UIViewController">
@@ -1727,7 +1719,6 @@
                 <relationship kind="action" name="btnAddCard_Click:"/>
                 <relationship kind="action" name="btnClear_Click:"/>
                 <relationship kind="action" name="btnHome_Click:"/>
-                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="btnAddCard" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="btnClear" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="lblMessageTop" candidateClass="UILabel"/>
@@ -1772,6 +1763,7 @@
                 <relationship kind="action" name="Home_Click:"/>
                 <relationship kind="action" name="btnCreate_Click:"/>
                 <relationship kind="action" name="btnReset_Click:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="btnCancel" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="btnCreate" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="constlblPassword" candidateClass="NSLayoutConstraint"/>
@@ -1858,7 +1850,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateProfile.h"/>
             <relationships>
                 <relationship kind="action" name="LogoutClick:"/>
-                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="txtAddress1" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtAddress2" candidateClass="UITextField"/>
@@ -1889,6 +1880,7 @@
                 <relationship kind="outlet" name="lbl_SC_Status" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uiPageControlScrollCard" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="uiPageMainView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="vwBottomInfoBar" candidateClass="OBGradientView"/>
                 <relationship kind="outlet" name="vw_SC_View" candidateClass="OBGradientView"/>
                 <relationship kind="outlet" name="vw_ScrollWrapper" candidateClass="UIView"/>
             </relationships>

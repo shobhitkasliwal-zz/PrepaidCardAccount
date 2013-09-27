@@ -17,6 +17,7 @@
 #import "UIColor+Hex.h"
 #import "OBGradientView.h"
 #import "SVProgressHUD.h"
+#import "AppHelper.h"
 
 @interface VCHome ()
 @property (nonatomic, strong)NSArray *dsTableViewRows;
@@ -35,7 +36,8 @@ int CurrentScrollViewPage;
     //your item views move off-screen
     
       self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
-    
+    [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
+    [self.view bringSubviewToFront:_vwBottomInfoBar];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,6 +55,11 @@ int CurrentScrollViewPage;
     _CardScrollView.type = iCarouselTypeInvertedCylinder;
     _CardScrollView.scrollSpeed = 0.2;
     CurrentScrollViewPage = -1;
+    _vwBottomInfoBar.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"8c9fb4"], [UIColor colorWithHexString:@"daeafb"], nil];
+    _vwBottomInfoBar.layer.cornerRadius = 0; // if you like rounded corners
+    _vwBottomInfoBar.layer.shadowOffset = CGSizeMake(-15, 20);
+    _vwBottomInfoBar.layer.shadowRadius = 5;
+    _vwBottomInfoBar.layer.shadowOpacity = 0.5;
     _dsTableViewRows = [NSArray arrayWithObjects:
                         [NSArray arrayWithObjects:@"My Card Account", @"MyCardAccount.png", nil],
                         [NSArray arrayWithObjects:@"Update Profile", @"UpdateProfileLogo.png", nil],

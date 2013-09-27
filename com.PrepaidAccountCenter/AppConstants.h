@@ -20,7 +20,7 @@
 #define LOGGEDIN_OPTION_USERNAME @"LoginByUsername"
 
 
-#define  isTestEnvironment NO
+#define  isTestEnvironment YES
 /* Other Constants */
 
 
