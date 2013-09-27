@@ -164,7 +164,7 @@
                         <constraints>
                             <constraint firstItem="A6b-SB-8hH" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="default" id="3SW-iV-9rS"/>
                             <constraint firstItem="R0W-5X-auq" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="default" id="5cr-a6-qPi"/>
-                            <constraint firstItem="JNg-Tb-nuW" firstAttribute="top" secondItem="R0W-5X-auq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Cpj-u6-buv"/>
+                            <constraint firstItem="JNg-Tb-nuW" firstAttribute="top" secondItem="R0W-5X-auq" secondAttribute="bottom" constant="2" type="user" id="Cpj-u6-buv"/>
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="leading" secondItem="xlq-08-GjJ" secondAttribute="leading" type="user" id="DIc-Te-4za"/>
                             <constraint firstItem="JNg-Tb-nuW" firstAttribute="trailing" secondItem="xlq-08-GjJ" secondAttribute="trailing" type="user" id="EdI-B2-KIB"/>
                             <constraint firstItem="R0W-5X-auq" firstAttribute="top" secondItem="A6b-SB-8hH" secondAttribute="bottom" type="user" id="KTg-fk-nS0"/>
@@ -220,7 +220,7 @@
                                         <color key="separatorColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FaqCell" id="SUI-8X-eqX">
-                                                <rect key="frame" x="0.0" y="46" width="300" height="45"/>
+                                                <rect key="frame" x="0.0" y="46" width="300" height="46"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="10" y="1" width="260" height="43"/>
@@ -1719,6 +1719,7 @@
                 <relationship kind="action" name="btnAddCard_Click:"/>
                 <relationship kind="action" name="btnClear_Click:"/>
                 <relationship kind="action" name="btnHome_Click:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="btnAddCard" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="btnClear" candidateClass="GradientButton"/>
                 <relationship kind="outlet" name="lblMessageTop" candidateClass="UILabel"/>
@@ -1850,6 +1851,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateProfile.h"/>
             <relationships>
                 <relationship kind="action" name="LogoutClick:"/>
+                <relationship kind="action" name="hideKeyBoard:"/>
                 <relationship kind="outlet" name="lblHeaderCard" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="txtAddress1" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtAddress2" candidateClass="UITextField"/>
