@@ -10,6 +10,7 @@
 #import "UIColor+Hex.h"
 #import "SingletonGeneric.h"
 #import "MyCardAccountsCell.h"
+#import "AppConstants.h"
 @interface MyCardAccount ()
 @property (nonatomic, strong) NSMutableArray *dsUserCards;
 @end
@@ -35,8 +36,14 @@
    
     [_btnAddNewCard useBlackStyle];
     _dsUserCards =[[SingletonGeneric UserCardInfo] UserCardInformation];
-   // [_uiViewHeader app
-	// Do any additional setup after loading the view.
+
+    NSString* LoginByOption = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
+    if ([LoginByOption isEqualToString:LOGGEDIN_OPTION_CARD])
+    {
+        [_btnAddNewCard setHidden:YES];
+    }else{
+        [_btnAddNewCard setHidden:NO];
+    }
     
 }
 

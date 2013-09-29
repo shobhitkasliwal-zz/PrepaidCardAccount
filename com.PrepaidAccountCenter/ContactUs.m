@@ -40,6 +40,8 @@ NSString* const CommentsWatermarkText = @"1000 characters maximum";
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard:)];
     gestureRecognizer.cancelsTouchesInView = NO; //so that action such as clear text field button can be pressed
     [self.view addGestureRecognizer:gestureRecognizer];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = YES;
     // Do any additional setup after loading the view from its nib.
 }
 

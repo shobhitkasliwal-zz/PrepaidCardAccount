@@ -210,7 +210,7 @@
 {
     NSString* deviceType = [UIDevice currentDevice].model;
     if ([[deviceType lowercaseString] rangeOfString:@"iphone"].location != NSNotFound) {
-       return @"iphone";
+        return @"iphone";
     } else {
         return @"ipad";
     }
@@ -218,8 +218,16 @@
 }
 
 
- + (BOOL) isEmptyString:(NSString *) Data{
++ (BOOL) isEmptyString:(NSString *) Data{
     return ([[Data stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]length] == 0);
+}
+
++ (BOOL) isNullObject: (NSObject *) obj
+{
+    if (obj == nil || obj ==[NSNull null])
+        return true;
+    else
+        return false;
 }
 
 + (void)applyShinyBackgroundWithColor:(UIColor *)color  ForView:(UIView*) myView{

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
 #import "OBGradientView.h"
-@interface VCHome : UIViewController < UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, iCarouselDelegate>
+@interface VCHome : UIViewController < UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, iCarouselDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *uiPageControlScrollCard;
 @property (weak, nonatomic) IBOutlet UITableView *uiPageMainView;

@@ -46,7 +46,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
-
+    
     
     //_vw_MainView.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
     _vw_MainView.layer.cornerRadius = 8; // if you like rounded corners
@@ -58,7 +58,7 @@
 }
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-
+    
     NSLog(@"%@", NSStringFromCGRect(_vw_MainView.superview.bounds));
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
@@ -127,7 +127,7 @@
                         [_txtPasswordSecPin setText:@""];
                         [_txtUsernameCard resignFirstResponder];
                         [_txtPasswordSecPin resignFirstResponder];
-                       // [_txtUsernameCard becomeFirstResponder];
+                        // [_txtUsernameCard becomeFirstResponder];
                     }];
     
 }
@@ -189,7 +189,7 @@
                         }
                     }];
     
-
+    
 }
 
 
@@ -203,21 +203,23 @@
     if (responseArray != nil) {
         
         NSMutableArray* cinfo = [[NSMutableArray alloc] init];
+        
         for (NSDictionary* dict in responseArray){
-            if([dict count] == 1)
+            if([dict count] == 1 && [dict objectForKey:@"Message"] )
             {
                 ErrorMessage = [dict objectForKey:@"Message"];
             }
             else{
                 [cinfo addObject: [[CardInfo alloc] initWithDictionary:dict]];
                 [ [SingletonGeneric UserCardInfo]setAllCardInfo:cinfo];
+                if ([dict objectForKey:@"UserCredentialID"])
+                {
+                    [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:[dict objectForKey:@"UserCredentialID"] forKey:LOGGEDIN_USERCREDNTIALID];
+                    
+                }
             }
         }
-        
-        
-        
     }
-    
     else
     {
         ErrorMessage = @"Please check your credentials.";
@@ -226,7 +228,7 @@
     if (ErrorMessage.length == 0)
     {
         [self performSelector:@selector(PresentLoggedinHomeView) withObject:nil afterDelay:0];
-       
+        
         [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:_txtUsernameCard.text forKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME];
         [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:_txtPasswordSecPin.text forKey:LOGGEDIN_CREDENTIAL_KEY_PASSWORD];
         if (_SwitchCardUsernameLogin.isOn)
@@ -258,7 +260,7 @@
     userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:userviewsVC animated:YES completion:nil];
     //  [self dismissViewControllerAnimated:YES completion:nil];
-      [SVProgressHUD dismiss];
+    [SVProgressHUD dismiss];
 }
 -(void)serviceCallCompletedWithError:(NSError *)error
 {}

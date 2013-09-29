@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "OBGradientView.h"
 #import "GradientButton.h"
-@interface AddNewCardToAccount : UIViewController
+#import "RTNetworkRequest.h"
+@interface AddNewCardToAccount : UIViewController <RTNetworkRequestDelegate>
 @property (weak, nonatomic) IBOutlet OBGradientView *vwMain;
 
 - (IBAction)btnHome_Click:(id)sender;

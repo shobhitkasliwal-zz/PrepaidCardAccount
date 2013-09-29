@@ -39,9 +39,8 @@ CardInfo *cInfo;
     [self.view addGestureRecognizer:gestureRecognizer];
     
     cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
-    NSMutableString *cardNumber = [NSMutableString stringWithString:[cInfo.cardNumber substringFromIndex:[cInfo.cardNumber length] - 6] ];
-    [cardNumber insertString:@"-" atIndex:2];
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cardNumber ];
+  
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cInfo.cardNumber ];
     [_lblHeaderCard setText:cardNumbertxt];
     
     _uiHeader.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];

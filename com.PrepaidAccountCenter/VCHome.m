@@ -19,6 +19,8 @@
 #import "SVProgressHUD.h"
 #import "AppHelper.h"
 
+
+#define NO_CARD_FOR_USERNAME_TAG 1
 @interface VCHome ()
 @property (nonatomic, strong)NSArray *dsTableViewRows;
 @property (nonatomic, strong) NSMutableArray *pageCardInformation;
@@ -35,9 +37,17 @@ int CurrentScrollViewPage;
     //or the recycling mechanism will destroy your data once
     //your item views move off-screen
     
-      self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
-    [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
+      [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
     [self.view bringSubviewToFront:_vwBottomInfoBar];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    UIEdgeInsets inset = UIEdgeInsetsMake(-20, 0, 0, 0);
+    _uiPageMainView.contentInset = inset;
+    [_uiPageMainView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    _CardScrollView.backgroundColor = [UIColor clearColor];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -74,18 +84,7 @@ int CurrentScrollViewPage;
                                    target:nil
                                    action:nil];
     self.navigationItem.backBarButtonItem=backButton;
-    NSInteger pageCount = self.pageCardInformation.count;
     
-    if(pageCount ==1)
-    {
-        [self.uiPageControlScrollCard setHidden:YES];
-    }
-    
-    // Set up the page control
-    self.uiPageControlScrollCard.currentPage = 0;
-    self.uiPageControlScrollCard.numberOfPages = pageCount;
-   
-   
     
 //    UIImage *LogoutImage = [UIImage imageNamed:@"logout.png"];
 //    
@@ -103,16 +102,50 @@ int CurrentScrollViewPage;
 //    UIBarButtonItem *barButton= [[UIBarButtonItem alloc] initWithCustomView:LogoutButton];
 //    // self.toolbarItems= [NSArray arrayWithObject:barButton];
 //    self.navigationItem.rightBarButtonItem = barButton;
+ }
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"Tag:%@",[NSString stringWithFormat:@"%0.0f", (float)alertView.tag]);
+    if (alertView.tag == NO_CARD_FOR_USERNAME_TAG &&   buttonIndex == 0){
+        [self performSegueWithIdentifier:@"segAddCardToAccount" sender:nil];
+    }else if (buttonIndex == 1){
+        //reset clicked
+    }
 }
-
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
+    
     [_uiPageMainView deselectRowAtIndexPath:[_uiPageMainView indexPathForSelectedRow] animated:YES];
    
-    //_vw_SC_View.frame = _vw_ScrollWrapper.frame;
+    NSMutableArray* cinfoArray  =   [[SingletonGeneric UserCardInfo] UserCardInformation];
+    if ([cinfoArray count] > 0 )
+    {
+        CardInfo* ci = [cinfoArray objectAtIndex: 0];
+        if ([AppHelper isNullObject:ci.cardNumber])
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:@"You dont have any card associated with this username.\n Please add a card first."  delegate: self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            alert.tag = NO_CARD_FOR_USERNAME_TAG;
+            [alert show];
+            
+        }
+        
+    }
+    NSInteger pageCount = self.pageCardInformation.count;
+    
+    if(pageCount ==1)
+    {
+        [self.uiPageControlScrollCard setHidden:YES];
+    }
+    
+    // Set up the page control
+    self.uiPageControlScrollCard.currentPage = 0;
+    self.uiPageControlScrollCard.numberOfPages = pageCount;
+    
+    [_CardScrollView reloadData];
     
 }
 

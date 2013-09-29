@@ -8,6 +8,7 @@
 
 #import "SingletonGeneric.h"
 #import "CardInfo.h"
+#import "AppHelper.h"
 
 @implementation SingletonGeneric
 
@@ -51,6 +52,24 @@
 -(void) setAllCardInfo: (NSMutableArray*) arrCardInfo
 {
     _UserCardInformation = arrCardInfo;
+}
+
+-(void) addCardInfo: (CardInfo*) cinfo
+{
+    BOOL addcard = YES;
+    if ([_UserCardInformation count] == 1 )
+    {
+        CardInfo* ci = [_UserCardInformation objectAtIndex:0];
+        if([AppHelper isNullObject:ci.cardNumber])
+        {
+            _UserCardInformation= [NSMutableArray arrayWithObjects: cinfo, nil];
+            addcard = NO;
+        }
+    }
+      if (addcard == YES)
+      {
+          [_UserCardInformation addObject:cinfo];
+      }
 }
 
 -(void)SetSelectedCardInfo:(int) index

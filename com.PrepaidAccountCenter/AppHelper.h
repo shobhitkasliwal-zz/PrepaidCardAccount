@@ -15,5 +15,5 @@
 + (NSString *) DeviceType;
 + (BOOL) isEmptyString:(NSString *) Data;
 + (void)applyShinyBackgroundWithColor:(UIColor *)color  ForView:(UIView*) myView;
-
++ (BOOL) isNullObject: (NSObject *) obj;
 @end

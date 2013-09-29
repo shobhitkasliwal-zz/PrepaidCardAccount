@@ -42,9 +42,8 @@ int CurrentTransactionDuration;
 	// Do any additional setup after loading the view.
        
 cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
-    NSMutableString *cardNumber = [NSMutableString stringWithString:[cInfo.cardNumber substringFromIndex:[cInfo.cardNumber length] - 6] ];
-    [cardNumber insertString:@"-" atIndex:2];
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cardNumber ];
+   
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cInfo.cardNumber ];
     [_lblCardNumber setText:cardNumbertxt];
   
     self.navigationItem.title=@"Transactions";

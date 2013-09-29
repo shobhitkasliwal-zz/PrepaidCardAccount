@@ -431,6 +431,11 @@
 				CLASSPREFIX = PAC;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Liventus;
+				TargetAttributes = {
+					77004B8C176239F300745E2B = {
+						DevelopmentTeam = DT3UVNLN2A;
+					};
+				};
 			};
 			buildConfigurationList = 77004B88176239F300745E2B /* Build configuration list for PBXProject "com.PrepaidAccountCenter" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -624,9 +629,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Prefix.pch";
 				INFOPLIST_FILE = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -634,14 +641,16 @@
 		77004BB5176239F300745E2B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Prefix.pch";
 				INFOPLIST_FILE = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

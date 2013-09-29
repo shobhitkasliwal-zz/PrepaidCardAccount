@@ -7,6 +7,7 @@
 //
 
 #import "CardInfo.h"
+#import "AppHelper.h"
 
 @implementation  CardInfo
 
@@ -15,7 +16,7 @@
 
 - (id)init
 {
-self = [super init];
+    self = [super init];
     return self;
 }
 
@@ -41,12 +42,18 @@ self = [super init];
     _cardProxy =[dict objectForKey:@"CardProxy"];
     _WcsClientID = [dict objectForKey:@"WCSClientId"];
     _SiteConfigID = [dict objectForKey:@"SiteConfigID"];
-    _ChangePinAllowed = [[dict objectForKey:@"ChangePinAllowed"] boolValue];
-    _ViewPinOnly = [[dict objectForKey:@"ViewPinOnly"] boolValue];
-    _ViewChangePinMessage = [[dict objectForKey:@"ViewPinChangeMessage"] boolValue];
     _Sec_Auth_Label=[dict objectForKey:@"Sec_Auth_Label"];
-    _isUserRegistered = [[dict objectForKey:@"isUserRegistered"] boolValue];
-    _UserSecondaryAuthRequired=[[dict objectForKey:@"UserSecondaryAuthRequired"] boolValue];
+    if(![AppHelper isNullObject:[dict objectForKey:@"ChangePinAllowed"]])
+        _ChangePinAllowed = [[dict objectForKey:@"ChangePinAllowed"] boolValue];
+    if(![AppHelper isNullObject:[dict objectForKey:@"ViewPinOnly"]])
+        _ViewPinOnly = [[dict objectForKey:@"ViewPinOnly"] boolValue];
+    if(![AppHelper isNullObject:[dict objectForKey:@"ViewPinChangeMessage"]])
+        _ViewChangePinMessage = [[dict objectForKey:@"ViewPinChangeMessage"] boolValue];
+    if(![AppHelper isNullObject:[dict objectForKey:@"isUserRegistered"]])
+        _isUserRegistered = [[dict objectForKey:@"isUserRegistered"] boolValue];
+    if(![AppHelper isNullObject:[dict objectForKey:@"UserSecondaryAuthRequired"]])
+        _UserSecondaryAuthRequired=[[dict objectForKey:@"UserSecondaryAuthRequired"] boolValue];
+    
     return self;
 }
 

@@ -13,7 +13,8 @@
 @property (weak, atomic) NSString* ControlType;
 
 @end
-
+NSString* LoggedinWithCard_CardNumber;
+NSString* LoggedinWithCard_SecurityPin;
 @implementation ManageUserCredentials
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,18 +51,24 @@
     
     //NSLOG (@"DEFInevalue%@", LOGGEDIN_OPTION_USERNAME);
     
-    NSString* LoginByOption = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
-    if ([LoginByOption isEqualToString:LOGGEDIN_OPTION_CARD])
-    {
-        _ControlType = @"create";
-    }
+    
     [self setUpPage];
     
 }
 
 -(void) setUpPage
 {
-    
+    NSString* LoginByOption = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
+    if ([LoginByOption isEqualToString:LOGGEDIN_OPTION_CARD])
+    {
+        _ControlType = @"create";
+    }else{
+        _ControlType = @"update";
+    }
+    _txtUsername.text = @"";
+    _txtPassword.text =@"";
+    _txtOldPAssword.text = @"";
+    _txtConfirmPAssword.text =@"";
     if ([_ControlType isEqualToString:@"create"])
     {
         [_lblOldPassword setHidden:YES];
@@ -170,12 +177,20 @@
                     
                     if ([[[dict objectForKey:@"Message"] uppercaseString] isEqualToString:@"SUCCESS"])
                     {
+                        LoggedinWithCard_CardNumber = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME];
+                        LoggedinWithCard_SecurityPin = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_PASSWORD];
+                        [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:_txtUsername.text forKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME];
+                        [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:_txtPassword.text forKey:LOGGEDIN_CREDENTIAL_KEY_PASSWORD];
+                        [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:LOGGEDIN_OPTION_USERNAME forKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
+                        [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] setValue:[dict objectForKey:@"UserCredentialID"]   forKey:LOGGEDIN_USERCREDNTIALID];
                         NSString* SuccessMessage = @"Credentials created successfully.\n Do you want to Add card(";
-                        SuccessMessage= [SuccessMessage stringByAppendingString:[[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME]];
+                        SuccessMessage= [SuccessMessage stringByAppendingString:LoggedinWithCard_CardNumber];
                         SuccessMessage =  [SuccessMessage stringByAppendingString:@") to this username ?"];
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:SuccessMessage  delegate: self cancelButtonTitle:@"YES" otherButtonTitles:@"No", nil];
                         alert.tag = POPUP_TAG_USERCREDENTIAL_SUCCESS;
                         [alert show];
+                        [self setUpPage];
+                        
                     }
                     else{
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"Message"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -201,7 +216,44 @@
     }
     else if ([currentCallType isEqualToString:@"AddCardToUserService"])
     {
-    
+        
+        NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+        if (responseArray != nil) {
+            for (NSDictionary* dict in responseArray){
+                if([dict objectForKey:@"Message"])
+                {
+                    
+                    if ([[[dict objectForKey:@"Message"] uppercaseString] isEqualToString:@"SUCCESS"])
+                    {
+                        
+                        NSString* SuccessMessage = @"Card added to the username successfully.";
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:SuccessMessage  delegate: nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                        alert.tag = POPUP_TAG_USERCREDENTIAL_SUCCESS;
+                        [alert show];
+                        
+                    }
+                    else{
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"Message"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                }
+                else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while creating the username.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }
+            
+            
+            
+        }
+        
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while creating the username.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        
     }
     
 }
@@ -210,11 +262,10 @@
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"Tag:%@",[NSString stringWithFormat:@"%0.0f", (float)alertView.tag]);
     if (alertView.tag == POPUP_TAG_USERCREDENTIAL_SUCCESS &&   buttonIndex == 0){
-        NSString* CurrentCardNumber = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME];
-        NSString* CurrentCardPin = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_PASSWORD];
+         NSString* UserCredentialID = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_USERCREDNTIALID];
         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
         networkRequest.currentCallType = [NSMutableString stringWithString:@"AddCardToUserService"];
-        [networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, CurrentCardNumber, CurrentCardPin] httpMethod:RTHTTPMethodGET];
+        [networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, UserCredentialID, LoggedinWithCard_CardNumber, LoggedinWithCard_SecurityPin] httpMethod:RTHTTPMethodGET];
     }else if (buttonIndex == 1){
         //reset clicked
     }

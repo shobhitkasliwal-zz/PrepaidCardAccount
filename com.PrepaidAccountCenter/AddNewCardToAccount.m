@@ -9,6 +9,8 @@
 #import "AddNewCardToAccount.h"
 #import "UIColor+Hex.h"
 #import "AppHelper.h"
+#import "AppConstants.h"
+#import"SingletonGeneric.h"
 
 @interface AddNewCardToAccount ()
 
@@ -56,7 +58,7 @@
 {
     [_txtCardNumber resignFirstResponder];
     [_txtSecurityPin resignFirstResponder];
-
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -80,8 +82,104 @@
     {
         [_lblMessageTop setText:@"Please Enter Security Pin !!!"];
     }
+    else if ([_txtCardNumber text].length != 16){
+        [_lblMessageTop setText:@"Invlid Cardnumber !!!"];
+        
+    }
+    else if ([_txtSecurityPin text].length != 3){
+        
+        [_lblMessageTop setText:@"Invalid Pin !!!"];
+    }
+    else
+    {
+        NSString* UserCredentialID = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_USERCREDNTIALID];
+        
+        RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+        networkRequest.currentCallType = [NSMutableString stringWithString:@"AddCardToUserService"];
+        [networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, UserCredentialID, _txtCardNumber.text, _txtSecurityPin.text] httpMethod:RTHTTPMethodGET];
+    }
     
 }
+- (void)networkNotReachable{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: INTERNET_NOT_AVAILABLE_POPUP_TITLE message: INTERNET_NOT_AVAILABLE_POPUP_TEXT delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+
+-(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
+{
+    if ([currentCallType isEqualToString:@"AddCardToUserService"])
+    {
+        NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+        if (responseArray != nil) {
+            for (NSDictionary* dict in responseArray){
+                if([dict objectForKey:@"Message"])
+                {
+                    
+                    if ([[[dict objectForKey:@"Message"] uppercaseString] isEqualToString:@"SUCCESS"])
+                    {
+                        RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+                        networkRequest.currentCallType = [NSMutableString stringWithString:@"RetrieveCardInformation"];
+                       [networkRequest makeWebCall:[NSString stringWithFormat:AUTHENTICATE_SERVICE_URL, _txtCardNumber.text, _txtSecurityPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
+                        NSString* SuccessMessage = @"Card added successfully.";
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:SuccessMessage  delegate: self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                         [alert show];
+                        
+                    }
+                    else{
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"Message"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                }
+                else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while creating the username.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }
+            
+            
+            
+        }
+        
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while creating the username.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        
+    }
+    else if ([currentCallType isEqualToString:@"RetrieveCardInformation"])
+    {
+        NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+        NSString* ErrorMessage = @"";
+        
+        if (responseArray != nil) {
+            for (NSDictionary* dict in responseArray){
+                if([dict count] == 1 && [dict objectForKey:@"Message"] )
+                {
+                    ErrorMessage = [dict objectForKey:@"Message"];
+                }
+                else{
+                    CardInfo* ci = [[CardInfo alloc] initWithDictionary:dict];
+                    [ [SingletonGeneric UserCardInfo] addCardInfo:ci];
+                }
+            }
+        }
+        else
+        {
+            ErrorMessage = @"Error retriving card infromation. Please contact customer support for more information.";
+            
+        }
+        if (ErrorMessage.length > 0 )
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: ErrorMessage delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    
+}
+
 - (IBAction)btnClear_Click:(id)sender {
     [_txtCardNumber setText:@""];
     [_txtSecurityPin setText:@""];
