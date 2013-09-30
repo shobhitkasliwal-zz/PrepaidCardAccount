@@ -37,17 +37,20 @@ int CurrentScrollViewPage;
     //or the recycling mechanism will destroy your data once
     //your item views move off-screen
     
-      [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
+    [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
     [self.view bringSubviewToFront:_vwBottomInfoBar];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.extendedLayoutIncludesOpaqueBars = NO;
         self.automaticallyAdjustsScrollViewInsets = NO;
+        [_uiPageMainView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        UIEdgeInsets inset = UIEdgeInsetsMake(-20, 0, 0, 0);
+        _uiPageMainView.contentInset = inset;
     }
-    UIEdgeInsets inset = UIEdgeInsetsMake(-20, 0, 0, 0);
-    _uiPageMainView.contentInset = inset;
-    [_uiPageMainView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    
     _CardScrollView.backgroundColor = [UIColor clearColor];
+   
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -62,6 +65,7 @@ int CurrentScrollViewPage;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
     _CardScrollView.type = iCarouselTypeInvertedCylinder;
     _CardScrollView.scrollSpeed = 0.2;
     CurrentScrollViewPage = -1;
@@ -86,23 +90,25 @@ int CurrentScrollViewPage;
     self.navigationItem.backBarButtonItem=backButton;
     
     
-//    UIImage *LogoutImage = [UIImage imageNamed:@"logout.png"];
-//    
-//    UIButton *LogoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [LogoutButton setBackgroundImage:LogoutImage forState:UIControlStateNormal];
-//    [LogoutButton setTitle:@"Logout" forState:UIControlStateNormal];
-//    LogoutButton.frame = (CGRect) {
-//        .size.width = 50,
-//        .size.height = 25,
-//    };
-//    //[LogoutButton setTitleEdgeInsets:<#(UIEdgeInsets)#>
-//     [LogoutButton setTitleEdgeInsets:UIEdgeInsetsMake(30.0f, 10.0f, 0.0f, 0.0f)];
-//    [LogoutButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
-//
-//    UIBarButtonItem *barButton= [[UIBarButtonItem alloc] initWithCustomView:LogoutButton];
-//    // self.toolbarItems= [NSArray arrayWithObject:barButton];
-//    self.navigationItem.rightBarButtonItem = barButton;
- }
+    //    UIImage *LogoutImage = [UIImage imageNamed:@"logout.png"];
+    //
+    //    UIButton *LogoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    [LogoutButton setBackgroundImage:LogoutImage forState:UIControlStateNormal];
+    //    [LogoutButton setTitle:@"Logout" forState:UIControlStateNormal];
+    //    LogoutButton.frame = (CGRect) {
+    //        .size.width = 50,
+    //        .size.height = 25,
+    //    };
+    //    //[LogoutButton setTitleEdgeInsets:<#(UIEdgeInsets)#>
+    //     [LogoutButton setTitleEdgeInsets:UIEdgeInsetsMake(30.0f, 10.0f, 0.0f, 0.0f)];
+    //    [LogoutButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
+    //
+    //    UIBarButtonItem *barButton= [[UIBarButtonItem alloc] initWithCustomView:LogoutButton];
+    //    // self.toolbarItems= [NSArray arrayWithObject:barButton];
+    //    self.navigationItem.rightBarButtonItem = barButton;
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+}
 
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -120,7 +126,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     self.pageCardInformation = [[SingletonGeneric UserCardInfo] UserCardInformation];
     
     [_uiPageMainView deselectRowAtIndexPath:[_uiPageMainView indexPathForSelectedRow] animated:YES];
-   
+    
     NSMutableArray* cinfoArray  =   [[SingletonGeneric UserCardInfo] UserCardInformation];
     if ([cinfoArray count] > 0 )
     {
@@ -203,9 +209,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    int tableHeight = _uiPageMainView.bounds.size.height;
-    int itemCount = [_dsTableViewRows count];
-    return ((tableHeight/itemCount) -10);
+    //    int tableHeight = _uiPageMainView.bounds.size.height;
+    //    int itemCount = [_dsTableViewRows count];
+    //    return ((tableHeight/itemCount) -10);
+    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:
@@ -270,8 +277,8 @@ static float progressTableAnimate = 0.0f;
         //((UIImageView *)view).image = [UIImage imageNamed:@"page.png"];
         view =[[[NSBundle mainBundle] loadNibNamed:@"PAC_ScrollCardView" owner:self options:nil] lastObject];
         view.contentMode = UIViewContentModeCenter;
-       
-    
+        
+        
     }
     //set item label
     //remember to always set any properties of your carousel item
@@ -283,7 +290,7 @@ static float progressTableAnimate = 0.0f;
     [self PopulateScrollCardView:ci];
     
     //_vw_SC_View.frame = carousel.frame;
-  //  carousel.frame = _vw_ScrollWrapper.frame;
+    //  carousel.frame = _vw_ScrollWrapper.frame;
     return view;
 }
 
@@ -291,10 +298,10 @@ static float progressTableAnimate = 0.0f;
 {
     //_vw_SC_View.translatesAutoresizingMaskIntoConstraints = NO;
     //[_vw_SC_View setFrame:CGRectMake(0, 0, _vw_ScrollWrapper.bounds.size.width, _vw_SC_View.bounds.size.height)];
-//    NSMutableString *cardNumber = [NSMutableString stringWithString:[card.cardNumber substringFromIndex:[card.cardNumber length] - 6] ];
-//    [cardNumber insertString:@"-" atIndex:2];
-       NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"xxxx-xxxx-xx", card.cardNumber ];
-     [_lbl_SC_CardNumber setText: cardNumbertxt];
+    //    NSMutableString *cardNumber = [NSMutableString stringWithString:[card.cardNumber substringFromIndex:[card.cardNumber length] - 6] ];
+    //    [cardNumber insertString:@"-" atIndex:2];
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"xxxx-xxxx-xx", card.cardNumber ];
+    [_lbl_SC_CardNumber setText: cardNumbertxt];
     [_lbl_SC_Balance setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
     
     [_lbl_SC_Expiration setText:[NSString stringWithFormat:@"%@%@",@"Expiration: ", card.cardExpiration]];
@@ -305,7 +312,7 @@ static float progressTableAnimate = 0.0f;
     NSArray *colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"3F3F3F"], [UIColor colorWithHexString:@"9F9F9F"], nil];
     _vw_SC_View.colors= colors;
     
-   
+    
 }
 
 - (IBAction)PageChange:(id)sender {
@@ -331,7 +338,7 @@ static float progressTableAnimate = 0.0f;
 }
 
 -(void)faqButtonClicked:(id)sender {
-  //  [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
+    //  [self presentViewController:[[Faq alloc] init] animated:YES completion:nil];
     [self performSegueWithIdentifier:@"segFAQ" sender:nil];
     
 }

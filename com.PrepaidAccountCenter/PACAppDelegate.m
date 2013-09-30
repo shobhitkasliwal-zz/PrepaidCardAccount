@@ -14,6 +14,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DefaultBG.png"]]];
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+//        UIView *addStatusBar = [[UIView alloc] init];
+//        addStatusBar.frame = CGRectMake(0, 0, 320, 20);
+//        addStatusBar.backgroundColor = [UIColor colorWithRed:0.973 green:0.973 blue:0.973 alpha:1]; //change this to match your navigation bar
+//        [self.window.rootViewController.view addSubview:addStatusBar];
+//    }
     return YES;
 }
 							
@@ -43,6 +50,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 -(void) LogoutUser
 {

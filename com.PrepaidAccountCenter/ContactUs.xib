@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactUs">
             <connections>
+                <outlet property="btnReset" destination="YpI-Fu-k66" id="fSG-Q7-Qbe"/>
+                <outlet property="btnSubmit" destination="9fj-Mz-jTI" id="GEL-o4-diB"/>
                 <outlet property="txtComments" destination="57" id="85"/>
                 <outlet property="txtEmailAddress" destination="33" id="181"/>
                 <outlet property="txtFirstName" destination="13" id="179"/>
@@ -20,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" red="0.058823533359999999" green="0.058823533359999999" blue="0.058823533359999999" alpha="1" colorSpace="deviceRGB"/>
@@ -34,32 +36,30 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="86">
-                    <rect key="frame" x="0.0" y="45" width="320" height="548"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86">
+                    <rect key="frame" x="0.0" y="40" width="320" height="528"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13">
-                            <rect key="frame" x="20" y="37" width="280" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13">
+                            <rect key="frame" x="19" y="37" width="282" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" priority="1" constant="97" id="16"/>
-                                <constraint firstAttribute="height" constant="30" id="stg-71-QG2"/>
+                                <constraint firstAttribute="width" priority="1" constant="281" id="16"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="25">
-                            <rect key="frame" x="20" y="75" width="280" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="25">
+                            <rect key="frame" x="20" y="75" width="281" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" priority="1" constant="97" id="26"/>
-                                <constraint firstAttribute="height" constant="30" id="C7o-aW-gFZ"/>
+                                <constraint firstAttribute="height" constant="30" id="3kP-oQ-hyF"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33">
-                            <rect key="frame" x="20" y="113" width="280" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33">
+                            <rect key="frame" x="20" y="113" width="281" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="1" constant="97" id="34"/>
@@ -68,8 +68,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44">
-                            <rect key="frame" x="20" y="151" width="280" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44">
+                            <rect key="frame" x="20" y="151" width="281" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="1" constant="97" id="45"/>
@@ -78,12 +78,11 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57">
-                            <rect key="frame" x="20" y="223" width="280" height="183"/>
+                            <rect key="frame" x="20" y="223" width="281" height="183"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="1" constant="240" id="61"/>
-                                <constraint firstAttribute="height" constant="183" id="177"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -101,30 +100,61 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fj-Mz-jTI" customClass="GradientButton">
+                            <rect key="frame" x="46" y="435" width="91" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="k1s-il-eDY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" title="Submit"/>
+                            <connections>
+                                <action selector="btnSubmit_Click:" destination="-1" eventType="touchUpInside" id="ahL-Dt-SaF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpI-Fu-k66" customClass="GradientButton">
+                            <rect key="frame" x="186" y="435" width="90" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="CKY-Mo-POC"/>
+                                <constraint firstAttribute="height" constant="30" id="I3t-ey-MD7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" title="Reset"/>
+                            <connections>
+                                <action selector="btnReset_Click:" destination="-1" eventType="touchUpInside" id="HYe-j5-eqP"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="57" secondAttribute="trailing" constant="20" symbolic="YES" id="97"/>
                         <constraint firstItem="57" firstAttribute="leading" secondItem="86" secondAttribute="leading" constant="20" symbolic="YES" id="108"/>
                         <constraint firstItem="33" firstAttribute="leading" secondItem="86" secondAttribute="leading" constant="20" symbolic="YES" id="110"/>
                         <constraint firstAttribute="trailing" secondItem="13" secondAttribute="trailing" constant="20" symbolic="YES" id="111"/>
-                        <constraint firstItem="13" firstAttribute="leading" secondItem="86" secondAttribute="leading" constant="20" symbolic="YES" id="113"/>
+                        <constraint firstItem="13" firstAttribute="leading" secondItem="86" secondAttribute="leading" constant="19" id="113"/>
                         <constraint firstAttribute="trailing" secondItem="33" secondAttribute="trailing" constant="20" symbolic="YES" id="115"/>
-                        <constraint firstItem="13" firstAttribute="baseline" secondItem="33" secondAttribute="baseline" id="116"/>
-                        <constraint firstItem="25" firstAttribute="baseline" secondItem="44" secondAttribute="baseline" id="120"/>
-                        <constraint firstItem="25" firstAttribute="baseline" secondItem="33" secondAttribute="baseline" id="130"/>
-                        <constraint firstItem="13" firstAttribute="top" secondItem="86" secondAttribute="top" constant="20" symbolic="YES" id="152"/>
-                        <constraint firstItem="25" firstAttribute="top" secondItem="13" secondAttribute="bottom" constant="8" symbolic="YES" id="155"/>
-                        <constraint firstItem="33" firstAttribute="top" secondItem="25" secondAttribute="bottom" constant="8" symbolic="YES" id="159"/>
-                        <constraint firstAttribute="trailing" secondItem="25" secondAttribute="trailing" constant="20" symbolic="YES" id="162"/>
-                        <constraint firstItem="25" firstAttribute="leading" secondItem="86" secondAttribute="leading" constant="20" symbolic="YES" id="163"/>
+                        <constraint firstItem="13" firstAttribute="baseline" secondItem="33" secondAttribute="baseline" constant="-76" id="116"/>
                         <constraint firstItem="44" firstAttribute="top" secondItem="33" secondAttribute="bottom" constant="8" symbolic="YES" id="165"/>
                         <constraint firstAttribute="trailing" secondItem="44" secondAttribute="trailing" constant="20" symbolic="YES" id="167"/>
                         <constraint firstItem="44" firstAttribute="leading" secondItem="86" secondAttribute="leading" constant="20" symbolic="YES" id="168"/>
                         <constraint firstItem="72" firstAttribute="leading" secondItem="86" secondAttribute="leading" constant="20" symbolic="YES" id="169"/>
                         <constraint firstItem="72" firstAttribute="top" secondItem="86" secondAttribute="top" constant="189" id="170"/>
-                        <constraint firstItem="57" firstAttribute="top" secondItem="86" secondAttribute="top" constant="223" id="173"/>
-                        <constraint firstItem="25" firstAttribute="centerX" secondItem="86" secondAttribute="centerX" id="175"/>
-                        <constraint firstAttribute="bottom" secondItem="57" secondAttribute="bottom" constant="105" id="176"/>
+                        <constraint firstItem="YpI-Fu-k66" firstAttribute="top" secondItem="57" secondAttribute="bottom" constant="29" id="5tv-0f-yL9"/>
+                        <constraint firstAttribute="bottom" secondItem="25" secondAttribute="bottom" constant="423" id="6El-MS-YrC"/>
+                        <constraint firstItem="YpI-Fu-k66" firstAttribute="baseline" secondItem="9fj-Mz-jTI" secondAttribute="baseline" id="9wQ-Dw-GQl"/>
+                        <constraint firstItem="25" firstAttribute="top" secondItem="13" secondAttribute="bottom" constant="8" id="DCp-lq-Sbh"/>
+                        <constraint firstItem="YpI-Fu-k66" firstAttribute="leading" secondItem="9fj-Mz-jTI" secondAttribute="trailing" constant="49" id="EDE-xC-UtN"/>
+                        <constraint firstItem="9fj-Mz-jTI" firstAttribute="top" secondItem="57" secondAttribute="bottom" constant="29" id="IQy-pT-Mno"/>
+                        <constraint firstItem="25" firstAttribute="leading" secondItem="33" secondAttribute="leading" id="LIW-Pv-KzH"/>
+                        <constraint firstAttribute="trailing" secondItem="YpI-Fu-k66" secondAttribute="trailing" constant="45" id="O5e-Ns-7Zv"/>
+                        <constraint firstItem="25" firstAttribute="centerX" secondItem="86" secondAttribute="centerX" id="T7r-CL-CEc"/>
+                        <constraint firstItem="YpI-Fu-k66" firstAttribute="top" secondItem="57" secondAttribute="bottom" constant="29" id="Tm8-Kg-Esh"/>
+                        <constraint firstItem="33" firstAttribute="top" secondItem="25" secondAttribute="bottom" constant="8" symbolic="YES" id="YMh-lJ-eY5"/>
+                        <constraint firstItem="9fj-Mz-jTI" firstAttribute="top" secondItem="86" secondAttribute="top" constant="435" id="be7-sZ-gdZ"/>
+                        <constraint firstAttribute="bottom" secondItem="9fj-Mz-jTI" secondAttribute="bottom" constant="63" id="e0Z-4k-4pL"/>
+                        <constraint firstItem="25" firstAttribute="trailing" secondItem="33" secondAttribute="trailing" id="eXV-WQ-emU"/>
+                        <constraint firstItem="9fj-Mz-jTI" firstAttribute="leading" secondItem="86" secondAttribute="leading" constant="46" id="ft1-L0-h5r"/>
+                        <constraint firstItem="57" firstAttribute="top" secondItem="72" secondAttribute="bottom" constant="13" id="rve-mV-Gvn"/>
                     </constraints>
                 </scrollView>
             </subviews>
@@ -133,7 +163,7 @@
                 <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" id="6"/>
                 <constraint firstItem="4" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="7"/>
                 <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="8"/>
-                <constraint firstItem="86" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="91"/>
+                <constraint firstItem="86" firstAttribute="top" secondItem="1" secondAttribute="top" constant="40" id="91"/>
                 <constraint firstItem="86" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="92"/>
                 <constraint firstAttribute="trailing" secondItem="86" secondAttribute="trailing" id="93"/>
                 <constraint firstAttribute="bottom" secondItem="86" secondAttribute="bottom" id="94"/>

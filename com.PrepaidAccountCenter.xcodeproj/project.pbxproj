@@ -63,6 +63,8 @@
 		77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B1F179094E500E6D9BA /* MyCardAccount.png */; };
 		77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B211790950B00E6D9BA /* TransactionsLogo.png */; };
 		77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BD5B23179096EE00E6D9BA /* PinManagement.png */; };
+		77C01F2317F9D7C200086CC7 /* DefaultBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C01F2117F9D7C200086CC7 /* DefaultBG.png */; };
+		77C01F2417F9D7C200086CC7 /* DefaultBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C01F2217F9D7C200086CC7 /* DefaultBG@2x.png */; };
 		77DFE42D17C6852E00479D0D /* FaqAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DFE42C17C6852E00479D0D /* FaqAnswer.m */; };
 		77DFE42F17C6979100479D0D /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DFE42E17C6979100479D0D /* Home.png */; };
 		77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */; };
@@ -154,6 +156,8 @@
 		77BD5B1F179094E500E6D9BA /* MyCardAccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyCardAccount.png; sourceTree = "<group>"; };
 		77BD5B211790950B00E6D9BA /* TransactionsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsLogo.png; sourceTree = "<group>"; };
 		77BD5B23179096EE00E6D9BA /* PinManagement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinManagement.png; sourceTree = "<group>"; };
+		77C01F2117F9D7C200086CC7 /* DefaultBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultBG.png; sourceTree = "<group>"; };
+		77C01F2217F9D7C200086CC7 /* DefaultBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DefaultBG@2x.png"; sourceTree = "<group>"; };
 		77DFE42B17C6852E00479D0D /* FaqAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqAnswer.h; sourceTree = "<group>"; };
 		77DFE42C17C6852E00479D0D /* FaqAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqAnswer.m; sourceTree = "<group>"; };
 		77DFE42E17C6979100479D0D /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
@@ -358,6 +362,8 @@
 		77C335491764F101009867E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				77C01F2117F9D7C200086CC7 /* DefaultBG.png */,
+				77C01F2217F9D7C200086CC7 /* DefaultBG@2x.png */,
 				771D281717F614C8002B2040 /* ContactUs.png */,
 				771D281817F614C8002B2040 /* ContactUs@2x.png */,
 				771D281917F614C8002B2040 /* Credentials.png */,
@@ -466,6 +472,7 @@
 				77004BAA176239F300745E2B /* MainStoryboard_iPhone.storyboard in Resources */,
 				77BD5B1E179094AC00E6D9BA /* UpdateProfileLogo.png in Resources */,
 				77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */,
+				77C01F2417F9D7C200086CC7 /* DefaultBG@2x.png in Resources */,
 				77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */,
 				77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */,
 				778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */,
@@ -478,6 +485,7 @@
 				7751379917B2C617007F2679 /* MyCardAccountSubView.xib in Resources */,
 				77B946D417B54FC800A7EA88 /* error.png in Resources */,
 				77B946D517B54FC800A7EA88 /* error@2x.png in Resources */,
+				77C01F2317F9D7C200086CC7 /* DefaultBG.png in Resources */,
 				77B946D617B54FC800A7EA88 /* success.png in Resources */,
 				77B946D717B54FC800A7EA88 /* success@2x.png in Resources */,
 				77E891D217BABD9B00A672A4 /* icon.png in Resources */,
@@ -629,7 +637,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Prefix.pch";
 				INFOPLIST_FILE = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -646,7 +654,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Prefix.pch";
 				INFOPLIST_FILE = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

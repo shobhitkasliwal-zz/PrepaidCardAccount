@@ -7,7 +7,7 @@
 #define CREATE_CREDENTIAL_SERVICE_URL SERVICE_BASE_URL @"CreateLoginCredentials?UserName=%@&Password=%@"
 #define ADD_CARD_TO_USER_SERVICE_URL SERVICE_BASE_URL @"AddCardToUserName?UserCredentialID=%@&CardNumber=%@&pin=%@"
 #define FAQ_SERVICE_URL SERVICE_BASE_URL @"GetFaq?SiteconfigID=%@"
-
+#define TERM_SERVICE_URL SERVICE_BASE_URL @"GetTerms?SiteconfigID=%@"
 /*    SERVICE Constants   */
 
 /* Other Constants */

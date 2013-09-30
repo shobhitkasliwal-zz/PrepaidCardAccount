@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GradientButton.h"
 
 @interface ContactUs : UIViewController
 - (IBAction)Done_Click:(id)sender;
@@ -15,5 +16,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtLastName;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmailAddress;
 @property (weak, nonatomic) IBOutlet UITextField *txtPhoneNumber;
+@property (weak, nonatomic) IBOutlet GradientButton *btnSubmit;
+- (IBAction)btnSubmit_Click:(id)sender;
+@property (weak, nonatomic) IBOutlet GradientButton *btnReset;
+
+- (IBAction)btnReset_Click:(id)sender;
 
 @end

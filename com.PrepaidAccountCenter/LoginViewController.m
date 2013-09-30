@@ -33,6 +33,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+    [self setNeedsStatusBarAppearanceUpdate];
+    }
     [_vw_MainView setHidden:NO];
     _vwLoginwithCard.layer.cornerRadius = 12.0;
     _vwLoginSwitch.layer.cornerRadius = 12.0;
@@ -55,6 +59,9 @@
     _vw_MainView.layer.shadowOpacity = 0.5;
     [_btnLogin useBlackStyle];
     
+}
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 - (void)keyboardDidShow:(NSNotification *)notification
 {

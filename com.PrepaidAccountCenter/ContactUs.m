@@ -27,6 +27,12 @@ NSString* const CommentsWatermarkText = @"1000 characters maximum";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+    [_btnReset useBlackStyle];
+    [_btnSubmit useBlackStyle];
     [_txtComments.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [_txtComments.layer setBorderWidth:2.0];
     
@@ -40,11 +46,21 @@ NSString* const CommentsWatermarkText = @"1000 characters maximum";
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard:)];
     gestureRecognizer.cancelsTouchesInView = NO; //so that action such as clear text field button can be pressed
     [self.view addGestureRecognizer:gestureRecognizer];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.extendedLayoutIncludesOpaqueBars = YES;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.extendedLayoutIncludesOpaqueBars = YES;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor clearColor];
+    
+}
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -58,8 +74,8 @@ NSString* const CommentsWatermarkText = @"1000 characters maximum";
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {
     if([_txtComments.text isEqualToString:CommentsWatermarkText]){
-    _txtComments.text = @"";
-    _txtComments.textColor = [UIColor blackColor];
+        _txtComments.text = @"";
+        _txtComments.textColor = [UIColor blackColor];
     }
     return YES;
 }
@@ -87,5 +103,15 @@ NSString* const CommentsWatermarkText = @"1000 characters maximum";
         [_txtComments resignFirstResponder];
     }
     
+}
+- (IBAction)btnSubmit_Click:(id)sender {
+}
+- (IBAction)btnReset_Click:(id)sender {
+    _txtComments.textColor = [UIColor lightGrayColor];
+    _txtComments.text = CommentsWatermarkText;
+    _txtFirstName.text =@"";
+    _txtLastName.text =@"";
+    _txtEmailAddress.text =@"";
+    _txtPhoneNumber.text =@"";
 }
 @end
