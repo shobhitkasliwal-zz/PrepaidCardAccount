@@ -23,7 +23,7 @@
                                 <color key="separatorColor" red="0.058823533359999999" green="0.12549020350000001" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ptHomeTableViewCell" editingAccessoryType="detailDisclosureButton" textLabel="sHM-Fk-eoP" style="IBUITableViewCellStyleDefault" id="DGK-Sd-Wt0">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DGK-Sd-Wt0" id="mY5-9S-kqZ">
                                             <rect key="frame" x="0.0" y="0.0" width="253" height="43"/>
@@ -371,7 +371,7 @@
                                         <rect key="frame" x="20" y="36" width="280" height="220"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Card Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-ur-xKz">
-                                                <rect key="frame" x="25" y="17.999999992550343" width="145" height="21"/>
+                                                <rect key="frame" x="25" y="17.999999992549323" width="145" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="NR9-A9-TW0"/>
                                                     <constraint firstAttribute="width" constant="145" id="vFG-AC-Iwi"/>

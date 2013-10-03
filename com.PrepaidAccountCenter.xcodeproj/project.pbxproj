@@ -69,6 +69,7 @@
 		77DFE42F17C6979100479D0D /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DFE42E17C6979100479D0D /* Home.png */; };
 		77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */; };
 		77E891D217BABD9B00A672A4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77E891D117BABD9B00A672A4 /* icon.png */; };
+		77ECBB0617FD9CB00085FF65 /* AppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ECBB0517FD9CB00085FF65 /* AppInfoViewController.m */; };
 		77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CC817B00B8400A1E07E /* OBGradientView.m */; };
 		77F90CCD17B00BC800A1E07E /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCC17B00BC800A1E07E /* GradientButton.m */; };
 		77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */; };
@@ -164,6 +165,8 @@
 		77DFE43017C6C9FE00479D0D /* MyCardAccountsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCardAccountsCell.h; sourceTree = "<group>"; };
 		77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCardAccountsCell.m; sourceTree = "<group>"; };
 		77E891D117BABD9B00A672A4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		77ECBB0417FD9CB00085FF65 /* AppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoViewController.h; sourceTree = "<group>"; };
+		77ECBB0517FD9CB00085FF65 /* AppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoViewController.m; sourceTree = "<group>"; };
 		77F90CC817B00B8400A1E07E /* OBGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBGradientView.m; sourceTree = "<group>"; };
 		77F90CCA17B00B9500A1E07E /* OBGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBGradientView.h; sourceTree = "<group>"; };
 		77F90CCB17B00BB800A1E07E /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientButton.h; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				77004BA8176239F300745E2B /* MainStoryboard_iPhone.storyboard */,
 				77004BBA17628AD700745E2B /* LoginViewController.h */,
 				77004BBB17628AD700745E2B /* LoginViewController.m */,
+				77ECBB0417FD9CB00085FF65 /* AppInfoViewController.h */,
+				77ECBB0517FD9CB00085FF65 /* AppInfoViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				77F90CD317B06B5300A1E07E /* AppHelper.m in Sources */,
 				77F90CD617B06CE900A1E07E /* GTMBase64.m in Sources */,
 				7751379717B2BF91007F2679 /* iCarousel.m in Sources */,
+				77ECBB0617FD9CB00085FF65 /* AppInfoViewController.m in Sources */,
 				77B946DA17B54FDB00A7EA88 /* SVProgressHUD.m in Sources */,
 				77DFE42D17C6852E00479D0D /* FaqAnswer.m in Sources */,
 				77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */,

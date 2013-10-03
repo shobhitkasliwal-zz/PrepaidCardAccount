@@ -35,7 +35,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-    [self setNeedsStatusBarAppearanceUpdate];
+        [self setNeedsStatusBarAppearanceUpdate];
     }
     [_vw_MainView setHidden:NO];
     _vwLoginwithCard.layer.cornerRadius = 12.0;
@@ -59,7 +59,18 @@
     _vw_MainView.layer.shadowOpacity = 0.5;
     [_btnLogin useBlackStyle];
     
+    UIButton* infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+	[infoButton addTarget:self action:@selector(infoButtonAction) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *modalButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+	[self.navigationItem setRightBarButtonItem:modalButton animated:YES];
+    
 }
+
+- (IBAction) infoButtonAction 
+{
+     [self performSegueWithIdentifier:@"segInfo" sender:nil];
+}
+
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
@@ -160,12 +171,47 @@
 }
 
 - (IBAction)btnLogin_Click:(id)sender {
-    
     [self LoginUser];
 }
 
 - (void)LoginUser
 {
+    
+    NSString* ErrorMessage = @"";
+    
+    if (isTestEnvironment == NO)
+    {
+        if (_SwitchCardUsernameLogin.isOn)
+        {
+            if(_txtUsernameCard.text.length == 0)
+            {
+                ErrorMessage = @"Please enter Username.";
+            }else if(_txtPasswordSecPin.text.length == 0)
+                ErrorMessage = @"Please enter Password";
+        }
+        else{
+            if(_txtUsernameCard.text.length ==0)
+            {
+                ErrorMessage = @"Please enter the cardnumber";
+            }else if (_txtUsernameCard.text.length !=16)
+            {
+                ErrorMessage = @"Incorrect Cardnumber.";
+            }
+            else if (_txtPasswordSecPin.text.length == 0){
+                ErrorMessage = @"Please enter pin.";
+            }
+        }
+    }
+    
+    if (ErrorMessage.length !=0)
+    {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: ErrorMessage delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [_vw_MainView setHidden:NO];
+        return;
+    }
+    
     
     [_vw_MainView setHidden:YES];
     [SVProgressHUD showWithStatus:@"You are being securely logging in. \nThank you for your patience." maskType:SVProgressHUDMaskTypeGradient];
