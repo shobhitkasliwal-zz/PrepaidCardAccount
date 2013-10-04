@@ -38,7 +38,16 @@ CardInfo *cInfo;
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     networkRequest.currentCallType = [NSMutableString stringWithString:@"CreateCredentialCall"];
     [networkRequest makeWebCall:[NSString stringWithFormat:TERM_SERVICE_URL, cInfo.SiteConfigID] httpMethod:RTHTTPMethodGET];
-    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+       
+        _navBar.barStyle = UIBarStyleBlackTranslucent;
+    }
+    else
+    {
+        _navBar.barStyle = UIBarStyleBlackOpaque;
+    }
 }
 
 - (void)didReceiveMemoryWarning

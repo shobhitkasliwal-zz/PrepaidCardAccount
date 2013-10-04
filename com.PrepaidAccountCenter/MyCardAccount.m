@@ -45,6 +45,23 @@
         [_btnAddNewCard setHidden:NO];
     }
     
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        [_tblCards setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        UIEdgeInsets inset = UIEdgeInsetsMake(-20, 0, 0, 0);
+        _tblCards.contentInset = inset;
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    }
+    else
+    {
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    }
+
+    
 }
 
 - (void)didReceiveMemoryWarning

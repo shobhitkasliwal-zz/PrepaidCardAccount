@@ -11,7 +11,7 @@
 #import "UIColor+Hex.h"
 #import "RTNetworkRequest.h"
 #import "SVProgressHUD.h"
-#define GetPINURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/GetCardPinInformation?Proxy=%@&WCSClientID=%@&SiteConfigID=%@"
+#import "AppConstants.h"
 
 
 @interface PinManagement ()
@@ -35,7 +35,7 @@ CardInfo *cInfo;
     self.navigationItem.title = @"Pin Management";
     cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cInfo.cardNumber  ];
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xxxx-", cInfo.cardNumber  ];
     [_lblHeaderCard setText:cardNumbertxt];
     
     _uiHeader.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
@@ -44,7 +44,7 @@ CardInfo *cInfo;
     _uiHeader.layer.shadowRadius = 5;
     _uiHeader.layer.shadowOpacity = 0.5;
     
-    _uiPinView.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"1B3F8B"], [UIColor colorWithHexString:@"162252"], nil];
+    
     _uiPinView.layer.cornerRadius = 8; // if you like rounded corners
     _uiPinView.layer.shadowOffset = CGSizeMake(-15, 20);
     _uiPinView.layer.shadowRadius = 5;
@@ -59,7 +59,7 @@ CardInfo *cInfo;
     [SVProgressHUD showWithStatus:@"Retriving Pin.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
     
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-    [networkRequest makeWebCall:[NSString stringWithFormat:GetPINURL,cInfo.cardProxy, cInfo.WcsClientID, cInfo.SiteConfigID] httpMethod:RTHTTPMethodGET];
+    [networkRequest makeWebCall:[NSString stringWithFormat:GET_PIN_SERVICE_URL,cInfo.cardProxy, cInfo.WcsClientID, cInfo.SiteConfigID] httpMethod:RTHTTPMethodGET];
     
     
     [_lblViewPinMessage setNumberOfLines:0];
@@ -70,9 +70,17 @@ CardInfo *cInfo;
     // Do any additional setup after loading the view.
     [self ChangePinAvailable:cInfo.ChangePinAllowed];
     
-    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    [_lblViewPinMessage setHidden:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor clearColor];
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -106,28 +114,28 @@ CardInfo *cInfo;
     [SVProgressHUD dismiss];
     NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
     if (responseArray != nil) {
-       
+        
         
         for (NSDictionary* dict in responseArray){
             
             if([dict count] == 1)
             {
                 NSString* str = [dict objectForKey:@"Message"];
-
+                
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
             else{
                 [_txtPin setText:[dict objectForKey:@"PIN"]];
                 [_lblViewPinMessage setHidden:YES];
-//                if(cInfo.ViewChangePinMessage == YES)
-//                {
-//                    [_lblViewPinMessage setText:[dict objectForKey:@"PinMessage"]];
-//                    [_lblViewPinMessage setHidden:NO];
-//                }
-//                else{
-//                    [_lblViewPinMessage setHidden:YES];
-//                }
+                if(cInfo.ViewChangePinMessage == YES)
+                {
+                    [_lblViewPinMessage setText:[dict objectForKey:@"PinMessage"]];
+                    [_lblViewPinMessage setHidden:NO];
+                }
+                else{
+                    [_lblViewPinMessage setHidden:YES];
+                }
                 
             }
         }
@@ -139,8 +147,8 @@ CardInfo *cInfo;
         NSString* str = [NSString stringWithFormat:@"An error occured while retriving PIN.\n Please contact customer support for more details."];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
-
-            }
+        
+    }
     
     
 }
@@ -148,18 +156,18 @@ CardInfo *cInfo;
 - (void)networkNotReachable{}
 -(void) ChangePinAvailable:(BOOL) value
 {
-//    if (!value)
-//    {
-//        [_txtNewPin setHidden:TRUE];
-//        [_btnChangePin setHidden:TRUE];
-//        _constraint_uiPinViewHeight.constant = 140;
-//        
-//    }
-//    else{
-//        [_txtNewPin setHidden:FALSE];
-//        [_btnChangePin setHidden:FALSE];
-//        _constraint_uiPinViewHeight.constant = 200;
-//    }
+    if (!value)
+    {
+        [_txtNewPin setHidden:TRUE];
+        [_btnChangePin setHidden:TRUE];
+        _constraint_uiPinViewHeight.constant = 140;
+        
+    }
+    else{
+        [_txtNewPin setHidden:FALSE];
+        [_btnChangePin setHidden:FALSE];
+        _constraint_uiPinViewHeight.constant = 200;
+    }
     [_txtNewPin setHidden:FALSE];
     [_btnChangePin setHidden:FALSE];
     _constraint_uiPinViewHeight.constant = 200;

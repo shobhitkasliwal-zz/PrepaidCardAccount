@@ -37,19 +37,7 @@ int CurrentScrollViewPage;
     //or the recycling mechanism will destroy your data once
     //your item views move off-screen
     
-    [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
-    [self.view bringSubviewToFront:_vwBottomInfoBar];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.extendedLayoutIncludesOpaqueBars = NO;
-        self.automaticallyAdjustsScrollViewInsets = NO;
-        [_uiPageMainView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-        UIEdgeInsets inset = UIEdgeInsetsMake(-20, 0, 0, 0);
-        _uiPageMainView.contentInset = inset;
-    }
     
-    
-    _CardScrollView.backgroundColor = [UIColor clearColor];
    
 }
 
@@ -88,26 +76,26 @@ int CurrentScrollViewPage;
                                    target:nil
                                    action:nil];
     self.navigationItem.backBarButtonItem=backButton;
-    
-    
-    //    UIImage *LogoutImage = [UIImage imageNamed:@"logout.png"];
-    //
-    //    UIButton *LogoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    [LogoutButton setBackgroundImage:LogoutImage forState:UIControlStateNormal];
-    //    [LogoutButton setTitle:@"Logout" forState:UIControlStateNormal];
-    //    LogoutButton.frame = (CGRect) {
-    //        .size.width = 50,
-    //        .size.height = 25,
-    //    };
-    //    //[LogoutButton setTitleEdgeInsets:<#(UIEdgeInsets)#>
-    //     [LogoutButton setTitleEdgeInsets:UIEdgeInsetsMake(30.0f, 10.0f, 0.0f, 0.0f)];
-    //    [LogoutButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
-    //
-    //    UIBarButtonItem *barButton= [[UIBarButtonItem alloc] initWithCustomView:LogoutButton];
-    //    // self.toolbarItems= [NSArray arrayWithObject:barButton];
-    //    self.navigationItem.rightBarButtonItem = barButton;
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
+    [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
+    [self.view bringSubviewToFront:_vwBottomInfoBar];
+  
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        [_uiPageMainView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        UIEdgeInsets inset = UIEdgeInsetsMake(-20, 0, 0, 0);
+        _uiPageMainView.contentInset = inset;
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    }
+    else
+    {
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    }
+    
+    _CardScrollView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)alertView:(UIAlertView *)alertView

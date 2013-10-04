@@ -14,9 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RTNetworkRequest.h"
 #import "SVProgressHUD.h"
-
-
-#define GetTransactionURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/GetTransactions?Proxy=%@&NoofDays=%@&WCSClientID=%@"
+#import "AppConstants.h"
 @interface Transactions ()
 @property (nonatomic, strong) NSMutableArray *CardTransactions;
 @end
@@ -75,7 +73,7 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     [SVProgressHUD showWithStatus:@"Retriving Transactions.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
 
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-    [networkRequest makeWebCall:[NSString stringWithFormat:GetTransactionURL,cInfo.cardProxy,[NSString stringWithFormat:@"%d",NumberofDays], cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
+    [networkRequest makeWebCall:[NSString stringWithFormat:GET_TRANSACTION_SERVICE_URL,cInfo.cardProxy,[NSString stringWithFormat:@"%d",NumberofDays], cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
 }
 -(void) serviceCallCompletedWithError:(NSError*) error
 {

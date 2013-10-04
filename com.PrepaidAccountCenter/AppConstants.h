@@ -8,6 +8,9 @@
 #define ADD_CARD_TO_USER_SERVICE_URL SERVICE_BASE_URL @"AddCardToUserName?UserCredentialID=%@&CardNumber=%@&pin=%@"
 #define FAQ_SERVICE_URL SERVICE_BASE_URL @"GetFaq?SiteconfigID=%@"
 #define TERM_SERVICE_URL SERVICE_BASE_URL @"GetTerms?SiteconfigID=%@"
+#define GET_PROFILE_SERVICE_URL SERVICE_BASE_URL @"GetUserProfile?Proxy=%@&WCSClientID=%@"
+#define GET_TRANSACTION_SERVICE_URL SERVICE_BASE_URL @"GetTransactions?Proxy=%@&NoofDays=%@&WCSClientID=%@"
+#define GET_PIN_SERVICE_URL SERVICE_BASE_URL @"GetCardPinInformation?Proxy=%@&WCSClientID=%@&SiteConfigID=%@"
 /*    SERVICE Constants   */
 
 /* Other Constants */

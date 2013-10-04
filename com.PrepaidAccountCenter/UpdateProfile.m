@@ -10,7 +10,7 @@
 #import "UIColor+Hex.h"
 #import "CardInfo.h"
 #import "SingletonGeneric.h"
-#define GetProfileURL @"http://test.prepaidcardstatus.com/MobileServices/JsonService.asmx/GetUserProfile?Proxy=%@&WCSClientID=%@"
+#import "AppConstants.h"
 
 
 @interface UpdateProfile ()
@@ -40,7 +40,7 @@ CardInfo *cInfo;
     
     cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
   
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cInfo.cardNumber ];
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xxxx-", cInfo.cardNumber ];
     [_lblHeaderCard setText:cardNumbertxt];
     
     _uiHeader.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
@@ -52,9 +52,15 @@ CardInfo *cInfo;
     [SVProgressHUD showWithStatus:@"Retriving Profile.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
     
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-    [networkRequest makeWebCall:[NSString stringWithFormat:GetProfileURL,cInfo.cardProxy, cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
-    
+    [networkRequest makeWebCall:[NSString stringWithFormat:GET_PROFILE_SERVICE_URL,cInfo.cardProxy, cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
+    [_btnUpdateProfile useBlackStyle];
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -149,4 +155,6 @@ else
 
 
 - (void)networkNotReachable{}
+- (IBAction)btnUpdateProfile_Click:(id)sender {
+}
 @end

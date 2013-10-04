@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Terms">
             <connections>
+                <outlet property="navBar" destination="4" id="DC7-ei-lBe"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="wvTerms" destination="XcY-o9-bDc" id="Mg2-it-Ceu"/>
             </connections>

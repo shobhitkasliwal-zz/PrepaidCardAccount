@@ -15,7 +15,7 @@
 - (IBAction)LogoutClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblHeaderCard;
 @property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;
-@property (weak, nonatomic) IBOutlet OBGradientView *uiPinView;
+@property (weak, nonatomic) IBOutlet UIView *uiPinView;
 @property (weak, nonatomic) IBOutlet GradientButton *btnChangePin;
 @property (weak, nonatomic) IBOutlet GradientButton *btnCancel;
 @property (weak, nonatomic) IBOutlet UITextField *txtPin;
