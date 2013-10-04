@@ -371,7 +371,7 @@
                                         <rect key="frame" x="20" y="36" width="280" height="220"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Card Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-ur-xKz">
-                                                <rect key="frame" x="25" y="17.999999992549323" width="145" height="21"/>
+                                                <rect key="frame" x="25" y="17.99999999254943" width="145" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="NR9-A9-TW0"/>
                                                     <constraint firstAttribute="width" constant="145" id="vFG-AC-Iwi"/>
