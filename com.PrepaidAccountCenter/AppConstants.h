@@ -15,7 +15,9 @@
 
 /* Other Constants */
 #define INTERNET_NOT_AVAILABLE_POPUP_TEXT @"Please check your internet connection."
-#define INTERNET_NOT_AVAILABLE_POPUP_TITLE @"Message."
+#define INTERNET_NOT_AVAILABLE_POPUP_TITLE @"Message"
+#define SERVICE_ERROR_POPUP_TEXT @"There is an error occured while processing your request. Please contact Customer support for more details."
+#define SERVICE_ERROR_POPUP_TITLE @"Message"
 #define LOGGEDIN_CREDENTIAL_KEY_USERNAME @"Username"
 #define LOGGEDIN_CREDENTIAL_KEY_PASSWORD @"Password"
 #define LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION @"SelectedOption"

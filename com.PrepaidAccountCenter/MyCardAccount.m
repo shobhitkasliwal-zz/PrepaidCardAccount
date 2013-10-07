@@ -9,12 +9,16 @@
 #import "MyCardAccount.h"
 #import "UIColor+Hex.h"
 #import "SingletonGeneric.h"
-#import "MyCardAccountsCell.h"
 #import "AppConstants.h"
+#import "MyCardAccountCell.h"
+#import "CardActionDetail.h"
+#import "SVProgressHUD.h"
+
+#define REMOVE_CARD_POPUP 1
 @interface MyCardAccount ()
 @property (nonatomic, strong) NSMutableArray *dsUserCards;
 @end
-
+CardActionDetail* cardDetailPopup;
 @implementation MyCardAccount
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,18 +35,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-      self.navigationItem.title = @"My Card Account";
-  //  [appHelper applyShinyBackgroundWithColor:[UIColor redColor] forView:self.view];
-   
+    self.navigationItem.title = @"My Card Account";
+    [_btnByBalance useBlackStyle];
+    [_btnByExpiry useBlackStyle];
+    [_btnByStatus useBlackStyle];
+    //  [appHelper applyShinyBackgroundWithColor:[UIColor redColor] forView:self.view];
+    
+    [_tblCards registerNib:[UINib nibWithNibName:@"MyCardAccountCell"
+                                          bundle:[NSBundle mainBundle]]
+    forCellReuseIdentifier:@"CustomCellReuseID"];
+    
     [_btnAddNewCard useBlackStyle];
     _dsUserCards =[[SingletonGeneric UserCardInfo] UserCardInformation];
-
+    
     NSString* LoginByOption = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
     if ([LoginByOption isEqualToString:LOGGEDIN_OPTION_CARD])
     {
         [_btnAddNewCard setHidden:YES];
+        _constraintTopTableView.constant = 10;
     }else{
         [_btnAddNewCard setHidden:NO];
+        _constraintTopTableView.constant = 45;
     }
     
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
@@ -60,7 +73,14 @@
     {
         self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     }
-
+    
+    cardDetailPopup = [[CardActionDetail alloc]initWithNibName:@"CardActionDetail" bundle:nil];
+    
+    
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor clearColor];
     
 }
 
@@ -101,22 +121,36 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+    return 75;
+}
 
 // Customize the appearance of table view cells.
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"MCACell";
-    MyCardAccountsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"CustomCellReuseID";
+    MyCardAccountCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[MyCardAccountsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[MyCardAccountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     if(_dsUserCards.count > indexPath.row)
     {
         CardInfo *cinfo =  [_dsUserCards objectAtIndex:[indexPath row]];
         if (cinfo != nil){
-            [cell.lblMCA_CardNumber setText: cinfo.cardNumber];
+            [cell populateCell:cinfo];
+            if(cell.enableBalanceLink)
+            {
+                cell.lblMCA_CardBalance.userInteractionEnabled = YES;
+                UITapGestureRecognizer *tapGesture =
+                [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowCardDetailPopup:)] ;
+                [cell.lblMCA_CardBalance addGestureRecognizer:tapGesture];
+            }else
+            {
+                cell.lblMCA_CardBalance.userInteractionEnabled  = false;
+            }
             
-            //  cell.contentView.backgroundColor = [UIColor colorWithRed:99/255.f green:184/255.f blue:255/255.f alpha:1];
         }
     }
     return cell;
@@ -128,8 +162,39 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //add code here for when you hit delete
-        //[dataSourceArray removeObjectAtIndex:indexPath.row];
-    }    
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"Are you sure, you want to remove this card from your account ?" delegate: self cancelButtonTitle:@"YES" otherButtonTitles:@"NO",nil];
+        alert.tag = REMOVE_CARD_POPUP;
+        [alert show];
+        
+    }
 }
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == REMOVE_CARD_POPUP)
+    { if (buttonIndex == 0){
+        [SVProgressHUD showWithStatus:@"Removing card..."];
+        
+    }else if (buttonIndex == 1){
+        //reset clicked
+        [_tblCards setEditing:false animated:true];
+        
+    }
+    }
+}
+
+
+-(IBAction) ShowCardDetailPopup: (id)sender
+{
+    // You can also present a UIViewController with complex views in it
+    // and optionally containing an explicit dismiss button for semi modal
+    [self presentSemiViewController:cardDetailPopup withOptions:@{
+                                                                  KNSemiModalOptionKeys.pushParentBack    : @(YES),
+                                                                  KNSemiModalOptionKeys.animationDuration : @(0.5),
+                                                                  KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+                                                                  }];
+    
+    //    [self presentSemiViewController:cardDetailPopup];
+}
+
 @end

@@ -36,7 +36,6 @@
 		7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7736E2E717B0A37C00CA1E3C /* RightArrow.png */; };
 		77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */; };
 		7751379717B2BF91007F2679 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7751379617B2BF91007F2679 /* iCarousel.m */; };
-		7751379917B2C617007F2679 /* MyCardAccountSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7751379817B2C617007F2679 /* MyCardAccountSubView.xib */; };
 		776FC81217C1ABD0007AD728 /* RedPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 776FC81117C1ABD0007AD728 /* RedPlus.png */; };
 		776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC051792FA2A0068E528 /* SingletonGeneric.m */; };
 		776FDC091793018B0068E528 /* Transactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FDC081793018B0068E528 /* Transactions.m */; };
@@ -51,6 +50,8 @@
 		777A21FA17D2A91A0026D80F /* AddNewCardToAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A21F917D2A91A0026D80F /* AddNewCardToAccount.m */; };
 		778109E81791DDDB003DF414 /* CardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 778109E71791DDDB003DF414 /* CardInfo.m */; };
 		778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */; };
+		778AFA18180069BE00EA4691 /* MyCardAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778AFA17180069BE00EA4691 /* MyCardAccountCell.xib */; };
+		778AFA1B180069F700EA4691 /* MyCardAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AFA1A180069F700EA4691 /* MyCardAccountCell.m */; };
 		77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A2A33D17A54FAC001986D0 /* Home.storyboard */; };
 		77A2A34117A55074001986D0 /* VCHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A2A34017A55074001986D0 /* VCHome.m */; };
 		77ABC21317A79383009A7146 /* RTNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ABC21217A79383009A7146 /* RTNetworkRequest.m */; };
@@ -67,7 +68,6 @@
 		77C01F2417F9D7C200086CC7 /* DefaultBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C01F2217F9D7C200086CC7 /* DefaultBG@2x.png */; };
 		77DFE42D17C6852E00479D0D /* FaqAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DFE42C17C6852E00479D0D /* FaqAnswer.m */; };
 		77DFE42F17C6979100479D0D /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DFE42E17C6979100479D0D /* Home.png */; };
-		77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */; };
 		77E891D217BABD9B00A672A4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77E891D117BABD9B00A672A4 /* icon.png */; };
 		77ECBB0617FD9CB00085FF65 /* AppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ECBB0517FD9CB00085FF65 /* AppInfoViewController.m */; };
 		77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CC817B00B8400A1E07E /* OBGradientView.m */; };
@@ -75,6 +75,9 @@
 		77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CCF17B00BE700A1E07E /* UIColor+Hex.m */; };
 		77F90CD317B06B5300A1E07E /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CD217B06B5300A1E07E /* AppHelper.m */; };
 		77F90CD617B06CE900A1E07E /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F90CD517B06CE900A1E07E /* GTMBase64.m */; };
+		77F9E9971801ACA20052AAD1 /* CardActionDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F9E9951801ACA20052AAD1 /* CardActionDetail.m */; };
+		77F9E9981801ACA20052AAD1 /* CardActionDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77F9E9961801ACA20052AAD1 /* CardActionDetail.xib */; };
+		77F9E99B1801AFDB0052AAD1 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F9E99A1801AFDB0052AAD1 /* UIViewController+KNSemiModal.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,7 +119,6 @@
 		77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsTbl_CustomCell.m; sourceTree = "<group>"; };
 		7751379517B2BF91007F2679 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		7751379617B2BF91007F2679 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
-		7751379817B2C617007F2679 /* MyCardAccountSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCardAccountSubView.xib; sourceTree = "<group>"; };
 		776FC81117C1ABD0007AD728 /* RedPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedPlus.png; sourceTree = "<group>"; };
 		776FDC041792FA2A0068E528 /* SingletonGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonGeneric.h; sourceTree = "<group>"; };
 		776FDC051792FA2A0068E528 /* SingletonGeneric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonGeneric.m; sourceTree = "<group>"; };
@@ -142,6 +144,9 @@
 		778109E61791DDDB003DF414 /* CardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfo.h; sourceTree = "<group>"; };
 		778109E71791DDDB003DF414 /* CardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfo.m; sourceTree = "<group>"; };
 		778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAC_ScrollCardView.xib; sourceTree = "<group>"; };
+		778AFA17180069BE00EA4691 /* MyCardAccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCardAccountCell.xib; sourceTree = "<group>"; };
+		778AFA19180069F700EA4691 /* MyCardAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCardAccountCell.h; sourceTree = "<group>"; };
+		778AFA1A180069F700EA4691 /* MyCardAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCardAccountCell.m; sourceTree = "<group>"; };
 		77A2A33D17A54FAC001986D0 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		77A2A33F17A55074001986D0 /* VCHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHome.h; sourceTree = "<group>"; };
 		77A2A34017A55074001986D0 /* VCHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHome.m; sourceTree = "<group>"; };
@@ -162,8 +167,6 @@
 		77DFE42B17C6852E00479D0D /* FaqAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqAnswer.h; sourceTree = "<group>"; };
 		77DFE42C17C6852E00479D0D /* FaqAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqAnswer.m; sourceTree = "<group>"; };
 		77DFE42E17C6979100479D0D /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
-		77DFE43017C6C9FE00479D0D /* MyCardAccountsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCardAccountsCell.h; sourceTree = "<group>"; };
-		77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCardAccountsCell.m; sourceTree = "<group>"; };
 		77E891D117BABD9B00A672A4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		77ECBB0417FD9CB00085FF65 /* AppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoViewController.h; sourceTree = "<group>"; };
 		77ECBB0517FD9CB00085FF65 /* AppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoViewController.m; sourceTree = "<group>"; };
@@ -178,6 +181,11 @@
 		77F90CD417B06CE900A1E07E /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		77F90CD517B06CE900A1E07E /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		77F90CD717B06D8B00A1E07E /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		77F9E9941801ACA20052AAD1 /* CardActionDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardActionDetail.h; sourceTree = "<group>"; };
+		77F9E9951801ACA20052AAD1 /* CardActionDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardActionDetail.m; sourceTree = "<group>"; };
+		77F9E9961801ACA20052AAD1 /* CardActionDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardActionDetail.xib; sourceTree = "<group>"; };
+		77F9E9991801AFDB0052AAD1 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
+		77F9E99A1801AFDB0052AAD1 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,7 +262,6 @@
 		77004BB61762535F00745E2B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				77ABC21417A795AA009A7146 /* CustomControls */,
 				773552921767D94000ED50A4 /* Authenticated_Views */,
 				77004BB71762536F00745E2B /* Login */,
 			);
@@ -287,6 +294,8 @@
 		775B25E417AF7674002FAABE /* ControlClasses */ = {
 			isa = PBXGroup;
 			children = (
+				77F9E9991801AFDB0052AAD1 /* UIViewController+KNSemiModal.h */,
+				77F9E99A1801AFDB0052AAD1 /* UIViewController+KNSemiModal.m */,
 				77B946D817B54FDB00A7EA88 /* SVProgressHUD.h */,
 				77B946D917B54FDB00A7EA88 /* SVProgressHUD.m */,
 				7751379517B2BF91007F2679 /* iCarousel.h */,
@@ -350,18 +359,14 @@
 				77397977176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.h */,
 				77397978176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m */,
 				778109F01791F7E9003DF414 /* PAC_ScrollCardView.xib */,
-				7751379817B2C617007F2679 /* MyCardAccountSubView.xib */,
-				77DFE43017C6C9FE00479D0D /* MyCardAccountsCell.h */,
-				77DFE43117C6C9FE00479D0D /* MyCardAccountsCell.m */,
+				778AFA17180069BE00EA4691 /* MyCardAccountCell.xib */,
+				778AFA19180069F700EA4691 /* MyCardAccountCell.h */,
+				778AFA1A180069F700EA4691 /* MyCardAccountCell.m */,
+				77F9E9941801ACA20052AAD1 /* CardActionDetail.h */,
+				77F9E9951801ACA20052AAD1 /* CardActionDetail.m */,
+				77F9E9961801ACA20052AAD1 /* CardActionDetail.xib */,
 			);
 			name = SubViews;
-			sourceTree = "<group>";
-		};
-		77ABC21417A795AA009A7146 /* CustomControls */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CustomControls;
 			sourceTree = "<group>";
 		};
 		77C335491764F101009867E4 /* Images */ = {
@@ -479,15 +484,16 @@
 				77BD5B20179094E500E6D9BA /* MyCardAccount.png in Resources */,
 				77C01F2417F9D7C200086CC7 /* DefaultBG@2x.png in Resources */,
 				77BD5B221790950B00E6D9BA /* TransactionsLogo.png in Resources */,
+				77F9E9981801ACA20052AAD1 /* CardActionDetail.xib in Resources */,
 				77BD5B24179096EE00E6D9BA /* PinManagement.png in Resources */,
 				778109F11791F7E9003DF414 /* PAC_ScrollCardView.xib in Resources */,
+				778AFA18180069BE00EA4691 /* MyCardAccountCell.xib in Resources */,
 				770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */,
 				776FDC1E17933FB30068E528 /* ContactUs.xib in Resources */,
 				776FDC23179342140068E528 /* Terms.xib in Resources */,
 				77A2A33E17A54FAC001986D0 /* Home.storyboard in Resources */,
 				7736E2E617B0A35500CA1E3C /* LeftArrow.png in Resources */,
 				7736E2E817B0A37C00CA1E3C /* RightArrow.png in Resources */,
-				7751379917B2C617007F2679 /* MyCardAccountSubView.xib in Resources */,
 				77B946D417B54FC800A7EA88 /* error.png in Resources */,
 				77B946D517B54FC800A7EA88 /* error@2x.png in Resources */,
 				77C01F2317F9D7C200086CC7 /* DefaultBG.png in Resources */,
@@ -522,6 +528,7 @@
 				77397979176BD7D800FAD6B7 /* TransactionsTbl_CustomCell.m in Sources */,
 				778109E81791DDDB003DF414 /* CardInfo.m in Sources */,
 				776FDC061792FA2A0068E528 /* SingletonGeneric.m in Sources */,
+				77F9E9971801ACA20052AAD1 /* CardActionDetail.m in Sources */,
 				776FDC091793018B0068E528 /* Transactions.m in Sources */,
 				776FDC0C179329750068E528 /* MyCardAccount.m in Sources */,
 				776FDC0F17932A0B0068E528 /* UpdateProfile.m in Sources */,
@@ -531,8 +538,10 @@
 				776FDC27179342240068E528 /* Faq.m in Sources */,
 				77A2A34117A55074001986D0 /* VCHome.m in Sources */,
 				77ABC21317A79383009A7146 /* RTNetworkRequest.m in Sources */,
+				778AFA1B180069F700EA4691 /* MyCardAccountCell.m in Sources */,
 				7730CC9417AD4D6400C35DD5 /* Logout.m in Sources */,
 				77F90CC917B00B8400A1E07E /* OBGradientView.m in Sources */,
+				77F9E99B1801AFDB0052AAD1 /* UIViewController+KNSemiModal.m in Sources */,
 				77F90CCD17B00BC800A1E07E /* GradientButton.m in Sources */,
 				77F90CD017B00BE700A1E07E /* UIColor+Hex.m in Sources */,
 				77F90CD317B06B5300A1E07E /* AppHelper.m in Sources */,
@@ -541,7 +550,6 @@
 				77ECBB0617FD9CB00085FF65 /* AppInfoViewController.m in Sources */,
 				77B946DA17B54FDB00A7EA88 /* SVProgressHUD.m in Sources */,
 				77DFE42D17C6852E00479D0D /* FaqAnswer.m in Sources */,
-				77DFE43217C6C9FE00479D0D /* MyCardAccountsCell.m in Sources */,
 				77258DB017CA7C7600EA20CB /* ManageUserCredentials.m in Sources */,
 				777A21FA17D2A91A0026D80F /* AddNewCardToAccount.m in Sources */,
 			);
@@ -646,7 +654,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "604C7DFF-DF6C-471F-96A1-4F8A22BB7768";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5D524DFA-1223-4EF9-9E8D-E87AEA267E9E";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -656,15 +664,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Prefix.pch";
 				INFOPLIST_FILE = "com.PrepaidAccountCenter/com.PrepaidAccountCenter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=*]" = "604C7DFF-DF6C-471F-96A1-4F8A22BB7768";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "604C7DFF-DF6C-471F-96A1-4F8A22BB7768";
+				PROVISIONING_PROFILE = "5D524DFA-1223-4EF9-9E8D-E87AEA267E9E";
+				"PROVISIONING_PROFILE[sdk=*]" = "5D524DFA-1223-4EF9-9E8D-E87AEA267E9E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5D524DFA-1223-4EF9-9E8D-E87AEA267E9E";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

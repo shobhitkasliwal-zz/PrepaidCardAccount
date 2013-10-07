@@ -11,7 +11,7 @@
 #import "AppHelper.h"
 #import "AppConstants.h"
 #import"SingletonGeneric.h"
-
+#import "SVProgressHUD.h"
 @interface AddNewCardToAccount ()
 
 @end
@@ -32,20 +32,38 @@
     [super viewDidLoad];
     [_btnAddCard useBlackStyle];
     [_btnClear useBlackStyle];
-	// Do any additional setup after loading the view.
-    _vwMain.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
-    _vwMain.layer.cornerRadius = 8; // if you like rounded corners
-    _vwMain.layer.shadowOffset = CGSizeMake(-15, 20);
-    _vwMain.layer.shadowRadius = 5;
-    _vwMain.layer.shadowOpacity = 0.5;
+
     
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard:)];
     gestureRecognizer.cancelsTouchesInView = NO; //so that action such as clear text field button can be pressed
     [self.view addGestureRecognizer:gestureRecognizer];
     [_lblMessageTop setText:@""];
     
+    
+    _vwMain.backgroundColor = [UIColor clearColor];
+       
+    
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor clearColor];
+    _vwMain.backgroundColor = [UIColor clearColor];
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        _navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    }
+    else
+    {
+        _navigationBar.barStyle = UIBarStyleBlackOpaque;
+    }
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -93,7 +111,7 @@
     else
     {
         NSString* UserCredentialID = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_USERCREDNTIALID];
-        
+        [SVProgressHUD showWithStatus:@"Please Wait ..."];
         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
         networkRequest.currentCallType = [NSMutableString stringWithString:@"AddCardToUserService"];
         [networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, UserCredentialID, _txtCardNumber.text, _txtSecurityPin.text] httpMethod:RTHTTPMethodGET];
@@ -103,8 +121,15 @@
 - (void)networkNotReachable{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: INTERNET_NOT_AVAILABLE_POPUP_TITLE message: INTERNET_NOT_AVAILABLE_POPUP_TEXT delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
+    [SVProgressHUD dismiss];
 }
 
+-(void)serviceCallCompletedWithError: (NSError *) error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: SERVICE_ERROR_POPUP_TITLE message: SERVICE_ERROR_POPUP_TEXT delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [SVProgressHUD dismiss];
+}
 
 -(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
 {
@@ -120,10 +145,10 @@
                     {
                         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
                         networkRequest.currentCallType = [NSMutableString stringWithString:@"RetrieveCardInformation"];
-                       [networkRequest makeWebCall:[NSString stringWithFormat:AUTHENTICATE_SERVICE_URL, _txtCardNumber.text, _txtSecurityPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
+                        [networkRequest makeWebCall:[NSString stringWithFormat:AUTHENTICATE_SERVICE_URL, _txtCardNumber.text, _txtSecurityPin.text,@"Card"] httpMethod:RTHTTPMethodGET];
                         NSString* SuccessMessage = @"Card added successfully.";
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:SuccessMessage  delegate: self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                         [alert show];
+                        [alert show];
                         
                     }
                     else{
@@ -177,7 +202,7 @@
             [alert show];
         }
     }
-    
+    [SVProgressHUD dismiss];
 }
 
 - (IBAction)btnClear_Click:(id)sender {

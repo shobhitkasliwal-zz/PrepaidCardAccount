@@ -43,16 +43,23 @@
     _WcsClientID = [dict objectForKey:@"WCSClientId"];
     _SiteConfigID = [dict objectForKey:@"SiteConfigID"];
     _Sec_Auth_Label=[dict objectForKey:@"Sec_Auth_Label"];
+    _CardType=[dict objectForKey:@"CardType"] ;
+    _CardCurrency=[dict objectForKey:@"CardCurrency"] ;
+    
     if(![AppHelper isNullObject:[dict objectForKey:@"ChangePinAllowed"]])
         _ChangePinAllowed = [[dict objectForKey:@"ChangePinAllowed"] boolValue];
     if(![AppHelper isNullObject:[dict objectForKey:@"ViewPinOnly"]])
         _ViewPinOnly = [[dict objectForKey:@"ViewPinOnly"] boolValue];
     if(![AppHelper isNullObject:[dict objectForKey:@"ViewPinChangeMessage"]])
         _ViewChangePinMessage = [[dict objectForKey:@"ViewPinChangeMessage"] boolValue];
-    if(![AppHelper isNullObject:[dict objectForKey:@"isUserRegistered"]])
-        _isUserRegistered = [[dict objectForKey:@"isUserRegistered"] boolValue];
+    if(![AppHelper isNullObject:[dict objectForKey:@"UserRegistrationRequired"]])
+        _UserRegistrationRequired = [[dict objectForKey:@"UserRegistrationRequired"] boolValue];
     if(![AppHelper isNullObject:[dict objectForKey:@"UserSecondaryAuthRequired"]])
         _UserSecondaryAuthRequired=[[dict objectForKey:@"UserSecondaryAuthRequired"] boolValue];
+    if(![AppHelper isNullObject:[dict objectForKey:@"CIPPassed"]])
+        _CIPPassed=[[dict objectForKey:@"CIPPassed"] boolValue];
+    
+    
     
     return self;
 }

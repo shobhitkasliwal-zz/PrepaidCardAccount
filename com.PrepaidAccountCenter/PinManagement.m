@@ -35,7 +35,7 @@ CardInfo *cInfo;
     self.navigationItem.title = @"Pin Management";
     cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xxxx-", cInfo.cardNumber  ];
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: ", cInfo.cardNumber  ];
     [_lblHeaderCard setText:cardNumbertxt];
     
     _uiHeader.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];

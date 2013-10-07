@@ -12,6 +12,9 @@
 #import "RTNetworkRequest.h"
 @interface AddNewCardToAccount : UIViewController <RTNetworkRequestDelegate>
 @property (weak, nonatomic) IBOutlet OBGradientView *vwMain;
+@property (strong, nonatomic) IBOutlet UIView *vwPageTopView;
+
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 - (IBAction)btnHome_Click:(id)sender;
 @property (weak, nonatomic) IBOutlet GradientButton *btnAddCard;

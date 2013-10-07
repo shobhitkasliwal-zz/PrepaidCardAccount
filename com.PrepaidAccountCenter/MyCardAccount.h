@@ -9,18 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "OBGradientView.h"
 #import "GradientButton.h"
+#import "UIViewController+KNSemiModal.h"
 
-@interface MyCardAccount : UIViewController < UITableViewDelegate, UITableViewDataSource>
+@interface MyCardAccount : UIViewController < UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 - (IBAction)LogoutClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblCards;
 @property (weak, nonatomic) IBOutlet OBGradientView *uiViewHeader;
-@property (weak, nonatomic) IBOutlet UIButton *btnByBalance;
+@property (weak, nonatomic) IBOutlet GradientButton *btnByBalance;
 @property (weak, nonatomic) IBOutlet GradientButton *btnAddNewCard;
-@property (weak, nonatomic) IBOutlet UIButton *btnByExpiry;
-@property (weak, nonatomic) IBOutlet UIButton *btnByStatus;
+@property (weak, nonatomic) IBOutlet GradientButton *btnByExpiry;
+@property (weak, nonatomic) IBOutlet GradientButton *btnByStatus;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopTableView;
 - (IBAction)btnByExpiry_click:(id)sender;
 - (IBAction)btnByBalance_click:(id)sender;
 - (IBAction)btnByStatus_click:(id)sender;
 @property (weak, nonatomic) IBOutlet GradientButton *btnAddNewCard_Click;
+
+
 @end

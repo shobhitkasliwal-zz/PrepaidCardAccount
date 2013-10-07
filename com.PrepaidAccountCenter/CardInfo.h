@@ -23,7 +23,9 @@
 @property (nonatomic, assign) BOOL ViewPinOnly;
 @property (nonatomic, assign) BOOL ViewChangePinMessage;
 @property (nonatomic, strong) NSString* Sec_Auth_Label;
-@property (nonatomic, assign) BOOL isUserRegistered;
+@property (nonatomic, assign) BOOL UserRegistrationRequired;
 @property (nonatomic, assign) BOOL UserSecondaryAuthRequired;
-
+@property (nonatomic, assign) BOOL CIPPassed;
+@property (nonatomic, strong) NSString* CardType;
+@property (nonatomic, strong) NSString* CardCurrency;
 @end

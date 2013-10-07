@@ -41,7 +41,7 @@ int CurrentTransactionDuration;
        
 cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
    
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: xxxx-xxxx-xx", cInfo.cardNumber ];
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: ", cInfo.cardNumber ];
     [_lblCardNumber setText:cardNumbertxt];
   
     self.navigationItem.title=@"Transactions";
@@ -65,6 +65,8 @@ cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
   //  [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(GetTransactions:) userInfo:[NSNumber numberWithInt:365] repeats:NO];
    CurrentTransactionDuration = 30;
     [self GetTransactions:30];
+    self.view.backgroundColor = [UIColor clearColor];
+    
     
 }
 

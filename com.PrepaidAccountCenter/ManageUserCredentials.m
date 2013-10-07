@@ -260,7 +260,6 @@ NSString* LoggedinWithCard_SecurityPin;
 
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"Tag:%@",[NSString stringWithFormat:@"%0.0f", (float)alertView.tag]);
     if (alertView.tag == POPUP_TAG_USERCREDENTIAL_SUCCESS &&   buttonIndex == 0){
          NSString* UserCredentialID = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_USERCREDNTIALID];
         RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];

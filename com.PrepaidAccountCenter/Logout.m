@@ -42,7 +42,11 @@
                          [self.view layoutIfNeeded];
                      }];
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor clearColor];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
