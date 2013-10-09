@@ -66,6 +66,7 @@
     
 }
 
+
 - (IBAction) infoButtonAction 
 {
      [self performSegueWithIdentifier:@"segInfo" sender:nil];
@@ -313,6 +314,7 @@
     userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:userviewsVC animated:YES completion:nil];
     //  [self dismissViewControllerAnimated:YES completion:nil];
+  
     [SVProgressHUD dismiss];
 }
 -(void)serviceCallCompletedWithError:(NSError *)error

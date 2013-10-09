@@ -59,7 +59,7 @@
     self.window.rootViewController = nil;
 	self.window.rootViewController = login;
     UIStoryboard *LoginStoryBoard_iphone =[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    UIViewController *userviewsVC =[LoginStoryBoard_iphone instantiateViewControllerWithIdentifier:@"LoginSBView"];
+    UIViewController *userviewsVC =[LoginStoryBoard_iphone instantiateViewControllerWithIdentifier:@"LoginViewNavController"];
     userviewsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self.window.rootViewController presentViewController:userviewsVC animated:YES completion:nil];
