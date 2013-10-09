@@ -379,7 +379,7 @@
                                         <rect key="frame" x="20" y="96" width="280" height="220"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Card Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-ur-xKz">
-                                                <rect key="frame" x="25" y="17.999999991763175" width="145" height="21"/>
+                                                <rect key="frame" x="25" y="17.999999992632389" width="145" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="NR9-A9-TW0"/>
                                                     <constraint firstAttribute="width" constant="145" id="vFG-AC-Iwi"/>
@@ -1353,13 +1353,14 @@
                                     <segue destination="0FP-oO-1FP" kind="modal" identifier="seg_AddCardToAccount" modalTransitionStyle="flipHorizontal" id="H2E-8H-dr8"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="64" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="cP6-uT-ZIp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="64" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="cP6-uT-ZIp">
                                 <rect key="frame" x="10" y="45" width="300" height="377"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="1" constant="252" id="Jtk-MS-leJ"/>
                                     <constraint firstAttribute="width" priority="1" constant="160" id="dwU-TV-WNk"/>
                                 </constraints>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="skd-fJ-GE1" id="lng-o1-TBS"/>
                                     <outlet property="delegate" destination="skd-fJ-GE1" id="4gW-X0-noC"/>

@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJ8-DV-cqx" customClass="OBGradientView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xxxx-xxxx-xxxx-1234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyf-lm-03I">
@@ -67,13 +67,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="M2r-o8-NIe" secondAttribute="trailing" constant="9" id="CWn-Dr-Rt3"/>
                             <constraint firstAttribute="trailing" secondItem="UzX-MP-9TD" secondAttribute="trailing" constant="9" id="fxw-y8-b4N"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="fJ8-DV-cqx" secondAttribute="trailing" id="S6c-cy-66m"/>
                     <constraint firstItem="fJ8-DV-cqx" firstAttribute="leading" secondItem="Bdp-XI-mDh" secondAttribute="leading" id="dGN-W3-st6"/>

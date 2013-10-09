@@ -153,6 +153,13 @@ CardActionDetail* cardDetailPopup;
             
         }
     }
+    UIView *cellSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320 ,1)];
+    [cellSeparator setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin |
+     UIViewAutoresizingFlexibleRightMargin |
+     UIViewAutoresizingFlexibleWidth];
+    [cellSeparator setContentMode:UIViewContentModeTopLeft];
+    [cellSeparator setBackgroundColor:[UIColor lightGrayColor]];
+    [cell addSubview:cellSeparator];
     return cell;
     
 }
@@ -188,6 +195,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 {
     // You can also present a UIViewController with complex views in it
     // and optionally containing an explicit dismiss button for semi modal
+    cardDetailPopup.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 260);
     [self presentSemiViewController:cardDetailPopup withOptions:@{
                                                                   KNSemiModalOptionKeys.pushParentBack    : @(YES),
                                                                   KNSemiModalOptionKeys.animationDuration : @(0.5),
