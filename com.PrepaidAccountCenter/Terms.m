@@ -49,7 +49,18 @@ CardInfo *cInfo;
         _navBar.barStyle = UIBarStyleBlackOpaque;
     }
 }
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    //  self.view.backgroundColor = [UIColor clearColor];
+    if ( [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Default_iPad_BG.png"]]];
+        
+    }
+    else{
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DefaultBG.png"]]];
+    }
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -67,6 +78,11 @@ CardInfo *cInfo;
         }
     }}
 
+
+- (void)webViewDidFinishLoad:(UIWebView *)triggerView
+{
+	[triggerView sizeToFit];
+}
 -(void)serviceCallCompletedWithError: (NSError *) error
 {
     [SVProgressHUD dismiss];

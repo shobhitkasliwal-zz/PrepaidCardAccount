@@ -16,4 +16,6 @@
 + (BOOL) isEmptyString:(NSString *) Data;
 + (void)applyShinyBackgroundWithColor:(UIColor *)color  ForView:(UIView*) myView;
 + (BOOL) isNullObject: (NSObject *) obj;
++ (NSMutableArray *) GetStateList: (NSString *) Country;
++ (NSMutableArray *) GetCountryList;
 @end

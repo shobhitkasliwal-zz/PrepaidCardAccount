@@ -31,8 +31,8 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="jDl-AB-oTi">
-                    <rect key="frame" x="139" y="60" width="42" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="jDl-AB-oTi">
+                    <rect key="frame" x="20" y="62" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -43,6 +43,8 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5rw-mX-ePn" secondAttribute="trailing" id="AHA-fA-4tr"/>
                 <constraint firstItem="5rw-mX-ePn" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="JRR-Pi-wtM"/>
+                <constraint firstItem="jDl-AB-oTi" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="b1M-fZ-DOj"/>
+                <constraint firstAttribute="trailing" secondItem="jDl-AB-oTi" secondAttribute="trailing" constant="20" id="e4V-Pu-67w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

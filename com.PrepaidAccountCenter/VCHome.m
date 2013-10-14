@@ -290,6 +290,7 @@ static float progressTableAnimate = 0.0f;
     //    [cardNumber insertString:@"-" atIndex:2];
     NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"xxxx-xxxx-xx", card.cardNumber ];
     [_lbl_SC_CardNumber setText: cardNumbertxt];
+    [_lbl_SC_CardNumber setText: card.cardNumber];
     [_lbl_SC_Balance setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
     
     [_lbl_SC_Expiration setText:[NSString stringWithFormat:@"%@%@",@"Expiration: ", card.cardExpiration]];
@@ -318,6 +319,7 @@ static float progressTableAnimate = 0.0f;
 
 
 -(IBAction)contactUSButtonClicked:(id)sender {
+    //[self dismissViewControllerAnimated:YES completion:nil];
     [self presentViewController:[[ContactUs alloc] init] animated:YES completion:nil];
 }
 
