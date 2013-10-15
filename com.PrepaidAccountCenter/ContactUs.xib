@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="btnReset" destination="YpI-Fu-k66" id="fSG-Q7-Qbe"/>
                 <outlet property="btnSubmit" destination="9fj-Mz-jTI" id="GEL-o4-diB"/>
+                <outlet property="navBar" destination="4" id="1Z0-K4-76o"/>
                 <outlet property="txtComments" destination="57" id="85"/>
                 <outlet property="txtEmailAddress" destination="33" id="181"/>
                 <outlet property="txtFirstName" destination="13" id="179"/>
@@ -22,10 +23,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="4">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="tintColor" red="0.058823533359999999" green="0.058823533359999999" blue="0.058823533359999999" alpha="1" colorSpace="deviceRGB"/>
                     <items>
                         <navigationItem title="Contact US" id="10">
                             <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="11">

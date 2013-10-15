@@ -55,6 +55,16 @@ NSString* LoggedinWithCard_SecurityPin;
     [self setUpPage];
     
 }
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor clearColor];
+    
+}
 
 -(void) setUpPage
 {

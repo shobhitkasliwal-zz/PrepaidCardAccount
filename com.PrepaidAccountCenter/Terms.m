@@ -50,6 +50,16 @@ CardInfo *cInfo;
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor clearColor];
+    
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

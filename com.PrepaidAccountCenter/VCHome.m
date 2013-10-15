@@ -288,8 +288,7 @@ static float progressTableAnimate = 0.0f;
     //[_vw_SC_View setFrame:CGRectMake(0, 0, _vw_ScrollWrapper.bounds.size.width, _vw_SC_View.bounds.size.height)];
     //    NSMutableString *cardNumber = [NSMutableString stringWithString:[card.cardNumber substringFromIndex:[card.cardNumber length] - 6] ];
     //    [cardNumber insertString:@"-" atIndex:2];
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"xxxx-xxxx-xx", card.cardNumber ];
-    [_lbl_SC_CardNumber setText: cardNumbertxt];
+    [_lbl_SC_CardNumber setText: card.cardNumber];
     [_lbl_SC_Balance setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
     
     [_lbl_SC_Expiration setText:[NSString stringWithFormat:@"%@%@",@"Expiration: ", card.cardExpiration]];

@@ -46,9 +46,17 @@ NSString* const CommentsWatermarkText = @"1000 characters maximum";
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard:)];
     gestureRecognizer.cancelsTouchesInView = NO; //so that action such as clear text field button can be pressed
     [self.view addGestureRecognizer:gestureRecognizer];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+    
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.extendedLayoutIncludesOpaqueBars = YES;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        
+        _navBar.barStyle = UIBarStyleBlackTranslucent;
+    }
+    else
+    {
+        _navBar.barStyle = UIBarStyleBlackOpaque;
     }
     // Do any additional setup after loading the view from its nib.
 }
@@ -57,6 +65,11 @@ NSString* const CommentsWatermarkText = @"1000 characters maximum";
 {
     self.view.backgroundColor = [UIColor clearColor];
     
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

@@ -43,7 +43,7 @@ CardInfo *cInfo;
     _uiHeader.layer.shadowOffset = CGSizeMake(-15, 20);
     _uiHeader.layer.shadowRadius = 5;
     _uiHeader.layer.shadowOpacity = 0.5;
-    [SVProgressHUD showErrorWithStatus:@"Retriving Faq's"];
+    [SVProgressHUD showWithStatus:@"Retriving Faq's"];
     
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;

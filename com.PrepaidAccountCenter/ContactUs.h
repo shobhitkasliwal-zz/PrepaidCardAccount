@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet GradientButton *btnReset;
 
 - (IBAction)btnReset_Click:(id)sender;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @end
