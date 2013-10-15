@@ -46,8 +46,13 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated
-{
-    self.view.backgroundColor = [UIColor clearColor];
+{ if ( [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Default_iPad_BG.png"]]];
+    
+}
+else{
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DefaultBG.png"]]];
+}
     _vwMain.backgroundColor = [UIColor clearColor];
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;

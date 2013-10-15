@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RTNetworkRequest.h"
-@interface Terms : UIViewController <RTNetworkRequestDelegate>
+@interface Terms : UIViewController <RTNetworkRequestDelegate, UIWebViewDelegate>
 - (IBAction)Done_Click:(id)sender;
 @property (weak, nonatomic) IBOutlet UIWebView *wvTerms;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;

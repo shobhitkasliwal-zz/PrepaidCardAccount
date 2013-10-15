@@ -26,9 +26,9 @@
     self = [super initWithCoder: aDecoder];
     if (self) {
         self.layer.cornerRadius = 8; // if you like rounded corners
-        self.layer.shadowOffset = CGSizeMake(-15, 20);
-        self.layer.shadowRadius = 5;
-        self.layer.shadowOpacity = 0.5;
+        //self.layer.shadowOffset = CGSizeMake(-15, 20);
+        //self.layer.shadowRadius = 5;
+        //self.layer.shadowOpacity = 0.5;
         
     }
     return self;
@@ -120,7 +120,7 @@
     }
     
     
-    
+     _enableBalanceLink = YES;
 }
 
 

@@ -284,10 +284,7 @@ static float progressTableAnimate = 0.0f;
 
 - (void) PopulateScrollCardView: (CardInfo*)card
 {
-    //_vw_SC_View.translatesAutoresizingMaskIntoConstraints = NO;
-    //[_vw_SC_View setFrame:CGRectMake(0, 0, _vw_ScrollWrapper.bounds.size.width, _vw_SC_View.bounds.size.height)];
-    //    NSMutableString *cardNumber = [NSMutableString stringWithString:[card.cardNumber substringFromIndex:[card.cardNumber length] - 6] ];
-    //    [cardNumber insertString:@"-" atIndex:2];
+
     [_lbl_SC_CardNumber setText: card.cardNumber];
     [_lbl_SC_Balance setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
     
@@ -317,6 +314,9 @@ static float progressTableAnimate = 0.0f;
 
 
 -(IBAction)contactUSButtonClicked:(id)sender {
+    //[self dismissViewControllerAnimated:YES completion:nil];
+ //   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
     [self presentViewController:[[ContactUs alloc] init] animated:YES completion:nil];
 }
 

@@ -13,6 +13,8 @@
 #import "SVProgressHUD.h"
 #import "AppConstants.h"
 
+#define CHANGE_PIN_CONFIRMATION_POPUP_TAG 1
+#define CHANGE_PIN_CONFIRMATION_POPUP_ERROR_TAG 2
 
 @interface PinManagement ()
 
@@ -160,20 +162,68 @@ CardInfo *cInfo;
     {
         [_txtNewPin setHidden:TRUE];
         [_btnChangePin setHidden:TRUE];
-        _constraint_uiPinViewHeight.constant = 140;
+        _constraint_LabelTopSpace.constant = 60;
         
     }
     else{
         [_txtNewPin setHidden:FALSE];
         [_btnChangePin setHidden:FALSE];
-        _constraint_uiPinViewHeight.constant = 200;
+        _constraint_LabelTopSpace.constant = 120;
     }
-    [_txtNewPin setHidden:FALSE];
-    [_btnChangePin setHidden:FALSE];
-    _constraint_uiPinViewHeight.constant = 200;
+    //[_txtNewPin setHidden:FALSE];
+    // [_btnChangePin setHidden:FALSE];
+    
 }
 
 
 
 
+- (IBAction)btnChangePin_Click:(id)sender {
+    NSString* Error = @"";
+    if (_txtNewPin.text.length == 0)
+    {
+        Error = @"Please enter the new Pin.";
+    }
+    else if (_txtNewPin.text.length != 4)
+    {
+        Error = @"Pin must be 4 numbers.";
+    }
+    if (Error.length ==0 )
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:@"Are you sure you want to change pin ?"  delegate: self cancelButtonTitle:@"YES" otherButtonTitles:@"No", nil];
+        alert.tag = CHANGE_PIN_CONFIRMATION_POPUP_TAG;
+        [alert show];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Error" message:Error delegate: self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        alert.tag = CHANGE_PIN_CONFIRMATION_POPUP_ERROR_TAG;
+        [alert show];
+    }
+}
+
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (alertView.tag) {
+        case CHANGE_PIN_CONFIRMATION_POPUP_TAG:
+                if (buttonIndex == 0 )
+                {
+                    [SVProgressHUD showWithStatus:@"Updating Pin.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+                    
+                }
+            break;
+        case CHANGE_PIN_CONFIRMATION_POPUP_ERROR_TAG:
+        default:
+            break;
+    }
+    if (alertView.tag == CHANGE_PIN_CONFIRMATION_POPUP_TAG &&   buttonIndex == 0){
+      //  NSString* UserCredentialID = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_USERCREDNTIALID];
+     //   RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+      //  networkRequest.currentCallType = [NSMutableString stringWithString:@"AddCardToUserService"];
+       // [networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, UserCredentialID, LoggedinWithCard_CardNumber, LoggedinWithCard_SecurityPin] httpMethod:RTHTTPMethodGET];
+    }else if (buttonIndex == 1){
+        //reset clicked
+    }
+}
 @end

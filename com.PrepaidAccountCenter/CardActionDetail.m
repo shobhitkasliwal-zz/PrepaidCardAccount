@@ -27,7 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _lblTop.numberOfLines = 0;
     
+    _lblTop.text =@"You are not allowed to access the app for this card. Please go to www.prepaidcardstatus.com and complete the process.";
+    _navTitle.title = @"CIP Validation Required";
+    [_lblTop sizeToFit];
 }
 
 

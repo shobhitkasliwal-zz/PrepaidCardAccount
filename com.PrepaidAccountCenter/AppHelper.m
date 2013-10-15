@@ -230,6 +230,24 @@
         return false;
 }
 
++ (NSMutableArray *) GetCountryList
+{
+    return [[NSMutableArray alloc]initWithObjects:@"-- Select One --",@"USA",@"INDIA",@"CANADA",@"CHINA",@"AUSTRALIA",
+            @"RUSSIA",@"FRANCE",nil];
+}
+
++ (NSMutableArray *) GetStateList: (NSString *) Country
+{
+    if ([[Country uppercaseString] isEqualToString:@"USA"]){
+    return [[NSMutableArray alloc]initWithObjects:@"Illinois",@"Indiana",@"Florida",@"California",
+     @"Kentucky",@"Ohio",nil];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
 + (void)applyShinyBackgroundWithColor:(UIColor *)color  ForView:(UIView*) myView{
     
     // create a CAGradientLayer to draw the gradient on

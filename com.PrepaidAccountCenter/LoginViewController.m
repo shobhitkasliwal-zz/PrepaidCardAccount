@@ -66,6 +66,7 @@
     
 }
 
+
 - (IBAction) infoButtonAction 
 {
      [self performSegueWithIdentifier:@"segInfo" sender:nil];
@@ -312,7 +313,7 @@
     userviewsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     userviewsVC.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:userviewsVC animated:YES completion:nil];
-    //  [self dismissViewControllerAnimated:YES completion:nil];
+     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     [SVProgressHUD dismiss];
 }
 -(void)serviceCallCompletedWithError:(NSError *)error

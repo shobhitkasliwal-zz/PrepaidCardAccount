@@ -182,44 +182,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Company : Swift Prepaid Solutions https:\\www.swiftprepaid.com" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98m-Xi-CNt">
-                                <rect key="frame" x="20" y="58" width="280" height="200"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="QHS-by-gYi"/>
-                                </constraints>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgi-vP-6ct" customClass="GradientButton">
-                                <rect key="frame" x="20" y="312" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="done_click:" destination="n5h-Q1-yak" eventType="touchUpInside" id="hbw-hd-c3h"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Copyright 2004-2013 Swift Prepaid Solutions, Inc." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="254" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-gw-aFr">
-                                <rect key="frame" x="46" y="266" width="254" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4s-4x-lcE">
+                                <rect key="frame" x="0.0" y="27" width="320" height="433"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgi-vP-6ct" customClass="GradientButton">
+                                        <rect key="frame" x="20" y="291" width="280" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="done_click:" destination="n5h-Q1-yak" eventType="touchUpInside" id="hbw-hd-c3h"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyright 2004-2013 Swift Prepaid Solutions, Inc." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="254" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-gw-aFr">
+                                        <rect key="frame" x="33" y="75" width="254" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.88286083940000004" green="0.042333945480000003" blue="0.063929741250000005" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.23529413339999999" blue="0.51372551919999998" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="98m-Xi-CNt" firstAttribute="top" secondItem="XfZ-xB-tK6" secondAttribute="bottom" constant="38" id="3zq-RA-Kry"/>
-                            <constraint firstItem="98m-Xi-CNt" firstAttribute="leading" secondItem="B6c-yf-8NX" secondAttribute="leading" constant="20" symbolic="YES" id="Xau-cH-7O3"/>
-                            <constraint firstItem="1WK-gw-aFr" firstAttribute="leading" secondItem="B6c-yf-8NX" secondAttribute="leading" constant="20" id="d8m-dh-tBJ"/>
-                            <constraint firstAttribute="trailing" secondItem="qgi-vP-6ct" secondAttribute="trailing" constant="20" id="dgS-47-Kqr"/>
-                            <constraint firstAttribute="trailing" secondItem="1WK-gw-aFr" secondAttribute="trailing" constant="20" id="eDn-sx-dgO"/>
-                            <constraint firstItem="qgi-vP-6ct" firstAttribute="leading" secondItem="B6c-yf-8NX" secondAttribute="leading" constant="20" id="hwq-DK-3cN"/>
-                            <constraint firstAttribute="centerX" secondItem="98m-Xi-CNt" secondAttribute="centerX" id="yW9-1b-GBs"/>
+                            <constraint firstItem="g4s-4x-lcE" firstAttribute="leading" secondItem="B6c-yf-8NX" secondAttribute="leading" id="9or-eW-aog"/>
+                            <constraint firstItem="g4s-4x-lcE" firstAttribute="top" secondItem="B6c-yf-8NX" secondAttribute="top" constant="27" id="Cqx-el-wjK"/>
+                            <constraint firstAttribute="bottom" secondItem="g4s-4x-lcE" secondAttribute="bottom" constant="20" id="PGF-RH-aoy"/>
+                            <constraint firstAttribute="trailing" secondItem="g4s-4x-lcE" secondAttribute="trailing" id="ReU-gK-9qS"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -237,7 +230,7 @@
         <!--Navigation Controller - Prepaid Account Center-->
         <scene sceneID="yEk-ZX-cGd">
             <objects>
-                <navigationController title="Prepaid Account Center" automaticallyAdjustsScrollViewInsets="NO" id="SQs-jn-2VZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginViewNavController" title="Prepaid Account Center" automaticallyAdjustsScrollViewInsets="NO" id="SQs-jn-2VZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="pfr-9n-iTs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

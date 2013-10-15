@@ -12,5 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDone;
 - (IBAction)btnDone_click:(id)sender;
 - (IBAction)btn_click:(id)sender;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblTop;
 
 @end

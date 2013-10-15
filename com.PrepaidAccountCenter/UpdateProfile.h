@@ -12,7 +12,7 @@
 #import "SVProgressHUD.h"
 #import "GradientButton.h"
 
-@interface UpdateProfile : UIViewController <UIPickerViewDelegate, RTNetworkRequestDelegate>
+@interface UpdateProfile : UIViewController <UIPickerViewDelegate, RTNetworkRequestDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 - (IBAction)LogoutClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblHeaderCard;
 @property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;

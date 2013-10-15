@@ -22,6 +22,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblViewPinMessage;
 @property (weak, nonatomic) IBOutlet UITextField *txtNewPin;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint_uiPinViewHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint_CancelLeadingSpace;
+- (IBAction)btnChangePin_Click:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint_LabelTopSpace;
 @end
