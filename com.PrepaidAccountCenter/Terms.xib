@@ -18,19 +18,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M77-7A-UY3">
-<<<<<<< HEAD
-                    <rect key="frame" x="0.0" y="50" width="320" height="508"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XcY-o9-bDc">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="552"/>
-=======
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XcY-o9-bDc">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
->>>>>>> 9cb3521ba86ffff4297b25f87ae9351f007533e3
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" patternImage="436CDB19-2A79-4286-8B6B-595FE9ABFA50" colorSpace="pattern"/>
                         </webView>
@@ -53,15 +45,6 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-<<<<<<< HEAD
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" id="BtV-Rk-WTX"/>
-                <constraint firstItem="M77-7A-UY3" firstAttribute="top" secondItem="1" secondAttribute="top" constant="50" id="WDp-fY-tuk"/>
-                <constraint firstItem="M77-7A-UY3" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="WsU-Kd-YQb"/>
-                <constraint firstAttribute="trailing" secondItem="M77-7A-UY3" secondAttribute="trailing" id="eXp-w0-Eez"/>
-                <constraint firstAttribute="trailing" secondItem="4" secondAttribute="trailing" id="iyW-sv-zRe"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="nO7-07-Xr3"/>
-                <constraint firstAttribute="bottom" secondItem="M77-7A-UY3" secondAttribute="bottom" constant="10" id="zT2-l3-stP"/>
-=======
                 <constraint firstAttribute="bottom" secondItem="M77-7A-UY3" secondAttribute="bottom" id="1Cd-Vd-njr"/>
                 <constraint firstAttribute="trailing" secondItem="M77-7A-UY3" secondAttribute="trailing" id="7xP-BT-5YF"/>
                 <constraint firstAttribute="trailing" secondItem="4" secondAttribute="trailing" id="YMJ-Om-tiJ"/>
@@ -69,7 +52,6 @@
                 <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="drt-bl-WG9"/>
                 <constraint firstItem="M77-7A-UY3" firstAttribute="top" secondItem="1" secondAttribute="top" id="nq3-JB-Gbt"/>
                 <constraint firstItem="4" firstAttribute="top" secondItem="M77-7A-UY3" secondAttribute="top" id="ql2-D3-SQI"/>
->>>>>>> 9cb3521ba86ffff4297b25f87ae9351f007533e3
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
