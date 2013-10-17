@@ -11,6 +11,8 @@
 #define GET_PROFILE_SERVICE_URL SERVICE_BASE_URL @"GetUserProfile?Proxy=%@&WCSClientID=%@"
 #define GET_TRANSACTION_SERVICE_URL SERVICE_BASE_URL @"GetTransactions?Proxy=%@&NoofDays=%@&WCSClientID=%@"
 #define GET_PIN_SERVICE_URL SERVICE_BASE_URL @"GetCardPinInformation?Proxy=%@&WCSClientID=%@&SiteConfigID=%@"
+#define COUNTRY_LIST_SERVICE SERVICE_BASE_URL @"GetCountryList"
+
 /*    SERVICE Constants   */
 
 /* Other Constants */

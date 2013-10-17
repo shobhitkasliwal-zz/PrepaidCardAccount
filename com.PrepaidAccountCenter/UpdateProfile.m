@@ -10,12 +10,10 @@
 #import "UIColor+Hex.h"
 #import "CardInfo.h"
 #import "SingletonGeneric.h"
-#import "AppConstants.h"
 #import "AppHelper.h"
 
 
 @interface UpdateProfile ()
-
 @end
 
 CardInfo *cInfo;
@@ -40,6 +38,7 @@ NSString* PickerSlectedValue;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     
 	// Do any additional setup after loading the view.
