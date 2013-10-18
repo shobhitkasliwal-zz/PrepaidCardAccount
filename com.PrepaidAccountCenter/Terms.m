@@ -30,6 +30,9 @@ CardInfo *cInfo;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
     cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     
     // Do any additional setup after loading the view from its nib.
@@ -39,15 +42,18 @@ CardInfo *cInfo;
     networkRequest.currentCallType = [NSMutableString stringWithString:@"CreateCredentialCall"];
     [networkRequest makeWebCall:[NSString stringWithFormat:TERM_SERVICE_URL, cInfo.SiteConfigID] httpMethod:RTHTTPMethodGET];
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
-       
+        
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.automaticallyAdjustsScrollViewInsets = NO;
         _navBar.barStyle = UIBarStyleBlackTranslucent;
     }
     else
     {
         _navBar.barStyle = UIBarStyleBlackOpaque;
     }
+
 }
 
 

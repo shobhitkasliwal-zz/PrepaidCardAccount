@@ -68,8 +68,8 @@
 
 -(NSMutableArray*)getAllCountries;
 {
-    NSArray* result = [self getAllRecords:@"Country"];
-    
+    //NSArray* result = [self getAllRecords:@"Country"];
+    return nil;
     }
 
 -(void) PopulateStateCountries

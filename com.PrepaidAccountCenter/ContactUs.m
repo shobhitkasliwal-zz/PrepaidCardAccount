@@ -58,6 +58,39 @@ NSString* const CommentsWatermarkText = @"1000 characters maximum";
     {
         _navBar.barStyle = UIBarStyleBlackOpaque;
     }
+//    NSDictionary *viewsDictionary =
+//    NSDictionaryOfVariableBindings(_btnSubmit, _btnReset);
+//    
+//     NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:
+//                               @"[_btnSubmit]-[_btnReset(==_btnSubmit)]"
+//                                                                       options:0
+//                                                                       metrics:nil
+//                                                                         views:viewsDictionary];
+//    [self.view addConstraints:constraints];
+    NSMutableDictionary *viewsDictionary = [NSMutableDictionary dictionary];
+    [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnSubmit)];
+    [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnReset)];
+    
+    for (int i = 0; i < 3; i++) {
+        UIView *spacerView = [[UIView alloc] init];
+        spacerView.hidden = YES;
+        [self.view addSubview:spacerView];
+        [viewsDictionary setObject:spacerView
+                            forKey:[NSString stringWithFormat:@"spacer%d", i + 1]];
+    }
+    
+    // disable translatesAutoresizingMaskIntoConstraints in views for auto layout
+    [viewsDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+     {
+         [obj setTranslatesAutoresizingMaskIntoConstraints:NO];
+     }];
+    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:
+                            @"|-[spacer1(>=0)][_btnSubmit][spacer2(==spacer1)][_btnReset(==_btnSubmit)][spacer3(==spacer1)]-|"
+                                                                   options:kNilOptions
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+    [self.view addConstraints:constraints];
+
     // Do any additional setup after loading the view from its nib.
 }
 

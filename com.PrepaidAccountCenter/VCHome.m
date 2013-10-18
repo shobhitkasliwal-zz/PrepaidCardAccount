@@ -57,12 +57,7 @@ int CurrentScrollViewPage;
     _CardScrollView.type = iCarouselTypeInvertedCylinder;
     _CardScrollView.scrollSpeed = 0.2;
     CurrentScrollViewPage = -1;
-    _vwBottomInfoBar.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"8c9fb4"], [UIColor colorWithHexString:@"daeafb"], nil];
-    _vwBottomInfoBar.layer.cornerRadius = 0; // if you like rounded corners
-    _vwBottomInfoBar.layer.shadowOffset = CGSizeMake(-15, 20);
-    _vwBottomInfoBar.layer.shadowRadius = 5;
-    _vwBottomInfoBar.layer.shadowOpacity = 0.5;
-    _dsTableViewRows = [NSArray arrayWithObjects:
+     _dsTableViewRows = [NSArray arrayWithObjects:
                         [NSArray arrayWithObjects:@"My Card Account", @"MyCardAccount.png", nil],
                         [NSArray arrayWithObjects:@"Update Profile", @"UpdateProfileLogo.png", nil],
                         [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
@@ -78,8 +73,8 @@ int CurrentScrollViewPage;
     self.navigationItem.backBarButtonItem=backButton;
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
-    [self.view bringSubviewToFront:_vwBottomInfoBar];
+  //  [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
+   // [self.view bringSubviewToFront:_vwBottomInfoBar];
   
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         
@@ -96,6 +91,7 @@ int CurrentScrollViewPage;
     }
     
     _CardScrollView.backgroundColor = [UIColor clearColor];
+    [self setupBottomBar];
 }
 
 - (void)alertView:(UIAlertView *)alertView
@@ -106,6 +102,42 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     }else if (buttonIndex == 1){
         //reset clicked
     }
+}
+
+-(void) setupBottomBar
+{
+    _vwBottomInfoBar.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"8c9fb4"], [UIColor colorWithHexString:@"daeafb"], nil];
+    _vwBottomInfoBar.layer.cornerRadius = 0; // if you like rounded corners
+    _vwBottomInfoBar.layer.shadowOffset = CGSizeMake(-15, 20);
+    _vwBottomInfoBar.layer.shadowRadius = 5;
+    _vwBottomInfoBar.layer.shadowOpacity = 0.5;
+      NSMutableDictionary *viewsDictionary = [NSMutableDictionary dictionary];
+    [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnContactUS)];
+    [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnFaq)];
+    [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnTerms)];
+     [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnCredentials)];
+
+    // create 4 spacer views
+    for (int i = 0; i < 5; i++) {
+        UIView *spacerView = [[UIView alloc] init];
+        spacerView.hidden = YES;
+        [_vwBottomInfoBar addSubview:spacerView];
+        [viewsDictionary setObject:spacerView
+                            forKey:[NSString stringWithFormat:@"spacer%d", i + 1]];
+    }
+    
+    // disable translatesAutoresizingMaskIntoConstraints in views for auto layout
+    [viewsDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+    {
+        [obj setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }];
+    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:
+                            @"|-[spacer1(>=0)][_btnContactUS][spacer2(==spacer1)][_btnFaq][spacer3(==spacer1)][_btnTerms][spacer4(==spacer1)][_btnCredentials][spacer5(==spacer1)]-|"
+                                                                   options:kNilOptions
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+     [_vwBottomInfoBar addConstraints:constraints];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

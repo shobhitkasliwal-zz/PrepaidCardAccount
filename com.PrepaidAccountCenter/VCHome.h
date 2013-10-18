@@ -29,5 +29,9 @@
 @property (strong, nonatomic) IBOutlet OBGradientView *vw_SC_View;
 @property (weak, nonatomic) IBOutlet UIView *vw_ScrollWrapper;
 @property (weak, nonatomic) IBOutlet OBGradientView *vwBottomInfoBar;
-
+@property (weak, nonatomic) IBOutlet UIButton *btnContactUS;
+@property (weak, nonatomic) IBOutlet UIButton *btnFaq;
+@property (weak, nonatomic) IBOutlet UIButton *btnTerms;
+@property (weak, nonatomic) IBOutlet UIButton *btnCredentials;
+  
 @end
