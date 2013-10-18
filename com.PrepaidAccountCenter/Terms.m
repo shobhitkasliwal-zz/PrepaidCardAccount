@@ -36,7 +36,7 @@ CardInfo *cInfo;
     cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     
     // Do any additional setup after loading the view from its nib.
-    [SVProgressHUD showErrorWithStatus:@"Retriving Terms"];
+    [SVProgressHUD showWithStatus:@"Retriving Terms"];
     
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     networkRequest.currentCallType = [NSMutableString stringWithString:@"CreateCredentialCall"];
