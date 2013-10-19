@@ -13,8 +13,7 @@
 @property (nonatomic, strong) NSMutableArray *UserCardInformation;
 @property (nonatomic,strong)CardInfo *SelectedCard;
 @property (nonatomic,strong) NSMutableDictionary *UserCredenitalInfo;
-@property (nonatomic,weak) NSString* CountryListVersion;
-@property (nonatomic,weak) NSString* StateListVersion;
+
 
 +(SingletonGeneric*) UserCardInfo;
 -(void)RetriveUserCardInfo:(NSString*)userName;

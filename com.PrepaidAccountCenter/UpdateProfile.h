@@ -12,7 +12,7 @@
 #import "SVProgressHUD.h"
 #import "GradientButton.h"
 
-@interface UpdateProfile : UIViewController <UIPickerViewDelegate, RTNetworkRequestDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface UpdateProfile : UIViewController <UIPickerViewDelegate, RTNetworkRequestDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 - (IBAction)LogoutClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblHeaderCard;
 @property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;
@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtZip;
 @property (weak, nonatomic) IBOutlet UITextField *txtPhone;
 - (IBAction)btnUpdateProfile_Click:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *vwForm;
+@property (weak, nonatomic) IBOutlet UIScrollView *formScrollView;
 
 @property (weak, nonatomic) IBOutlet GradientButton *btnUpdateProfile;
 @end

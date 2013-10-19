@@ -15,6 +15,7 @@
 #import "Country.h"
 #import "State.h"
 
+#define UPDATE_PROFILE_POPUP_CONFIRMATION 1
 
 @interface UpdateProfile ()
 @end
@@ -24,7 +25,11 @@ UIPickerView *myPickerView;
 NSMutableArray *PickerArray;
 UIButton *doneButton ;
 NSString* PickerViewType;
-NSString* PickerSlectedValue;
+Country* SelectedCountry;
+State* SelectedState;
+NSString* CurrentCountryListVersion;
+NSString* CurrentStateListVersion;
+CGPoint Form_initialPoint;
 
 @implementation UpdateProfile
 
@@ -41,8 +46,16 @@ NSString* PickerSlectedValue;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    PickerArray = nil;
+    PickerViewType = nil;
+    SelectedCountry = nil;
+    SelectedState = nil;;
+    CurrentCountryListVersion= nil;
+    CurrentStateListVersion = nil;
     
-    
+   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    Form_initialPoint = _vwForm.center;
     
 	// Do any additional setup after loading the view.
     self.navigationItem.title = @"Update Profile";
@@ -84,7 +97,6 @@ NSString* PickerSlectedValue;
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     networkRequest.currentCallType = [NSMutableString stringWithString:@"update_countries"];
     [networkRequest makeWebCall:COUNTRY_LIST_SERVICE httpMethod:RTHTTPMethodGET];
-    [SingletonGeneric UserCardInfo].CountryListVersion = @"1.0";
 }
 
 -(void) UpdateStates
@@ -92,7 +104,6 @@ NSString* PickerSlectedValue;
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     networkRequest.currentCallType = [NSMutableString stringWithString:@"update_states"];
     [networkRequest makeWebCall:STATE_LIST_SERVICE httpMethod:RTHTTPMethodGET];
-    [SingletonGeneric UserCardInfo].StateListVersion = @"1.0";
 }
 
 
@@ -107,10 +118,27 @@ NSString* PickerSlectedValue;
     [self performSegueWithIdentifier:@"UpdateProfileLogout" sender:nil];
 }
 
+
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDelay:0.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    _vwForm.center = Form_initialPoint;
+    [UIView commitAnimations];
+}
+
+
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     //responder = textField;
     BOOL ShowPicker = NO;
     if ([textField isEqual:_txtCountry]) {
+        [self SetSelectedCountry];
+        
         CountryStateData* cdata = [[CountryStateData alloc] init];
         
         
@@ -121,20 +149,24 @@ NSString* PickerSlectedValue;
     }
     else if ([textField isEqual:_txtState])
     {
-        
-        NSPredicate *bPredicate =[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"countrycode ==[c] '%@%@",_txtCountry.text,@"'"]];
         CountryStateData* cdata = [[CountryStateData alloc] init];
+        
+        [self SetSelectedCountry];
+        
+        NSPredicate *bPredicate =[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"countrycode ==[c] '%@%@",SelectedCountry.countrycode ,@"'"]];
         
         PickerArray=[cdata getAllRecords:@"State"];
         [PickerArray filterUsingPredicate:bPredicate];
         if (PickerArray != nil && [PickerArray count] > 0 )
         {
+            [self SetSelectedState];
             PickerViewType = @"STATE";
             ShowPicker = YES;
         }
         else
         {
             textField.inputView = UIKeyboardAppearanceDefault;
+            ShowPicker = NO;
         }
         
     }
@@ -161,8 +193,39 @@ NSString* PickerSlectedValue;
         textField.inputAccessoryView = mypickerToolbar;
         [myPickerView reloadAllComponents];
         textField.inputView = myPickerView;
+        if ([PickerViewType isEqualToString: @"COUNTRY"])
+        {
+            [myPickerView selectRow:[PickerArray indexOfObject:SelectedCountry] inComponent:0 animated:NO];
+        }
+        else if ([PickerViewType isEqualToString: @"STATE"])
+        {
+            [myPickerView selectRow:[PickerArray indexOfObject:SelectedState] inComponent:0 animated:NO];
+        }
+    }
+    else{
+        textField.inputAccessoryView = nil;
         
     }
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    NSInteger PoistionFromBottom = screenRect.size.height - (textField.frame.origin.y +  textField.frame.size.height);
+    if (PoistionFromBottom < 250) {
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelay:0.0];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        
+        _vwForm.center = CGPointMake(_vwForm.center.x,
+                                     _vwForm.center.y  - 220);
+        [UIView commitAnimations];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
     return YES;
 }
 
@@ -175,7 +238,7 @@ NSString* PickerSlectedValue;
     [_txtCity resignFirstResponder];
     [_txtState resignFirstResponder];
     [_txtZip resignFirstResponder];
-    // [_txtCountry resignFirstResponder];
+    [_txtCountry resignFirstResponder];
     [_txtPhone resignFirstResponder];
     
 }
@@ -193,16 +256,22 @@ NSString* PickerSlectedValue;
 {
     [SVProgressHUD dismiss];
     NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+    
+    
+    if ([currentCallType isEqualToString:@"Update_card_Profile"])
+    {
+        
+    }
     if ([currentCallType isEqualToString:@"update_states"])
     {
         CountryStateData* cdata = [[CountryStateData alloc]init];
-        [cdata InsertStates:responseArray];
+        [cdata InsertStates:responseArray ForStateListVersion:CurrentStateListVersion];
     }
     
     if ([currentCallType isEqualToString:@"update_countries"])
     {
         CountryStateData* cdata = [[CountryStateData alloc]init];
-        [cdata InsertCountries:responseArray];
+        [cdata InsertCountries:responseArray ForCountryListVersion:CurrentCountryListVersion];
     }
     if ([currentCallType isEqualToString:@"Get_Profile_data"])
     {
@@ -230,9 +299,9 @@ NSString* PickerSlectedValue;
                     [_txtCountry setText:[dict objectForKey:@"Country"]];
                     [_txtPhone setText:[dict objectForKey:@"Phone"]];
                     
-                    NSString* CurrentCountryListVersion = [dict objectForKey:@"CountryListVersion"];
-                    NSString* CurrentStateListVersion = [dict objectForKey:@"StateListVersion"];
-                  
+                    CurrentCountryListVersion = [dict objectForKey:@"CountryListVersion"];
+                    CurrentStateListVersion = [dict objectForKey:@"StateListVersion"];
+                    
                     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                     NSString* StoredCountryListVersion  = [prefs stringForKey:@"CountryListVersion"] ;
                     NSString* StoredStateListVersion  = [prefs stringForKey:@"StateListVersion"] ;
@@ -269,6 +338,50 @@ NSString* PickerSlectedValue;
     
 }
 
+-(Country*) SetSelectedCountry
+{
+    if(SelectedCountry == nil)
+    {
+        CountryStateData* cdata = [[CountryStateData alloc] init];
+        NSMutableArray* tempCountries = [cdata getAllRecords:@"Country"];
+        [tempCountries filterUsingPredicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"countrycode== [c]'%@' OR country==[c]'%@' OR a3==[c]'%@' or a2 ==[c] '%@'", _txtCountry.text, _txtCountry.text,_txtCountry.text,_txtCountry.text]]];
+        if (tempCountries != nil && [tempCountries count] >0 )
+        {
+            SelectedCountry = ((Country*)[tempCountries objectAtIndex:0]);
+        }
+    }
+    
+    return SelectedCountry;
+    
+}
+-(State*) SetSelectedState
+{
+    if(SelectedState == nil && SelectedCountry != nil)
+    {
+        CountryStateData* cdata = [[CountryStateData alloc] init];
+        NSString* stateCode;
+        NSString* stateName;
+        if (![_txtState.text rangeOfString:@"-"].location == NSNotFound)
+        {
+            stateCode = [[[_txtState.text componentsSeparatedByString:@"-"] objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            stateName = [[[_txtState.text componentsSeparatedByString:@"-"] objectAtIndex:1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        }
+        else
+        {
+            stateCode = _txtState.text;
+            stateName = _txtState.text;
+        }
+        NSMutableArray* tempStates = [cdata getAllRecords:@"State"];
+        [tempStates filterUsingPredicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"countrycode ='%@' AND (statecode==[c]'%@' OR statename==[c]'%@')",SelectedCountry.countrycode, stateCode, stateName]]];
+        if (tempStates != nil && [tempStates count] >0 )
+        {
+            SelectedState = ((State*)[tempStates objectAtIndex:0]);
+        }
+    }
+    
+    return SelectedState;
+    
+}
 
 - (void)networkNotReachable{}
 - (IBAction)btnUpdateProfile_Click:(id)sender {
@@ -295,9 +408,57 @@ NSString* PickerSlectedValue;
     if (_txtZip.text.length == 0)
     {
         Error =[Error stringByAppendingString: @"\nPlease enter Zip"];}
+    [self SetSelectedCountry];
+    if(SelectedCountry != nil && SelectedCountry.zip_validation != nil && SelectedCountry.zip_validation.length > 0)
+    {
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:SelectedCountry.zip_validation options:NSRegularExpressionCaseInsensitive error:nil];
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:_txtZip.text options:0 range:NSMakeRange(0, [_txtZip.text length])];
+        if(numberOfMatches ==0)
+        {
+            Error =[Error stringByAppendingString: @"\nInvalid Zip"];
+        }
+        
+    }
+    if(SelectedCountry != nil && SelectedCountry.phone_validation != nil && SelectedCountry.phone_validation.length > 0 && _txtPhone.text.length > 0)
+    {
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:SelectedCountry.phone_validation options:NSRegularExpressionCaseInsensitive error:nil];
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:_txtPhone.text options:0 range:NSMakeRange(0, [_txtPhone.text length])];
+        if(numberOfMatches ==0)
+        {
+            Error =[Error stringByAppendingString: @"\nInvalid Phone"];
+        }
+        
+    }
     
+    if(Error.length != 0)
+    {
+    
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [NSString stringWithFormat:@"%@",Error] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [NSString stringWithFormat:@"\nAre you sure, you want to update the card profile ?"] delegate: self cancelButtonTitle:@"YES" otherButtonTitles:@"NO",nil];
+        alert.tag = UPDATE_PROFILE_POPUP_CONFIRMATION;
+        [alert show];
+    }
     
 }
+
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == UPDATE_PROFILE_POPUP_CONFIRMATION &&   buttonIndex == 0){
+      
+        //RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+        //networkRequest.currentCallType = [NSMutableString stringWithString:@"Update_card_Profile"];
+        //[networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, UserCredentialID, LoggedinWithCard_CardNumber, LoggedinWithCard_SecurityPin] httpMethod:RTHTTPMethodGET];
+    }else if (buttonIndex == 1){
+        //reset clicked
+    }
+}
+
+
 
 // tell the picker how many rows are available for a given component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
@@ -309,33 +470,35 @@ NSString* PickerSlectedValue;
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    if ([PickerViewType isEqualToString: @"COUNTRY"])
-    {
-        Country* ctr = [PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]];
-        PickerSlectedValue = ctr.country;
-        
-    }
-    else{
-        State* state = [PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]];
-        PickerSlectedValue = state.statename;
-    }
-    
-    
-}
+//- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+//{
+////    if ([PickerViewType isEqualToString: @"COUNTRY"])
+////    {
+////       SelectedCountry = [PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]];
+////
+////
+////    }
+////    else{
+////       SelectedState = [PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]];
+////             }
+//
+//
+//}
+
 
 - (IBAction)pickerDoneClicked
 {
     
     if ([PickerViewType isEqualToString:@"COUNTRY"])
     {
-        _txtCountry.text = PickerSlectedValue;
+        SelectedCountry = ((Country*)[PickerArray objectAtIndex:[myPickerView selectedRowInComponent:0]]);
+        _txtCountry.text = SelectedCountry.country;
         [_txtCountry resignFirstResponder];
     }
     else
     {
-        _txtState.text = PickerSlectedValue;
+        SelectedState = ((State*)[PickerArray objectAtIndex:[myPickerView selectedRowInComponent:0]]);
+        _txtState.text =[NSString stringWithFormat:@"%@ - %@",SelectedState.statecode, SelectedState.statename];
         [_txtState resignFirstResponder];
     }
     
@@ -357,6 +520,28 @@ NSString* PickerSlectedValue;
     }
     
 }
+
+//- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+//    UILabel *retval = (id)view;
+//    if (!retval) {
+//        retval= [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)];
+//    }
+//
+//    if ([PickerViewType isEqualToString: @"COUNTRY"])
+//    {
+//        Country* ctr = [PickerArray objectAtIndex:row];
+//        retval.text = ctr.country;
+//
+//    }
+//    else{
+//        State* state = [PickerArray objectAtIndex:row];
+//        retval.text = [state.statecode stringByAppendingString:state.statename];
+//    }
+//    retval.font = [UIFont systemFontOfSize:12];
+//    return retval;
+//                 }
+
+
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString* returnVal;
@@ -368,13 +553,13 @@ NSString* PickerSlectedValue;
     }
     else{
         State* state = [PickerArray objectAtIndex:row];
-        returnVal = state.statename;
+        returnVal = [NSString stringWithFormat:@"%@ - %@",state.statecode, state.statename];
     }
     return returnVal;
 }
 // tell the picker the width of each row for a given component
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    CGFloat componentWidth = 0.0;
-    componentWidth = 135.0;
-    return componentWidth;}
+    
+    return self.view.frame.size.width;
+}
 @end

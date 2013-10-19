@@ -16,7 +16,7 @@
 @implementation CountryStateData
 
 
-- (void)InsertCountries:(NSMutableArray*)responseArray
+- (void)InsertCountries:(NSMutableArray*)responseArray ForCountryListVersion:(NSString*) CountryListVersion
 {
     
     if (responseArray != nil) {
@@ -52,8 +52,7 @@
             else{
                 NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                 // saving a string
-                NSString* Version = [SingletonGeneric UserCardInfo].CountryListVersion;
-                [prefs setObject:Version forKey:@"CountryListVersion"];
+                [prefs setObject:CountryListVersion forKey:@"CountryListVersion"];
                  // saving it all
                 [prefs synchronize];
             }
@@ -61,7 +60,7 @@
     }
 }
 
-- (void)InsertStates:(NSMutableArray*)responseArray
+- (void)InsertStates:(NSMutableArray*)responseArray ForStateListVersion:(NSString*) StateListVersion
 {
     
     if (responseArray != nil) {
@@ -88,9 +87,8 @@
             else{
                 NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                 // saving a string
-                NSString* Version = [SingletonGeneric UserCardInfo].StateListVersion;
                 
-                [prefs setObject:Version forKey:@"StateListVersion"];
+                [prefs setObject:StateListVersion forKey:@"StateListVersion"];
                 // saving it all
                 [prefs synchronize];
             }

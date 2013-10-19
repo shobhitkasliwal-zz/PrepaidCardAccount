@@ -22,8 +22,8 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 
-- (void)InsertCountries:(NSMutableArray*)responseArray;
-- (void)InsertStates:(NSMutableArray*)responseArray;
+- (void)InsertCountries:(NSMutableArray*)responseArray ForCountryListVersion:(NSString*) CountryListVersion;
+- (void)InsertStates:(NSMutableArray*)responseArray ForStateListVersion:(NSString*) StateListVersion;
 -(NSMutableArray*)getAllRecords:(NSString*) entityDescription;
 
 
