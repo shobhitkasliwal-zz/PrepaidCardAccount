@@ -33,8 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CountryStateData* dt = [[CountryStateData alloc] init];
-    [dt getAllCountries];
+   
     self.view.backgroundColor = [UIColor clearColor];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         [self setNeedsStatusBarAppearanceUpdate];

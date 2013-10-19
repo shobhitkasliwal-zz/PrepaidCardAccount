@@ -10,29 +10,17 @@
 #import "Country.h"
 #import "State.h"
 #import "PACAppDelegate.h"
-#import "RTNetworkRequest.h"
 #import "AppHelper.h"
+#import "SingletonGeneric.h"
 
 @implementation CountryStateData
 
--(void) InsertCountries {
-    
-    
-    RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-    [networkRequest makeWebCall:COUNTRY_LIST_SERVICE httpMethod:RTHTTPMethodGET];
-    
-}
--(void) serviceCallCompletedWithError:(NSError*) error
+
+- (void)InsertCountries:(NSMutableArray*)responseArray
 {
-    
-    
-}
--(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
-{
-    NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
     
     if (responseArray != nil) {
-        
+        [self deleteAllRecords:@"Country"];
         PACAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
         self.managedObjectContext = appDelegate.managedObjectContext;
         for (NSDictionary* dict in responseArray){
@@ -61,23 +49,60 @@
             {
                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
             }
+            else{
+                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                // saving a string
+                NSString* Version = [SingletonGeneric UserCardInfo].CountryListVersion;
+                [prefs setObject:Version forKey:@"CountryListVersion"];
+                 // saving it all
+                [prefs synchronize];
+            }
         }
     }
 }
-- (void)networkNotReachable{}
 
--(NSMutableArray*)getAllCountries;
+- (void)InsertStates:(NSMutableArray*)responseArray
 {
-    //NSArray* result = [self getAllRecords:@"Country"];
-    return nil;
+    
+    if (responseArray != nil) {
+        [self deleteAllRecords:@"State"];
+        PACAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        self.managedObjectContext = appDelegate.managedObjectContext;
+        for (NSDictionary* dict in responseArray){
+            
+            State * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"State"
+                                                               inManagedObjectContext:self.managedObjectContext];
+            
+            if(![AppHelper isNullObject:[dict objectForKey:@"CountryCode"]])
+                newEntry.countrycode = [dict objectForKey:@"CountryCode"];
+            if(![AppHelper isNullObject:[dict objectForKey:@"RegionCode"]])
+                newEntry.statecode = [dict objectForKey:@"RegionCode"];
+            if(![AppHelper isNullObject:[dict objectForKey:@"RegionName"]])
+                newEntry.statename = [dict objectForKey:@"RegionName"];
+            
+            NSError* error;
+            if(![self.managedObjectContext save:&error])
+            {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
+            else{
+                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                // saving a string
+                NSString* Version = [SingletonGeneric UserCardInfo].StateListVersion;
+                
+                [prefs setObject:Version forKey:@"StateListVersion"];
+                // saving it all
+                [prefs synchronize];
+            }
+        }
     }
-
--(void) PopulateStateCountries
-{
-
 }
 
--(NSArray*)getAllRecords:(NSString*) entityDescription
+
+
+
+
+-(NSMutableArray*)getAllRecords:(NSString*) entityDescription
 {
     PACAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     self.managedObjectContext = appDelegate.managedObjectContext;
@@ -91,7 +116,9 @@
     // Query on managedObjectContext With Generated fetchRequest
     NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     // Returning Fetched Records
-    return fetchedRecords;
+    NSMutableArray *array = [[NSMutableArray alloc]initWithArray:fetchedRecords];
+
+    return array;
 }
 
 

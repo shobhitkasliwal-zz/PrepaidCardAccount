@@ -11,6 +11,9 @@
 #import "CardInfo.h"
 #import "SingletonGeneric.h"
 #import "AppHelper.h"
+#import "CountryStateData.h"
+#import "Country.h"
+#import "State.h"
 
 
 @interface UpdateProfile ()
@@ -61,10 +64,13 @@ NSString* PickerSlectedValue;
     [SVProgressHUD showWithStatus:@"Retriving Profile.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
     
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+    networkRequest.currentCallType = [NSMutableString stringWithString:@"Get_Profile_data"];
     [networkRequest makeWebCall:[NSString stringWithFormat:GET_PROFILE_SERVICE_URL,cInfo.cardProxy, cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
     [_btnUpdateProfile useBlackStyle];
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -73,7 +79,21 @@ NSString* PickerSlectedValue;
     
 }
 
+-(void) UpdateCountries
+{
+    RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+    networkRequest.currentCallType = [NSMutableString stringWithString:@"update_countries"];
+    [networkRequest makeWebCall:COUNTRY_LIST_SERVICE httpMethod:RTHTTPMethodGET];
+    [SingletonGeneric UserCardInfo].CountryListVersion = @"1.0";
+}
 
+-(void) UpdateStates
+{
+    RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+    networkRequest.currentCallType = [NSMutableString stringWithString:@"update_states"];
+    [networkRequest makeWebCall:STATE_LIST_SERVICE httpMethod:RTHTTPMethodGET];
+    [SingletonGeneric UserCardInfo].StateListVersion = @"1.0";
+}
 
 
 
@@ -91,15 +111,23 @@ NSString* PickerSlectedValue;
     //responder = textField;
     BOOL ShowPicker = NO;
     if ([textField isEqual:_txtCountry]) {
-        PickerArray=[AppHelper GetCountryList];
+        CountryStateData* cdata = [[CountryStateData alloc] init];
+        
+        
+        PickerArray=[cdata getAllRecords:@"Country"]; ;
         PickerViewType = @"COUNTRY";
         ShowPicker = YES;
         
     }
     else if ([textField isEqual:_txtState])
     {
-        PickerArray=[AppHelper GetStateList:_txtCountry.text];
-        if (PickerArray != nil)
+        
+        NSPredicate *bPredicate =[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"countrycode ==[c] '%@%@",_txtCountry.text,@"'"]];
+        CountryStateData* cdata = [[CountryStateData alloc] init];
+        
+        PickerArray=[cdata getAllRecords:@"State"];
+        [PickerArray filterUsingPredicate:bPredicate];
+        if (PickerArray != nil && [PickerArray count] > 0 )
         {
             PickerViewType = @"STATE";
             ShowPicker = YES;
@@ -156,7 +184,7 @@ NSString* PickerSlectedValue;
 {
     
     [SVProgressHUD dismiss];
-    NSString* str = [NSString stringWithFormat:@"An error occured while retriving PIN.\n Please contact customer support for more details."];
+    NSString* str = [NSString stringWithFormat:@"An error occured while retriving Profile.\n Please contact customer support for more details."];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     
@@ -165,42 +193,77 @@ NSString* PickerSlectedValue;
 {
     [SVProgressHUD dismiss];
     NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
-    
-    if (responseArray != nil) {
-        
-        
-        for (NSDictionary* dict in responseArray){
-            
-            if([dict count] == 1)
-            {
-                NSString* str = [dict objectForKey:@"Message"];
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-            }
-            else{
-                
-                [_txtFirstName setText:[dict objectForKey:@"FirstName"]];
-                [_txtLastName setText:[dict objectForKey:@"LastName"]];
-                [_txtAddress1 setText:[dict objectForKey:@"Address1"]];
-                [_txtAddress2 setText:[dict objectForKey:@"Address2"]];
-                [_txtCity setText:[dict objectForKey:@"City"]];
-                [_txtState setText:[dict objectForKey:@"State"]];
-                [_txtZip setText:[dict objectForKey:@"Zip"]];
-                [_txtCountry setText:[dict objectForKey:@"Country"]];
-                [_txtPhone setText:[dict objectForKey:@"Phone"]];
-                
-            }
-        }
-        
+    if ([currentCallType isEqualToString:@"update_states"])
+    {
+        CountryStateData* cdata = [[CountryStateData alloc]init];
+        [cdata InsertStates:responseArray];
     }
     
-    else
+    if ([currentCallType isEqualToString:@"update_countries"])
     {
-        NSString* str = [NSString stringWithFormat:@"An error occured while retriving PIN.\n Please contact customer support for more details."];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        CountryStateData* cdata = [[CountryStateData alloc]init];
+        [cdata InsertCountries:responseArray];
+    }
+    if ([currentCallType isEqualToString:@"Get_Profile_data"])
+    {
+        if (responseArray != nil) {
+            
+            
+            for (NSDictionary* dict in responseArray){
+                
+                if([dict count] == 1)
+                {
+                    NSString* str = [dict objectForKey:@"Message"];
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+                else{
+                    
+                    [_txtFirstName setText:[dict objectForKey:@"FirstName"]];
+                    [_txtLastName setText:[dict objectForKey:@"LastName"]];
+                    [_txtAddress1 setText:[dict objectForKey:@"Address1"]];
+                    [_txtAddress2 setText:[dict objectForKey:@"Address2"]];
+                    [_txtCity setText:[dict objectForKey:@"City"]];
+                    [_txtState setText:[dict objectForKey:@"State"]];
+                    [_txtZip setText:[dict objectForKey:@"Zip"]];
+                    [_txtCountry setText:[dict objectForKey:@"Country"]];
+                    [_txtPhone setText:[dict objectForKey:@"Phone"]];
+                    
+                    NSString* CurrentCountryListVersion = [dict objectForKey:@"CountryListVersion"];
+                    NSString* CurrentStateListVersion = [dict objectForKey:@"StateListVersion"];
+                  
+                    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                    NSString* StoredCountryListVersion  = [prefs stringForKey:@"CountryListVersion"] ;
+                    NSString* StoredStateListVersion  = [prefs stringForKey:@"StateListVersion"] ;
+                    
+                    if(StoredCountryListVersion == nil || ![StoredCountryListVersion isEqualToString: CurrentCountryListVersion])
+                    {
+                        //[self performSelectorInBackground:@selector(UpdateCountries) withObject:nil];
+                        [self UpdateCountries];
+                        [SVProgressHUD showWithStatus:@"Retriving Profile.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+                        
+                    }
+                    if(StoredStateListVersion == nil || ![StoredStateListVersion isEqualToString: CurrentStateListVersion])
+                        
+                    {
+                        [self UpdateStates];
+                        [SVProgressHUD showWithStatus:@"Retriving Profile.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+                        
+                    }
+                    
+                }
+            }
+            
+        }
         
+        else
+        {
+            NSString* str = [NSString stringWithFormat:@"An error occured while retriving PIN.\n Please contact customer support for more details."];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
     }
     
     
@@ -248,7 +311,16 @@ NSString* PickerSlectedValue;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    PickerSlectedValue =   [NSString stringWithFormat:@"%@",[PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]]];
+    if ([PickerViewType isEqualToString: @"COUNTRY"])
+    {
+        Country* ctr = [PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]];
+        PickerSlectedValue = ctr.country;
+        
+    }
+    else{
+        State* state = [PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]];
+        PickerSlectedValue = state.statename;
+    }
     
     
 }
@@ -287,7 +359,18 @@ NSString* PickerSlectedValue;
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [PickerArray objectAtIndex:row];
+    NSString* returnVal;
+    if ([PickerViewType isEqualToString: @"COUNTRY"])
+    {
+        Country* ctr = [PickerArray objectAtIndex:row];
+        returnVal = ctr.country;
+        
+    }
+    else{
+        State* state = [PickerArray objectAtIndex:row];
+        returnVal = state.statename;
+    }
+    return returnVal;
 }
 // tell the picker the width of each row for a given component
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {

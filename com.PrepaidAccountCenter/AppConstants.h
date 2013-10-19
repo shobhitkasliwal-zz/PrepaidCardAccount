@@ -12,7 +12,7 @@
 #define GET_TRANSACTION_SERVICE_URL SERVICE_BASE_URL @"GetTransactions?Proxy=%@&NoofDays=%@&WCSClientID=%@"
 #define GET_PIN_SERVICE_URL SERVICE_BASE_URL @"GetCardPinInformation?Proxy=%@&WCSClientID=%@&SiteConfigID=%@"
 #define COUNTRY_LIST_SERVICE SERVICE_BASE_URL @"GetCountryList"
-
+#define STATE_LIST_SERVICE SERVICE_BASE_URL @"GetStateList"
 /*    SERVICE Constants   */
 
 /* Other Constants */

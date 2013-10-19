@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RTNetworkRequest.h"
 
-@interface CountryStateData : NSObject <RTNetworkRequestDelegate>
+@interface CountryStateData : NSObject 
 @property (nonatomic, strong) NSMutableArray *CountryStates;
 @property (nonatomic, strong) NSString *CountryName;
 @property (nonatomic, strong) NSString *A2;
@@ -22,7 +22,9 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 
--(void) InsertCountries;
--(NSMutableArray*)getAllCountries;
+- (void)InsertCountries:(NSMutableArray*)responseArray;
+- (void)InsertStates:(NSMutableArray*)responseArray;
+-(NSMutableArray*)getAllRecords:(NSString*) entityDescription;
+
 
 @end
