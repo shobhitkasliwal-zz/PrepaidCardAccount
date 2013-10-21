@@ -145,6 +145,7 @@ CardActionDetail* cardDetailPopup;
                 cell.lblMCA_CardBalance.userInteractionEnabled = YES;
                 UITapGestureRecognizer *tapGesture =
                 [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowCardDetailPopup:)] ;
+                tapGesture.view.tag = indexPath.row;
                 [cell.lblMCA_CardBalance addGestureRecognizer:tapGesture];
             }else
             {
@@ -191,10 +192,13 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 }
 
 
--(IBAction) ShowCardDetailPopup: (id)sender
+-(IBAction) ShowCardDetailPopup:(UITapGestureRecognizer *)gestureRecognizer
 {
     // You can also present a UIViewController with complex views in it
     // and optionally containing an explicit dismiss button for semi modal
+   
+   CardInfo *cinfo =  [_dsUserCards objectAtIndex:gestureRecognizer.view.tag];
+    [cardDetailPopup setupPopup:cinfo ForType:nil];
     cardDetailPopup.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 260);
     [self presentSemiViewController:cardDetailPopup withOptions:@{
                                                                   KNSemiModalOptionKeys.pushParentBack    : @(YES),

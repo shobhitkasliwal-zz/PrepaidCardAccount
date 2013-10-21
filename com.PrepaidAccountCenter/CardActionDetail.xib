@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -7,9 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardActionDetail">
             <connections>
+                <outlet property="btnButton1" destination="03D-vw-GWN" id="OXd-ln-BRm"/>
                 <outlet property="btnDone" destination="k1m-7b-SQp" id="E2y-ie-whQ"/>
+                <outlet property="lblErrorMessage" destination="ttZ-dW-f7s" id="KTc-Pg-FNC"/>
                 <outlet property="lblTop" destination="jDl-AB-oTi" id="eCv-2p-Yd7"/>
                 <outlet property="navTitle" destination="3k2-da-W8s" id="YJV-sJ-PnU"/>
+                <outlet property="txtField1" destination="KfR-jN-TOh" id="Lrm-Cj-MN8"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -32,10 +35,33 @@
                     </items>
                 </navigationBar>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="jDl-AB-oTi">
-                    <rect key="frame" x="20" y="62" width="280" height="21"/>
+                    <rect key="frame" x="20" y="61" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03D-vw-GWN" customClass="GradientButton">
+                    <rect key="frame" x="109" y="163" width="120" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnButton1_Click:" destination="-1" eventType="touchUpInside" id="9ll-9p-GW9"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KfR-jN-TOh">
+                    <rect key="frame" x="112" y="106" width="97" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttZ-dW-f7s">
+                    <rect key="frame" x="139" y="214" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.94616948341836737" green="0.036593128093147943" blue="0.004219976766047605" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -43,8 +69,11 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5rw-mX-ePn" secondAttribute="trailing" id="AHA-fA-4tr"/>
                 <constraint firstItem="5rw-mX-ePn" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="JRR-Pi-wtM"/>
+                <constraint firstAttribute="centerX" secondItem="ttZ-dW-f7s" secondAttribute="centerX" id="Sft-g5-1Ht"/>
+                <constraint firstAttribute="centerX" secondItem="KfR-jN-TOh" secondAttribute="centerX" id="Vss-5P-Gyb"/>
                 <constraint firstItem="jDl-AB-oTi" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="b1M-fZ-DOj"/>
                 <constraint firstAttribute="trailing" secondItem="jDl-AB-oTi" secondAttribute="trailing" constant="20" id="e4V-Pu-67w"/>
+                <constraint firstAttribute="centerX" secondItem="03D-vw-GWN" secondAttribute="centerX" id="gg6-rP-TeR"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

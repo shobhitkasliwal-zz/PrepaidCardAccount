@@ -78,6 +78,7 @@ typedef void (^KNTransitionCompletionBlock)(void);
 
 // Dismiss & resize
 -(void)resizeSemiView:(CGSize)newSize;
+- (void)changeHeightSemiView:(CGFloat)newHeight ;
 -(void)dismissSemiModalView;
 -(void)dismissSemiModalViewWithCompletion:(KNTransitionCompletionBlock)completion;
 

@@ -18,6 +18,7 @@
 #import "OBGradientView.h"
 #import "SVProgressHUD.h"
 #import "AppHelper.h"
+#import "CardActionDetail.h"
 
 
 #define NO_CARD_FOR_USERNAME_TAG 1
@@ -27,6 +28,7 @@
 
 @end
 int CurrentScrollViewPage;
+CardActionDetail* cardDetailPopup;
 @implementation VCHome
 
 - (void)awakeFromNib
@@ -38,7 +40,7 @@ int CurrentScrollViewPage;
     //your item views move off-screen
     
     
-   
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,7 +59,7 @@ int CurrentScrollViewPage;
     _CardScrollView.type = iCarouselTypeInvertedCylinder;
     _CardScrollView.scrollSpeed = 0.2;
     CurrentScrollViewPage = -1;
-     _dsTableViewRows = [NSArray arrayWithObjects:
+    _dsTableViewRows = [NSArray arrayWithObjects:
                         [NSArray arrayWithObjects:@"My Card Account", @"MyCardAccount.png", nil],
                         [NSArray arrayWithObjects:@"Update Profile", @"UpdateProfileLogo.png", nil],
                         [NSArray arrayWithObjects:@"Pin Management", @"PinManagement.png", nil],
@@ -73,9 +75,9 @@ int CurrentScrollViewPage;
     self.navigationItem.backBarButtonItem=backButton;
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-  //  [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
-   // [self.view bringSubviewToFront:_vwBottomInfoBar];
-  
+    //  [AppHelper applyShinyBackgroundWithColor:[UIColor colorWithHexString:@"FFFFFF"] ForView:_vwBottomInfoBar];
+    // [self.view bringSubviewToFront:_vwBottomInfoBar];
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         
         self.extendedLayoutIncludesOpaqueBars = NO;
@@ -92,6 +94,11 @@ int CurrentScrollViewPage;
     
     _CardScrollView.backgroundColor = [UIColor clearColor];
     [self setupBottomBar];
+    cardDetailPopup = [[CardActionDetail alloc]initWithNibName:@"CardActionDetail" bundle:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(semiModalDismissed:)
+                                                 name:kSemiModalDidHideNotification
+                                               object:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView
@@ -102,6 +109,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     }else if (buttonIndex == 1){
         //reset clicked
     }
+    
+   
 }
 
 -(void) setupBottomBar
@@ -111,12 +120,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     _vwBottomInfoBar.layer.shadowOffset = CGSizeMake(-15, 20);
     _vwBottomInfoBar.layer.shadowRadius = 5;
     _vwBottomInfoBar.layer.shadowOpacity = 0.5;
-      NSMutableDictionary *viewsDictionary = [NSMutableDictionary dictionary];
+    NSMutableDictionary *viewsDictionary = [NSMutableDictionary dictionary];
     [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnContactUS)];
     [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnFaq)];
     [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnTerms)];
-     [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnCredentials)];
-
+    [viewsDictionary addEntriesFromDictionary:NSDictionaryOfVariableBindings(_btnCredentials)];
+    
     // create 4 spacer views
     for (int i = 0; i < 5; i++) {
         UIView *spacerView = [[UIView alloc] init];
@@ -128,15 +137,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     // disable translatesAutoresizingMaskIntoConstraints in views for auto layout
     [viewsDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
-    {
-        [obj setTranslatesAutoresizingMaskIntoConstraints:NO];
-    }];
+     {
+         [obj setTranslatesAutoresizingMaskIntoConstraints:NO];
+     }];
     NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:
                             @"|-[spacer1(>=0)][_btnContactUS][spacer2(==spacer1)][_btnFaq][spacer3(==spacer1)][_btnTerms][spacer4(==spacer1)][_btnCredentials][spacer5(==spacer1)]-|"
                                                                    options:kNilOptions
                                                                    metrics:nil
                                                                      views:viewsDictionary];
-     [_vwBottomInfoBar addConstraints:constraints];
+    [_vwBottomInfoBar addConstraints:constraints];
     
 }
 
@@ -207,22 +216,63 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch ([indexPath row])
     {
         case 0:
+            
             [self performSegueWithIdentifier:@"segMyCardAccount" sender:nil];
             break;
             
         case 1:
-            [self performSegueWithIdentifier:@"segUpdateProfile" sender:nil];
+            if ([self ValidateCardForSegue: @"segUpdateProfile"]) {
+                
+                [self performSegueWithIdentifier:@"segUpdateProfile" sender:nil];
+            }
             break;
             
         case 2:
-            [self performSegueWithIdentifier:@"segPinManagement" sender:nil];
-            break;
+            if ([self ValidateCardForSegue:@"segPinManagement"]) {
+                
+                [self performSegueWithIdentifier:@"segPinManagement" sender:nil];
+                
+            }break;
             
         case 3:
-            [self performSegueWithIdentifier:@"segTransactions" sender:nil];
+            if ([self ValidateCardForSegue:@"segTransactions"]) {
+                
+                [self performSegueWithIdentifier:@"segTransactions" sender:nil];
+            }
             break;
     }
     
+    
+    
+}
+
+-(BOOL) ValidateCardForSegue:(NSString*) type
+{
+    CardInfo *  cardInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
+    if(!cardInfo.CIPPassed || cardInfo.UserRegistrationRequired || cardInfo.UserSecondaryAuthRequired || [cardInfo.cardStatus caseInsensitiveCompare:@"Closed"] == NSOrderedSame || [cardInfo.cardStatus caseInsensitiveCompare:@"Ready"] == NSOrderedSame)
+    {
+         cardDetailPopup.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 260);
+        [cardDetailPopup setupPopup:cardInfo ForType:type];
+        [self presentSemiViewController:cardDetailPopup withOptions:@{
+                                                                      KNSemiModalOptionKeys.pushParentBack    : @(YES),
+                                                                      KNSemiModalOptionKeys.animationDuration : @(0.5),
+                                                                      KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+                                                                      }];
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+    
+}
+
+- (void)semiModalDismissed:(NSNotification *) notification {
+    if (notification.object == self) {
+        if(cardDetailPopup.ActionSuccessful){
+            [self performSegueWithIdentifier:cardDetailPopup.ActionType sender:nil];
+        }
+    }
     
     
 }
@@ -316,7 +366,7 @@ static float progressTableAnimate = 0.0f;
 
 - (void) PopulateScrollCardView: (CardInfo*)card
 {
-
+    
     [_lbl_SC_CardNumber setText: card.cardNumber];
     [_lbl_SC_Balance setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
     
@@ -347,7 +397,7 @@ static float progressTableAnimate = 0.0f;
 
 -(IBAction)contactUSButtonClicked:(id)sender {
     //[self dismissViewControllerAnimated:YES completion:nil];
- //   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    //   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
     [self presentViewController:[[ContactUs alloc] init] animated:YES completion:nil];
 }

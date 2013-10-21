@@ -87,6 +87,15 @@
         [_lblMCA_CardBalance setTextColor:[UIColor colorWithHexString:@"035424"]];
         _enableBalanceLink = YES;
     }
+    else if(cardInfo.UserRegistrationRequired)
+    {
+        [_lblMCACardStatus setText:cardInfo.cardStatus];
+        [_lblMCACardStatus setTextColor:[UIColor orangeColor]];
+        NSAttributedString *myString = [[NSAttributedString alloc] initWithString:@"Register" attributes:attributes];
+        _lblMCA_CardBalance.attributedText = myString;
+        [_lblMCA_CardBalance setTextColor:[UIColor colorWithHexString:@"035424"]];
+        _enableBalanceLink = YES;
+    }
     else if(cardInfo.UserSecondaryAuthRequired)
     {
         [_lblMCACardStatus setText:@"Authentication Required"];
@@ -120,7 +129,6 @@
     }
     
     
-     _enableBalanceLink = YES;
 }
 
 

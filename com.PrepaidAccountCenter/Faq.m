@@ -17,6 +17,7 @@
 @property (nonatomic, strong)NSMutableArray *dsFAQ;
 @end
 CardInfo *cInfo;
+NSIndexPath* selectedIndexPath;
 
 @implementation Faq
 
@@ -34,7 +35,7 @@ CardInfo *cInfo;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
-   
+    
     NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: ", cInfo.cardNumber ];
     [_lblHeaderCard setText:cardNumbertxt];
     
@@ -60,12 +61,12 @@ CardInfo *cInfo;
     {
         self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     }
-
+    
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     networkRequest.currentCallType = [NSMutableString stringWithString:@"CreateCredentialCall"];
     [networkRequest makeWebCall:[NSString stringWithFormat:FAQ_SERVICE_URL, cInfo.SiteConfigID] httpMethod:RTHTTPMethodGET];
     
-   
+    
 }
 
 
@@ -113,7 +114,7 @@ CardInfo *cInfo;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(_dsFAQ != nil){
-    return ( _dsFAQ.count);
+        return ( _dsFAQ.count);
     }
     else{
         return 0;
@@ -133,15 +134,56 @@ CardInfo *cInfo;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     cell.backgroundColor = [UIColor whiteColor];
-    cell.textLabel.text = [[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"];
+    if(selectedIndexPath != nil
+       && [selectedIndexPath compare:indexPath] == NSOrderedSame)
+    {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ \n %@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"],[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]];
+        
+    }
+    else
+    {
+        cell.textLabel.text = [[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"];
+        
+    }
     cell.textLabel.font = [UIFont systemFontOfSize:10.0];
+    cell.textLabel.numberOfLines = 0 ;
+    [cell.textLabel sizeToFit];
     //cell.imageView.image = [UIImage imageNamed:[[_dsTableViewRows objectAtIndex:indexPath.row] objectAtIndex:1]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self performSegueWithIdentifier:@"FaqAnswer" sender:nil];
+    // [self performSegueWithIdentifier:@"FaqAnswer" sender:nil];
+    NSIndexPath *previousSelectedIndexPath = selectedIndexPath;  // <- save previously selected cell
+    selectedIndexPath = indexPath;
+    if (previousSelectedIndexPath) { // <- reload previously selected cell (if not nil)
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:previousSelectedIndexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath]
+                     withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView beginUpdates];
+    [tableView endUpdates];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSString *text = [[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"];
+    if(selectedIndexPath != nil
+       && [selectedIndexPath compare:indexPath] == NSOrderedSame)
+    {
+        text =  [NSString stringWithFormat:@"%@ \n %@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"],[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]];
+    }
+    CGSize constraint = CGSizeMake(210, 20000.0f);
+    CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Light" size:14] constrainedToSize:constraint lineBreakMode:NSLineBreakByCharWrapping];
+    // constratins the size of the table row according to the text
+    
+    CGFloat height = MAX(size.height,60);
+    
+    return height + (15);
+    // return the height of the particular row in the table view
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -162,4 +204,6 @@ CardInfo *cInfo;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: INTERNET_NOT_AVAILABLE_POPUP_TITLE message: INTERNET_NOT_AVAILABLE_POPUP_TEXT delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
+-(void)serviceCallCompletedWithError: (NSError *) error
+{}
 @end

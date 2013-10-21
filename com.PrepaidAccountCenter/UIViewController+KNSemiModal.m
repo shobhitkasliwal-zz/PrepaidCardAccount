@@ -9,6 +9,7 @@
 #import "UIViewController+KNSemiModal.h"
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
+#import "UIColor+Hex.h"
 
 const struct KNSemiModalOptionKeys KNSemiModalOptionKeys = {
 	.traverseParentHierarchy = @"KNSemiModalOptionTraverseParentHierarchy",
@@ -217,7 +218,7 @@ const struct KNSemiModalOptionKeys KNSemiModalOptionKeys = {
         
         // Add semi overlay
         UIView * overlay = [[UIView alloc] initWithFrame:target.bounds];
-        overlay.backgroundColor = [UIColor blackColor];
+        overlay.backgroundColor =  [UIColor blackColor];
         overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         overlay.tag = kSemiModalOverlayTag;
         
@@ -391,7 +392,12 @@ const struct KNSemiModalOptionKeys KNSemiModalOptionKeys = {
         }
     }];
 }
-
+- (void)changeHeightSemiView:(CGFloat)newHeight {
+    UIView * target = [self parentTarget];
+    UIView * modal = [target.subviews objectAtIndex:target.subviews.count-1];
+    CGSize newSize = CGSizeMake(modal.frame.size.width,  newHeight);
+    [self resizeSemiView:newSize];
+}
 @end
 
 

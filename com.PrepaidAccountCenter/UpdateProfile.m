@@ -207,8 +207,8 @@ CGPoint Form_initialPoint;
         
     }
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    NSInteger PoistionFromBottom = screenRect.size.height - (textField.frame.origin.y +  textField.frame.size.height);
-    if (PoistionFromBottom < 250) {
+    NSInteger PoistionFromBottom = screenRect.size.height - (textField.frame.origin.y + textField.frame.size.height + _vwForm.frame.origin.y + self.navigationController.navigationBar.frame.size.height);
+    if (PoistionFromBottom < 300) {
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.5];
@@ -216,7 +216,7 @@ CGPoint Form_initialPoint;
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
         
         _vwForm.center = CGPointMake(_vwForm.center.x,
-                                     _vwForm.center.y  - 220);
+                                     _vwForm.center.y  - (320 - PoistionFromBottom));
         [UIView commitAnimations];
     }
     return YES;
