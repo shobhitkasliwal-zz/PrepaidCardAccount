@@ -11,5 +11,6 @@
 @interface AppInfoViewController : UIViewController
 - (IBAction)done_click:(id)sender;
 @property (weak, nonatomic) IBOutlet GradientButton *btnDone;
+@property (weak, nonatomic) IBOutlet UILabel *lblMessage;
 
 @end

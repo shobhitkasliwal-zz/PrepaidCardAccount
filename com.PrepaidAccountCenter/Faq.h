@@ -10,8 +10,10 @@
 #import "OBGradientView.h"
 #import "GradientButton.h"
 #import "RTNetworkRequest.h"
+#import "RTLabel.h"
+#import "FaqCell.h"
 
-@interface Faq : UIViewController <UITableViewDelegate, UITableViewDataSource,  RTNetworkRequestDelegate>
+@interface Faq : UIViewController <UITableViewDelegate, UITableViewDataSource,  RTNetworkRequestDelegate, RTLabelDelegate>
 - (IBAction)Home_click:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tblFaq;
 

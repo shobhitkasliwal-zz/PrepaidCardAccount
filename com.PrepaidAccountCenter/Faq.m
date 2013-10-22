@@ -18,6 +18,7 @@
 @end
 CardInfo *cInfo;
 NSIndexPath* selectedIndexPath;
+NSIndexPath* previousSelectedIndexPath;
 
 @implementation Faq
 
@@ -86,7 +87,7 @@ NSIndexPath* selectedIndexPath;
 -(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
 {
     [SVProgressHUD dismiss];
-    NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+    NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableContainers error:nil];
     if (responseArray != nil) {
         _dsFAQ = responseArray;
         [_tblFaq reloadData];
@@ -122,43 +123,73 @@ NSIndexPath* selectedIndexPath;
     
 }
 
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *simpleTableIdentifier = @"FaqCell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    static NSString *CellIdentifier = @"FaqCell";
+    FaqCell *cell = (FaqCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+	{
+        cell = [[FaqCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell.rtLabel setDelegate:self];
     }
-    cell.backgroundColor = [UIColor whiteColor];
+	[cell.rtLabel setText:[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"]];
     if(selectedIndexPath != nil
-       && [selectedIndexPath compare:indexPath] == NSOrderedSame)
-    {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ \n %@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"],[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]];
-        
-    }
-    else
-    {
-        cell.textLabel.text = [[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"];
-        
-    }
-    cell.textLabel.font = [UIFont systemFontOfSize:10.0];
-    cell.textLabel.numberOfLines = 0 ;
-    [cell.textLabel sizeToFit];
-    //cell.imageView.image = [UIImage imageNamed:[[_dsTableViewRows objectAtIndex:indexPath.row] objectAtIndex:1]];
+              && [selectedIndexPath compare:indexPath] == NSOrderedSame)
+           {
+              NSString* textValue = [NSString stringWithFormat:@"<b>%@ <br>%@</b>",cell.rtLabel.text,[NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]]];
+       
+               [cell.rtLabel  setText: textValue ];
+       
+       
+          }
+    cell.rtLabel.lineSpacing = 5.0;
     return cell;
 }
+
+// Customize the appearance of table view cells.
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *simpleTableIdentifier = @"FaqCell";
+//    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+//    
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+//            }
+//    cell.backgroundColor = [UIColor whiteColor];
+//   // cell.textLabel.text = [[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"];
+//    RTLabel* label = (RTLabel*)[cell viewWithTag:1];
+//    [label setText:[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"]];
+//   
+//    RTLabel* label2 = (RTLabel*)[cell viewWithTag:2];
+//    label2.lineSpacing = 20.0;
+//    [label2 setText:@""];
+//    [label2 sizeToFit];
+//    if(selectedIndexPath != nil
+//       && [selectedIndexPath compare:indexPath] == NSOrderedSame)
+//    {
+//       NSString* textValue = [NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]];
+//        
+//        [label2 setText: textValue ];
+//      
+//    
+//    }
+//    
+//    
+//    cell.textLabel.font = [UIFont systemFontOfSize:10.0];
+//    cell.textLabel.numberOfLines = 0 ;
+//    [cell.textLabel sizeToFit];
+//    //cell.imageView.image = [UIImage imageNamed:[[_dsTableViewRows objectAtIndex:indexPath.row] objectAtIndex:1]];
+//    return cell;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     // [self performSegueWithIdentifier:@"FaqAnswer" sender:nil];
-    NSIndexPath *previousSelectedIndexPath = selectedIndexPath;  // <- save previously selected cell
+     previousSelectedIndexPath = selectedIndexPath;  // <- save previously selected cell
     selectedIndexPath = indexPath;
     if (previousSelectedIndexPath) { // <- reload previously selected cell (if not nil)
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:previousSelectedIndexPath]
+         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:previousSelectedIndexPath]
                          withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath]
@@ -167,23 +198,80 @@ NSIndexPath* selectedIndexPath;
     [tableView endUpdates];
 }
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//    NSString *text = [[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"];
+//    if(selectedIndexPath != nil
+//       && [selectedIndexPath compare:indexPath] == NSOrderedSame)
+//    {
+//        text =  [NSString stringWithFormat:@"%@ \n %@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"],[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]];
+//    }
+//    CGSize constraint = CGSizeMake(210, 20000.0f);
+//    CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Light" size:14] constrainedToSize:constraint lineBreakMode:NSLineBreakByCharWrapping];
+//    // constratins the size of the table row according to the text
+//    
+//    CGFloat height = size.height;//MAX(size.height,60);
+//    
+//    return height + (15);
+//    // return the height of the particular row in the table view
+//}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSString *text = [[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"];
+	NSMutableDictionary *rowInfo = [_dsFAQ objectAtIndex:indexPath.row];
     if(selectedIndexPath != nil
        && [selectedIndexPath compare:indexPath] == NSOrderedSame)
     {
-        text =  [NSString stringWithFormat:@"%@ \n %@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"],[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]];
+        RTLabel *rtLabel = [FaqCell textLabel];
+        rtLabel.lineSpacing = 10.0;
+		[rtLabel setText:[rowInfo objectForKey:@"Question"]];
+       
+            NSString* textValue = [NSString stringWithFormat:@"%@ <br>%@",rtLabel.text,[NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]]];
+            
+            [rtLabel  setText: textValue ];
+            
+            
+        
+		CGSize optimumSize = [rtLabel optimumSize];
+		[rowInfo setObject:[NSNumber numberWithFloat:optimumSize.height+20] forKey:@"cell_height"];
+		return [[rowInfo objectForKey:@"cell_height"] floatValue];
+    
     }
-    CGSize constraint = CGSizeMake(210, 20000.0f);
-    CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Light" size:14] constrainedToSize:constraint lineBreakMode:NSLineBreakByCharWrapping];
-    // constratins the size of the table row according to the text
+    else if(previousSelectedIndexPath != nil
+               && [previousSelectedIndexPath compare:indexPath] == NSOrderedSame)
+    {
+        RTLabel *rtLabel = [FaqCell textLabel];
+        rtLabel.lineSpacing = 10.0;
+		[rtLabel setText:[rowInfo objectForKey:@"Question"]];
+		CGSize optimumSize = [rtLabel optimumSize];
+        
+		[rowInfo setObject:[NSNumber numberWithFloat:optimumSize.height+20] forKey:@"cell_height"];
+		return [[rowInfo objectForKey:@"cell_height"] floatValue];
+    }
+	if ([rowInfo objectForKey:@"cell_height"])
+	{
+		return [[rowInfo objectForKey:@"cell_height"] floatValue];
+	}
+	else
+	{
+		RTLabel *rtLabel = [FaqCell textLabel];
+        rtLabel.lineSpacing = 10.0;
+		[rtLabel setText:[rowInfo objectForKey:@"Question"]];
+        if(selectedIndexPath != nil
+           && [selectedIndexPath compare:indexPath] == NSOrderedSame)
+        {
+            NSString* textValue = [NSString stringWithFormat:@"%@ <br>%@",rtLabel.text,[NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]]];
+            
+            [rtLabel  setText: textValue ];
+            
+            
+        }
+		CGSize optimumSize = [rtLabel optimumSize];
+		[rowInfo setObject:[NSNumber numberWithFloat:optimumSize.height+20] forKey:@"cell_height"];
+		return [[rowInfo objectForKey:@"cell_height"] floatValue];
+	}
     
-    CGFloat height = MAX(size.height,60);
-    
-    return height + (15);
-    // return the height of the particular row in the table view
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -29,7 +29,28 @@
 	// Do any additional setup after loading the view.
     [_btnDone useBlackStyle];
     
-    self.view.backgroundColor = [UIColor clearColor];
+   
+    
+    _lblMessage.numberOfLines = 0;
+    NSString* string = [NSString stringWithFormat:@"Copyright 2004-2013 Swift Prepaid Solutions, Inc.\nwww.prepaidcardstatus.com\n Build Date : 10/21/2013\nVersion:1.0.0.101"];
+    NSMutableParagraphStyle *style  = [[NSMutableParagraphStyle alloc] init];
+    style.minimumLineHeight = 30.f;
+    style.maximumLineHeight = 30.f;
+    NSDictionary *attributtes = @{NSParagraphStyleAttributeName : style,};
+    _lblMessage.attributedText = [[NSAttributedString alloc] initWithString:string
+                                                             attributes:attributtes];
+    [_lblMessage sizeToFit];
+    _lblMessage.textAlignment = NSTextAlignmentCenter;
+
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+     self.view.backgroundColor = [UIColor clearColor];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

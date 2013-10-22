@@ -18,6 +18,9 @@
 		77004BA7176239F300745E2B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77004BA6176239F300745E2B /* Default-568h@2x.png */; };
 		77004BAA176239F300745E2B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77004BA8176239F300745E2B /* MainStoryboard_iPhone.storyboard */; };
 		77004BBC17628AD700745E2B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77004BBB17628AD700745E2B /* LoginViewController.m */; };
+		7700EE141815A006008592DE /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7700EE131815A006008592DE /* RTLabel.m */; };
+		7700EE161815A32E008592DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7700EE151815A32E008592DE /* CoreText.framework */; };
+		7700EE191815ECE9008592DE /* FaqCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7700EE181815ECE9008592DE /* FaqCell.m */; };
 		770E6A2D17927E2600D56950 /* CardScrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 770E6A2C17927E2600D56950 /* CardScrollBG.png */; };
 		770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770ECF031763B601006E743D /* QuartzCore.framework */; };
 		771D281F17F614C8002B2040 /* ContactUs.png in Resources */ = {isa = PBXBuildFile; fileRef = 771D281717F614C8002B2040 /* ContactUs.png */; };
@@ -104,6 +107,11 @@
 		77004BA9176239F300745E2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		77004BBA17628AD700745E2B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		77004BBB17628AD700745E2B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7700EE121815A006008592DE /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
+		7700EE131815A006008592DE /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
+		7700EE151815A32E008592DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		7700EE171815ECE9008592DE /* FaqCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqCell.h; sourceTree = "<group>"; };
+		7700EE181815ECE9008592DE /* FaqCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqCell.m; sourceTree = "<group>"; };
 		770E6A2C17927E2600D56950 /* CardScrollBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardScrollBG.png; sourceTree = "<group>"; };
 		770ECF031763B601006E743D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		771D281717F614C8002B2040 /* ContactUs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContactUs.png; sourceTree = "<group>"; };
@@ -210,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7700EE161815A32E008592DE /* CoreText.framework in Frameworks */,
 				775AC402181046A300A99876 /* CoreData.framework in Frameworks */,
 				770ECF041763B601006E743D /* QuartzCore.framework in Frameworks */,
 				77004B91176239F300745E2B /* UIKit.framework in Frameworks */,
@@ -242,6 +251,7 @@
 		77004B8F176239F300745E2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7700EE151815A32E008592DE /* CoreText.framework */,
 				775AC401181046A300A99876 /* CoreData.framework */,
 				770ECF031763B601006E743D /* QuartzCore.framework */,
 				77004B90176239F300745E2B /* UIKit.framework */,
@@ -325,6 +335,8 @@
 		775B25E417AF7674002FAABE /* ControlClasses */ = {
 			isa = PBXGroup;
 			children = (
+				7700EE121815A006008592DE /* RTLabel.h */,
+				7700EE131815A006008592DE /* RTLabel.m */,
 				77F9E9991801AFDB0052AAD1 /* UIViewController+KNSemiModal.h */,
 				77F9E99A1801AFDB0052AAD1 /* UIViewController+KNSemiModal.m */,
 				77B946D817B54FDB00A7EA88 /* SVProgressHUD.h */,
@@ -347,6 +359,8 @@
 		776FDC1917933EBC0068E528 /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
+				7700EE171815ECE9008592DE /* FaqCell.h */,
+				7700EE181815ECE9008592DE /* FaqCell.m */,
 				776FDC1A17933FB30068E528 /* ContactUs.h */,
 				776FDC1B17933FB30068E528 /* ContactUs.m */,
 				776FDC1C17933FB30068E528 /* ContactUs.xib */,
@@ -560,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7700EE141815A006008592DE /* RTLabel.m in Sources */,
 				77004B9D176239F300745E2B /* main.m in Sources */,
 				77004BA1176239F300745E2B /* PACAppDelegate.m in Sources */,
 				775AC4001810445A00A99876 /* CountryStateData.m in Sources */,
@@ -573,6 +588,7 @@
 				776FDC0C179329750068E528 /* MyCardAccount.m in Sources */,
 				776FDC0F17932A0B0068E528 /* UpdateProfile.m in Sources */,
 				776FDC1217932A1F0068E528 /* PinManagement.m in Sources */,
+				7700EE191815ECE9008592DE /* FaqCell.m in Sources */,
 				776FDC1D17933FB30068E528 /* ContactUs.m in Sources */,
 				776FDC22179342140068E528 /* Terms.m in Sources */,
 				776FDC27179342240068E528 /* Faq.m in Sources */,
