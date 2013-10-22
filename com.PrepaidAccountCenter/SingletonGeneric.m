@@ -54,6 +54,20 @@
     _UserCardInformation = arrCardInfo;
 }
 
+-(void) updateCardInfo:(CardInfo*) cinfo
+{
+    for (CardInfo* info in _UserCardInformation)
+    {
+    if ([info.cardProxy isEqualToString:cinfo.cardProxy])
+        {
+            NSInteger index = [_UserCardInformation indexOfObject:info];
+            [_UserCardInformation removeObjectAtIndex:index];
+            [_UserCardInformation insertObject:cinfo atIndex:index];
+            break;
+        }
+    }
+}
+
 -(void) addCardInfo: (CardInfo*) cinfo
 {
     BOOL addcard = YES;

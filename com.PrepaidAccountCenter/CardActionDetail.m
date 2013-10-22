@@ -8,6 +8,7 @@
 
 #import "CardActionDetail.h"
 #import "SVProgressHUD.h"
+#import "SingletonGeneric.h"
 
 #define SECONDARY_AUTH_BUTTON_TAG 1
 #define ACTIVATE_CARD_BUTTON_TAG 2
@@ -118,15 +119,67 @@ CGFloat CurrentPopupHeight;
     switch (_btnButton1.tag)
     {
             
-        case SECONDARY_AUTH_BUTTON_TAG:
-            //[SVProgressHUD showWithStatus:@"Please wait ..." maskType:SVProgressHUDMaskTypeGradient];
-            _ActionSuccessful = YES;
-            [self dismissSemiModalView];
-            break;
         case ACTIVATE_CARD_BUTTON_TAG:
-             //[SVProgressHUD showWithStatus:@"Activating Card. \nPlease wait ... " maskType:SVProgressHUDMaskTypeGradient];
+            [SVProgressHUD showWithStatus:@"Activating Card. \nPlease wait ... " maskType:SVProgressHUDMaskTypeGradient];
             break;
+        case SECONDARY_AUTH_BUTTON_TAG:
+            [SVProgressHUD showWithStatus:@"Please wait ..." maskType:SVProgressHUDMaskTypeGradient];
+            RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+            networkRequest.currentCallType = [NSMutableString stringWithString:@"SecondaryAuthenticateUser"];
+            [networkRequest makeWebCall:[NSString stringWithFormat:SECONDARY_AUTHENTICATE_USER,_cardInfo.cardProxy, _cardInfo.WcsClientID,_cardInfo.SiteConfigID,_txtField1.text] httpMethod:RTHTTPMethodGET];
+            break;
+       
     }
+}
+
+-(void) serviceCallCompletedWithError:(NSError*) error
+{
+    
+    [SVProgressHUD dismiss];
+    NSString* str = [NSString stringWithFormat:@"An error occured while accessing service.\n Please contact customer support for more details."];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    
+}
+-(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
+{
+    [SVProgressHUD dismiss];
+    NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+    if ([currentCallType isEqualToString:@"SecondaryAuthenticateUser"])
+    {
+        for (NSDictionary* dict in responseArray){
+            if([dict objectForKey:@"Message"] )
+            {
+                if ([[[dict objectForKey:@"Message"] uppercaseString] isEqualToString:@"SUCCESS"])
+                {
+                    _cardInfo.UserSecondaryAuthRequired = 0;
+                    [[SingletonGeneric UserCardInfo] updateCardInfo:_cardInfo];
+                    _ActionSuccessful = YES;
+                    [self dismissSemiModalView];
+                    
+                }
+                else
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"Message"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }
+            else
+            {
+                NSString* str = [NSString stringWithFormat:@"Please enter the correct value for %@", _cardInfo.Sec_Auth_Label];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+    }
+
+}
+
+- (void)networkNotReachable{
+    [SVProgressHUD dismiss];
+    NSString* str = [NSString stringWithFormat:@"Network not available. Please try again later."];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 

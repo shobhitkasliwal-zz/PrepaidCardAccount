@@ -10,7 +10,9 @@
 #import "UIViewController+KNSemiModal.h"
 #import "CardInfo.h"
 #import "GradientButton.h"
-@interface CardActionDetail : UIViewController <UITextFieldDelegate>
+#import "RTNetworkRequest.h"
+
+@interface CardActionDetail : UIViewController <UITextFieldDelegate,RTNetworkRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDone;
 - (IBAction)btnDone_click:(id)sender;
 

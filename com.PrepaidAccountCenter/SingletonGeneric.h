@@ -20,6 +20,7 @@
 -(void)SetSelectedCardInfo:(int) index;
 
 -(void) setAllCardInfo: (NSMutableArray*) arrCardInfo;
+-(void) updateCardInfo:(CardInfo*) cinfo;
 -(void) addCardInfo: (CardInfo*) cinfo;
 
 

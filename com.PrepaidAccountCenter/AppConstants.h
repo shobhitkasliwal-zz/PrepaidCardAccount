@@ -13,6 +13,7 @@
 #define GET_PIN_SERVICE_URL SERVICE_BASE_URL @"GetCardPinInformation?Proxy=%@&WCSClientID=%@&SiteConfigID=%@"
 #define COUNTRY_LIST_SERVICE SERVICE_BASE_URL @"GetCountryList"
 #define STATE_LIST_SERVICE SERVICE_BASE_URL @"GetStateList"
+#define SECONDARY_AUTHENTICATE_USER SERVICE_BASE_URL @"SecondaryAuthenticateUser?CardProxy=%@&WCSClientId=%@&SiteConfigId=%@&Value=%@"
 /*    SERVICE Constants   */
 
 /* Other Constants */

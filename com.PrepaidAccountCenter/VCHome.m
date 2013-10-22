@@ -270,7 +270,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 - (void)semiModalDismissed:(NSNotification *) notification {
     if (notification.object == self) {
         if(cardDetailPopup.ActionSuccessful){
+            if([self ValidateCardForSegue:cardDetailPopup.ActionType]){
             [self performSegueWithIdentifier:cardDetailPopup.ActionType sender:nil];
+            }
         }
     }
     
