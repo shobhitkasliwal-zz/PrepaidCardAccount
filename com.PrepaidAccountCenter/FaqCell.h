@@ -10,6 +10,9 @@
 #import "RTLabel.h"
 
 @interface FaqCell : UITableViewCell
-@property (nonatomic, strong) RTLabel *rtLabel;
-+ (RTLabel*)textLabel;
+//@property (nonatomic, strong) RTLabel *rtLabel;
+@property (weak, nonatomic) IBOutlet UIWebView *CellWebView;
+//+ (RTLabel*)textLabel;
+- (void) SetCellData:(NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected;
+
 @end

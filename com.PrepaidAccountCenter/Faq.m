@@ -36,7 +36,9 @@ NSIndexPath* previousSelectedIndexPath;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
-    
+    [_tblFaq registerNib:[UINib nibWithNibName:@"FaqCell"
+                                          bundle:[NSBundle mainBundle]]
+    forCellReuseIdentifier:@"FaqCell"];
     NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: ", cInfo.cardNumber ];
     [_lblHeaderCard setText:cardNumbertxt];
     
@@ -130,19 +132,22 @@ NSIndexPath* previousSelectedIndexPath;
     if (cell == nil)
 	{
         cell = [[FaqCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell.rtLabel setDelegate:self];
+      //  [cell.rtLabel setDelegate:self];
     }
-	[cell.rtLabel setText:[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"]];
+	//[cell.rtLabel setText:[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"]];
     if(selectedIndexPath != nil
               && [selectedIndexPath compare:indexPath] == NSOrderedSame)
            {
-              NSString* textValue = [NSString stringWithFormat:@"<b>%@ <br>%@</b>",cell.rtLabel.text,[NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]]];
+             // NSString* textValue = [NSString stringWithFormat:@"<b>%@ <br>%@</b>",cell.rtLabel.text,[NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]]];
        
-               [cell.rtLabel  setText: textValue ];
-       
+               //[cell.rtLabel  setText: textValue ];
+               [cell SetCellData:[_dsFAQ objectAtIndex:indexPath.row] isSelectedCell:YES];
        
           }
-    cell.rtLabel.lineSpacing = 5.0;
+    else{
+         [cell SetCellData:[_dsFAQ objectAtIndex:indexPath.row] isSelectedCell:NO];
+    }
+    //cell.rtLabel.lineSpacing = 5.0;
     return cell;
 }
 
@@ -194,8 +199,16 @@ NSIndexPath* previousSelectedIndexPath;
     }
     [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath]
                      withRowAnimation:UITableViewRowAnimationAutomatic];
-    [tableView beginUpdates];
-    [tableView endUpdates];
+    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+
+    //[tableView beginUpdates];
+    //[tableView endUpdates];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [_tblFaq reloadData];
+    
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -219,59 +232,19 @@ NSIndexPath* previousSelectedIndexPath;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSMutableDictionary *rowInfo = [_dsFAQ objectAtIndex:indexPath.row];
-    if(selectedIndexPath != nil
+    
+	 if(selectedIndexPath != nil
        && [selectedIndexPath compare:indexPath] == NSOrderedSame)
     {
-        RTLabel *rtLabel = [FaqCell textLabel];
-        rtLabel.lineSpacing = 10.0;
-		[rtLabel setText:[rowInfo objectForKey:@"Question"]];
        
-            NSString* textValue = [NSString stringWithFormat:@"%@ <br>%@",rtLabel.text,[NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]]];
-            
-            [rtLabel  setText: textValue ];
-            
-            
-        
-		CGSize optimumSize = [rtLabel optimumSize];
-		[rowInfo setObject:[NSNumber numberWithFloat:optimumSize.height+20] forKey:@"cell_height"];
-		return [[rowInfo objectForKey:@"cell_height"] floatValue];
-    
+        return 250;
+
     }
-    else if(previousSelectedIndexPath != nil
-               && [previousSelectedIndexPath compare:indexPath] == NSOrderedSame)
-    {
-        RTLabel *rtLabel = [FaqCell textLabel];
-        rtLabel.lineSpacing = 10.0;
-		[rtLabel setText:[rowInfo objectForKey:@"Question"]];
-		CGSize optimumSize = [rtLabel optimumSize];
+    else  {
+        return 70;
         
-		[rowInfo setObject:[NSNumber numberWithFloat:optimumSize.height+20] forKey:@"cell_height"];
-		return [[rowInfo objectForKey:@"cell_height"] floatValue];
-    }
-	if ([rowInfo objectForKey:@"cell_height"])
-	{
-		return [[rowInfo objectForKey:@"cell_height"] floatValue];
 	}
-	else
-	{
-		RTLabel *rtLabel = [FaqCell textLabel];
-        rtLabel.lineSpacing = 10.0;
-		[rtLabel setText:[rowInfo objectForKey:@"Question"]];
-        if(selectedIndexPath != nil
-           && [selectedIndexPath compare:indexPath] == NSOrderedSame)
-        {
-            NSString* textValue = [NSString stringWithFormat:@"%@ <br>%@",rtLabel.text,[NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]]];
-            
-            [rtLabel  setText: textValue ];
-            
-            
-        }
-		CGSize optimumSize = [rtLabel optimumSize];
-		[rowInfo setObject:[NSNumber numberWithFloat:optimumSize.height+20] forKey:@"cell_height"];
-		return [[rowInfo objectForKey:@"cell_height"] floatValue];
-	}
-    
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
