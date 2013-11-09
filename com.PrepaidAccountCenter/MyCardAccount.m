@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *dsUserCards;
 @end
 CardActionDetail* cardDetailPopup;
+CardInfo* RemoveCard_Cinfo;
 @implementation MyCardAccount
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -135,6 +136,7 @@ CardActionDetail* cardDetailPopup;
     if (cell == nil) {
         cell = [[MyCardAccountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
     if(_dsUserCards.count > indexPath.row)
     {
         CardInfo *cinfo =  [_dsUserCards objectAtIndex:[indexPath row]];
@@ -145,7 +147,7 @@ CardActionDetail* cardDetailPopup;
                 cell.lblMCA_CardBalance.userInteractionEnabled = YES;
                 UITapGestureRecognizer *tapGesture =
                 [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ShowCardDetailPopup:)] ;
-                tapGesture.view.tag = indexPath.row;
+                cell.lblMCA_CardBalance.tag = indexPath.row;
                 [cell.lblMCA_CardBalance addGestureRecognizer:tapGesture];
             }else
             {
@@ -164,13 +166,33 @@ CardActionDetail* cardDetailPopup;
     return cell;
     
 }
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Detemine if it's in editing mode
+    //  if (self.editing)
+    //{
+    //  return UITableViewCellEditingStyleDelete;
+    // }
+    NSString* LoginByOption = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
+    if ([LoginByOption isEqualToString:LOGGEDIN_OPTION_CARD])
+    {
+        return UITableViewCellEditingStyleNone;
+    }else{
+        return UITableViewCellEditingStyleDelete;
+    }
+    
+}
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
     return @"Remove Card";
+    
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"Are you sure, you want to remove this card from your account ?" delegate: self cancelButtonTitle:@"YES" otherButtonTitles:@"NO",nil];
+        RemoveCard_Cinfo = [[SingletonGeneric UserCardInfo].UserCardInformation objectAtIndex:indexPath.row];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [NSString stringWithFormat:@"Are you sure, you want to remove %@ from your account ?",RemoveCard_Cinfo.cardNumber] delegate: self cancelButtonTitle:@"YES" otherButtonTitles:@"NO",nil];
         alert.tag = REMOVE_CARD_POPUP;
         [alert show];
         
@@ -182,6 +204,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == REMOVE_CARD_POPUP)
     { if (buttonIndex == 0){
         [SVProgressHUD showWithStatus:@"Removing card..."];
+        RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+        networkRequest.currentCallType = [NSMutableString stringWithString:@"RemoveCard"];
+        NSString* Username =  [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_USERNAME];
+        [networkRequest makeWebCall:[NSString stringWithFormat:REMOVE_CARD_SERVICE,RemoveCard_Cinfo.cardProxy, Username] httpMethod:RTHTTPMethodGET];
         
     }else if (buttonIndex == 1){
         //reset clicked
@@ -191,22 +217,77 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     }
 }
 
+-(void) serviceCallCompletedWithError:(NSError*) error
+{
+    
+    [SVProgressHUD dismiss];
+    NSString* str = [NSString stringWithFormat:@"An error occured while making the API call.\n Please contact customer support for more details."];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    
+}
+-(void)serviceCallCompleted:(BOOL)isSuccess withData:(NSMutableData *)respData currentCallType:(NSMutableString *)currentCallType
+{
+    [SVProgressHUD dismiss];
+    NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
+    if ([currentCallType isEqualToString:@"RemoveCard"])
+    {
+        if (responseArray != nil) {
+            for (NSDictionary* dict in responseArray){
+                if([dict objectForKey:@"MESSAGE"])
+                {
+                    
+                    if ([[[dict objectForKey:@"MESSAGE"] uppercaseString] isEqualToString:@"SUCCESS"])
+                    {
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:@"Card Removed Successfully !!!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                        
+                        [[SingletonGeneric UserCardInfo] setSelectedCard:nil];
+                        [[[SingletonGeneric UserCardInfo] UserCardInformation] removeObject:RemoveCard_Cinfo];
+                        [_tblCards reloadData];
+                    }
+                    else
+                    {UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"MESSAGE"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                    
+                }
+                else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while removing the card.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while removing the card.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
+    }
+}
+
+
+- (void)networkNotReachable{}
 
 -(IBAction) ShowCardDetailPopup:(UITapGestureRecognizer *)gestureRecognizer
 {
     // You can also present a UIViewController with complex views in it
     // and optionally containing an explicit dismiss button for semi modal
-   
-   CardInfo *cinfo =  [_dsUserCards objectAtIndex:gestureRecognizer.view.tag];
-    [cardDetailPopup setupPopup:cinfo ForType:nil];
-    cardDetailPopup.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 260);
-    [self presentSemiViewController:cardDetailPopup withOptions:@{
-                                                                  KNSemiModalOptionKeys.pushParentBack    : @(YES),
-                                                                  KNSemiModalOptionKeys.animationDuration : @(0.5),
-                                                                  KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
-                                                                  }];
-    
-    //    [self presentSemiViewController:cardDetailPopup];
+    if ([gestureRecognizer state] == UIGestureRecognizerStateEnded){
+        UILabel* label = (UILabel*)[gestureRecognizer view];
+        CardInfo *cinfo =  [_dsUserCards objectAtIndex:label.tag];
+        
+        cardDetailPopup.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 260);
+        [self presentSemiViewController:cardDetailPopup withOptions:@{
+                                                                      KNSemiModalOptionKeys.pushParentBack    : @(YES),
+                                                                      KNSemiModalOptionKeys.animationDuration : @(0.5),
+                                                                      KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+                                                                      }];
+        [cardDetailPopup setupPopup:cinfo ForType:nil];
+        [self presentSemiViewController:cardDetailPopup];
+        
+    }
 }
 
 @end

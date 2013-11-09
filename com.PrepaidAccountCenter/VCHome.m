@@ -110,7 +110,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
         //reset clicked
     }
     
-   
+    
 }
 
 -(void) setupBottomBar
@@ -251,7 +251,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     CardInfo *  cardInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
     if(!cardInfo.CIPPassed || cardInfo.UserRegistrationRequired || cardInfo.UserSecondaryAuthRequired || [cardInfo.cardStatus caseInsensitiveCompare:@"Closed"] == NSOrderedSame || [cardInfo.cardStatus caseInsensitiveCompare:@"Ready"] == NSOrderedSame)
     {
-         cardDetailPopup.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 260);
+        cardDetailPopup.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 260);
         [cardDetailPopup setupPopup:cardInfo ForType:type];
         [self presentSemiViewController:cardDetailPopup withOptions:@{
                                                                       KNSemiModalOptionKeys.pushParentBack    : @(YES),
@@ -271,7 +271,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (notification.object == self) {
         if(cardDetailPopup.ActionSuccessful){
             if([self ValidateCardForSegue:cardDetailPopup.ActionType]){
-            [self performSegueWithIdentifier:cardDetailPopup.ActionType sender:nil];
+                [self performSegueWithIdentifier:cardDetailPopup.ActionType sender:nil];
             }
         }
     }
@@ -368,12 +368,24 @@ static float progressTableAnimate = 0.0f;
 
 - (void) PopulateScrollCardView: (CardInfo*)card
 {
-    
-    [_lbl_SC_CardNumber setText: card.cardNumber];
-    [_lbl_SC_Balance setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
-    
-    [_lbl_SC_Expiration setText:[NSString stringWithFormat:@"%@%@",@"Expiration: ", card.cardExpiration]];
-    _vw_SC_View.layer.cornerRadius = 12;
+    if (card != nil){
+        if (![AppHelper isNullObject:card.cardNumber]) {
+            [_lbl_SC_CardNumber setText: card.cardNumber];
+        }
+        if (![AppHelper isNullObject:card.cardBalance]) {
+            [_lbl_SC_Balance setText: [NSString stringWithFormat:@"%@%@", @"Balance: USD " , card.cardBalance ]];
+            
+        }
+        if (![AppHelper isNullObject:card.cardExpiration]) {
+            [_lbl_SC_Expiration setText:[NSString stringWithFormat:@"%@%@",@"Expiration: ", card.cardExpiration]];
+        }
+        if (![AppHelper isNullObject:card.cardStatus]) {
+            [_lbl_SC_Status setText:card.cardStatus];
+        }
+        
+        
+        
+    }_vw_SC_View.layer.cornerRadius = 12;
     _vw_SC_View.layer.shadowOffset = CGSizeMake(-15, 20);
     _vw_SC_View.layer.shadowRadius = 5;
     _vw_SC_View.layer.shadowOpacity = 0.5;

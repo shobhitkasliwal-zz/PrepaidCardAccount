@@ -10,8 +10,8 @@
 #import "OBGradientView.h"
 #import "GradientButton.h"
 #import "UIViewController+KNSemiModal.h"
-
-@interface MyCardAccount : UIViewController < UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+#import "RTNetworkRequest.h"
+@interface MyCardAccount : UIViewController < UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate,RTNetworkRequestDelegate>
 - (IBAction)LogoutClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblCards;

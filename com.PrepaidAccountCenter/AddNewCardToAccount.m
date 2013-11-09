@@ -154,6 +154,8 @@ else{
                         NSString* SuccessMessage = @"Card added successfully.";
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:SuccessMessage  delegate: self cancelButtonTitle:@"OK" otherButtonTitles: nil];
                         [alert show];
+                        _txtCardNumber.text = @"";
+                        _txtSecurityPin.text = @"";
                         
                     }
                     else{

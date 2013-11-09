@@ -35,10 +35,6 @@ CardInfo *cInfo;
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Pin Management";
-    cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
-    
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: ", cInfo.cardNumber  ];
-    [_lblHeaderCard setText:cardNumbertxt];
     
     _uiHeader.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
     _uiHeader.layer.cornerRadius = 8; // if you like rounded corners
@@ -58,11 +54,6 @@ CardInfo *cInfo;
     [_txtPin setEnabled:NO];
 	[_txtPin setAlpha:0.5];
     
-    [SVProgressHUD showWithStatus:@"Retriving Pin.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
-    
-    RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-    [networkRequest makeWebCall:[NSString stringWithFormat:GET_PIN_SERVICE_URL,cInfo.cardProxy, cInfo.WcsClientID, cInfo.SiteConfigID] httpMethod:RTHTTPMethodGET];
-    
     
     [_lblViewPinMessage setNumberOfLines:0];
     
@@ -70,7 +61,6 @@ CardInfo *cInfo;
     gestureRecognizer.cancelsTouchesInView = NO; //so that action such as clear text field button can be pressed
     [self.view addGestureRecognizer:gestureRecognizer];
     // Do any additional setup after loading the view.
-    [self ChangePinAvailable:cInfo.ChangePinAllowed];
     
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -80,6 +70,18 @@ CardInfo *cInfo;
 - (void)viewDidAppear:(BOOL)animated
 {
     self.view.backgroundColor = [UIColor clearColor];
+    [SVProgressHUD showWithStatus:@"Retriving Pin.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+    cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
+    [self ChangePinAvailable:cInfo.ChangePinAllowed];
+    
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: ", cInfo.cardNumber  ];
+    [_lblHeaderCard setText:cardNumbertxt];
+    
+    RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+    networkRequest.currentCallType = [NSMutableString stringWithString:@"Retriving_PIN"];
+    
+    [networkRequest makeWebCall:[NSString stringWithFormat:GET_PIN_SERVICE_URL,cInfo.cardProxy, cInfo.WcsClientID, cInfo.SiteConfigID] httpMethod:RTHTTPMethodGET];
+    
     
 }
 
@@ -106,7 +108,7 @@ CardInfo *cInfo;
     
     [SVProgressHUD dismiss];
     
-    NSString* str = [NSString stringWithFormat:@"An error occured while retriving PIN.\n Please contact customer support for more details."];
+    NSString* str = [NSString stringWithFormat:@"An error occured while making API call.\n Please contact customer support for more details."];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     
@@ -115,40 +117,78 @@ CardInfo *cInfo;
 {
     [SVProgressHUD dismiss];
     NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
-    if (responseArray != nil) {
-        
-        
-        for (NSDictionary* dict in responseArray){
+    if ([currentCallType isEqualToString:@"Retriving_PIN"])
+    {
+        if (responseArray != nil) {
             
-            if([dict count] == 1)
-            {
-                NSString* str = [dict objectForKey:@"Message"];
+            
+            for (NSDictionary* dict in responseArray){
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-            }
-            else{
-                [_txtPin setText:[dict objectForKey:@"PIN"]];
-                [_lblViewPinMessage setHidden:YES];
-                if(cInfo.ViewChangePinMessage == YES)
+                if([dict count] == 1)
                 {
-                    [_lblViewPinMessage setText:[dict objectForKey:@"PinMessage"]];
-                    [_lblViewPinMessage setHidden:NO];
+                    NSString* str = [dict objectForKey:@"Message"];
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
                 }
                 else{
+                    [_txtPin setText:[dict objectForKey:@"PIN"]];
                     [_lblViewPinMessage setHidden:YES];
+                    if(cInfo.ViewChangePinMessage == YES)
+                    {
+                        [_lblViewPinMessage setText:[dict objectForKey:@"PinMessage"]];
+                        [_lblViewPinMessage setHidden:NO];
+                    }
+                    else{
+                        [_lblViewPinMessage setHidden:YES];
+                    }
+                    
                 }
-                
             }
+            
         }
         
+        else
+        {
+            NSString* str = [NSString stringWithFormat:@"An error occured while retriving PIN.\n Please contact customer support for more details."];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
     }
     
-    else
+    else if ([currentCallType isEqualToString:@"Updating_PIN"])
     {
-        NSString* str = [NSString stringWithFormat:@"An error occured while retriving PIN.\n Please contact customer support for more details."];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        if (responseArray != nil) {
+            for (NSDictionary* dict in responseArray){
+                if([dict objectForKey:@"Message"])
+                {
+                    
+                    if ([[[dict objectForKey:@"Message"] uppercaseString] isEqualToString:@"SUCCESS"])
+                    {
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message:@"Pin Updated Successfully !!!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            [alert show];
+                        _txtPin.text = _txtNewPin.text;
+                        _txtNewPin.text = @"";
+                    }
+                    else
+                    {UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"Message"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                    
+                }
+                else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while updating the card pin.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while updating the card pin.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
         
     }
     
@@ -207,23 +247,19 @@ CardInfo *cInfo;
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch (alertView.tag) {
         case CHANGE_PIN_CONFIRMATION_POPUP_TAG:
-                if (buttonIndex == 0 )
-                {
-                    [SVProgressHUD showWithStatus:@"Updating Pin.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
-                    
-                }
+            if (buttonIndex == 0 )
+            {
+                [SVProgressHUD showWithStatus:@"Updating Pin.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+                RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+                networkRequest.currentCallType = [NSMutableString stringWithString:@"Updating_PIN"];
+                [networkRequest makeWebCall:[NSString stringWithFormat:UPDATE_CARD_PIN_SERVICE, cInfo.cardProxy, cInfo.WcsClientID, _txtNewPin.text] httpMethod:RTHTTPMethodGET];
+                
+            }
             break;
         case CHANGE_PIN_CONFIRMATION_POPUP_ERROR_TAG:
         default:
             break;
     }
-    if (alertView.tag == CHANGE_PIN_CONFIRMATION_POPUP_TAG &&   buttonIndex == 0){
-      //  NSString* UserCredentialID = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_USERCREDNTIALID];
-     //   RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-      //  networkRequest.currentCallType = [NSMutableString stringWithString:@"AddCardToUserService"];
-       // [networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, UserCredentialID, LoggedinWithCard_CardNumber, LoggedinWithCard_SecurityPin] httpMethod:RTHTTPMethodGET];
-    }else if (buttonIndex == 1){
-        //reset clicked
-    }
+    
 }
 @end

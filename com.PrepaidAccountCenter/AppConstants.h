@@ -14,6 +14,12 @@
 #define COUNTRY_LIST_SERVICE SERVICE_BASE_URL @"GetCountryList"
 #define STATE_LIST_SERVICE SERVICE_BASE_URL @"GetStateList"
 #define SECONDARY_AUTHENTICATE_USER SERVICE_BASE_URL @"SecondaryAuthenticateUser?CardProxy=%@&WCSClientId=%@&SiteConfigId=%@&Value=%@"
+#define UPDATE_CARD_PROFILE_SERVICE SERVICE_BASE_URL @"UpdateCardProfile?PersonId=%@&FirstName=%@&LastName=%@&Address1=%@&Address2=%@&City=%@&Country=%@&State=%@&Zip=%@&Phone=%@&Email=%@"
+#define UPDATE_CARD_PIN_SERVICE SERVICE_BASE_URL @"UpdateCardPIN?CardProxy=%@&WCSClientId=%@&NewPIN=%@"
+#define REMOVE_CARD_SERVICE SERVICE_BASE_URL @"RemoveCardFromUsername?CardProxy=%@&Username=%@"
+
+
+
 /*    SERVICE Constants   */
 
 /* Other Constants */

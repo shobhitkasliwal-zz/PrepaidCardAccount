@@ -30,6 +30,7 @@ State* SelectedState;
 NSString* CurrentCountryListVersion;
 NSString* CurrentStateListVersion;
 CGPoint Form_initialPoint;
+NSDictionary* dictProfileData;
 
 @implementation UpdateProfile
 
@@ -52,8 +53,6 @@ CGPoint Form_initialPoint;
     SelectedState = nil;;
     CurrentCountryListVersion= nil;
     CurrentStateListVersion = nil;
-    
-   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     Form_initialPoint = _vwForm.center;
     
@@ -62,33 +61,31 @@ CGPoint Form_initialPoint;
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard:)];
     gestureRecognizer.cancelsTouchesInView = NO; //so that action such as clear text field button can be pressed
     [self.view addGestureRecognizer:gestureRecognizer];
-    
-    cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
-    
-    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: ", cInfo.cardNumber ];
-    [_lblHeaderCard setText:cardNumbertxt];
-    
     _uiHeader.colors = [NSArray arrayWithObjects:[UIColor colorWithHexString:@"9F9F9F"], [UIColor colorWithHexString:@"2F2F2F"], nil];
     _uiHeader.layer.cornerRadius = 8; // if you like rounded corners
     _uiHeader.layer.shadowOffset = CGSizeMake(-15, 20);
     _uiHeader.layer.shadowRadius = 5;
     _uiHeader.layer.shadowOpacity = 0.5;
     
-    [SVProgressHUD showWithStatus:@"Retriving Profile.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
-    
-    RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-    networkRequest.currentCallType = [NSMutableString stringWithString:@"Get_Profile_data"];
-    [networkRequest makeWebCall:[NSString stringWithFormat:GET_PROFILE_SERVICE_URL,cInfo.cardProxy, cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
     [_btnUpdateProfile useBlackStyle];
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     self.view.backgroundColor = [UIColor clearColor];
+    dictProfileData = nil;
+    cInfo  =  [[SingletonGeneric UserCardInfo] SelectedCard];
+    NSString* cardNumbertxt = [NSString stringWithFormat:@"%@%@", @"Card Account: ", cInfo.cardNumber ];
+    [_lblHeaderCard setText:cardNumbertxt];
+    [SVProgressHUD showWithStatus:@"Retriving Profile.\n Please Wait..." maskType:SVProgressHUDMaskTypeGradient];
+    
+    RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+    networkRequest.currentCallType = [NSMutableString stringWithString:@"Get_Profile_data"];
+    [networkRequest makeWebCall:[NSString stringWithFormat:GET_PROFILE_SERVICE_URL,cInfo.cardProxy, cInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
+    
+    
     
 }
 
@@ -247,7 +244,7 @@ CGPoint Form_initialPoint;
 {
     
     [SVProgressHUD dismiss];
-    NSString* str = [NSString stringWithFormat:@"An error occured while retriving Profile.\n Please contact customer support for more details."];
+    NSString* str = [NSString stringWithFormat:@"An error occured while making the API call.\n Please contact customer support for more details."];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     
@@ -256,23 +253,6 @@ CGPoint Form_initialPoint;
 {
     [SVProgressHUD dismiss];
     NSMutableArray* responseArray = [NSJSONSerialization JSONObjectWithData:respData options:0 error:nil];
-    
-    
-    if ([currentCallType isEqualToString:@"Update_card_Profile"])
-    {
-        
-    }
-    if ([currentCallType isEqualToString:@"update_states"])
-    {
-        CountryStateData* cdata = [[CountryStateData alloc]init];
-        [cdata InsertStates:responseArray ForStateListVersion:CurrentStateListVersion];
-    }
-    
-    if ([currentCallType isEqualToString:@"update_countries"])
-    {
-        CountryStateData* cdata = [[CountryStateData alloc]init];
-        [cdata InsertCountries:responseArray ForCountryListVersion:CurrentCountryListVersion];
-    }
     if ([currentCallType isEqualToString:@"Get_Profile_data"])
     {
         if (responseArray != nil) {
@@ -288,7 +268,7 @@ CGPoint Form_initialPoint;
                     [alert show];
                 }
                 else{
-                    
+                    dictProfileData = dict;
                     [_txtFirstName setText:[dict objectForKey:@"FirstName"]];
                     [_txtLastName setText:[dict objectForKey:@"LastName"]];
                     [_txtAddress1 setText:[dict objectForKey:@"Address1"]];
@@ -328,11 +308,48 @@ CGPoint Form_initialPoint;
         
         else
         {
-            NSString* str = [NSString stringWithFormat:@"An error occured while retriving PIN.\n Please contact customer support for more details."];
+            NSString* str = [NSString stringWithFormat:@"An error occured while retriving Profile.\n Please contact customer support for more details."];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
             
         }
+    }
+    
+    
+    else if ([currentCallType isEqualToString:@"Update_card_Profile"])
+    {
+        if (responseArray != nil) {
+            for (NSDictionary* dict in responseArray){
+                if([dict objectForKey:@"Message"])
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"Message"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                    
+                }
+                else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while updating the card profile.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: @"There is an error occured while updating the card profile.\n Please try again later." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        
+    }
+    else if ([currentCallType isEqualToString:@"update_states"])
+    {
+        CountryStateData* cdata = [[CountryStateData alloc]init];
+        [cdata InsertStates:responseArray ForStateListVersion:CurrentStateListVersion];
+    }
+    
+    else if ([currentCallType isEqualToString:@"update_countries"])
+    {
+        CountryStateData* cdata = [[CountryStateData alloc]init];
+        [cdata InsertCountries:responseArray ForCountryListVersion:CurrentCountryListVersion];
     }
     
     
@@ -432,7 +449,7 @@ CGPoint Form_initialPoint;
     
     if(Error.length != 0)
     {
-    
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [NSString stringWithFormat:@"%@",Error] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
@@ -449,10 +466,11 @@ CGPoint Form_initialPoint;
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == UPDATE_PROFILE_POPUP_CONFIRMATION &&   buttonIndex == 0){
-      
-        //RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
-        //networkRequest.currentCallType = [NSMutableString stringWithString:@"Update_card_Profile"];
-        //[networkRequest makeWebCall:[NSString stringWithFormat:ADD_CARD_TO_USER_SERVICE_URL, UserCredentialID, LoggedinWithCard_CardNumber, LoggedinWithCard_SecurityPin] httpMethod:RTHTTPMethodGET];
+        
+        RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+        networkRequest.currentCallType = [NSMutableString stringWithString:@"Update_card_Profile"];
+        [networkRequest makeWebCall:[NSString stringWithFormat:UPDATE_CARD_PROFILE_SERVICE, [dictProfileData objectForKey:@"PersonID"], _txtFirstName.text, _txtLastName.text,_txtAddress1.text,_txtAddress2.text,_txtCity.text,SelectedCountry.countrycode,_txtState.text,_txtZip.text,_txtPhone.text,[dictProfileData objectForKey:@"Email"]] httpMethod:RTHTTPMethodGET];
+        [SVProgressHUD  showWithStatus:@"Updating Profile.\nPlease wait ..." maskType:SVProgressHUDMaskTypeGradient];
     }else if (buttonIndex == 1){
         //reset clicked
     }
@@ -470,20 +488,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
-//- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-//{
-////    if ([PickerViewType isEqualToString: @"COUNTRY"])
-////    {
-////       SelectedCountry = [PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]];
-////
-////
-////    }
-////    else{
-////       SelectedState = [PickerArray objectAtIndex:[pickerView selectedRowInComponent:0]];
-////             }
-//
-//
-//}
+
 
 
 - (IBAction)pickerDoneClicked
@@ -520,26 +525,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     }
     
 }
-
-//- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
-//    UILabel *retval = (id)view;
-//    if (!retval) {
-//        retval= [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)];
-//    }
-//
-//    if ([PickerViewType isEqualToString: @"COUNTRY"])
-//    {
-//        Country* ctr = [PickerArray objectAtIndex:row];
-//        retval.text = ctr.country;
-//
-//    }
-//    else{
-//        State* state = [PickerArray objectAtIndex:row];
-//        retval.text = [state.statecode stringByAppendingString:state.statename];
-//    }
-//    retval.font = [UIFont systemFontOfSize:12];
-//    return retval;
-//                 }
 
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
