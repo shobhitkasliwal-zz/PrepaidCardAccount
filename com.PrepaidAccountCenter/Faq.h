@@ -13,10 +13,13 @@
 #import "RTLabel.h"
 #import "FaqCell.h"
 
-@interface Faq : UIViewController <UITableViewDelegate, UITableViewDataSource,  RTNetworkRequestDelegate, RTLabelDelegate>
+@interface Faq : UIViewController <UITableViewDelegate, UITableViewDataSource,  RTNetworkRequestDelegate, RTLabelDelegate , UIWebViewDelegate>
 - (IBAction)Home_click:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tblFaq;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblHeaderCard;
 @property (weak, nonatomic) IBOutlet OBGradientView *uiHeader;
+
+
+
 @end

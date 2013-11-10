@@ -19,7 +19,8 @@
 CardInfo *cInfo;
 NSIndexPath* selectedIndexPath;
 NSIndexPath* previousSelectedIndexPath;
-
+NSMutableDictionary *cellHeights;
+NSMutableDictionary *didReloadRowsBools;
 @implementation Faq
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -64,7 +65,7 @@ NSIndexPath* previousSelectedIndexPath;
     {
         self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     }
-    
+    cellHeights = [[NSMutableDictionary alloc] init];
     RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
     networkRequest.currentCallType = [NSMutableString stringWithString:@"CreateCredentialCall"];
     [networkRequest makeWebCall:[NSString stringWithFormat:FAQ_SERVICE_URL, cInfo.SiteConfigID] httpMethod:RTHTTPMethodGET];
@@ -132,24 +133,22 @@ NSIndexPath* previousSelectedIndexPath;
     if (cell == nil)
 	{
         cell = [[FaqCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-      //  [cell.rtLabel setDelegate:self];
     }
-	//[cell.rtLabel setText:[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"]];
+    
+    // cell.CellWebView.delegate = self;
+    cell.CellWebView.tag    = indexPath.row;
     if(selectedIndexPath != nil
-              && [selectedIndexPath compare:indexPath] == NSOrderedSame)
-           {
-             // NSString* textValue = [NSString stringWithFormat:@"<b>%@ <br>%@</b>",cell.rtLabel.text,[NSString stringWithFormat:@"%@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]]];
-       
-               //[cell.rtLabel  setText: textValue ];
-               [cell SetCellData:[_dsFAQ objectAtIndex:indexPath.row] isSelectedCell:YES];
-       
-          }
-    else{
-         [cell SetCellData:[_dsFAQ objectAtIndex:indexPath.row] isSelectedCell:NO];
+       && [selectedIndexPath compare:indexPath] == NSOrderedSame)
+    {
+        [cell SetCellData:[_dsFAQ objectAtIndex:indexPath.row] isSelectedCell:YES forSerialNo:indexPath.row];
     }
-    //cell.rtLabel.lineSpacing = 5.0;
+    else{
+        [cell SetCellData:[_dsFAQ objectAtIndex:indexPath.row] isSelectedCell:NO forSerialNo:indexPath.row];
+    }
+  
     return cell;
 }
+
 
 // Customize the appearance of table view cells.
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -191,7 +190,7 @@ NSIndexPath* previousSelectedIndexPath;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     // [self performSegueWithIdentifier:@"FaqAnswer" sender:nil];
-     previousSelectedIndexPath = selectedIndexPath;  // <- save previously selected cell
+    previousSelectedIndexPath = selectedIndexPath;  // <- save previously selected cell
     selectedIndexPath = indexPath;
     if (previousSelectedIndexPath) { // <- reload previously selected cell (if not nil)
          [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:previousSelectedIndexPath]
@@ -211,41 +210,55 @@ NSIndexPath* previousSelectedIndexPath;
     
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//    NSString *text = [[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"];
-//    if(selectedIndexPath != nil
-//       && [selectedIndexPath compare:indexPath] == NSOrderedSame)
-//    {
-//        text =  [NSString stringWithFormat:@"%@ \n %@",[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Question"],[[_dsFAQ objectAtIndex:indexPath.row] objectForKey:@"Answer"]];
-//    }
-//    CGSize constraint = CGSizeMake(210, 20000.0f);
-//    CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Light" size:14] constrainedToSize:constraint lineBreakMode:NSLineBreakByCharWrapping];
-//    // constratins the size of the table row according to the text
-//    
-//    CGFloat height = size.height;//MAX(size.height,60);
-//    
-//    return height + (15);
-//    // return the height of the particular row in the table view
-//}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-	 if(selectedIndexPath != nil
+    FaqCell *cell = (FaqCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+   NSString* str =  [cell.CellWebView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+      if(selectedIndexPath != nil
        && [selectedIndexPath compare:indexPath] == NSOrderedSame)
     {
-       
-        return 250;
+         return  [cell getCellHeight:[_dsFAQ objectAtIndex:indexPath.row] isSelectedCell:YES forSerialNo:indexPath.row];
 
     }
-    else  {
-        return 70;
-        
-	}
+    else
+    {
+        return  [cell getCellHeight:[_dsFAQ objectAtIndex:indexPath.row] isSelectedCell:NO forSerialNo:indexPath.row];
 
+    }
+//    NSString* key = [NSString stringWithFormat:@"%i",indexPath.row];
+//    
+//    if ((cellHeights != nil || [cellHeights objectForKey:key] != nil) && [cellHeights count] > 0  ) {
+//        NSString* key = [NSString stringWithFormat:@"%i", indexPath.row];
+//        
+//        NSNumber* ft =   (NSNumber*)[cellHeights objectForKey:key];
+//        return ft.floatValue;
+//    }
+//    else
+//        return 44;
+    
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)aWebView {
+    CGRect frame = aWebView.frame;
+    frame.size.height = 1;
+    aWebView.frame = frame;
+    CGSize fittingSize = [aWebView sizeThatFits:CGSizeZero];
+    frame.size = fittingSize;
+    aWebView.frame = frame;
+    
+    NSLog(@"webview frame size %f",aWebView.frame.size.height);
+    [aWebView setOpaque:NO];
+    [aWebView setBackgroundColor:[UIColor colorWithRed:249.0/255 green:243.0/255 blue:236.0/255 alpha:1.0]];
+    NSString* key = [NSString stringWithFormat:@"%i", aWebView.tag];
+    
+    [cellHeights setObject:[NSNumber numberWithFloat: aWebView.frame.size.height]  forKey:key];
+    NSIndexPath *path = [NSIndexPath indexPathWithIndex:aWebView.tag];
+    [_tblFaq reloadRowsAtIndexPaths:[NSArray arrayWithObject:path]
+                     withRowAnimation:UITableViewRowAnimationAutomatic];
+  //  [_CellWebView setHidden:NO];
+}
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

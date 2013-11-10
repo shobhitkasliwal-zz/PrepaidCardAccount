@@ -42,24 +42,24 @@ CGFloat CurrentPopupHeight;
                                                object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     _lblTop.numberOfLines = 0;
-      [_navTitle.titleView sizeToFit];
+    [_navTitle.titleView sizeToFit];
     [_btnButton1 useBlackStyle];
     [_btnButton1 sizeToFit];
     [_btnButton1 setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 15.0, 0.0, 15.0)];
-   
+    
     [_lblTop sizeToFit];
 }
 
 -(void) setupPopup: (CardInfo*) cinfo ForType:(NSString*) type
 {
-
+    
     _ActionType = type;
     _ActionSuccessful = NO;
-      [_btnButton1 setHidden:YES];
+    [_btnButton1 setHidden:YES];
     [_txtField1 setHidden:YES];
     [_lblErrorMessage setHidden:YES];
     _cardInfo = cinfo;
-     if(!_cardInfo.CIPPassed)
+    if(!_cardInfo.CIPPassed)
     {
         _lblTop.text =@"You are not allowed to access the app for this card. Please go to www.prepaidcardstatus.com and complete the process.";
         _navTitle.title = @"CIP Validation Required";
@@ -96,7 +96,7 @@ CGFloat CurrentPopupHeight;
         _btnButton1.tag = ACTIVATE_CARD_BUTTON_TAG;
         [_btnButton1 setTitle:@"Activate" forState:UIControlStateNormal];
     }
-
+    
 }
 
 
@@ -120,15 +120,21 @@ CGFloat CurrentPopupHeight;
     {
             
         case ACTIVATE_CARD_BUTTON_TAG:
+        {
             [SVProgressHUD showWithStatus:@"Activating Card. \nPlease wait ... " maskType:SVProgressHUDMaskTypeGradient];
+            RTNetworkRequest* activateRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
+            activateRequest.currentCallType = [NSMutableString stringWithString:@"ActivateCard"];
+            [activateRequest makeWebCall:[NSString stringWithFormat:ACTIVATE_CARD_SERVICE,_cardInfo.cardProxy, _cardInfo.WcsClientID] httpMethod:RTHTTPMethodGET];
+        }
             break;
         case SECONDARY_AUTH_BUTTON_TAG:
-            [SVProgressHUD showWithStatus:@"Please wait ..." maskType:SVProgressHUDMaskTypeGradient];
+        {
+            [SVProgressHUD showWithStatus:@"Validating Credentials.\nPlease wait ..." maskType:SVProgressHUDMaskTypeGradient];
             RTNetworkRequest* networkRequest = [[RTNetworkRequest alloc] initWithDelegate:self];
             networkRequest.currentCallType = [NSMutableString stringWithString:@"SecondaryAuthenticateUser"];
             [networkRequest makeWebCall:[NSString stringWithFormat:SECONDARY_AUTHENTICATE_USER,_cardInfo.cardProxy, _cardInfo.WcsClientID,_cardInfo.SiteConfigID,_txtField1.text] httpMethod:RTHTTPMethodGET];
-            break;
-       
+        }   break;
+            
     }
 }
 
@@ -138,6 +144,7 @@ CGFloat CurrentPopupHeight;
     [SVProgressHUD dismiss];
     NSString* str = [NSString stringWithFormat:@"An error occured while accessing service.\n Please contact customer support for more details."];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    _ActionSuccessful = NO;
     [alert show];
     
 }
@@ -172,7 +179,34 @@ CGFloat CurrentPopupHeight;
             }
         }
     }
-
+    else  if ([currentCallType isEqualToString:@"ActivateCard"])
+    {
+        for (NSDictionary* dict in responseArray){
+            if([dict objectForKey:@"Message"] )
+            {
+                if ([[[dict objectForKey:@"Message"] uppercaseString] isEqualToString:@"SUCCESS"])
+                {
+                    _cardInfo.cardStatus = @"Active";
+                    [[SingletonGeneric UserCardInfo] updateCardInfo:_cardInfo];
+                    _ActionSuccessful = YES;
+                    [self dismissSemiModalView];
+                    
+                }
+                else
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: [dict objectForKey:@"Message"] delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }
+            else
+            {
+                NSString* str = [NSString stringWithFormat:@"Please enter the correct value for %@", _cardInfo.Sec_Auth_Label];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Message" message: str delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+    }
+    
 }
 
 - (void)networkNotReachable{
@@ -185,7 +219,7 @@ CGFloat CurrentPopupHeight;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-   [textField resignFirstResponder];
+    [textField resignFirstResponder];
     
     return YES;
 }
@@ -206,12 +240,12 @@ CGFloat CurrentPopupHeight;
     // self.view.center =  CGPointMake(self.view.center.x,
     //                               self.view.center.y  - keyboardSize.height);
     [UIView commitAnimations];
-
+    
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
-
-
+    
+    
     
     // Get the size of the keyboard.
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
@@ -221,7 +255,7 @@ CGFloat CurrentPopupHeight;
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     
     [self changeHeightSemiView:CurrentPopupHeight + keyboardSize.height];
-   [UIView commitAnimations];
+    [UIView commitAnimations];
     //your other code here..........
 }
 

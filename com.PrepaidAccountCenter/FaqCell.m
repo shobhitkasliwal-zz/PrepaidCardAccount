@@ -7,7 +7,7 @@
 //
 
 #import "FaqCell.h"
-
+#import "UIColor+Hex.h"
 
 @implementation FaqCell
 
@@ -37,6 +37,7 @@
 //        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         _CellWebView.scrollView.scrollEnabled = NO;
         _CellWebView.scrollView.bounces = NO;
+       
     }
     return self;
 }
@@ -78,35 +79,61 @@
 //  
 //	return label;
 //}
-
-- (void) SetCellData:(NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected
+- (NSString*) GetCellData:(NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected forSerialNo:(int) index
 {
     NSString* data  = @"";
+    
+    index = index + 1;
     if (isSelected == YES) {
-       data = [NSString stringWithFormat:@"%@<br>%@",[dict objectForKey:@"Question"],[dict objectForKey:@"Answer"]  ];
-        [_CellWebView loadHTMLString: data  baseURL:nil];
+        data = [NSString stringWithFormat:@"<html><head></head><body style=\"padding-top:10px; text-align:left; border-top: solid 2px gray;\"><div style=\"background-color:#9F9F9F;\"><div style=\"position:absolute;\">%i. </div><div style=\"padding-left:20px;\">%@</div><div style=\"padding-left:20px;\">%@</div></body></htmml>",index,[dict objectForKey:@"Question"],[dict objectForKey:@"Answer"]  ];
         
     }
     else
     {
-        data = [dict objectForKey:@"Question"];
-        [_CellWebView loadHTMLString: data baseURL:nil];
+        data = [NSString stringWithFormat:@"<html><head></head><body style=\"padding-top:10px; text-align:left; border-top: solid 2px gray;\"><div style=\"position:absolute;\">%i.</div><div style=\"padding-left:20px;\"> %@</div></body></html>",index,[dict objectForKey:@"Question"]];
+        
         
     }
+    return data;
+}
+
+
+- (void) SetCellData:(NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected forSerialNo:(int) index
+{
+  
+       [_CellWebView setBackgroundColor:[UIColor clearColor]];
+    [_CellWebView setOpaque:NO];
+   
+    [_CellWebView loadHTMLString: [self GetCellData:dict isSelectedCell:isSelected forSerialNo:index] baseURL:nil];
     
-    //CGSize aSize = [data sizeWithFont:@"Times New Roman" minFontSize:18.0f actualFontSize:18.0f /forWidth:self.contentView.frame.size.width lineBreakMode:nil];
     
-   // _CellWebView.frame = CGRectMake(0,0,aSize.width,aSize.height);
-    
+
 }
 
 
 
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    
-//    [super setSelected:selected animated:animated];
-//    
-//    // Configure the view for the selected state.
-//}
+- (CGFloat) getCellHeight: (NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected forSerialNo:(int) index
+{
+    
+    
+    NSString *text = [dict objectForKey:@"Question"];
+    if(isSelected)
+    {
+          text =  [NSString stringWithFormat:@"%@ \n %@",[dict objectForKey:@"Question"],[dict objectForKey:@"Answer"]];
+          }
+   
+        CGSize constraint = CGSizeMake(210, 20000.0f);
+       CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Light" size:14] constrainedToSize:constraint lineBreakMode:NSLineBreakByCharWrapping];
+        CGFloat height = size.height;//MAX(size.height,60);
 
+       return height + (25);
+   }
+
+//
+//
+//-(void)webViewDidFinishLoad:(UIWebView *)webView {
+//    
+//    CGFloat ht = webView.scrollView.contentSize.height;
+//}
+//
 @end

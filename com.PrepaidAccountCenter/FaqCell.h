@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "RTLabel.h"
+@protocol FaqCellDelegate;
 
 @interface FaqCell : UITableViewCell
-//@property (nonatomic, strong) RTLabel *rtLabel;
 @property (weak, nonatomic) IBOutlet UIWebView *CellWebView;
-//+ (RTLabel*)textLabel;
-- (void) SetCellData:(NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected;
+//@property (weak, nonatomic) IBOutlet UIWebView *CellWebView;
 
+//+ (RTLabel*)textLabel;
+- (void) SetCellData:(NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected forSerialNo:(int) index;
+- (NSString*) GetCellData:(NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected forSerialNo:(int) index;
+- (CGFloat) getCellHeight: (NSMutableDictionary*) dict isSelectedCell:(BOOL) isSelected forSerialNo:(int) index;
 @end
+
+

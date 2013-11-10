@@ -13,6 +13,7 @@
 #import "MyCardAccountCell.h"
 #import "CardActionDetail.h"
 #import "SVProgressHUD.h"
+#import "AppHelper.h"
 
 #define REMOVE_CARD_POPUP 1
 @interface MyCardAccount ()
@@ -47,8 +48,7 @@ CardInfo* RemoveCard_Cinfo;
     forCellReuseIdentifier:@"CustomCellReuseID"];
     
     [_btnAddNewCard useBlackStyle];
-    _dsUserCards =[[SingletonGeneric UserCardInfo] UserCardInformation];
-    
+   
     NSString* LoginByOption = [[[SingletonGeneric UserCardInfo] UserCredenitalInfo] objectForKey:LOGGEDIN_CREDENTIAL_KEY_SELECTED_LOGIN_OPTION];
     if ([LoginByOption isEqualToString:LOGGEDIN_OPTION_CARD])
     {
@@ -76,13 +76,18 @@ CardInfo* RemoveCard_Cinfo;
     }
     
     cardDetailPopup = [[CardActionDetail alloc]initWithNibName:@"CardActionDetail" bundle:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(semiModalDismissed:)
+                                                 name:kSemiModalDidHideNotification
+                                               object:nil];
     
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     self.view.backgroundColor = [UIColor clearColor];
-    
+    _dsUserCards =[[SingletonGeneric UserCardInfo] UserCardInformation];
+    [_tblCards reloadData];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,12 +102,94 @@ CardInfo* RemoveCard_Cinfo;
 
 
 - (IBAction)btnByExpiry_click:(id)sender {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"MM/dd/yyyy"];
+    [_dsUserCards sortUsingComparator :^NSComparisonResult(id a, id b) {
+        NSDate *first = [df dateFromString:[(CardInfo*)a cardExpiration]];
+        NSDate *second = [df dateFromString: [(CardInfo*)b cardExpiration]];
+        return [first compare:second];
+    }];
+
+    [_tblCards reloadData];
 }
 
 - (IBAction)btnByBalance_click:(id)sender {
+    
+    [_dsUserCards sortUsingComparator:^NSComparisonResult(id a, id b) {
+        double val1, val2;
+        NSString *bal1, *bal2, *st1;
+        [self GetBalanceStatusText:((CardInfo*)a) BalanceText:&bal1 StatusText: &st1];
+        [self GetBalanceStatusText:((CardInfo*)b) BalanceText:&bal2 StatusText:&st1];
+        NSScanner *scanner1 = [NSScanner scannerWithString:bal1];
+        NSScanner *scanner2 = [NSScanner scannerWithString:bal2];
+        if ([scanner1 scanDouble:&val1] && [scanner2 scanDouble:&val2])
+        {
+            if (val1 > val2)
+                return NSOrderedAscending;
+            else if (val1 < val2)
+                return NSOrderedDescending;
+            else
+                return NSOrderedSame;
+            
+        }
+        else if ([scanner1 scanDouble:&val1] && ![scanner2 scanDouble:&val2])
+        {
+            return NSOrderedAscending;
+        }
+        else  if (![scanner1 scanDouble:&val1] && [scanner2 scanDouble:&val2])
+        {
+            return NSOrderedDescending;
+        }
+        else
+        {
+            return [bal1 caseInsensitiveCompare:bal2];
+        }
+        
+    }];
+    [_tblCards reloadData];
 }
 
 - (IBAction)btnByStatus_click:(id)sender {
+    [_dsUserCards sortUsingComparator:^NSComparisonResult(id a, id b) {
+        NSString *st1, *st2, *bal;
+        [self GetBalanceStatusText:((CardInfo*)a) BalanceText:&bal StatusText: &st1];
+        [self GetBalanceStatusText:((CardInfo*)b) BalanceText:&bal StatusText:&st2];
+        return [st1 caseInsensitiveCompare:st2];
+        
+        
+    }];
+    [_tblCards reloadData];
+    
+}
+
+
+- (void) GetBalanceStatusText: (CardInfo*) cardInfo BalanceText:(NSString**) balance StatusText:(NSString**) status
+{
+    *status = cardInfo.cardStatus;
+    *balance = cardInfo.cardBalance;
+    if(!cardInfo.CIPPassed)
+    {
+        *status = @"Identity Validation Required";
+        *balance = @"Details";
+    }
+    else if(cardInfo.UserRegistrationRequired)
+    {
+        
+        *balance = @"Register";
+    }
+    else if(cardInfo.UserSecondaryAuthRequired)
+    {
+        *status = @"Authentication Required";
+        *balance = @"Authenticate";
+    }
+    
+    else if ([cardInfo.cardStatus caseInsensitiveCompare:@"Ready"] == NSOrderedSame)
+    {
+        *status = @"InActive";
+        *balance =@"Activate";
+        
+    }
+    
 }
 
 
@@ -117,6 +204,13 @@ CardInfo* RemoveCard_Cinfo;
 // Customize the number of rows in the table view.
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (_dsUserCards.count == 1 )
+    {
+        CardInfo* dummy = [_dsUserCards objectAtIndex:0];
+        if ([AppHelper isNullObject:dummy.cardNumber])
+        {return 0;}
+    }
     
     return ( _dsUserCards.count);
     
@@ -244,6 +338,11 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
                         
                         [[SingletonGeneric UserCardInfo] setSelectedCard:nil];
                         [[[SingletonGeneric UserCardInfo] UserCardInformation] removeObject:RemoveCard_Cinfo];
+                        if([[[SingletonGeneric UserCardInfo] UserCardInformation] count] == 0)
+                        {
+                            CardInfo* dummy =[[CardInfo alloc]init];
+                            [[SingletonGeneric UserCardInfo] addCardInfo:dummy];
+                        }
                         [_tblCards reloadData];
                     }
                     else
@@ -277,7 +376,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([gestureRecognizer state] == UIGestureRecognizerStateEnded){
         UILabel* label = (UILabel*)[gestureRecognizer view];
         CardInfo *cinfo =  [_dsUserCards objectAtIndex:label.tag];
-        
         cardDetailPopup.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 260);
         [self presentSemiViewController:cardDetailPopup withOptions:@{
                                                                       KNSemiModalOptionKeys.pushParentBack    : @(YES),
@@ -285,9 +383,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
                                                                       KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
                                                                       }];
         [cardDetailPopup setupPopup:cinfo ForType:nil];
-        [self presentSemiViewController:cardDetailPopup];
         
     }
+}
+
+- (void)semiModalDismissed:(NSNotification *) notification {
+    if (notification.object == self) {
+        if(cardDetailPopup.ActionSuccessful){
+            [_tblCards reloadData];
+        }
+    }
+    
+    
 }
 
 @end

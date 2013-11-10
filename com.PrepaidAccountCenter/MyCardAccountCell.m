@@ -9,6 +9,7 @@
 #import "MyCardAccountCell.h"
 #import "CardInfo.h"
 #import "UIColor+Hex.h"
+#import "AppHelper.h"
 @implementation MyCardAccountCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -44,6 +45,8 @@
 
 -(void) populateCell:(CardInfo*) cardInfo
 {
+    if([AppHelper isNullObject:cardInfo.cardNumber])
+        return ;
     
     [_lblMCA_CardNumber setText: cardInfo.cardNumber];
     [_lblMCA_ExpDate setText:cardInfo.cardExpiration];
