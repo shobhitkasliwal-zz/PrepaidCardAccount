@@ -109,8 +109,11 @@ CardInfo* RemoveCard_Cinfo;
         NSDate *second = [df dateFromString: [(CardInfo*)b cardExpiration]];
         return [first compare:second];
     }];
+    [_tblCards beginUpdates];
+    [_tblCards reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    [_tblCards endUpdates];
 
-    [_tblCards reloadData];
+    
 }
 
 - (IBAction)btnByBalance_click:(id)sender {
@@ -146,7 +149,9 @@ CardInfo* RemoveCard_Cinfo;
         }
         
     }];
-    [_tblCards reloadData];
+    [_tblCards beginUpdates];
+    [_tblCards reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    [_tblCards endUpdates];
 }
 
 - (IBAction)btnByStatus_click:(id)sender {
@@ -158,7 +163,9 @@ CardInfo* RemoveCard_Cinfo;
         
         
     }];
-    [_tblCards reloadData];
+    [_tblCards beginUpdates];
+    [_tblCards reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    [_tblCards endUpdates];
     
 }
 
